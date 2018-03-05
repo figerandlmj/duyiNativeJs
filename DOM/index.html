@@ -3,15 +3,16 @@
 <head>
 	<meta charset="UTF-8">
 	<title>DOM</title>
+	<script src="index.js"></script>
 </head>
 <body>
 	DOM(document oaject model)：一套方法的集合的统称，有利于操作html和xml
 	xml -> xhtml -> html
 	xml：标签自定义，表示数据格式，这种格式有利于数据操作，后被json取代
-	<student>
+	<!-- <student>
 		<name>张三</name>
 		<age>25</age>
-	</student>
+	</student> -->
 
 	sublime emmet安装 
 	preferences -> package control -> install package -> emmet、js prettify
@@ -133,6 +134,96 @@
 	setTimeout 延时多久执行
 	var timer = setTimeout(function(){},1000);
 	clearTimeout(timer);
+	
+	DOM基本操作：
+
+	查看滚动条的滚动距离
+	window.pageXOffset/pageYOffset //ie8及以下不兼容
+	document.body.scrollLeft/scrollTop
+	document.documentElement.scrollLeft/scrollTop 
+
+	可视区窗口的尺寸
+	window.innerWidth/innerHeight  //ie8及以下不兼容
+	document.documentElement.clientWidth/clientHeight //标准模式下都兼容
+	document.body.clientWidth/clientHeight
+	document.compatMode: CSS1Compat/BackCompat  标准模式和怪异模式
+
+	<!-- <!DOCTYPE html> -->  标准模式 DTD 没有事为怪异模式
+	渲染模式
+	怪异模式/混杂模式 兼容之前的浏览器
+
+	查看元素的几何尺寸
+	div.getBoundingClientRect() -> {width,height,top,right,bottom,left,...}  //兼容性好，width、height ie中没有，结果不是实时的
+	
+	div.offsetWidth/offsetHeight //视觉上的尺寸，包括padding,不报括margin
+	div.offsetLeft/offsetTop  //相对有定位的父级的位置，若没有最近父级则返回的是相对文档body
+	div.offsetParent  //返回最近的有定位的父级
+
+	让滚动条滚动
+	window.scroll(x, y)
+	window.scrollTo(x, y)
+	window.scrollBy(x, y) //在之前基础上累加滚动
+
+	脚本化CSS：控制css
+
+	DOM间接操作css
+	div.style ：CSSStyleDeclaration css样式声明 类数组 可读可写 表示行间样式表
+	div.style.width = "200px";
+	div.style.backgroundColor = "green";
+	div.style.cssFloat = "left";//float保留字
+	div.style.borderWidth = "1px";//border符合属性
+
+	获取计算样式（当前元素显示的样式） 只读 返回的是绝对值，没有相对单位 
+	window.getComputedStyle(div, null)[prop]; //ie8及以下不兼容
+	div.currentStyle //兼容ie8及以下 只读 不是绝对值
+
+	window.getComputedStyle(div, "after").width //获取伪元素的属性
+	
+	动态改变样式：div.className = "active";
+	
+	事件: 交互体验的核心功能
+	绑定事件处理函数
+	1. div.onclick = function(){console.log('hello');}
+		兼容性好 只能绑定一个函数 this指向div本身 等于在行间定义onclick="console.log('hello')"
+	2. div.addEventListener('click', function(){}, false);
+		ie9以下不兼容 可绑定多个处理函数 不能给同一个函数绑定多次 this指向div本身
+	3. div.attachEvent('onclick', function(){});
+	    ie独有，可绑定多个处理函数 可绑定同一个函数多次 this指向window
+	    解决办法 div.attachEvent('onclick', function(){handle.call(div);});
+	    		 function handle(){//this指向div}
+	
+	解除事件处理函数
+	1. div.onclick = null;
+	2. div.removeEventListener('click', fn, false);//与绑定函数保持一致
+	3. div.detachEvent('onclick', fn);//与绑定函数保持一致
+
+	事件处理模型：
+	1. 冒泡（常规）
+	    结构上子元素冒泡向父元素 自底向上
+	2. 事件捕获  
+	    自父元素至子元素 自顶向下  ie没有
+	绑定两个事件处理函数时，一个冒泡一个捕获，先捕获后冒泡
+
+	focus/blur/change/submit/reset/select 事件不冒泡
+
+	取消事件冒泡
+	e.stopPropagation();//ie不支持
+	e.cancelBubble = true;//ie独有
+
+	阻止默认事件：表单提交、a标签跳转、右键菜单...
+	document.oncontextmenu = function(){
+		console.log('hello');
+		return false;//1
+	}
+	2. e.preventDefault();//ie9以下不兼容
+	3. e.returnValue = false;//兼容ie
+	<!-- <a href="javascript:void(false)">demo</a> //相当于return false; -->
+
+	事件对象 事件源对象
+	div.onclick = function(e){
+		var event = e || window.event;//兼容ie
+		var target = event.target || event.srcElement;
+	}
 
 
 </body>

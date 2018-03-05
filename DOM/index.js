@@ -113,3 +113,147 @@ function setTimer(){
 		}
 	}, 1000);
 }
+
+// 封装getScrollOffset获取滚动条的滚动距离
+function getScrollOffset(){
+	if(window.pageXOffset){
+		return {
+			x: window.pageXOffset,
+			y: window.pageYOffset
+		};
+	}else{
+		return {
+			x: document.body.scrollLeft + document.documentElement.scrollLeft,
+			y: document.body.scrollTop + document.documentElement.scrollTop
+		};
+	}
+}
+
+// 获取可视区窗口的尺寸
+function getViewportOffset(){
+	if(window.innerWidth){
+		return {
+			w: window.innerWidth,
+			h: window.innerHeight
+		};
+	}else{
+		if(document.compatMode === "BackCompat"){//怪异模式
+			return {
+				w: document.body.clientWidth,
+				h: document.body.clientHeight
+			};
+		}else{
+			return {
+				w: document.documentElement.clientWidth,
+				h: document.documentElement.clientHeight
+			}
+		}
+	}
+}
+
+// 自动阅读
+function autoRead(){
+	var start = document.getElementsByTagName("input")[0];
+		stop = document.getElementsByTagName("input")[1];
+	var timer,
+		key = true;
+	start.onclick = function(){
+		if(key){
+			key = false;
+			timer = setInterval(function(){
+				window.scrollBy(0,10);
+			},1000);
+		}
+	};
+	stop.onclick = function(){
+		clearInterval(timer);
+		key = true;
+	}
+}
+
+// 获取元素的属性
+function getStyle(elem, prop){
+	if(window.getComputedStyle){
+		return window.getComputedStyle(elem, null)[prop];
+	}else{
+		return elem.currentStyle[prop];
+	}
+}
+
+// 方块加速运动
+function speedUp(){
+	// <div style="width:100px;height:100px;background-color:red;position:absolute;top:0;left:0"></div>
+	var div = document.getElementsByTagName("div")[0];
+	var speed = 2;
+	var timer = setInterval(function(){
+		speed += speed/7;
+		div.style.left = parseInt(getStyle(div,"left")) + speed +"px";
+		console.log(div.style.left)
+		if(parseInt(div.style.left) > 500){
+			clearInterval(timer);
+		}
+	},100);
+}
+
+// 输出li顺序
+function addLiClick(){
+	// ul>li{a}*4
+	var li = document.getElementsByTagName("li");
+	var len = li.length;
+	for(var i = 0; i < len; i++){
+		// li[i].addEventListener('click', function(){
+		// 	console.log(i);//4 含有闭包问题
+		// }, false);
+
+		(function(i){
+			li[i].addEventListener('click', function(){
+				console.log(i);
+			}, false);
+		}(i));
+	}
+}
+
+// 封装监听事件
+function addEvent(elem, type, handle){
+	if(elem.addEventListener){
+		elem.addEventListener(type, handle, false);
+	}else if(elem.attachEvent){
+		elem.attachEvent('on' + type, function(){
+			handle.call(elem);
+		});
+	}else{
+		elem['on' + type] = handle;
+	}
+}
+
+// 取消冒泡
+function stopBubble(event){
+	if(event.stopPropagation){
+		event.stopPropagation();
+	}else{
+		event.cancelBubble = true;
+	}
+}
+
+// 阻止默认事件
+function cancelHandler(event){
+	if(event.preventDefault){
+		event.preventDefault();
+	}else{
+		event.returnValue = false;
+	}
+}
+
+// 事件委托，给li间接绑定事件
+function eventEntrust(){
+	// 事件委托，利用冒泡原理
+	// 优点：性能 不需要循环所有的元素一个个绑定事件
+	// 	  灵活 当有新的子元素时不需要重新绑定事件
+	// ul>li{$}*10
+	var ul = document.getElementsByTagName("ul")[0];
+	ul.onclick = function(e){
+		var event = e || window.event;//兼容ie
+		var target = event.target || event.srcElement;
+		console.log(target.innerText);
+	}
+}
