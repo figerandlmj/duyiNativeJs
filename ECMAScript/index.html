@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ECMAScript</title>
+</head>
+<body>
+	浏览器发展：
+	www浏览器 -> 图形化浏览器 Mosaic 1993 -> NetScape 网景 Navigator -> Mozilla Firefox
+	
+	js诞生：
+	1996 Brendan Eich 运用于Navigator
+
+	浏览器组成：
+	shell 壳：文件、修改视图...用户能看得见的
+	内核：渲染引擎    语法规格和渲染 绘制部分 html css 
+		  js引擎      2001 IE6 剥离出js引擎 McrosoftXP浏览器；
+		  			  2008 Google chrome浏览器 webkit内核 V8引擎（优化了js引擎）优点是快 js -> 机器码01；
+		  			  2008 firefox3.5 TraceMonkey 引擎
+		  			  	   firefox4.0 LeagerMonkey 引擎
+		  其他模块
+	
+	js特点：
+	  Java .java -> .class -> jvm虚拟机 -> 解释执行  oak语言 跨平台 不属于编译性语言
+	  编译性语言  生成特定文件,通篇翻译         c c++  快，但是移植性不好（不跨平台）       
+	1.解释性语言  看一行翻译一行,不生成特定文件 js php 稍慢，跨平台
+	2.单线程   同一时间一件事
+	  多线程   同一时间多件事 
+
+	js执行队列：
+	闪电侠同一时间出现两个（速度快，视觉差）
+	单线程模拟多线程
+	轮转时间片  争抢时间片
+
+	js三大部分：
+	ECMAScript  ECMA为了统一js标准规格
+	DOM
+	BOM
+
+	主流浏览器：市场占有率在3%左右 有独立内核
+	ie      trident 
+	chrome  webkit/blink
+	firefox Gecko
+	opera   presto
+	safari  webkit
+
+	web开发标准：结构、行为、样式 相分离
+
+	js引入：  页面级js 外部js文件 同事使用时外部js生效
+
+	js基本语法：
+
+	html 超文本标记语言 css 层叠样式表 不属于编程语言
+	js才是编程性语言：有变量、函数、数据结构 可以进行基本运算
+
+	变量：
+	var a;//声明
+	a = 100;//赋值
+	var a = 10,
+		b = 20,
+		c = 30;//声明多个变量，单一var模式
+
+	变量名命名规则：命名要有语义
+	以字母、_、$开头；
+	包括母、_、$和数字；
+	不可以用系统关键字和保留字
+
+	数据类型：
+	原始值                    引用值
+	number: 1,1.2             array
+	boolean: true,flase       object
+	string: "hello"           function
+	undefined: 没有定义       date
+	null: 占位，表示空        regExp
+	
+	js: 动态语言 由值决定类型
+
+	var a = 10;
+	var b = a;
+	a = 20;
+	b ->10  //将a的值赋值给b,a改变b不变
+
+	var arr = [1];
+	var arr1 = arr;
+	arr.push(2);
+	arr1 -> [1,2] //栈存放堆中数组值的地址索引，数组值改变索引不变
+
+	var arr = [1];
+	var arr1 = arr;
+	arr = [1,2];// arr指向新的房间
+	arr1 -> [1] // arr1还是指向[1]这个房间
+
+	js变量存储：
+	原始值            引用值
+	栈stack           堆heap
+
+	js语法错误：后续代码终止，但不会影响其他代码块
+	<script>发生错误</script>
+	<script>不被影响</script>
+
+	低级错误：语法解析错误 第一遍扫描时被发现
+	标准错误：逻辑错误 解释执行时被发现
+	
+	算术运算符：
+
+	+：数字运算 字符串连接
+	注：任何数据类型加字符串都为字符串
+	"a" + 1 +1;//"a11"
+	1 + 1 + "a" + 1 + 1;//"2a11"
+
+	0/0;  //NaN
+	1/0;  //Infinity
+	-1/0; //-Infinity
+
+	5%2;  //1
+	5%1;  //0
+	4%6;  //4
+
+	var a = 10;
+	document(a++);//10
+	document(++a);//11
+	
+	优先级：=最弱 ()最高；计算 自左向右 赋值 自右向左
+
+	var a = 10;
+	var b = ++a - 1 + a++;
+	a: 11 -> 12
+	b: 11 - 1 + 11 = 21 
+
+	var a = 1;
+	var b = a-- + --a;
+	a:0 -> -1
+	b:1 + -1 = 0
+
+	<!-- 将两个数互换 -->
+	var a = 123,
+		b = 234;
+	1.var c = a;
+      a = a;
+      b = a;
+    2.a = a + b;
+      b = a - b;
+      a = a - b;
+	
+	比较运算符：字符串是按位比较ASCII  1 47; A 65 ; a 97
+	var a = 1 < 2;// true
+	var a = "a" > "b";//false
+	var "10" > "8";//false
+
+	var a = 1 == 2;//false
+	var a= a != 2;//true
+
+	undefined == undefined  true
+	Infinity == Infinity    true
+	NaN == NaN              false
+	注：NaN不等于任何东西
+
+</body>
+</html>

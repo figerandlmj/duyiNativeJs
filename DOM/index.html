@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>DOM</title>
+</head>
+<body>
+	DOM(document oaject model)：一套方法的集合的统称，有利于操作html和xml
+	xml -> xhtml -> html
+	xml：标签自定义，表示数据格式，这种格式有利于数据操作，后被json取代
+	<student>
+		<name>张三</name>
+		<age>25</age>
+	</student>
+
+	sublime emmet安装 
+	preferences -> package control -> install package -> emmet、js prettify
+	快捷方式 div>p^span
+	<!-- <div>
+		<p></p>
+		<span></span>
+	</div> -->
+	别的编辑器vsCode webstorm
+
+	节点选择器：
+	var div = document.getElementById('div');//ie8以下，id不区分大小写，当id没有时取name的值
+	var div = document.getElementsByTagName('div');//类数组[],没有兼容性问题
+	var div = document.getElementsByClassName('div');//ie8及以下不兼容
+	var div = document.getElementsByName('div');//低版本只有部分标签name可生效（表单、表单元素、img、iframe）
+	<!-- ie6\7不兼容且不是实时的 -->
+	var demo = document.querySelector('div>span strong.demo');
+	var demo = document.querySelectorAll('div>span strong.demo');//类数组
+
+	遍历节点树：
+	span.parentNode      父节点
+	span.childNodes      子节点们
+	span.firstChild      第一个子节点
+	span.lastChild       最后一个子节点
+	span.nextSibling     下一个兄弟节点
+	span.previousSibling 前一个兄弟节点 
+
+	遍历元素节点树：除了children,ie9及以下都没实现
+	span.parentElement      元素父节点
+	span.children           元素子节点
+	span.childElementCount  元素子节点个数，相当于children.length
+	firstElementChild       第一个元素子节点
+	lastElementChild        最后一个元素子节点
+	nextElementSibling      下一个元素兄弟节点
+	previousElementSibling  前一个元素兄弟节点
+
+	节点的类型：               nodeType返回值
+	元素节点                   1
+	属性节点                   2
+	文本节点                   3
+	注释节点                   8
+	document                   9
+	DocumentFragment 文档碎片  11
+	
+	节点的属性方法：
+	nodeName        元素的标签名，只读
+	nodeValue       节点值（文本节点、注释节点），可读写
+	nodeType        节点类型
+
+	attributes      属性节点的集合 [].name 可写  [].value 可读写
+
+	hasChildNodes() 是否有子节点，返回true/false
+
+	DOM节点树：
+	===============================================================================
+			        Document	   HTMLDocument	
+			                       XMLDocument
+
+			        CharacterData  Text
+						           Comment注释
+	node ->
+	  		        Element        HTMLElement   ->     HTMLHeadElement
+	  v					           XMLElement           HTMLBodyElement
+	  									                HTMLTitleElement
+	ElementTarget   Attr							    HTMLParagraphElement
+											            HTMLInputElement
+	  v										            HTMLTableElement
+											            ...
+	Object  
+	=================================================================================
+
+	getElmentsByTagName('*') //所有元素标签
+
+	document.body
+	document.head
+	document.documentElement  //html
+
+						   定义在此
+	getElementById         Document.prototype
+	getElementsByName      HTMLDocument.prototype     
+	getElementsByTagName   Document.prototype 和 HTMLDocument.prototype   
+	getElementsByClassName
+	querySlector
+	querySlectorAll
+
+	增加：
+	document.createElement('div');               元素节点
+	document.createTextNode('hello');            文本节点
+	document.createComment('this is comment');   注释节点
+	document.createDocumentFragment('div');      文档碎片
+
+	插入：
+	parentnode.appendChild();//把没有的插入类似push,把已有的插入类似剪切
+	parentnode.insertBefore(a, b);//insert a before b
+
+	删除：
+	parent.removeChild();//返回剪切出来的
+	child.remove();//返回undefined
+
+	替换：
+	parent.replaceChild(new, origin);返回剪切的origin
+
+	Element节点属性方法：
+	ele.innerHTML                     可读可写
+	ele.innerText/textContent         会覆盖节点
+	老firefox不兼容/老ie不兼容 
+	ele.setAttribute('class', 'demo') 设置属性      
+	ele.getAttribute()                获取属性  
+
+	日期对象：纪元时间 1970.1.1开始 
+	var date = new Date();
+	计算时间戳用 getTime()
+
+	定时器：
+	setInterval: 时间不准 window上的方法 this指向window
+	var timer = setInterval(function(){}, 1000);//返回的是定时器的唯一标识1,2...
+	clearInterval(timer);
+
+	setTimeout 延时多久执行
+	var timer = setTimeout(function(){},1000);
+	clearTimeout(timer);
+
+
+</body>
+</html>
