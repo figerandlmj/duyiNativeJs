@@ -225,6 +225,291 @@
 		var target = event.target || event.srcElement;
 	}
 
+	screenX:鼠标位置相对于用户屏幕水平偏移量，而screenY也就是垂直方向的，此时的参照点也就是原点是屏幕的左上角。
+
+	clientX:跟screenX相比就是将参照点改成了浏览器内容区域的左上角，该参照点会随之滚动条的移动而移动。
+
+	pageX：参照点也是浏览器内容区域的左上角，但它不会随着滚动条而变动
+
+	div.setCapture() //会将页面上所有事件捕获放在div上，ie有用
+	div.releaseCapture()
+
+	事件分类
+	鼠标事件：
+	click
+	mousedown mousemove mouseup  移动端 touchstart touchmove touchend
+	mouseover mouseout mouseenter mouseleave
+	移进      移出     h5新规则
+	contextmenu 右键菜单
+
+	区分鼠标点击左右键
+	mousedown mouseup  e.button 左0 右2
+
+	w3c规定click只能触发左键不能触发右键
+
+	//用时间差来实现拖拽不等于点击
+	var firstTime = 0,
+		lastTime = 0,
+		key = false;
+	document.onmousedown = function(){
+		firstTime = new Date().getTime();
+	}
+	document.onmouseup = function(){
+		lastTime = new Date().getTime();
+		if(lastTime - firstTime < 300){
+			key = true;
+		}
+	}
+	document.onclick = function(){
+		if(key){
+			console.log('hello');
+			key = false;
+		}
+	}
+
+	键盘事件：
+	keydown keyup         keypress
+	
+	keydown能监测到所有键的按下，用which来标识108个键的排号
+
+	// keypress只能监测到字符类按键
+	document.onkeypress = function(e){
+		console.log(String.fromCharCode(e.charCode));//将按键的ASCII码转换为字符
+	}
+
+	文本操作事件：
+	input
+	focus blur 
+	change  //获得焦点与失去焦点前后两值有没有变化，有变化则出发
+
+	input.oninput = function(){
+		console.log(this.value);
+	}
+
+	input.onfocus = function(){
+		if(this.value == '请输入用户名'){
+			this.value = '';
+			this.style.color = '#424242';
+		}
+	}
+	input.onblur = function(){
+		if(this.value == ''){
+			this.value = '请输入用户名';
+			this.style.color = '#999';
+		}
+	}
+
+	窗体类操作事件：
+	load
+	scroll
+
+	window.onscroll = function(){
+		//滚动条当前位置
+		window.pageXOffset
+		window.pageYOffset
+	}
+
+	ie6没有fixed定位，可用js利用position:absolute模拟fixed
+
+	识别html代码生成
+	domTree 深度优先原则              cssTree
+	完成表示解析完，不代表加载完   
+	                        renderTree 渲染树
+	                        绘制页面
+	img:先解析img，同事开展一个异步进程下载img
+	onload是img全部下载完后才执行
+	不要把整个主程序放在onload里，效率低
+
+	reflow重排：减少dom的增删改查
+	dom节点的宽高位置变化，display改变，offsetWidth offsetHeight
+	
+	repaint重绘：
+	颜色背景改变
+
+	json:
+	JSON.stringify(obj);//str
+	JSON.parse(str);//obj
+
+	js加载是同步阻塞的
+	异步加载js方法
+	1. defer
+	只有ie能用，整个文档解析完时才会执行，执行时也为异步的，可以加载外部js，也可写在script内
+	<script src="tools.js" defer="defer"></script>
+	
+	2. aysnc
+	ie9以上及高级浏览器能用，加载完就执行，执行师也为异步的，只能加载外部脚本
+	<script src="tools.js" aysnc="aysnc"></script>
+
+	3. 按序加载
+	var script = document.createElement('script');
+	script.type = "text/javascript";
+	//safari chrome firefox opera
+	script.onload = function(){
+		test();//确保下载完了在执行
+	}
+	//ie
+	script.onreadystatechange = function(){
+		if(script.readyState == 'loaded' || script.readyState == 'complete'){
+			test();
+		}
+	}
+	script.src = "tools.js";//异步下载
+	document.appendChild(script);//解析执行
+
+	js加载时间线：
+
+	1.创建Document对象，开始解析web页面 document.readyState = "loading"
+
+	2.link时，创建线程加载并继续解析文档
+	3.script时，浏览器加载并阻塞，等待js加载完成并执行该脚本
+	4.script有defer/aysnc时，创建线程加载，并解析文档，aysnc解析完立即执行
+	5.img时，先正常解析dom结构，异步加载src，并继续解析文档
+
+	6.文档解析完后 document.readyState = "interactive"
+	7.文档解析完后，defer的脚本顺序执行
+	8.解析完后，document触发DomContentLoaded事件，同步脚本执行阶段->事件驱动阶段
+	
+	9.当aysnc加载执行完后，img加载完成后 document.readyState = "complete"
+	  window对象触发load事件
+	10.从此，以异步响应方式处理用户输入、网络事件等
+
+	<!-- <script>
+		console.log(document.readyState);//loading
+		document.onreadystatechange = function(){
+			console.log(document.readyState);//interactive complete
+		}
+		document.addEventListener("DomContentLoaded", function(){
+			console.log('hello');
+		}, false);
+		window.onload = function(){
+			console.log(document.readyState);//complete
+		}
+	</script> -->
+
+	当dom解析完就执行的部分：
+	$(document).ready(function(){});  =>
+	document.addEventListener('DomContentLoaded', function(){}, false);
+	而window.onload = function(){} 是img加载完后执行，低效
+	  
+	
+	正则表达式：RegExp
+
+	转义字符：\
+	\"     " 
+	\\     \
+	\n     换行
+	\r     行结束
+	\r\n   回车换行
+	\t     tab缩进，制表符
+
+	字符串不能多行
+	var test = "\
+		<div></div>\
+		<span></span>\
+	";
+	=>
+	var test = 
+		"<div></div>" + 
+		"<span></span>";
+
+	1. var reg = /abc/;                                /abc/i       /abc/g     /abc/m
+	   var str = "abcd";                               忽略大小写   全局匹配   多行匹配
+	   reg.test(str);//true
+	   str.match(reg);//["abc",index:0,input:"abcd"]
+		
+	   str = "abcde\na";
+	   reg = /^a/g   /^a/m
+	   str.match(reg);
+	        ["a"]    ["a", index: 0, input: "abcde\na"]
+
+	2. var reg = new RegExp("abc","i/g/m");
+	   var reg1 = new RegExp(reg);//reg和reg1指向同一个房间
+
+	/[][]/g  //表达式，取值范围
+
+	"abcd".match(/[ab][cd][d]/g)       ["bcd"]
+	"ab1cd".match(/[0-9A-z][cd][d]/g)  ["1cd"]
+	"ab1cd".match(/[^a][^b]/g)         ["b1","cd"]
+	"bcd2".match(/(abc|bcd)[0-9]/g)    ["bcd2"]
+
+	\w   [0-9A-z]
+	\W   [^\w]
+
+	\d   [0-9]
+	\D   [^\d]
+
+	\s   [\t\n\r\v\f ]  空白字符  制表符/换行符/回车符/垂直制表符/换页符/空格
+	\S   [^\s]
+
+	\b   单词边界
+	\B   非单词边界
+
+	"abc cde fgh".match(/\bc/g)     ["c"]
+	"abc cde fgh".match(/\bcde\b/g) ["cde"]
+
+	n+      {1,}   >=1
+	n*      {0,}   >=0
+	n?      {0,1}  贪婪匹配原则
+	n{x}    {x}
+	n{x,y}  {x,y}
+
+	"abc".match(/\w+/g)  ["abc"]
+	"abc".match(/\w*/g)  ["abc", ""]
+	"abc".match(/\d*/g)  ["", "", "", ""]
+	"aaa".match(/\w?/g)  ["a", "a", "a", ""]
+
+	n$    结尾
+	^n    开头
+
+	"abc".match(/^abc$/g)     ["abc"]
+	"abcabc".match(/^abc$/g)  null 
+
+	/^\d|\d$/g        字符串首尾是否含有数字
+	/^\d[\s\S]*\d$/g  首尾都有字符串，[\s\S]补集代表所有
+	
+	"aaaa".match(/(a)\1/g)        ["aa", "aa"] \1表示引用第一个表达式的内容
+	"aaaa".match(/(\w)\1\1\1/g)   ["aaaa"]
+	"aabb".match(/(\w)\1(\w)\2/g) ["aabb"]  
+
+	reg.ignoreCase   //true or false
+	reg.global
+	reg.multiline
+	reg.source  正则表达式内容
+	
+	var str = "abababab";
+	var reg = /ab/g;
+	reg.test(str); //true
+	reg.exec(str);//["ab", index: 0, input: "abababab"]
+	reg.lastIndex;//2
+	str.match(reg);//["ab", "ab", "ab", "ab"]
+
+	str.search(reg);       // 0  返回匹配到的位置，-1代表没有匹配到
+	str.split(reg);        // ["", "", "", "", ""]
+	str.replace(reg,"**"); // "********"
+
+	"aabb".replace(/(\w)\1(\w)\2/g, "$2$2$1$1"); // "bbaa"
+	str.replace(reg, function($,$1,$2){
+		return $2 + $2 + $1 + $1;
+	})
+
+	var str = "the-first-name";
+	var reg = /-(\w)/g;
+	str.replace(reg, function($, $1){
+		return $.toUpperCase();  // "the-First-Name"
+	})
+
+	正向预查/正向断言
+	"abaaaa".match(/a(?=b)/g);                      ["a"]
+	"abaaaa".match(/a(?!b)/g)                       ["a", "a", "a", "a"]
+	"aaaa".match(/a+?/g)                            ["a", "a", "a", "a"]
+	"aaaa".match(/a{1,3}?/g)                        ["a", "a", "a", "a"]
+	"aaaabbbbcccc".replace(/(\w)\1*/g, "$1")        "abc"
+	"100000000".replace(/(?=(\B)(\d{3})+$)/g, ".")  "100.000.000"
+
+
+
+
+
 
 </body>
 </html>

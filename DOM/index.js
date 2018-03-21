@@ -26,7 +26,7 @@ function retElementChild(node){
 	return arr;
 }
 
-// 返回元素e的第n成祖先元素节点
+// 返回元素elem的第n成祖先元素节点
 function retParent(elem, n){
 	while(elem && n){
 		elem = elem.parentElement;
@@ -226,6 +226,19 @@ function addEvent(elem, type, handle){
 	}
 }
 
+// 解除事件处理函数
+function removeEvent(elem, type, handle){
+	if(elem.removeEventListener){
+		elem.removeEventListener(type, handle, false);
+	}else if(elem.detachEvent){
+		elem.detachEvent('on' + type, function(){
+			handle.call(elem);
+		});
+	}else{
+		elem['on' + type] = null;
+	}
+}
+
 // 取消冒泡
 function stopBubble(event){
 	if(event.stopPropagation){
@@ -257,3 +270,66 @@ function eventEntrust(){
 		console.log(target.innerText);
 	}
 }
+
+// 拖拽
+function drag(elem){
+	// <div style="width:100px;height:100px;background-color:red;position:absolute;top:0;left:0;"></div>
+	// var div = document.getElementsByTagName('div')[0];
+	// drag(div);
+	var disX,
+		disY;
+	addEvent(elem, 'mousedown', function(e){
+		var event = e || window.event;
+		disX = event.clientX - parseInt(getStyle(elem, 'left'));
+		disY = event.clientY - parseInt(getStyle(elem, 'top'));
+		addEvent(document, 'mousemove', mouseMove);
+		addEvent(document, 'mouseup', mouseUp);
+		stopBubble(event);
+		cancelHandler(event);
+	});
+	function mouseMove(e){
+		var event = e || window.event;
+		elem.style.left = event.clientX - disX +'px';
+		elem.style.top = event.clientY - disY +'px';
+	}
+	function mouseUp(e){
+		removeEvent(document, 'mousemove', mouseMove);
+		removeEvent(document, 'mouseup', mouseUp);
+	}
+}
+
+// js异步加载
+// 1. loadScript("tools.js", function(){
+// 	test();
+// })
+// callback();
+
+// 2.loadScript("tools.js", "test()");
+// eval(callback);
+
+// 3.loadScript("tools.js", "test");
+// tools[callback]();
+
+// tools.js =>
+// var tools = {
+// 	test:function(){}
+// }
+function loadScript(url, callback){
+	var script =document.createElement("script");
+	script.type = "text/javascript";
+	if(script.readyState){
+		script.onreadystatechange = function(){
+			if(script.readyState == "complete" || script.readyState == "loaded"){
+				callback();
+			}
+		}
+	}else{
+		script.onload = function(){
+			callback();
+		}
+	}
+	script.src = url;
+	document.appendChild(script);
+}
+
+

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>三角形和水平垂直居中</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		div{
+			margin: 10px auto 0;
+		}
+		/* 三角形 */
+		.test{
+			width: 10px;
+			height: 10px;
+			border-top: 30px solid black;
+			border-right: 30px solid red;
+			border-bottom: 30px solid green;
+			border-left: 30px solid yellow;
+		}
+		.test1{
+			width: 0;
+			height: 0;
+			border-top: 30px solid black;
+			border-right: 30px solid red;
+			border-bottom: 30px solid green;
+			border-left: 30px solid yellow;
+		}
+		.test-top{
+			width: 0;
+			height: 0;
+			border-bottom: 30px solid green;
+			border-right: 30px solid transparent;
+			border-left: 30px solid transparent;
+		}
+		.test-right{
+			width: 0;
+			height: 0;
+			border-left: 30px solid yellow;
+			border-top: 30px solid transparent;
+			border-bottom: 30px solid transparent;
+		}
+		.test-bottom{
+			width: 0;
+			height: 0;
+			border-top: 30px solid black;
+			border-right: 30px solid transparent;
+			border-left: 30px solid transparent;
+		}
+		.test-left{
+			width: 0;
+			height: 0;
+			border-right: 30px solid red;
+			border-top: 30px solid transparent;
+			border-bottom: 30px solid transparent;
+		}
+		/* 水平垂直居中 */
+		.parent{
+			position: relative;
+			width: 300px;
+			height:300px;
+			border: 1px solid #000;
+		}
+		.child{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 100px;
+			height: 100px;
+			margin-top: -50px;
+			margin-left: -50px;
+			border: 1px solid #000;
+		}
+	</style>
+</head>
+<body>
+	<!-- 三角形 -->
+	<div class="test"></div>
+	<div class="test1"></div>
+	<div class="test-top"></div>
+	<div class="test-right"></div>
+	<div class="test-bottom"></div>
+	<div class="test-left"></div>
+	<!-- 水平垂直居中 -->
+	<div class="parent">
+		<div class="child"></div>
+	</div>
+</body>
+</html>
