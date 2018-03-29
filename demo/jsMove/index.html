@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		div{
+			position: absolute;
+			left: 0;
+			/*left: 600px;*/
+			top: 0;
+			width: 100px;
+			height: 100px;
+			background: orange;
+		}
+		span{
+			position: absolute;
+			left: 300px;
+			top: 0;
+			width: 1px;
+			height: 100px;
+			background: #000;
+		}
+		button{
+			margin-top: 150px;
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+	<span></span>
+	<button id="oBtn">button</button>
+	<script>
+		var oDiv = document.getElementsByTagName('div')[0];
+		var timer = null;
+		oBtn.onclick = function() {
+			startMove(oDiv);
+		}
+
+		// 匀速运动
+		// function startMove(obj) {
+		// 	clearInterval(timer);
+		// 	var iSpeed;
+		// 	if(obj.offsetLeft > 300) {
+		// 		iSpeed = -8;
+		// 	}else{
+		// 		iSpeed = 8;
+		// 	}
+		// 	timer = setInterval(function() {
+		// 		if(Math.abs(300 - obj.offsetLeft) < Math.abs(iSpeed)) {
+		// 			clearInterval(timer);
+		// 			obj.style.left = '300px';
+		// 		}else{
+		// 			obj.style.left = obj.offsetLeft + iSpeed + 'px';
+		// 		}
+		// 	}, 30);
+		// }
+
+		// 缓冲运动（先快后慢）
+		function startMove(obj) {
+			clearInterval(timer);
+			var iSpeed;
+			timer = setInterval(function() {
+				iSpeed = (300 - obj.offsetLeft)/7;
+				iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
+				console.log(iSpeed);
+				if(obj.offsetLeft === 300){
+					clearInterval(timer);
+				}else{
+					obj.style.left = obj.offsetLeft + iSpeed +'px';
+				}
+			}, 30);
+		}
+	</script>
+</body>
+</html>

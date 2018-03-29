@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		div{
+			width: 100px;
+			height: 100px;
+			opacity: 1;
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+	<script>
+		var oDiv = document.getElementsByTagName('div')[0];
+		var timer = null;
+
+		
+		oDiv.onclick = function() {
+			startMove(oDiv, 50);
+		}
+
+		// 缓冲运动（先快后慢）改变opacity
+		function startMove(obj, target) {
+			clearInterval(timer);
+			var iSpeed,
+				iCur;
+			timer = setInterval(function() {
+				iCur = parseFloat(getStyle(obj, 'opacity')) * 100;
+				iSpeed = (target - iCur) / 7;
+				iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
+				// console.log(iSpeed);
+				if(iCur === target){
+					clearInterval(timer);
+				}else{
+					obj.style.opacity = (iCur + iSpeed) / 100;
+				}
+			}, 30);
+		}
+		
+		// console.log(parseInt(getStyle(oDiv, 'width')));
+		// console.log(parseFloat(getStyle(oDiv, 'opacity')));
+
+		// 获取元素的属性
+		function getStyle(elem, prop){
+			if(window.getComputedStyle){
+				return window.getComputedStyle(elem, null)[prop];
+			}else{
+				return elem.currentStyle[prop];
+			}
+		}
+		
+	</script>
+</body>
+</html>

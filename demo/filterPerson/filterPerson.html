@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>筛选下拉数据</title>
+	<link rel="stylesheet" href="./src/css/index.css">
+</head>
+<body>
+	<div class="wrapper">
+		<input id="inp" type="text">
+		<button id="age">age</button>
+		<button id="male">male</button>
+		<button id="female">female</button>
+		<button id="all">all</button>
+		<ul id="ul">
+			<!-- <li>name:老邓,age:50,sex:male</li>
+			<li>name:老刘,age:48,sex:female</li>
+			<li>name:小邓,age:15,sex:male</li> -->
+		</ul>
+	</div>
+	<script type="text/javascript" src="./src/js/tools.js"></script>
+	<script type="text/javascript" src="./src/js/actions.js"></script>
+	<script type="text/javascript" src="./src/js/index.js"></script>
+	<script type="text/javascript">
+		// var allPersonArr = [
+		// 	{name:'老邓',age:50,sex:'male'},
+		// 	{name:'老刘',age:48,sex:'female'},
+		// 	{name:'老王',age:40,sex:'male'},
+		// 	{name:'老刘',age:35,sex:'female'},
+		// 	{name:'小刘',age:16,sex:'male'},
+		// 	{name:'小王',age:18,sex:'female'},
+		// 	{name:'小邓',age:20,sex:'male'}
+		// ];
+		// var oUl = document.getElementById("ul"),
+		// 	oInp = document.getElementById("inp"),
+		// 	oAge = document.getElementById("age"),
+		// 	oMale = document.getElementById("male"),
+		// 	oFemale = document.getElementById("female"),
+		// 	oAll = document.getElementById("all");
+
+		// var filterArr = allPersonArr;
+		// var lastSex = "all";
+
+		// // 渲染li
+		// function renderPageByArr(personArr){
+		// 	var htmlArrStr = "";
+		// 	personArr.forEach(function(ele, index){
+		// 		htmlArrStr += '<li>name:'+ ele.name +',age:'+ ele.age +',sex:'+ ele.sex +'</li>';
+		// 	});
+		// 	oUl.innerHTML = htmlArrStr;
+		// }
+
+		// // 筛选name值的数组
+		// function filterName(allPersonArr, val){
+		// 	return allPersonArr.filter(function(ele, index){
+		// 		// if(val && ele.name.indexof(val) != -1){
+		// 		// 	return true;
+		// 		// }
+		// 		return val && ele.name.indexOf(val) != -1;
+		// 	})
+		// }
+
+		// // 筛选出的数组年龄加1
+		// function addAge(filterArr){
+		// 	return filterArr.map(function(ele, index){
+		// 		ele.age ++;
+		// 		return ele;
+		// 	})
+		// }
+
+		// // 筛选出来的数组再筛选性别
+		// function filterSex(filterArr, sex){
+		// 	return filterArr.filter(function(ele, index){
+		// 		// if(sex == "all"){
+		// 		// 	return true;
+		// 		// }else if(ele.sex == sex){
+		// 		// 	return true;
+		// 		// }
+		// 		return sex == "all" ? true : ele.sex == sex;
+		// 	})
+		// }
+
+		// 实时搜索
+		// oInp.oninput = function(){
+		// 	renderPageByArr(filterArr = filterName(allPersonArr, this.value));
+		// 	lastSex = "all";
+		// }
+		// oAge.onclick = function(){
+		// 	renderPageByArr(addAge(filterSex(filterArr, lastSex)));
+		// }
+		// oMale.onclick = function(){
+		// 	renderPageByArr(filterSex(filterArr, lastSex = 'male'));
+		// }
+		// oFemale.onclick = function(){
+		// 	renderPageByArr(filterSex(filterArr, lastSex = 'female'));
+		// }
+		// oAll.onclick = function(){
+		// 	renderPageByArr(filterSex(filterArr, lastSex = 'all'));
+		// }
+
+		// var actions = [
+		// 	{doc: oInp, type: "filterName"},
+		// 	{doc: oAge, type: "addAge"},
+		// 	{doc: oMale, type: "filterSex", prame: "male"},
+		// 	{doc: oFemale, type: "filterSex", prame: "female"},
+		// 	{doc: oAll, type: "filterSex", prame: "all"}
+		// ];
+		// function bindEventActions(actions){
+		// 	actions.forEach(function(ele, index){
+		// 		switch(ele.type){
+		// 			case "filterName":
+		// 				ele.doc.oninput = function(){
+		// 					renderPageByArr(filterArr = filterName(allPersonArr, this.value));
+		// 					lastSex = "all";
+		// 				}
+		// 				break;
+		// 			case "addAge":
+		// 				ele.doc.onclick = function(){
+		// 					renderPageByArr(addAge(filterSex(filterArr, lastSex)));
+		// 				}
+		// 				break;
+		// 			case "filterSex":
+		// 				ele.doc.onclick = function(){
+		// 					renderPageByArr(filterSex(filterArr, lastSex = ele.prame));
+		// 				}
+		// 				break;
+		// 		}
+		// 	});
+		// }
+		// bindEventActions(actions);
+	</script>
+</body>
+</html>

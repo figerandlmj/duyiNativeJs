@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		div{
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100px;
+			height: 100px;
+			background: orange;
+			border-radius: 50%;
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+	<script>
+		var oDiv = document.getElementsByTagName('div')[0];
+		var lastX = oDiv.offsetLeft,
+			lastY = oDiv.offsetTop;
+
+		oDiv.onmousedown = function(e) {
+			clearInterval(this.timer);
+			var event = e || window.event;
+			var disX = e.clientX - this.offsetLeft,
+				disY = e.clientY - this.offsetTop;
+			var that = this;
+			var iSpeedX = 0,
+				iSpeedY= 0;
+			document.onmousemove = function(e) {
+				var newLeft = e.clientX - disX,
+					newTop = e.clientY - disY;
+
+				// 拖拽后x和y方向拖拽的距离
+				iSpeedX = newLeft - lastX;
+				iSpeedY = newTop - lastY;
+				lastX = newLeft;
+				lastY = newTop;
+
+				that.style.left = newLeft + 'px';
+				that.style.top = newTop + 'px';
+			}
+			document.onmouseup = function() {
+				document.onmousemove = null;
+				document.onmouseup = null;
+				startMove(that, iSpeedX, iSpeedY);
+			}
+		}
+
+		// 模拟重力场运动
+		function startMove(obj, iSpeedX, iSpeedY) {
+			clearInterval(obj.timer);
+			var	g = 6,
+				u = 0.8;
+			obj.timer = setInterval(function() {
+				iSpeedY += g;
+				var newLeft = obj.offsetLeft + iSpeedX,
+					newTop = obj.offsetTop + iSpeedY;
+				var top = document.documentElement.clientHeight - obj.offsetHeight,
+					left = document.documentElement.clientWidth - obj.offsetWidth;
+				if(newTop >= top){
+					iSpeedY *= -1;
+					iSpeedX *= u;
+					iSpeedY *= u;
+					newTop = top;
+				}
+				if(newTop <= 0){
+					iSpeedY *= -1;
+					iSpeedX *= u;
+					iSpeedY *= u;
+					newTop = 0;
+				}
+				if(newLeft >= left){
+					iSpeedX *= -1;
+					iSpeedX *= u;
+					iSpeedY *= u;
+					newLeft = left;
+				}
+				if(newLeft <= 0){
+					iSpeedX *= -1;
+					iSpeedX *= u;
+					iSpeedY *= u;
+					newLeft = 0;
+				}
+				// 横向和纵向的速度趋于0且落到底部时清除定时器
+				if(Math.abs(iSpeedX) < 1 && Math.abs(iSpeedY) < 6 && newTop == top) {
+					console.log('over');
+					clearInterval(obj.timer);
+				}
+				obj.style.left = newLeft + 'px';
+				obj.style.top = newTop + 'px';
+			}, 30);
+		}
+
+	</script>
+</body>
+</html>

@@ -14,7 +14,7 @@ function retElementChild(node){
 	var temp = {
 			length: 0,
 			push: Array.prototype.push,
-			splice: Array.prototype.aplice
+			splice: Array.prototype.splice
 		},
 		child = node.childNodes,
 		len = child.length;
@@ -23,7 +23,7 @@ function retElementChild(node){
 			temp.push(child[i]);
 		}
 	}
-	return arr;
+	return temp;
 }
 
 // 返回元素elem的第n成祖先元素节点
@@ -42,18 +42,19 @@ function retSibling(e, n){
 			if(e.nextElementSibling){
 				e = e.nextElementSibling;
 			}else{
-				for(e = e.nextSibling; e && e.nodeType != 1; e.nextSibling);
+				for(e = e.nextSibling; e && e.nodeType != 1; e = e.nextSibling);
 			}
 			n--;
 		}else{
 			if(e.previousElementSibling){
 				e = e.previousElementSibling;
 			}else{
-				for(e = e.previousSibling; e && e.nodeType != 1; e.previousSibling);
+				for(e = e.previousSibling; e && e.nodeType != 1; e = e.previousSibling);
 			}
 			n++;
 		}
 	}
+	return e;
 }
 
 // 在原型链上封装函数myChildren，返回children,解决非分浏览器的兼容性问题
@@ -109,7 +110,7 @@ function setTimer(){
 		secondsNode.value = seconds;
 		minutesNode.value = minutes;
 		if(minutes == 3){
-			clearInterval();
+			clearInterval(timer);
 		}
 	}, 1000);
 }
@@ -331,5 +332,30 @@ function loadScript(url, callback){
 	script.src = url;
 	document.appendChild(script);
 }
+
+// 获取class元素的函数
+// var list = document.getByClassName("demo");
+Document.prototype.getByClassName = function(className){
+	var allDomArr = Array.prototype.slice.call(document.getElementsByTagName('*'), 0);
+	var filterDomArr = [];
+	allDomArr.forEach(function(ele, index){
+		var classStrArr = dealClass(ele),
+			len = classStrArr.length;
+		for(var i = 0; i < len; i ++){
+			if(classStrArr[i] == className){
+				filterDomArr.push(ele);
+				break;
+			}
+		}
+	});
+	return filterDomArr;
+}
+// 处理class中的空格
+function dealClass(dom){
+	var reg = /\s+/g;
+	var arrClassName = dom.className.replace(reg, ' ').trim().split(' ');//多个空格替换成一个空格-》消除两边的空格-》转换成数组
+	return arrClassName;
+}
+
 
 

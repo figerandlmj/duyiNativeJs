@@ -148,7 +148,7 @@
 	document.body.clientWidth/clientHeight
 	document.compatMode: CSS1Compat/BackCompat  标准模式和怪异模式
 
-	<!-- <!DOCTYPE html> -->  标准模式 DTD 没有事为怪异模式
+	<!-- <!DOCTYPE html> -->  标准模式 DTD 没有视为怪异模式
 	渲染模式
 	怪异模式/混杂模式 兼容之前的浏览器
 
@@ -337,7 +337,7 @@
 	<script src="tools.js" defer="defer"></script>
 	
 	2. aysnc
-	ie9以上及高级浏览器能用，加载完就执行，执行师也为异步的，只能加载外部脚本
+	ie9以上及高级浏览器能用，加载完就执行，执行时也为异步的，只能加载外部脚本
 	<script src="tools.js" aysnc="aysnc"></script>
 
 	3. 按序加载
@@ -507,9 +507,56 @@
 	"100000000".replace(/(?=(\B)(\d{3})+$)/g, ".")  "100.000.000"
 
 
+	<!-- 知识点 -->
+	1. Doctype渲染模式:
 
+	document.compatMode
+	CSS1Compat   标准模式
+	BackCompat   混杂模式/怪异模式  删除<!-- <!DOCTYPE html> -->
 
+	2. label的for属性和input的id属性对应
+	点击label会触发input的点击
+	
+	3. dom元素只能操作html先天就有的属性
+		操作没有的属性用:
+		div.setAttribute('', '');
+		div.getAttribute('');
 
+	4.图片预加载
+
+	var oImg = new Image();
+	oImg.src = '...';
+	document.body.appendChild(oImgs);//边下载边展示
+	oImg.onload = function(){//加载完了在展示
+		document.body.appendChild(oImg);
+	}
+	图片懒加载：滚到固定位置时在创建oImg加载图片
+
+	5.随机数
+
+	Math.random();          //(0, 1)
+	Math.random() * 10;     //(0, 10)
+	Math.random() * 10 + 1; //(1, 11)
+	Math.random() * (b - a) + a;//(a, b)
+
+	6.文档碎片：解约性能问题
+
+	var oUl = document.getElementsByTagName("ul")[0];
+	var oFrag = document.createDocumentFragment();
+	for(var i = 0; i < 10000; i ++){
+		var oLi = document.createElement("li");
+		oLi.innerHTML = i;
+		oFrag.appendChild(oLi);
+	}
+	oUl.appendChild(oFrag);
+
+	7.CDN：缓存服务器，提高响应速度，减轻服务器压力
+
+	8.断点调试
+		debugger
+		控制面板中打断点
+	9.封装获取class元素的函数
+	10.数组常用方法
 
 </body>
 </html>

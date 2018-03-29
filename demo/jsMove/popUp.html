@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.wrapper{
+			position: absolute;
+			left: -400px;
+			top: 300px;
+			width: 400px;
+			height: 80px;
+			background: yellow;
+		}
+		.wrapper .show{
+			position: absolute;
+			right: -40px;
+			top: 0;
+			width: 40px;
+			height: 80px;
+			background: orange;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="show"></div>
+	</div>
+	<script>
+		var oDivWrapper = document.getElementsByTagName('div')[0];
+		var timer = null;
+		oDivWrapper.onmouseenter = function() {
+			startMove(this, 0);
+		}
+		oDivWrapper.onmouseleave = function() {
+			startMove(this, -400);
+		}
+
+		// 缓冲运动（先快后慢）改变left
+		function startMove(obj, target) {
+			clearInterval(timer);
+			var iSpeed;
+			timer = setInterval(function() {
+				iSpeed = (target - obj.offsetLeft)/7;
+				iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
+				console.log(iSpeed);
+				if(obj.offsetLeft === target){
+					clearInterval(timer);
+				}else{
+					obj.style.left = obj.offsetLeft + iSpeed +'px';
+				}
+			}, 30);
+		}
+	</script>
+</body>
+</html>

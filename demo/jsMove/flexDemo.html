@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		li{
+			list-style: none;
+		}
+		ul{
+			position: relative;
+			width: 600px;
+			height: 80px;
+			margin: 100px auto 0;
+		}
+		ul li.nav{
+			float: left;
+			width: 148px;
+			height: 78px;
+			border: 1px solid #000;
+			color: #f00;
+			text-align: center;
+			line-height: 78px;
+		}
+		ul li.bg{
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 150px;
+			height: 80px;
+			background: #f40;
+			opacity: .5;
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li class="nav">ES6</li>
+		<li class="nav">Webpack</li>
+		<li class="nav">Vue</li>
+		<li class="nav">node</li>
+		<li class="bg"></li>
+	</ul>
+	<script>
+		var oLiArray = Array.prototype.slice.call(document.getElementsByClassName('nav'), 0);
+		var oBg = document.getElementsByClassName('bg')[0];
+		oLiArray.forEach(function(ele, index) {
+			ele.onmouseenter = function(){
+				var newLeft = this.offsetLeft;
+				startMove(oBg, newLeft);
+			}
+		})
+
+		// 弹性运动
+		function startMove(obj, target) {
+			clearInterval(obj.timer);
+			var iSpeed = 40,
+				a,//加速度
+				u = 0.8;//摩擦系数
+			obj.timer = setInterval(function() {
+				a = (target - obj.offsetLeft) / 8;
+				iSpeed += a;
+				iSpeed *= u;
+				console.log(iSpeed);
+				if(Math.abs(iSpeed) <= 1 && Math.abs(target - obj.offsetLeft) <= 1){
+					clearInterval(obj.timer);
+					obj.style.left = target + 'px';
+				}else{
+					obj.style.left = obj.offsetLeft + iSpeed + 'px';
+				}
+			}, 30);
+		}
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+	<title>收银台</title>
+	<link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+	<div class="container">
+		<div class="input-wrap">
+			<label for="pay-money">支付金额</label>
+			<input id="pay-money" class="text-input" type="text">
+		</div>
+		<div class="input-wrap">
+			<label for="pay-type">支付方式</label>
+			<div class="radio-wrap">
+				<input id="alipay" type="radio" name="payType" value="alipay" checked>
+				<label for="alipay">支付宝</label>
+				<input id="weixin" type="radio" name="payType" value="weixin">
+				<label for="weixin">微信</label>
+				<input id="qq" type="radio" name="payType" value="qq">
+				<label for="qq">QQ</label>
+			</div>
+		</div>
+		<div class="input-wrap">
+			<label for="pay-code">收款条码</label>
+			<input id="pay-code" class="text-input" type="text">
+		</div>
+		<div class="input-wrap">
+			<label for="pay-status">支付结果</label>
+			<input id="pay-status" class="text-input pay-status" type="text" value="支付中..." readonly>
+		</div>
+		<div class="pay-btn">
+			<input id="pay-btn" type="button" value="收款">
+		</div>
+	</div>
+	<div class="keyboard-wrap">
+		<table id="keyboard" border="0" cellspacing="0" cellpadding="0">
+			<tr>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>5</td>
+				<td>6</td>
+			</tr>
+			<tr>
+				<td>7</td>
+				<td>8</td>
+				<td>9</td>
+			</tr>
+			<tr>
+				<td class="bg">.</td>
+				<td>0</td>
+				<td class="bg">×</td>
+			</tr>
+		</table>
+	</div>
+	<script type="text/javascript" src="./js/keyboard.js"></script>
+	<script type="text/javascript" src="./js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		div{
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 50px;
+			height: 50px;
+			background: orange;
+			border-radius: 50%;
+		}
+		span{
+			position: absolute;
+			width: 5px;
+			height: 5px;
+			background: #000;
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+	<script>
+		var oDiv = document.getElementsByTagName('div')[0];
+
+		oDiv.onmousedown = function(e) {
+			var event = e || window.event;
+			var disX = e.clientX - this.offsetLeft,
+				disY = e.clientY - this.offsetTop;
+			var that = this;
+			document.onmousemove = function(e) {
+				var newLeft = e.clientX - disX,
+					newTop = e.clientY - disY;
+
+				var oSpan = document.createElement('span');
+				oSpan.style.left = newLeft + 'px';
+				oSpan.style.top = newTop + 'px';
+				document.body.appendChild(oSpan);
+
+				that.style.left = newLeft + 'px';
+				that.style.top = newTop + 'px';
+			}
+			document.onmouseup = function() {
+				document.onmousemove = null;
+				document.onmouseup = null;
+			}
+		}
+
+	</script>
+</body>
+</html>

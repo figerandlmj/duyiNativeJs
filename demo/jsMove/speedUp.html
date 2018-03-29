@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		div{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100px;
+			height: 100px;
+			background: orange;
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+	<script>
+		var oDiv = document.getElementsByTagName('div')[0];
+		oDiv.onclick = function() {
+			startMove(this);
+		}
+
+		// 加速/减速运动
+		function startMove(obj) {
+			clearInterval(obj.timer);
+			// var iSpeed = 0,
+			// 	a = 3;
+			var iSpeed = 40,
+				a = -3;
+			obj.timer = setInterval(function() {
+				iSpeed += a;
+				obj.style.left = obj.offsetLeft + iSpeed + 'px';
+			}, 30);
+		}
+	</script>
+</body>
+</html>

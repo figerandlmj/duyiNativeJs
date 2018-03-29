@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		div{
+			width: 100px;
+			height: 100px;
+			margin-bottom: 50px;
+			border: 1px solid #000;
+			background: red;
+			opacity: 1;
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<script>
+		var oDivArray = document.getElementsByTagName('div');
+
+		oDivArray[0].onclick = function() {
+			startMove(this, 400, 'width');
+		}
+		oDivArray[1].onclick = function() {
+			startMove(this, 400, 'height');
+		}
+		oDivArray[2].onclick = function() {
+			startMove(this, 50, 'opacity');
+		}
+		oDivArray[3].onclick = function() {
+			startMove(this, 10, 'borderWidth');
+		}
+
+		// 缓冲运动（先快后慢）改变不同属性的值
+		function startMove(obj, target, attr) {
+			clearInterval(obj.timer);
+			var iSpeed,
+				iCur;
+			obj.timer = setInterval(function() {
+				if(attr == 'opacity'){
+					iCur = parseFloat(getStyle(obj, attr)) * 100;
+				}else{
+					iCur = parseInt(getStyle(obj, attr));
+				}
+				iSpeed = (target - iCur)/7;
+				iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
+				if(iCur === target){
+					clearInterval(obj.timer);
+				}else{
+					if(attr == 'opacity'){
+						obj.style.opacity = (iCur + iSpeed) / 100;
+					}else{
+						obj.style[attr] = iCur + iSpeed +'px';
+					}
+				}
+			}, 30);
+		}
+
+		// 获取元素的属性
+		function getStyle(elem, prop){
+			if(window.getComputedStyle){
+				return window.getComputedStyle(elem, null)[prop];
+			}else{
+				return elem.currentStyle[prop];
+			}
+		}
+		
+	</script>
+</body>
+</html>

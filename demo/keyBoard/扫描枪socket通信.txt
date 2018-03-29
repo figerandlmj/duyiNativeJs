@@ -1,0 +1,35 @@
+扫描枪：socket通信
+iP：115.236.90.3(开发环境)、120.26.222.55(测试环境)、120.27.167.232(生产环境)
+端口：9998
+发送：
+	心跳：{code:'ping'}
+	登录：{code:'login',authtoken:'$token'} // $token ：authtoken值
+	二维码：{code:'pay',amt:'$amt',paymentCode:'$paymentCode',uuid:'$uuid',authtoken:'$token'} // $amt：金额 $paymentCode:二维码信息 $uuid:用户uuid $token:authtoken值
+接收：
+	类：SocketModel 
+	属性：
+		code code代号
+		msg 提示语句
+		data 
+		uuid
+		errMsg 报错提示语句
+		otherType 
+		aspCode 
+		payOrdNo 支付订单号
+	值定义：
+		code:
+			createSuccess:用户正在支付中 
+			createFail：弹框报错提示，提示语句根据errMsg来 
+			paySuccess：支付成功 
+			aspPaySuccess：支付成功 
+			payFail：支付失败，提示语句根据errMsg来 
+			merapp：用户正在支付中 
+				其中data值定义：
+					errorCode : 弹框报错提示，提示语句根据msg来 
+					ok:支付完成，如果otherType!='asp'，系统报错
+						其中aspCode值定义：
+							200：支付成功
+							500：支付失败 提示语句根据msg来 
+			apppay：弹框报错提示，提示语句根据errMsg来 
+			unLogin：未登录：提示语句根据msg来
+	
