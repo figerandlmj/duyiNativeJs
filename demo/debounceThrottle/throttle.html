@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>节流</title>
+	<style>
+		#box{
+			width: 300px;
+			height: 200px;
+			margin-top: 100px;
+			background: #ccc;
+			color: #fff;
+			text-align: center;
+			line-height: 200px;
+			font-size: 30px;
+		}
+	</style>
+</head>
+<body>
+	节流：相当于地铁<br>
+	应用：页面滚动scroll、抢购疯狂点击mousedown、拖拽mousemove<br>
+	<div id="box">0</div>
+	<script>
+		box.onmousemove = throttle(reset, 2000);
+
+		function reset(e){
+			console.log(e);
+			this.innerHTML = +this.innerHTML + 1;
+		}
+
+		// 节流函数
+		// 1时间戳，触发时立马执行
+		function throttle(func, wait){
+			var lastTime = 0;
+			return function(){
+				var nowTime = +new Date();
+				if(nowTime - lastTime > wait){
+					func.apply(this, arguments);
+					lastTime = nowTime;
+				}
+			}
+		}
+		// 2计时器
+		// function throttle(func, wait){
+		// 	var timer = null;
+		// 	return function(){
+		// 		var that = this,
+		// 			argus = arguments;
+		// 		if(!timer){
+		// 			timer = setTimeout(function(){
+		// 				func.apply(that, argus);
+		// 				timer = null;
+		// 			}, wait);
+		// 		}	
+		// 	}
+		// }
+	</script>
+</body>
+</html>

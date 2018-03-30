@@ -1,0 +1,36 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+li{
+	list-style: none;
+}
+html, body, .wrapper{
+	width: 100%;
+}
+.wrapper ul{
+	width: 880px;
+	margin:0 auto;
+}
+.wrapper ul:after{
+	display: block;
+	content: '';
+	clear: both;
+}
+.wrapper li{
+	float: left;
+	width: 220px;
+}
+.wrapper .item{
+	width: 200px;
+	margin: 0 auto 5px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	overflow: hidden;
+}
+.wrapper .item img{
+	width: 200px;
+}
+.wrapper .item p{
+	padding: 5px;
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>防抖</title>
+	<style>
+		#box{
+			width: 300px;
+			height: 200px;
+			margin-top: 100px;
+			background: #ccc;
+			color: #fff;
+			text-align: center;
+			line-height: 200px;
+			font-size: 30px;
+		}
+		#btn{
+			margin-top:50px;
+		}
+	</style>
+</head>
+<body>
+	防抖：相当于电梯<br>
+	应用：实时搜索keyup、窗口调整resize<br>
+	<input id="input" type="text">
+	<div id="box">0</div>
+	<button id="btn">btn</button>
+	<script>
+		// 搜索框，触发时延迟1s在执行
+		input.oninput = debounce(show, 1000);
+
+		function show(e) {
+			console.log(e);
+			console.log(this.value);
+		}
+
+		var setUserAction = debounce(reset, 1000, false);
+		function reset() {
+			this.innerHTML = +this.innerHTML + 1;
+		}
+		// 触发时立马执行,1s后触发在执行
+		box.onmousemove = setUserAction;
+
+		btn.onclick = function(){
+			setUserAction.cancel;
+		}
+
+		// 防抖函数
+		function debounce(func, wait, immediate) {
+			var timer = null;
+			var debounced = function(){
+				var that = this,
+					argus = arguments;
+				clearTimeout(timer);
+				if(immediate){
+					if(!timer){//刚开始时立马执行
+						func.apply(that, argus);
+					}
+					timer = setTimeout(function() {
+						timer = null;
+					}, wait);
+				}else{
+					timer = setTimeout(function() {
+						func.apply(that, argus);
+					}, wait);
+				}
+			}
+			debounced.cancel = function() {//清除防抖
+				clearTimeout(timer);
+				timer = null;
+			}
+			return debounced;
+		}
+	</script>
+</body>
+</html>
