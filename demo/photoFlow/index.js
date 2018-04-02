@@ -9,16 +9,24 @@ var lock = true;
 
 ajaxFun();
 
-function ajaxFun() {
-	if(lock) {
-		lock = false;
-		ajax('GET', './data.php', data, getData, true);
-		data.cpage ++;
+window.onscroll = throttle(show, 500);
+
+// 节流函数
+function throttle(func, wait){
+	var timer = null;
+	return function(){
+		var that = this,
+			argus = arguments;
+		if(!timer){
+			timer = setTimeout(function(){
+				func.apply(that, argus);
+				timer = null;
+			}, wait);
+		}	
 	}
 }
 
-
-window.onscroll = function() {
+function show() {
 	var scrollHeight = document.documentElement.scrollTop || document.body.scrollTop,
 		clientHeight = document.documentElement.clientHeight || document.body.clientHeight,
 		minHeight = oLi[minListIndex(oLi)].offsetHeight;
@@ -27,9 +35,17 @@ window.onscroll = function() {
 	}
 }
 
+function ajaxFun() {
+	if(lock) {
+		lock = false;
+		ajax('GET', './data.php', data, getData, true);
+		data.cpage ++;
+	}
+}
+
 // 渲染数据
 function getData(data) {
-	console.log(data);
+	// console.log(data);
 	var value = JSON.parse(data);
 	value.forEach(function(ele, index) {
 		var index = minListIndex(oLi);
