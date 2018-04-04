@@ -98,6 +98,18 @@ expires 和 cache-control 同时存在 ，以cache-control为准
 
 referrer  统计用户从何点击
 
+解决跨域问题的方法：
+
+1.flash
+设置服务器脚本  Security.allowDomain('*')
+2.服务器代理中转
+
+3.jsonp
+
+4.document.domain（针对基础域名（主域名）相同的情况）
+bj.58.com  设置document.domain = '58.com'
+tj.58.com  设置document.domain = '58.com'
+
 
 
 

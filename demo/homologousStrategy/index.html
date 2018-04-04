@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jsonp实现跨域</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		li{
+			list-style: none;
+		}
+		input{
+			position: absolute;
+			top: 100px;
+			left: 100px;
+			width: 536px;
+			height: 40px;
+			padding: 0 6px;
+		}
+		ul{
+			display: none;
+			position: absolute;
+			top: 142px;
+			left: 100px;
+			width: 538px;
+			padding: 6px;
+			border: 1px solid #ccc;
+		}
+		a{
+			display: inline-block;
+			text-decoration: none;
+			color: #333;
+			padding:4px 0;
+		}
+	</style>
+</head>
+<body>
+	src不受同源策略的限制  script  img  iframe
+	<input type="text">
+	<ul></ul>
+	<script>
+		var oInput = document.getElementsByTagName('input')[0],
+			oUl = document.getElementsByTagName('ul')[0];
+		oInput.oninput = function() {
+			var value = this.value;
+			var oScript = document.createElement('script');
+			oScript.src = 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=' + value + '&cb=show'
+			document.body.appendChild(oScript);
+			document.body.removeChild(oScript);
+		}
+
+		function show(data){
+			// console.log(data);
+			var str = '',
+				s = data.s;
+			if(s.length > 0) {
+				oUl.style.display = 'block';
+				s.forEach(function(ele, index){
+					str += '<li><a href="https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=' + ele + '">' + ele + '</a></li>';
+				})
+			}else{
+				oUl.style.display = 'none';
+			}
+			oUl.innerHTML = str;
+		}
+	</script>
+	<!-- <script src="./index.js?cb=show"></script> -->
+	<!-- <script src="https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=dg&cb=show"></script> -->
+
+</body>
+</html>

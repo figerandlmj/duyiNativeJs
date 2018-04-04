@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="./css/index.css">
 </head>
 <body>
+	<object id="exdev" classid="clsid:F704E0FC-AA80-4559-987B-32587D020B82" codebase="./PaxExDev.CAB" type="application/x-oleobject" width="0" height="0"></object>
 	<div class="container">
 		<div class="input-wrap">
 			<label for="pay-money">支付金额</label>
@@ -25,7 +26,8 @@
 		</div>
 		<div class="input-wrap">
 			<label for="pay-code">收款条码</label>
-			<input id="pay-code" class="text-input" type="text">
+			<input id="pay-code" class="text-input" type="text" value="">
+			<input id="scan-btn" class="btn-input" type="button" value="扫码">
 		</div>
 		<div class="input-wrap">
 			<label for="pay-status">支付结果</label>

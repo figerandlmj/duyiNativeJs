@@ -1,9 +1,30 @@
 // 数字键盘绑定
 var oKeyboard = document.getElementById("keyboard"),
-	oPayMoney = document.getElementById("pay-money"),
+    oPayMoney = document.getElementById("pay-money"),
+    oPayCode = document.getElementById("pay-code"),
+	oScanBtn = document.getElementById("scan-btn"),
 	pointNum = 2;//保留小数位数
 
 keyBoard(oKeyboard, oPayMoney, pointNum);
+
+oScanBtn.onclick = function(){
+    oPayCode.value = "";
+    setTimeout(function(){
+        exdevTest();
+    },1000);
+}
+
+function exdevTest() {
+    
+    exdev.SetCommParam('4','9600,8,e,1');
+    exdev.ScanOpen();
+    exdev.ScanSetParam('20');   //打开前置补光灯
+    var result = exdev.ScanRead('20000');
+    oPayCode.value = result;
+    exdev.ScanSetParam('21');//关闭前置补光灯
+    exdev.ScanClose();
+    exdev.PiccDispBarCode(result,'1','2','-1','-1'); //显示二维码
+}
 
 // 付款
 var uuid = '$uuid',
@@ -30,7 +51,6 @@ var socketPing = {
 
 var oPayBtn = document.getElementById("pay-btn"),
     oRadio = document.getElementsByName("payType"),
-    oPayCode = document.getElementById("pay-code"),
     oPayStatus = document.getElementById("pay-status");
 
 oPayBtn.onclick = function(){
