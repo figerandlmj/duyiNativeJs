@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		document.cookie = 'name=dg;path=/;domain=localhost;max-age=1000';//s
+		var date = new Date();
+		date.setDate(date.getDate + 3);
+		document.cookie = 'age=30;expires='+date;//具体日期
+		console.log(document.cookie);
+		// 删除cookie
+		// document.cookie = 'name=dg;path=/;domain=localhost;max-age=-1';//s
+		// date.setDate(date.getDate - 3);
+		// document.cookie = 'age=30;expires='+date;//具体日期
+
+		// 获取cookie
+		var allCookieArr = document.cookie.split('; ');
+		console.log(allCookieArr);
+		for(var i = 0; i < allCookieArr.length; i ++) {
+			var itemCookie = allCookieArr[i].split('=');
+			if(itemCookie[0] == 'age'){
+				console.log(itemCookie[1]);
+				break;
+			}
+		}
+
+		// 封装cookie
+		var manageCookie = {
+			setCookie: function(name, value, date) {
+				document.cookie = name + '=' + value + ';max-age=' + date;
+				return this;
+			},
+			removeCookie: function(name) {
+				return this.setCookie(name, '', -1);
+			},
+			getCookie: function(name, cb) {
+				var allCookieArr = document.cookie.split('; '),
+					len = allCookieArr.length;
+				for(var i = 0; i < len; i ++) {
+					var itemCookie = allCookieArr[i].split('=');
+					if(itemCookie[0] == name){
+						cb(itemCookie[1]);
+						return this;
+					}
+				}
+				cb('not find ' + name);
+				return this;
+			}
+		};
+
+		manageCookie
+			.setCookie('color', 'red', 1000)
+			.setCookie('aa', 'vv', 2000)
+			.removeCookie('aa')
+			.getCookie('color', function(val) {
+				console.log(val);
+			})
+			.getCookie('aa', function(val) {
+				console.log(val);
+			});
+	</script>
+</body>
+</html>

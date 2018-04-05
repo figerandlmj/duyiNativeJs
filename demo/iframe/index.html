@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>历史记录管理</title>
+</head>
+<body>
+	<button id="btn1">btn1</button>
+	<button id="btn2">btn2</button>
+	<iframe id="iframe" src="./demo.html" frameborder="1"></iframe>
+	<script>
+		btn1.onclick = function(){
+			func('./demo1.html');
+		}
+		btn2.onclick = function(){
+			func('./demo2.html');
+		}
+		function func(src){
+			iframe.src = src;
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript">
+	
+		$.ajax({
+			type: 'GET'/ 'POST',
+			url: './data.php',
+			data: {},
+			async: true,
+			dataType: 'json/jsonp',
+			success: 成功返回，
+			error: 失败返回,
+			context: 回调函数作用域,
+			cache: 是否缓存,获取图片验证码时可以设置为false,
+			crossDomain: 同域请求为false,跨域请求为true,
+			jsonp: jsonp请求重写回调函数的名字,
+			jsonpCallback: jsonp请求指定回调函数名
+		})
+		
+	</script>
+</body>
+</html>

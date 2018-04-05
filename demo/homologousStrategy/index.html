@@ -43,15 +43,22 @@
 	<script>
 		var oInput = document.getElementsByTagName('input')[0],
 			oUl = document.getElementsByTagName('ul')[0];
-		oInput.oninput = function() {
+
+		oInput.oninput = debounce(show, 500);
+
+		function show() {
 			var value = this.value;
-			var oScript = document.createElement('script');
-			oScript.src = 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=' + value + '&cb=show'
-			document.body.appendChild(oScript);
-			document.body.removeChild(oScript);
+			if(value){
+				var oScript = document.createElement('script');
+				oScript.src = 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=' + value + '&cb=callback'
+				document.body.appendChild(oScript);
+				document.body.removeChild(oScript);
+			}else{
+				oUl.style.display = 'none';
+			}
 		}
 
-		function show(data){
+		function callback(data){
 			// console.log(data);
 			var str = '',
 				s = data.s;
@@ -64,6 +71,33 @@
 				oUl.style.display = 'none';
 			}
 			oUl.innerHTML = str;
+		}
+
+		// 防抖函数
+		function debounce(func, wait, immediate) {
+			var timer = null;
+			var debounced = function(){
+				var that = this,
+					argus = arguments;
+				clearTimeout(timer);
+				if(immediate){
+					if(!timer){//刚开始时立马执行
+						func.apply(that, argus);
+					}
+					timer = setTimeout(function() {
+						timer = null;
+					}, wait);
+				}else{
+					timer = setTimeout(function() {
+						func.apply(that, argus);
+					}, wait);
+				}
+			}
+			debounced.cancel = function() {//清除防抖
+				clearTimeout(timer);
+				timer = null;
+			}
+			return debounced;
 		}
 	</script>
 	<!-- <script src="./index.js?cb=show"></script> -->

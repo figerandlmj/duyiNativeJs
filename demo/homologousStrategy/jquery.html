@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript">
+		
+		// 百度后台回调名是cb,需要指定
+		$.ajax({
+			type: 'GET',
+			url: 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su',
+			data: 'wd=dg',
+			dataType: 'jsonp',
+			success: function(data){
+				console.log('success');
+				console.log(data);
+			},
+			error: function(data){
+				console.log(data);
+			},
+			jsonp: 'cb',
+			jsonpCallback: 'callback'
+		});
+
+		function callback(data){
+			console.log('callback');
+			console.log(data);
+		}
+
+		// 豆瓣api后台的回调参数名是callback，与jquery的jsonp默认的callback一致
+		$.ajax({
+			type: 'GET',
+			url: 'https://api.douban.com/v2/music/search',
+			data: 'q=aa',
+			dataType: 'jsonp',
+			context: document.body,
+			success: function(data){
+				console.log(this);
+				console.log('success');
+				console.log(data);
+			},
+			error: function(data){
+				console.log(data);
+			}
+		});
+		
+	</script>
+</body>
+</html>

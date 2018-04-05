@@ -38,7 +38,17 @@ function show() {
 function ajaxFun() {
 	if(lock) {
 		lock = false;
-		ajax('GET', './data.php', data, getData, true);
+		// ajax('GET', './data.php', data, getData, true);
+		$.ajax({
+			type: 'GET',
+			url: './data.php',
+			data: 'cpage=' + data.cpage,
+			success: getData,
+			error: function(data){
+				console.log(data);
+			}
+		});
+
 		data.cpage ++;
 	}
 }

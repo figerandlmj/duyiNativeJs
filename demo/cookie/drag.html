@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		div{
+			position: absolute;
+			left: 100px;
+			top: 100px;
+			width: 100px;
+			height: 100px;
+			background: yellow;
+		}
+	</style>
+</head>
+<body>
+	<div id="demo"></div>
+	<script>
+
+		// 封装cookie
+		var manageCookie = {
+			setCookie: function(name, value, date) {
+				document.cookie = name + '=' + value + ';max-age=' + date;
+				return this;
+			},
+			removeCookie: function(name) {
+				return this.setCookie(name, '', -1);
+			},
+			getCookie: function(name, cb) {
+				var allCookieArr = document.cookie.split('; '),
+					len = allCookieArr.length;
+				for(var i = 0; i < len; i ++) {
+					var itemCookie = allCookieArr[i].split('=');
+					if(itemCookie[0] == name){
+						cb(itemCookie[1]);
+						return this;
+					}
+				}
+				cb(null);
+				return this;
+			}
+		};
+
+		var drag = {
+			init: function(dom) {
+				this.dom = dom;
+				this.bindEvent();
+				var that = this;
+				manageCookie
+					.getCookie('left', function(data){
+						if(data != null) {
+							that.dom.style.left = data + 'px';
+						}
+					})
+					.getCookie('top', function(data){
+						if(data != null) {
+							that.dom.style.top = data + 'px';
+						}
+					});
+			},
+			bindEvent: function() {
+				this.dom.onmousedown  = this.mouseDown.bind(this);	
+			},
+			mouseDown: function(e) {
+				document.onmousemove = this.mouseMove.bind(this);
+				document.onmouseup = this.mouseUp.bind(this);
+				var event = e || window.event;
+				this.disX = event.clientX - this.dom.offsetLeft;
+				this.disY = event.clientY - this.dom.offsetTop;
+			},
+			mouseMove: function(e) {
+				var event = e || window.event;
+				this.newLeft = event.clientX - this.disX;
+				this.newTop = event.clientY - this.disY;
+
+				this.dom.style.left = this.newLeft + 'px';
+				this.dom.style.top = this.newTop + 'px';
+			},
+			mouseUp: function() {
+				document.onmousemove = null;
+				document.onmouseup = null;
+				manageCookie
+					.setCookie('left', this.newLeft, 10000)
+					.setCookie('top', this.newTop, 10000);
+			}
+		};
+		drag.init(document.getElementById('demo'));
+
+	</script>
+</body>
+</html>

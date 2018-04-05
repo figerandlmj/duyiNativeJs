@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>a1</title>
+</head>
+<body>
+	<h1>a1</h1>
+	<script>
+		// 同源访问父级页面数据
+		// var test = 'a1';
+		// console.log(window.parent.test);//a
+		// console.log(window.top.test);//a
+		// console.log(window.self.test);//a1
+
+		// 跨域访问父级页面数据
+		var lastHash = '';
+		setInterval(function() {
+			if(location.hash != lastHash){
+				console.log(location.hash);//#1
+				lastHash = location.hash;
+			}
+		}, 100);
+
+		// 设置变量
+		var test1 = 'a1';
+		window.name = test1;
+		
+	</script>
+</body>
+</html>

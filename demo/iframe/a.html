@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>a</title>
+</head>
+<body>
+	<h1>a</h1>
+	<iframe id="iframe" name="a1" src="./a1.html" frameborder="1"></iframe>
+	<button id="btn">btn</button>
+	<script>
+		// 同源访问子页面数据
+		// var test = 'a';
+		// iframe.onload = function() {
+		// 	console.log(iframe.contentWindow.test);//a1 
+		// 	// console.log(window.frames['a1'].test);//a1 兼容性不好
+		// 	// console.log(document.iframes['a1'].contentWindow.test);//a1 IE  
+		// 	// console.log(document.iframes[0].contentWindow.test);//a1 IE  
+		// }
+
+		// 设置hash
+		var num = 1,
+			iframeSrc = iframe.src;
+		btn.onclick = function() {
+			iframe.src = iframeSrc + '#' + num ++;
+		}
+		
+		// 跨域访问子页面数据
+		var lock = true;
+		iframe.onload = function() {
+			if(lock){
+				lock =false;
+				this.src = './a2.html';//借助与a同源的a2获取name
+				console.log(iframe.contentWindow.name);//a1
+			}
+		}
+		
+
+	</script>
+</body>
+</html>
