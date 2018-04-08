@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>刮刮乐</title>
+	<style>
+		#canvas{
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: 200px 200px;
+			border:1px solid #fff;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas" width="300" height="300"></canvas>
+	<script>
+		
+        var canvas = document.getElementById('canvas');
+        var ctx = canvas.getContext('2d');
+        var w = canvas.width,
+			h = canvas.height;
+		var lastPointX,
+			lastPointY;
+		var nowPointX,
+			nowPointY;
+
+		init();
+
+        function init(){
+
+        	ctx.fillStyle = '#ccc';
+        	ctx.fillRect(0, 0, w, h);
+
+        	var r = Math.random();
+        	if(r > 0.5) {
+        		canvas.style.backgroundImage = 'url(./img/1.jpg)';
+        	}else{
+        		canvas.style.backgroundImage = 'url(./img/2.jpg)';
+        	}
+
+        	ctx.globalCompositeOperation = 'destination-out';
+
+        	canvas.addEventListener('mousedown', downFun, false);
+
+        }
+
+        function downFun(e) {
+        	lastPointX = e.clientX - canvas.offsetLeft;
+        	lastPointY = e.clientY - canvas.offsetTop;
+
+        	document.addEventListener('mousemove', moveFun, false);
+        	document.addEventListener('mouseup', upFun, false);
+        }
+
+        function moveFun(e) {
+        	nowPointX = e.clientX - canvas.offsetLeft;
+        	nowPointY = e.clientY - canvas.offsetTop;
+
+        	ctx.beginPath();
+        	ctx.lineWidth = 40;
+        	ctx.lineCap = 'round';
+        	ctx.moveTo(lastPointX, lastPointY);
+			ctx.lineTo(nowPointX, nowPointY);
+			ctx.closePath();
+			ctx.stroke();
+
+			ctx.beginPath();
+        	ctx.arc(nowPointX, nowPointY, 20, 0, Math.PI * 2);
+        	ctx.closePath();
+        	ctx.fill();
+
+        	lastPointX = nowPointX;
+        	lastPointY = nowPointY;
+        }
+
+        function upFun() {
+        	document.removeEventListener('mousemove', moveFun, false);
+        	document.removeEventListener('mouseup', upFun, false);
+        	clearAll();
+        }
+
+        function clearAll() {
+        	var d = ctx.getImageData(0, 0, w, h),
+        		len = d.data.length,
+        		c = 0;
+        	// console.log(d);
+        	for(var i = 0; i < len; i += 4) {
+        		if(d.data[i] === 0) {
+        			c ++;
+        		}
+        	}
+        	if(c > len / 4 * 0.7) {
+        		ctx.clearRect(0, 0, w, h);
+        	}
+        }
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#canvas{
+			width: 500px;
+			height: 500px;/* 相框大小 */
+			border:1px solid #000;
+		}
+	</style>
+</head>
+<body>
+	<!-- 画布大小 -->
+	<canvas id="canvas" width="800" height="800"></canvas>
+	<img id="img" src="./img/test.jpg" alt="">
+	<script>
+
+		var oCanvas = document.getElementById('canvas');//画布
+		var w = oCanvas.width,
+			h = oCanvas.height;
+		var ctx = oCanvas.getContext('2d');//画布上下文对象,画笔
+
+		// 划线
+		// ctx.moveTo(100, 100);//画笔绘制起始点
+		// ctx.lineTo(200, 100);//绘制直线
+		// ctx.lineTo(200, 200);//绘制直线
+		// // ctx.lineTo(100,100);//绘制直线
+		// // ctx.lineTo(120,100);//绘制直线
+		// ctx.closePath();//闭合路径
+		
+		// ctx.lineWidth = 40;//线宽
+		// ctx.strokeStyle = 'yellow';//线样式
+		// ctx.stroke();//描边
+
+		// ctx.fillStyle = 'red';//填充样式
+		// ctx.fill();//起始点到终止点的图形填充
+
+
+		// 矩形
+		// ctx.beginPath();//开启一段新的路径
+		// // ctx.rect(300, 200, 100, 200);//起始点，宽，高
+		// // ctx.stroke();
+		// // ctx.fill();
+		// // ctx.strokeRect(300, 200, 100, 200);//起始点，宽，高
+		// ctx.fillRect(400, 200, 100, 200);//起始点，宽，高
+
+		// ctx.clearRect(400, 200, 100, 200);//擦除区域
+		// ctx.clearRect(0, 0, w, h);//擦除整个画布区域
+
+
+		// 矩形落地的动画
+		// function drawRect(y){
+		// 	ctx.fillRect(100, y, 30, 30);
+		// }
+		// var y = 100;
+		// var timer = setInterval(function() {
+		// 	ctx.clearRect(0, 0, w, h);
+		// 	drawRect(y);
+		// 	y += 10;
+		// 	console.log(y);
+		// 	if(y > h - 30) {
+		// 		clearInterval(timer);
+		// 		drawRect(h - 30);
+		// 	}
+		// }, 50);
+
+
+		// 弧形 arc(x, y, r, 起始弧度, 结束弧度, 弧形方向0顺时针1逆时针)
+		// ctx.arc(250, 250, 100, 0, Math.PI / 2, 0);//0-90弧
+		// ctx.arc(250, 250, 100, 0, Math.PI / 2, 1);//0-90弧
+		// ctx.arc(250, 250, 100, 0, -Math.PI / 2, 1);//0-90弧
+		// ctx.arc(250, 250, 100, 0, Math.PI * 2, 1);//圆
+		// ctx.moveTo(250, 250);
+		// ctx.lineTo(350, 250);
+		// // ctx.arc(250, 250, 100, 0, -Math.PI /180 * 57, 1);//圆
+		// ctx.arc(250, 250, 100, 0, -Math.PI /180 * 57, 0);//圆
+		// ctx.closePath();
+		// ctx.stroke();
+
+
+		// 圆角 arcTo(x1, y1, x2, y2, r)
+		// // ctx.moveTo(250, 250);
+		// ctx.moveTo(300, 250);
+		// ctx.arcTo(350, 250, 350, 350, 30);
+		// ctx.arcTo(350, 350, 250, 350, 30);
+		// ctx.arcTo(250, 350, 250, 250, 30);
+		// ctx.arcTo(250, 250, 350, 250, 30);
+		// ctx.closePath();
+		// ctx.stroke();
+
+		// 贝塞尔曲线
+		// // 二次贝塞尔曲线 quadraticCurveTo(x1, y1, ex, ey);x1,y1控制点，ex,ey结束点
+		// ctx.moveTo(100, 250);
+		// // ctx.quadraticCurveTo(150, 100, 300, 200);
+		// // 三次贝塞尔曲线 bezierCurveTo(x1, y1, x2, y2, ex, ey);x1,y1,x2, y2控制点，ex,ey结束点
+		// ctx.bezierCurveTo(150, 100, 400, 100, 500, 0);
+		// ctx.stroke();
+
+		// 坐标轴转换
+		// translate(dx, dy);//重新映射画布上的(0,0)位置
+		// scale(sx, sy);//缩放当前绘图
+		// rotate(Math.PI);//旋转当前的绘图
+
+		// save();//保存当前图像状态的拷贝
+		// restore();//从栈中弹出存储的图形状态并恢复
+
+		// setTransform(a, b, c, d, e, f);//先重置再变换 水平缩放 水平倾斜 垂直缩放 垂直倾斜  水平移动 垂直移动
+		// transform(a, b, c, d, e, f);//在之前的基础上变换
+
+		// ctx.save();
+		// ctx.translate(100, 100);//画布上的所有图形都平移了x,y
+		// ctx.fillRect(0, 0, 100, 100);
+		// ctx.scale(2, 1);
+		// ctx.restore();
+		// ctx.rotate(Math.PI / 4);//旋转45度
+		// ctx.fillRect(100, 100, 200, 100);
+
+
+		// 填充图案 可填充img canvas video(有图像的)
+		// createPattern(image, "repeat|repeat-x|repeat-y|no-repeat");
+		// var oImage = new Image();
+		// oImage.src = './img/test.jpg';
+		// oImage.width = 800;
+		// oImage.onload = function() {
+		// 	var fill = ctx.createPattern(oImage, 'no-repeat');
+		// 	ctx.fillStyle = fill;
+		// 	ctx.fillRect(0, 0, w, h);
+		// }
+
+
+		// 渐变
+		// createLinearGradient(x1, y1, x2, y2);//线性渐变
+		// createRadialGradient(x1, y1, r1, x2, y2, r2);//径向渐变
+		// bg.addColorStop(p, color);
+
+		// // var bg = ctx.createLinearGradient(0, 0, 0, h);
+		// var bg = ctx.createRadialGradient(250, 250, 100, 250, 250, 200);
+		// // bg.addColorStop(0, 'red');
+		// // bg.addColorStop(0.5, 'yellow');
+		// // bg.addColorStop(1, 'green');
+		// bg.addColorStop(0, '#fff');
+		// bg.addColorStop(0.5, '#000');
+		// bg.addColorStop(1, '#fff');
+		// ctx.fillStyle = bg;
+		// ctx.fillRect(0, 0, w, h);
+
+
+		// 阴影
+		// ctx.shadowColor
+		// ctx.shadowOffsetX
+		// ctx.shadowOffsetY
+		// ctx.shadowBlur
+
+		// ctx.fillStyle = 'red';
+		// ctx.shadowColor = 'green';
+		// ctx.shadowOffsetX = 4;
+		// ctx.shadowOffsetY = 4;
+		// ctx.shadowBlur = 4;
+		// ctx.fillRect(100, 100, 100, 100);
+
+		// 文本
+		// fillText()
+		// strokeText()
+		// measureText()
+
+		// ctx.beginPath();
+		// ctx.fillStyle = 'orange';
+		// ctx.font = '70px sans-serif';
+		// // ctx.fillText('hello', 100, 100);//默认左下角为准
+		// ctx.textAlign = 'center';//水平居中
+		// ctx.textBaseAlign = 'center';//垂直居中
+		// ctx.strokeText('hello', 400, 400);
+		// var txt="Hello World";
+		// console.log(ctx.measureText(txt).width);
+
+		// 线段样式 lineCap  lineJoin
+
+		// ctx.beginPath();
+		// ctx.moveTo(100, 100);
+		// ctx.lineTo(200, 100);
+		// ctx.lineWidth = 20;
+		// ctx.stroke();
+
+		// ctx.beginPath();
+		// ctx.moveTo(100, 130);
+		// ctx.lineTo(200, 130);
+		// ctx.lineWidth = 20;
+		// ctx.lineCap = 'square';
+		// ctx.stroke();
+
+		// ctx.beginPath();
+		// ctx.moveTo(100, 160);
+		// ctx.lineTo(200, 160);
+		// ctx.lineWidth = 20;
+		// ctx.lineCap = 'round';
+		// ctx.stroke();
+
+		// ctx.beginPath();
+		// ctx.moveTo(100, 100);
+		// ctx.lineTo(200, 100);
+		// ctx.lineTo(200, 200);
+		// ctx.closePath();
+		// ctx.lineWidth = 20;
+		// ctx.lineJoin = 'bevel';
+		// ctx.stroke();
+
+		// ctx.beginPath();
+		// ctx.moveTo(100, 100);
+		// ctx.lineTo(200, 100);
+		// ctx.lineTo(200, 120);
+		// ctx.closePath();
+		// ctx.lineWidth = 20;
+		// ctx.lineJoin = 'miter';
+		// ctx.miterLimit = 20;//斜接长度超过miterLimit时，变成bevel
+		// ctx.stroke();
+
+		// 裁剪
+		// ctx.beginPath();
+		// ctx.arc(250, 250, 50, 0, Math.PI * 2);
+		// ctx.closePath();
+		// ctx.clip();//当前区域外的区域不在绘制
+		// ctx.fillRect(0, 0, 500, 500);
+
+
+		// 合并 (应用刮刮乐)
+		// ctx.globalCompositeOperation = 'source-over';//默认新像素覆盖旧像素
+		// ctx.beginPath();
+		// ctx.fillStyle = 'red';
+		// // ctx.fillRect(500, 500, 100, 100);
+		// ctx.fillRect(0, 0, 500, 500);
+		// ctx.closePath();
+
+		// ctx.beginPath();
+		// ctx.fillStyle = 'green';
+		// // ctx.globalCompositeOperation = 'destination-over';//旧像素覆盖新像素
+		// ctx.globalCompositeOperation = 'destination-out';//新旧像素覆盖的那部分没有
+		// ctx.arc(300, 300, 50, 0, Math.PI * 2);
+		// ctx.arc(400, 300, 50, 0, Math.PI * 2);
+		// ctx.closePath();
+		// ctx.fill();
+
+		// 全局透明度
+		// ctx.globalAlpha = '0.5';
+
+		// 绘制图片
+		// ctx.drawImage(img/canvas/video, x1, y1, dx1, dy1, x2, y2, w2, h2);//绘制目标元素起始点和宽高 在canvas起始点和大小
+
+		// img.onload = function() {
+		// 	// ctx.drawImage(img, 100, 100, 100, 100);
+		// 	ctx.drawImage(img, 300, 250, 50, 50, 100, 100, 100, 100);
+		// }
+
+		// 将canvas内容导出
+		// ctx.fillRect(100, 100, 100, 100);
+		// var base64Data = canvas.toDataURL();
+		// console.log(base64Data);
+		// img.src = base64Data;
+		// oCanvas.style.display = 'none';
+
+		// 获取canvas像素信息 （应用高斯模糊）
+		// ctx.getImageData(x, y, dx, dy);//同源策略
+		// ctx.createImageData(w, h);//创建新的空白ImageData对象
+		// ctx.putImageData(imgData, x, y);//将图像数据放回画布上
+
+		// 命中检测
+		// ctx.isPointInPath(x, y);//检测是否在区域内
+		// ctx.ispointInStroke(x, y);//检测是否在线上
+		// 还可以检测当前点的像素值，若为透明则不再路径上
+
+		// 非零绕数准则，判断点是否在多边形内
+
+		// canvas高分屏模糊问题
+		// 可以使用大画布小相框
+
+	</script>
+</body>
+</html>
