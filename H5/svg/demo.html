@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		svg{
+			border: 1px solid #000;
+		}
+		rect{
+			fill: transparent;
+			stroke: #000;
+			stroke-width: 2px;
+		}
+		circle.big{
+			fill: transparent;
+			stroke: #000;
+			stroke-width: 2px;
+		}
+		polygon{
+			fill: transparent;
+			stroke: #000;
+		}
+		ellipse{
+			fill: transparent;
+			stroke: #000;
+			stroke-width: 2px;
+		}
+		text{
+			stroke: green;
+			stroke-width: 2px;
+		}
+	</style>
+</head>
+<body>
+	<svg width="500" height="500">
+		<!-- 折线 -->
+		<polyline points="60 50,75 35,100 50,125 35,150 50,175 35,190 50"></polyline>
+		<!-- 矩形 -->
+		<rect x="50" y="50" width="150" height="150" rx="10" ry="10"></rect>
+		<!-- 圆形 -->
+		<circle class="big" r="15" cx="90" cy="100"></circle>
+		<circle r="5" cx="95" cy="105"></circle>
+		<circle class="big" r="15" cx="160" cy="100"></circle>
+		<circle r="5" cx="165" cy="105"></circle>
+		<!-- 多边形 -->
+		<polygon points="125 125,130 140,120 140"></polygon>
+		<!-- 椭圆 -->
+		<ellipse rx="25" ry="10" cx="125" cy="170"></ellipse>
+		<!-- 文本 -->
+		<text x="85" y="220">hello world</text>
+	</svg>
+</body>
+</html>

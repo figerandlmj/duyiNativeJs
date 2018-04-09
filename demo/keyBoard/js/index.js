@@ -29,8 +29,8 @@ function exdevTest() {
 // 付款
 var uuid = '$uuid',
     authtoken = '$token';
-// var socketUrl = "115.236.90.3";//开发环境
-var socketUrl = "120.26.222.55";//测试环境
+var socketUrl = "115.236.90.3";//开发环境
+// var socketUrl = "120.26.222.55";//测试环境
 // var socketUrl = "120.27.167.232";//生产环境
 
 var webSocketUrl="ws://" + socketUrl + ":9998/websocket";

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		svg{
+			border: 1px solid #000;
+		}
+		line{
+			stroke: red;
+		}
+		rect{
+			fill: transparent;
+			stroke: green;
+			stroke-width: 10px;
+			stroke-opacity: .5;
+		}
+		circle{
+			fill: orange;
+		}
+		ellipse{
+			fill: red;
+			fill-opacity: .5;
+		}
+		polyline{
+			fill: transparent;
+			stroke: red;
+			stroke-linecap: round;/* 线两端样式 butt round square */
+		}
+		polygon{
+			fill: transparent;
+			stroke: blue;
+			stroke-linejoin: bevel;/* 两线连接处样式 bevel round miter*/
+		}
+		path{
+			fill: transparent;
+			stroke: deeppink;
+		}
+		#animation{
+			fill: transparent;
+			stroke: deeppink;
+			stroke-width: 20px;
+			stroke-dasharray:10px 20px 30px 40px;
+			stroke-dashoffset:10px;
+			animation:move 1s linear infinite;
+		}
+		@keyframes move{
+			0%{
+				stroke-dashoffset: 10px;
+			}
+			100%{
+				stroke-dashoffset: 500px;
+			}
+		}
+		#animation2{
+			fill: transparent;
+			stroke: deeppink;
+			stroke-width: 20px;
+			stroke-dasharray:500px;
+			stroke-dashoffset:0px;
+			animation:move2 1s linear alternate infinite;
+		}
+		@keyframes move2{
+			0%{
+				stroke-dashoffset: 0px;
+			}
+			100%{
+				stroke-dashoffset: 500px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<svg width="500" height="500">
+		<!-- 直线 -->
+		<line x1="100" y1="100" x2="200" y2="100"></line>
+		<!-- 矩形 -->
+		<rect x="50" y="50" width="100" height="100" rx="10" ry="20"></rect>
+		<!-- 圆形 -->
+		<circle r="50" cx="220" cy="100"></circle>
+		<!-- 椭圆 -->
+		<ellipse rx="100" ry="50" cx="100" cy="200"></ellipse>
+		<!-- 折线 -->
+		<polyline points="60 50,75 35,100 50,125 35,150 50,175 35,190 50"></polyline>
+		<!-- 多边形 -->
+		<polygon points="125 125,130 140,120 140"></polygon>
+		<!-- 文本 -->
+		<text x="125" y="220">hello world</text>
+
+		<!-- path元素 M L指令 绝对坐标 m l 指令 相对坐标 -->
+		<!-- <path d="M 100 300 L 200 300 200 400 100 300" />
+		<path d="m 300 300 l 60 0" /> -->
+
+		<!-- 水平垂直方向 H V 指令 绝对坐标 h v 指令 相对坐标 Z/z 闭合指令-->
+		<path d="M 100 300 H 200 V 400 Z" />
+		<path d="m 300 300 h 100 v 100 z" />
+
+		<!-- 圆弧指令 A -->
+		<!-- rx ry  x-axis-rotation large-arc-flag sweep-flag x y -->
+		<!-- 圆弧的x和y轴半径 圆弧相对x轴的旋转角度 大圆弧1还是小圆弧 起点到终点是顺时针1还是逆时针0  终点坐标 -->
+		<path d="M 300 100 A 70 120 90 1 1 350 200"></path>
+
+		<!-- 二次贝塞尔曲线 Q x1 y1,x y  延伸 T x y -->
+		<path d="M 100 200 Q 200 100 300 300 T 500 100"></path>
+
+		<!-- 三次贝塞尔曲线 C x1 y1,x2 y2,x y  延伸 S x2 y2,x y -->
+		<path d="M 0 200 C 100 100 200 100 300 400 S 500 500 300 0"></path>
+
+		<!-- 线性渐变 -->
+		<defs>
+			<linearGradient id="bg1" x1="0" y1="0" x2="0" y2="100%">
+				<stop offset="0%" style="stop-color:rgb(255,255,0);" />
+				<stop offset="100%" style="stop-color:rgb(255,0,0);" />
+			</linearGradient>
+		</defs>
+		<rect x="0" y="0" width="100" height="100" style="fill:url(#bg1);" />
+
+		<!-- 径向渐变 -->
+		<defs>
+			<linearGradient id="bg2" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+				<stop offset="0%" style="stop-color:green;" />
+				<stop offset="100%" style="stop-color:red;" />
+			</linearGradient>
+		</defs>
+		<rect x="200" y="300" width="100" height="100" style="fill:url(#bg2);" />
+
+		<!-- 高斯滤镜 -->
+		<defs>
+			<filter id="Gaussian_Blur">
+				<feGaussianBlur in="SourceGraphic" stdDeviation="20" />
+			</filter>
+		</defs>
+		<rect x="300" y="400" width="100" height="100" fill="yellow" style="fill:url(#Gaussian_Blur);" />
+		
+		<!-- 其他滤镜 -->
+		<!-- http://www.w3school.com.cn/svg/svg_filters_intro.asp -->
+
+		<!-- 路径动画 -->
+		<!-- stroke-dasharray:100px;
+		stroke-dashoffset:15px; -->
+		<path id="animation" d="M 0 100 L 500 100" />
+		<path id="animation2" d="M 0 200 L 500 200" />
+
+		<!-- 获取路径总长度 严格上适用path元素 -->
+		<!-- getTotalLength() -->
+		<!-- 距离起始点x长度的坐标 -->
+		<!-- getPointAtLength(x) -->
+	</svg>
+	<script>
+		console.log(animation.getTotalLength());
+		console.log(animation. getPointAtLength(100));
+	</script>
+	<!-- viewBox画布内容实际大小 -->
+	<svg id="svg" width="400" height="300" viewBox="0,0,40,30">
+		<rect x="0" y="0" width="10" height="10"></rect>
+	</svg>
+	<!-- xMin xMid xMax x轴左中右对齐
+	yMin yMid yMax y轴左中右对齐
+	meet slice none 填充方式 -->
+	<script>
+		svg.setAttribute('preserveAspectRatio','xMinYMin meet');
+	</script>
+
+	<!-- js生成svg元素 -->
+	<script>
+		var char = 'http://www.w3.org/2000/svg';//命名空间
+		
+		var svg = document.createElementNS(char, 'svg');
+		svg.setAttribute('width',500);
+		svg.setAttribute('height',500);
+		svg.setAttribute('viewBox','0 0 500 500');
+
+		var rect = document.createElementNS(char, 'rect');
+		rect.setAttribute('x',100);
+		rect.setAttribute('y',100);
+		rect.setAttribute('width',100);
+		rect.setAttribute('height',100);
+		rect.setAttribute('fill','#0fc');
+
+		svg.appendChild(rect);
+
+		document.body.appendChild(svg);
+	</script>
+</body>
+</html>
