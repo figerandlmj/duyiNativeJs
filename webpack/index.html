@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		// 函数
+		function add(a, b) {
+			return a + b;
+		}
+
+		// 对象写法
+		var ppt = {
+			len: 3,
+			init: function() {
+				console.log(this.len);
+			},
+			createDom: function() {
+
+			}
+		}
+
+		// 匿名函数、返回对象
+		(function() {
+			var len = 3;
+			function add(a, b) {
+				return a + b;
+			}
+			return {
+				add: add
+			};
+		})();
+
+		// 依赖传入参数
+		(function(a, b) {
+			b(a);
+		})(window, function(window) {
+			window.jquery = jquery;
+			function jquery() {
+
+			}
+		})
+
+		var module = (function(m) {
+			m.add = function(a, b){
+				return a + b;
+			};
+			return m;
+		})(window.module || {});
+
+
+	</script>
+</body>
+</html>
