@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		// var options = {
+		// 	enableHighAccuracy:false,//是否需要高精度位置
+		// 	timeout:'infinity',//请求超时时间ms
+		// 	maximumAge:0//位置信息过期时间设置ms watchPosition被调用时间间隔
+		// }
+		// navigator.geolocation.getCurrentPosition(function(data){
+		// 	alert(JSON.stringify(data));
+		// }, function(data) {
+		// 	console.log(data);
+		// }, options);
+
+		// var id = geolocation.watchPosition(function(data){
+		// 	alert(JSON.stringify(data));
+		// }, function(data) {
+		// 	console.log(data);
+		// }, options);
+		// clearWatch(id);
+
+		window.addEventListener('devicemotion', function(event) {
+			console.log(event);
+
+			// accelerationIncludingGravity  z轴方向多了9.8的重力加速度
+			// acceleration 重力加速度
+			// rotationRote(alpha, beta, gamma)旋转速率
+			// interval 获取的时间间隔
+		});
+
+		window.addEventListener('deviceorientation', function(event) {
+			console.log(event);
+			
+			// alpha, beta, gamma
+			// z轴旋转角度  0-360
+			// x轴旋转角度  -180-180
+			// y周旋转角度  -90-90
+
+		});
+	</script>
+</body>
+</html>
