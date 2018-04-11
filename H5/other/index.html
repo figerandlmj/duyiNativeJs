@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>requestAnimationFrame</title>
+	<style>
+		#btn{
+			position: absolute;
+			top: 100px;
+			left: 0;
+			width: 100px;
+			height: 100px;
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="btn"></div>
+	<script>
+		// 兼容requestAnimationFrame
+		window.requestAnimFrame = (function() {
+			return window.requestAnimationFrame || 
+				   window.webkitRequestAnimationFrame || 
+				   window.mozRequestAnimationFrame || 
+				   function(callback) {
+				   		window.setTimeout(callback, 1000 / 60);
+				   };
+		})();
+		// 兼容cancelAnimationFrame
+		window.cancelAnimFrame = (function() {
+			return window.cancelAnimationFrame || 
+				   window.webkitCancelAnimationFrame || 
+				   window.mozcanCelAnimationFrame || 
+				   function(id) {
+				   		window.clearTimeout(id);
+				   };
+		})();
+		
+		var req;
+		move();
+		function move() {
+			btn.style.left = btn.offsetLeft + 10 +'px';
+			if(btn.offsetLeft >= 300) {
+				// clearTimeout(timer);
+				cancelAnimFrame(req);
+				btn.style.left = '300px';
+			}else{
+				// timer = setTimeout(function() {
+				// 	move();
+				// }, 10);
+				req = requestAnimFrame(move);
+			}
+		}
+
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			padding:0;
+			margin:0;
+			font-size: 0;
+		}
+		.wrapper{
+			position: absolute;
+			left: 50%;
+			margin-left: -200px;
+			width: 400px;
+			height: 400px;
+			border: 1px solid #000;
+		}
+		.header{
+			width: 100%;
+			display: flex;
+		}
+		button{
+			width: 133px;
+			height: 50px;
+			font-size: 16px;
+			flex-grow: 1;
+		}
+		.item{
+			line-height: 350px;
+			font-size: 16px;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="header">
+			<button data="one">1</button>
+			<button data="two">2</button>
+			<button data="three">3</button>
+		</div>
+		<div class="content">
+			<div class="item">111</div>
+		</div>
+	</div>
+	<script src="./ajax.js"></script>
+	<script>
+
+		var item = document.getElementsByClassName('item')[0];
+		var header = document.getElementsByClassName('header')[0];
+
+		init();
+		function init() {
+			history.replaceState({newPage:'one'}, null, '?one');
+			ajax('GET', './getData.php', {page:'one'}, doData, true);
+		}
+		function doData(data){
+			// console.log(data);
+			item.innerHTML = data;
+		}
+
+		header.addEventListener('click', function(e) {
+			var page = e.target.getAttribute('data');
+			history.pushState({newPage:page}, null, '?' + page);
+			ajax('GET', './getData.php', {page:page}, doData, true);
+		})
+
+		window.addEventListener('popstate', function(e) {
+			// console.log(e);
+			var newPage = e.state.newPage;
+			ajax('GET', './getData.php', {page:newPage}, doData, true);
+		})
+
+	</script>
+</body>
+</html>

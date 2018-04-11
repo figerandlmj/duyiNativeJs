@@ -27,34 +27,42 @@ function exdevTest() {
 }
 
 // 付款
-var uuid = '$uuid',
-    authtoken = '$token';
 var socketUrl = "115.236.90.3";//开发环境
 // var socketUrl = "120.26.222.55";//测试环境
 // var socketUrl = "120.27.167.232";//生产环境
 
 var webSocketUrl="ws://" + socketUrl + ":9998/websocket";
+var ws = null;
 var socketPing = {
         code: 'ping'
     },
     socketLogin = {
         code: 'login',
-        authtoken: authtoken
+        authtoken: '$authtoken'
     },
     socketPay = {
         code: 'pay',
         amt: '$amt',
         paymentCode: '$paymentCode',
-        uuid: uuid,
-        authtoken: authtoken
+        authtoken: '$authtoken'
     };
+
+manageCookie.getCookie('hiPayNewmerchantSessionId', function(data) {
+    if(data != null) {
+        socketLogin.authtoken = data;
+        socketPay.authtoken = data;
+        webSocket(webSocketUrl);
+    }else{
+        alert('请先登录！');
+    }
+})
 
 var oPayBtn = document.getElementById("pay-btn"),
     oRadio = document.getElementsByName("payType"),
     oPayStatus = document.getElementById("pay-status");
 
 oPayBtn.onclick = function(){
-    pay();
+   pay();
 }
 
 document.onkeydown = function(e){
@@ -75,7 +83,7 @@ function pay(){
     // }else if(!payCode){
     //     alert("请输入收款条码！");
     // }else{
-        webSocket(webSocketUrl);
+        ws.send(JSON.stringify(socketPay));
     // }
 }
 // 获取radio选中的值
@@ -88,8 +96,7 @@ function getRadioValue(obj){
 }
 
 // webSocket连接
-function webSocket(webSocketUrl){
-    var ws = null;
+function webSocket(webSocketUrl, cb){
     if ('WebSocket' in window) {
         ws = new WebSocket(webSocketUrl);
     }else {
@@ -97,7 +104,10 @@ function webSocket(webSocketUrl){
     }
     ws.onopen = function(){
         console.log("open");
-        ws.send(JSON.stringify(socketPing));
+        setInterval(function(){
+            ws.send(JSON.stringify(socketPing));
+        }, 500);
+        ws.send(JSON.stringify(socketLogin));
     };
     ws.onmessage = function(evt){
         console.log(evt.data);
@@ -109,4 +119,29 @@ function webSocket(webSocketUrl){
         console.log("WebSocketError!");
     };
 }
+
+
+// 封装cookie
+var manageCookie = {
+    setCookie: function(name, value, date) {
+        document.cookie = name + '=' + value + ';max-age=' + date;
+        return this;
+    },
+    removeCookie: function(name) {
+        return this.setCookie(name, '', -1);
+    },
+    getCookie: function(name, cb) {
+        var allCookieArr = document.cookie.split('; '),
+            len = allCookieArr.length;
+        for(var i = 0; i < len; i ++) {
+            var itemCookie = allCookieArr[i].split('=');
+            if(itemCookie[0] == name){
+                cb(itemCookie[1]);
+                return this;
+            }
+        }
+        cb(null);
+        return this;
+    }
+};
 

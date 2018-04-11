@@ -1,3 +1,8 @@
+onmessage = function(e) {
+    // console.log(e.data);
+    postMessage(gaussBlur(e.data));
+}
+
 function gaussBlur(imgData) {
     var pixes = imgData.data;
     var width = imgData.width;

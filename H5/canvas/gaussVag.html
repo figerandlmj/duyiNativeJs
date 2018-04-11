@@ -12,7 +12,7 @@
 <body>
 	<img id="img" src="./img/test.jpg" alt="">
 	<canvas id="canvas" width="500" height="500"></canvas>
-	<script src="./guassFun.js"></script>
+	<!-- <script src="./guassFun.js"></script> -->
 	<script>
 		// 1. drawImage
 		// 2. getImageData
@@ -25,15 +25,36 @@
         var canvas = document.getElementById('canvas');
         var ctx = canvas.getContext('2d');
 
+        // img.onload = function () {
+        //     ctx.drawImage(img, 0, 0);
+        //     var data = ctx.getImageData(0, 0, 500, 500);
+        //     var emptyData = gaussBlur(data);
+        //     ctx.putImageData(emptyData, 0, 0);
+        //     var baseData = canvas.toDataURL();
+        //     var oImage = new Image();
+        //     oImage.src = baseData;
+        //     document.body.appendChild(oImage);
+        // }
+
+
         img.onload = function () {
             ctx.drawImage(img, 0, 0);
             var data = ctx.getImageData(0, 0, 500, 500);
-            var emptyData = gaussBlur(data);
-            ctx.putImageData(emptyData, 0, 0);
-            var baseData = canvas.toDataURL();
-            var oImage = new Image();
-            oImage.src = baseData;
-            document.body.appendChild(oImage);
+
+            var worker = new Worker('./guassFun.js');
+			worker.postMessage(data);
+
+			worker.onmessage = function(e) {
+				// console.log(e.data);
+				ctx.putImageData(e.data, 0, 0);
+
+	            var baseData = canvas.toDataURL();
+	            var oImage = new Image();
+	            oImage.src = baseData;
+	            document.body.appendChild(oImage);
+	            
+				worker.terminate();//断开
+			}
         }
 	</script>
 </body>

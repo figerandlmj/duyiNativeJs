@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>worker</title>
+</head>
+<body>
+	<script>
+		// 共享worker
+		// var worker = new shareWorker('./worker.js');//兼容性不好，基本不用
+		// 专用worker
+		var worker = new Worker('./worker.js');
+		worker.postMessage(10);
+
+		worker.onmessage = function(e) {
+			console.log(e.data);
+			worker.terminate();//断开 此方法更好
+			worker.postMessage(10);//发送不出去
+		}
+
+	</script>
+</body>
+</html>
