@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#ad{
+			width: 100px;
+			height: 100px;
+			background: red;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<button id="play">play</button>
+	<button id="pause">pause</button>
+	<button id="reload">reload</button>
+
+	<button id="down">-</button>
+	<button id="up">+</button>
+
+	<button id="fast">快放</button>
+	<button id="slow">慢放</button>
+
+	<button id="quk">快进</button>
+
+	<button id="palyPause">play/pause</button>
+	<div id="ad"></div>
+	<script>
+
+		var audio = new Audio('./src/song.ogg');//video不可用
+		audio.controls = true;
+		// audio.loop = 'loop';
+		audio.preload = 'auto';
+		audio.autoplay = true;
+		document.body.appendChild(audio);
+
+		play.onclick = function() {
+			audio.play();
+			// audio.volume = 0.5;
+		}
+		pause.onclick = function() {
+			audio.pause();
+			// audio.muted = true;
+		}
+		reload.onclick = function() {
+			audio.load();
+			// audio.muted = false;
+		}
+
+		down.onclick = function() {
+			if(audio.volume >= 0.1){
+				audio.volume -= 0.1;
+			}else{
+				audio.volume = 0;
+			}
+		}
+		up.onclick = function() {
+			if(audio.volume <= 0.9){
+				audio.volume += 0.1;
+			}else{
+				audio.volume = 1;
+			}
+		}
+
+		fast.onclick = function() {
+			audio.playbackRate += 0.1;
+			console.log(audio.playbackRate)
+		}
+		slow.onclick = function() {
+			audio.playbackRate -= 0.1;
+			console.log(audio.playbackRate)
+		}
+
+		quk.onclick = function() {
+			audio.currentTime += 3;
+		}
+
+		palyPause.onclick = function() {
+			if(audio.paused) {
+				audio.play();
+			}else{
+				audio.pause();
+			}
+		}
+
+		audio.onseeking = function() {
+			console.log('onseeking');
+		}
+
+		if(audio.canPlayType('audio/mp3')) {
+			audio.src = './src/song.ogg';
+			audio.play();
+		}
+
+		audio.onplay = function() {
+			ad.style.display = 'none';
+		}
+		audio.onpause = function() {
+			ad.style.display = 'block';
+		}
+		audio.onended = function() {
+			ad.style.display = 'block';
+		}
+
+	</script>
+</body>
+</html>

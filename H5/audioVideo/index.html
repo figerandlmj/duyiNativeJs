@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<audio src="./src/song.ogg" autoplay controls preload="auto"></audio>
+	<video src="./src/movie.ogg" width="300" height="400" autoplay controls loop preload="auto" poster="./src/default.jpg"></video>
+
+	<audio id="music">
+		<source src="./src/song.ogg" type="audio/ogg">
+		<source src="./src/song.mp3" type="audio/mpeg">
+	</audio>
+
+	<script>
+		// var audio = document.getElementById('audio');
+
+		var audio = new Audio('./src/song.ogg');//video不可用
+		audio.controls = true;
+		audio.loop = 'loop';
+		audio.preload = 'auto';
+		audio.autoplay = true;
+		document.body.appendChild(audio);
+		window.onload = function() {
+			console.log(audio.currentSrc);//资源路径
+		}
+		
+		// var audio = document.createElement('audio');
+	</script>
+</body>
+</html>

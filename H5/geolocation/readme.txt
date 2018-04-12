@@ -18,8 +18,3 @@ clearWatch(id) 清除位置监视
    webkitCompassHeading  指北针  与正北方向的角度差值  正北0  正东90 正南180  正西270 iOS上兼容
    webkitCompassAccuracy  指北针的精准度 
 
-
-https://papaverice.github.io/html5-lession4/pin.html
-https://papaverice.github.io/html5-lession4/yaoyiyao.html
-https://papaverice.github.io/html5-lession4/textPhone.html
-https://papaverice.github.io/html5-lession4/demo.html

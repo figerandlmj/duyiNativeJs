@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1,width=device-width">
+	<title>指北针</title>
+	<style>
+		*{
+			padding:0;
+			margin:0;
+		}
+		li{
+			list-style: none;
+		}
+		body{
+			background: #000;
+			color: #fff;
+		}
+		.direction{
+			margin-top:20px;
+			text-align: center;
+			color: #fff;
+		}
+		.box{
+			position: relative;
+			top: 100px;
+			margin:0 auto;
+			width:300px;
+			height:300px;
+		}
+		.pin{
+			position: absolute;
+			top: -50px;
+			left: 50%;
+			margin-left: -2px;
+			width: 4px;
+			height: 50px;
+			background: #fff;
+		}
+		.ten{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin-left: -100px;
+			margin-top: -100px;
+			width: 200px;
+			height: 200px;
+		}
+		.l, .h{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			background: #fff;
+		}
+		.ten .l{
+			width: 200px;
+			height: 2px;
+		}
+		.ten .h{
+			width: 2px;
+			height: 200px;
+		}
+		.box ul{
+			width: 300px;
+			height: 300px;
+			border-radius: 50%;
+			transition: all 10ms linear;
+		}
+		.box li{
+			position: absolute;
+			top: 0;
+			left: 50%;
+			margin-left: -1px;
+			width: 2px;
+			height: 20px;
+			background: red;
+			transform-origin: 1px 150px;
+		}
+		.box span{
+			position: absolute;
+			top: -20px;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			color: #fff;
+		}
+	</style>
+</head>
+<body>
+	<div class="direction">方向：<label id="heading">0</label></div>
+
+	<div class="box">
+		<div class="pin"></div>
+		<div class="ten">
+			<div class="l"></div>
+			<div class="h"></div>
+		</div>
+		<ul>
+			<li><span style="color:red;">0</span></li>
+			<li><span>330</span></li>
+			<li><span>300</span></li>
+			<li><span>270</span></li>
+			<li><span>240</span></li>
+			<li><span>210</span></li>
+			<li><span>180</span></li>
+			<li><span>150</span></li>
+			<li><span>120</span></li>
+			<li><span>90</span></li>
+			<li><span>60</span></li>
+			<li><span>30</span></li>
+		</ul>
+	</div>
+	<script>
+		function lineDraw() {
+			var li = document.getElementsByTagName('li');
+			var span = document.getElementsByTagName('span');
+			var len = li.length;
+			for(var i = 0; i < len; i ++) {
+				// span[i].style.transform = 'rotate(' + -30 * i + 'deg)';
+				li[i].style.transform = 'rotate(' + 30 * i + 'deg)';
+			}
+		}
+
+		lineDraw();
+
+		function move(ang) {
+			var ul = document.getElementsByTagName('ul')[0];
+			ul.style.transform = 'rotate(' + ang + 'deg)';
+		}
+
+		function deviceOrientationHandler(event) {
+			var alpha = event.alpha,
+				webkitCompassHeading = event.webkitCompassHeading;//iOS上兼容
+			// alert(alpha +  '/' + webkitCompassHeading);
+			if(alpha != null) {
+
+				var head = '';
+				var headNum = (Math.round(alpha / 45) + 7) % 8;
+				switch(headNum) {
+					case 0:
+						head += '东北';
+						break;
+					case 1:
+						head += '东';
+						break;
+					case 2:
+						head += '东南';
+						break;
+					case 3:
+						head += '南';
+						break;
+					case 4:
+						head += '西南';
+						break;
+					case 5:
+						head += '西';
+						break;
+					case 6:
+						head += '西北';
+						break;
+					case 7:
+						head += '北';
+						break;
+				}
+				move(alpha);
+				document.getElementById('heading').innerHTML = head + ' ' + alpha;
+			}else{
+				document.body.innerHTML = '当前浏览器不支持deviceorientation';
+			}
+		}
+
+		if(window.DeviceOrientationEvent) {
+			window.addEventListener('deviceorientation', deviceOrientationHandler, false);
+		}else{
+			alert('您的浏览器不支持deviceorientation');
+		}
+	</script>
+</body>
+</html>
