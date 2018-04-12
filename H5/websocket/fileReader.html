@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="drop_area">将图片拖拽到此区域</div>
+	<div id="progress">
+		<div id="val"></div>
+	</div>
+	<div id="num">0%</div>
+	<div id="preview"></div>
+	<script src="./loadFile.js"></script>
+	<script src="./ajax.js"></script>
+	<script>
+		
+		var events = {
+			load: function(data) {
+				ajax('POST', './upload.php', data, cb, true);
+			},
+			progress: function(percent) {
+				val.style.width = percent * 2 + 'px';
+				num.innerHTML = Math.round(percent) + '%';
+			},
+			success: function() {
+				console.log('success');
+			}
+		}
+
+		function cb() {
+			console.log('ss');
+		}
+
+		drop_area.addEventListener('dragover',  function(e) {
+			e.preventDefault();
+		});
+		var loader;
+		drop_area.addEventListener('drop',  function(e) {
+			// 拖拽文件上传
+			e.preventDefault();
+			// console.log(e.dataTransfer.files);
+			var file = e.dataTransfer.files[0];
+			loader = new FileLoader(file, events);
+		})
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>WebSocket</title>
+</head>
+<body>
+	<script>
+		// webSocket连接
+	    if ('WebSocket' in window) {
+	        var ws = new WebSocket('ws://echo.websocket.org');
+	    }else {
+	        alert('当前浏览器不支持WebSocket');
+	    }
+	    ws.onopen = function(){
+	        console.log("open");
+	        ws.send('dg');//发送数据
+	    };
+	    ws.onmessage = function(evt){
+	        console.log(evt.data);
+	        ws.close();//断开连接
+	    };
+	    ws.onclose = function(evt){
+	        console.log("WebSocketClosed!");
+	    };
+	    ws.onerror = function(evt){
+	        console.log("WebSocketError!");
+	    };
+	</script>
+</body>
+</html>

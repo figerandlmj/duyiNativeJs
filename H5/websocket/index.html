@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+		#demo{
+			width: 100px;
+			height: 100px;
+			background: red;
+		}
+		#item{
+			width: 100px;
+			height: 100px;
+			background: orange;
+		}
+		#wrapper{
+			width: 300px;
+			height: 300px;
+			margin-top: 20px;
+			border: 1px solid #000;
+		}
+	</style>
+</head>
+<body>
+	<div id="demo" draggable="true"></div>
+	<div id="item" draggable="true"></div>
+	<div id="wrapper"></div>
+	<script>
+		
+		demo.addEventListener('dragstart',  function(e) {
+			// console.log('start');
+			e.dataTransfer.setData("data", this.id);
+		})
+
+		item.addEventListener('dragstart',  function(e) {
+			// console.log('start');
+			e.dataTransfer.setData("data", this.id);
+		})
+
+		demo.addEventListener('dragend',  function() {
+			// console.log('end');
+		})
+
+		wrapper.addEventListener('dragenter',  function() {
+			// console.log('enter');
+		})
+		wrapper.addEventListener('dragover',  function(e) {
+			e.preventDefault();
+			// console.log('over');
+		})
+		wrapper.addEventListener('drop',  function(e) {
+			// console.log('drop');
+			// console.log(e.dataTransfer.getData("data"))
+			var val = e.dataTransfer.getData("data");
+			this.appendChild(document.getElementById(val));
+		})
+
+	</script>
+</body>
+</html>

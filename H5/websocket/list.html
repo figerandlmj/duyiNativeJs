@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		li{
+			list-style: none;
+		}
+		ul li{
+			width: 300px;
+			height: 30px;
+			margin-top: 10px;
+			line-height: 30px;
+			text-align: center;
+			background: #ccc;
+		}
+		#wrapper{
+			width: 300px;
+			height: 300px;
+			margin-top: 20px;
+			border: 1px solid #000;
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li draggable="true">1</li>
+		<li draggable="true">2</li>
+		<li draggable="true">3</li>
+		<li draggable="true">4</li>
+		<li draggable="true">5</li>
+	</ul>
+	<div id="wrapper"></div>
+
+	<script>
+		
+		var li = document.getElementsByTagName('li'),
+			len = li.length,
+			wrapper = document.getElementById('wrapper'),
+			ul = document.getElementsByTagName('ul')[0];
+		bindEvent();
+		function bindEvent() {
+			for(var i = 0; i < len; i ++) {
+				li[i].addEventListener('dragstart',  function(e) {
+					var i = getIndex(li, this);
+					e.dataTransfer.setData("data", i);
+				})
+				li[i].addEventListener('dragover',  function(e) {
+					e.preventDefault();
+				})
+				li[i].addEventListener('drop',  function(e) {
+					var i = e.dataTransfer.getData("data");
+					ul.insertBefore(li[i], this);
+				})
+			}
+		}
+
+		function getIndex(list, dom) {
+			var len = list.length;
+			for(var i = 0; i < len; i ++) {
+				if(list[i] == dom) {
+					return i;
+				}
+			}
+		}
+		bindDele();
+
+		function bindDele() {
+			wrapper.addEventListener('dragover',  function(e) {
+				e.preventDefault();
+			})
+			wrapper.addEventListener('drop',  function(e) {
+				var i = e.dataTransfer.getData("data");
+				li[i].remove();
+			})
+		}
+
+	</script>
+</body>
+</html>
