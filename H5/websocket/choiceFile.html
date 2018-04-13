@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<form>
+		<fieldset>
+			<legend>分步读取文件：</legend>
+			<input type="file" id="file">
+			<input type="button" value="中断" id="abort">
+			<p>
+				<label>读取进度：</label>
+				<progress id="progress" value="0" max="100"></progress>
+			</p>
+		</fieldset>
+	</form>
+	<script src="./loadFile.js"></script>
+	<script>
+		
+		var progress = document.getElementById('progress');
+		var events = {
+			load: function() {
+				console.log('loaded');
+			},
+			progress: function(percent) {
+				progress.value = percent;
+			},
+			success: function() {
+				console.log('success');
+			}
+		}
+		var loader;
+		document.getElementById('file').onchange = function(e) {
+			var file = this.files[0];
+			console.log(file);
+			loader = new FileLoader(file, events);
+		};
+		
+		document.getElementById('abort').onclick = function() {
+			loader.abort();
+		};
+	</script>
+</body>
+</html>

@@ -15,7 +15,7 @@ function ajax(method, url, data, callback, flag){
 		}
 	}
 	method = method.toUpperCase();
-	data = data && getParams(data);
+	// data = data && getParams(data);
 	if(method == 'GET') {
 		var timer = new Date().getTime();
 		xhr.open(method, url + '?' + data + '&timer=' + timer, flag);

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		/* 圆 */
+		.demo{
+			width: 100px;
+			height: 100px;
+			background: red;
+			border-radius: 50%;
+			-webkit-border-radius: 50%;
+			-moz-border-radius: 50%;
+			-ms-border-radius: 50%;
+			-o-border-radius: 50%;
+		}
+		/* 椭圆 */
+		.demo1{
+			width: 200px;
+			height: 100px;
+			background: red;
+			border-radius: 50%;
+		}
+		.demo2{
+			width: 200px;
+			height: 100px;
+			background: red;
+
+			/*border-radius: 20px 30px 40px 60px;*/
+
+			/*border-top-left-radius: 20px;
+			border-top-right-radius: 30px;
+			border-bottom-right-radius: 40px;
+			border-bottom-left-radius: 60px;*/
+
+			/*border-bottom-right-radius: 40px 20px;*/
+		}
+		/* 半圆 */
+		.demo3{
+			width: 200px;
+			height: 100px;
+			background: red;
+			border-top-left-radius: 50% 100%;/* x轴50% y轴100% */
+			border-top-right-radius: 50% 100%;
+		}
+		/* 这种写法不提倡 */
+		.demo4{
+			width: 200px;
+			height: 100px;
+			background: red;
+			border-radius: 1em 2em 1em 2em / 2em 1em 2em 1em;
+		}
+		/* 阴影 */
+		.demo5{
+			display: inline-block;
+			padding: 10px 20px;
+			border-radius: 10px;
+			border: 1px solid #888;
+			background: #ccc;
+			box-shadow: 10px 10px 10px 1px #f00 inset;
+		}
+
+		ul{
+			width: 300px;
+			padding:0;
+			border: 1px solid #ccc;
+		}
+		li{
+			height: 30px;
+			line-height: 30px;
+			text-align: center;
+			list-style: none;
+			border-bottom: 1px solid #ccc;
+		}
+		li:hover{
+			box-shadow: 0 0 5px #666;
+		}
+	</style>
+</head>
+<body>
+	<div class="demo"></div>
+	<div class="demo1"></div>
+	<div class="demo2"></div>
+	<div class="demo3"></div>
+	<div class="demo4"></div>
+	<div class="demo5">btn</div>
+	<ul>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+	</ul>
+</body>
+</html>

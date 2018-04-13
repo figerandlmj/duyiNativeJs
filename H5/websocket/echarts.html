@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>echarts</title>
+</head>
+<body>
+	<div id="demo" style="width: 600px;height:400px;"></div>
+	<script src="./echarts.simple.min.js"></script>
+	<script>
+		// 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('demo'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: 'ECharts入门示例'
+            },
+            tooltip: {},
+            legend: {
+                data:['销量']
+            },
+            xAxis: {
+                data: []
+            },
+            yAxis: {},
+            series: [{
+                name: '销量',
+                type: 'bar',
+                data: []
+            }]
+        };
+
+        myChart.showLoading();
+
+        myChart.on('click',function(params){
+        	if(params.componentType === 'series') {
+        		if(params.seriesType === 'bar') {
+        			console.log(params.value);
+        		}
+        	}
+        })
+
+        getData();
+
+        function getData() {
+        	
+	        setTimeout(function() {
+	        	var data = [
+		        	{name: '一班', num: 30},
+		        	{name: '二班', num: 40},
+		        	{name: '三班', num: 35},
+		        	{name: '四班', num: 29}
+		        ];
+
+		        compare(data, 'num');
+		        dealDta(data, option);
+
+		        // 使用刚指定的配置项和数据显示图表。
+		        myChart.setOption(option);
+
+		        myChart.hideLoading();
+
+	        }, 1000);
+        }
+
+        
+        // 数据排序
+        function compare(data, name){
+        	data.sort(function(a, b){
+				// 升序
+				return a[name] - b[name];
+			});
+        }
+
+        // 数据填充
+        function dealDta(data, option) {
+        	data.forEach(function(ele, index){
+        		option.xAxis.data.push(ele.name);
+        		option.series[0].data.push(ele.num);
+        	})
+        }
+
+	</script>
+</body>
+</html>

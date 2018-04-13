@@ -3,9 +3,39 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
+	<style>
+
+		#wrapper{
+			width: 300px;
+			height: 200px;
+			background: #ddd;
+			border: 1px solid #000;
+		}
+		#progress{
+			display: inline-block;
+			width: 200px;
+			height: 30px;
+			margin-top: 20px;
+			border: 1px solid #888;
+			border-radius: 15px;
+		}
+		#val{
+			width: 0;
+			height: 30px;
+			border-radius: 15px;
+			background: green;
+		}
+		#num{
+			position: relative;
+			bottom: 8px;
+			left: 10px;
+			display: inline-block;
+		}
+
+	</style>
 </head>
 <body>
-	<div id="drop_area">将图片拖拽到此区域</div>
+	<div id="wrapper">将图片拖拽到此区域</div>
 	<div id="progress">
 		<div id="val"></div>
 	</div>
@@ -16,32 +46,36 @@
 	<script>
 		
 		var events = {
-			load: function(data) {
+			load: function(data) {//上传数据
 				ajax('POST', './upload.php', data, cb, true);
 			},
-			progress: function(percent) {
-				val.style.width = percent * 2 + 'px';
+			progress: function(percent) {//进度条
+				val.style.width = percent * 200 / 100 + 'px';
 				num.innerHTML = Math.round(percent) + '%';
 			},
-			success: function() {
+			success: function() {//上传成功
 				console.log('success');
+				val.style.width = '200px';
+				num.innerHTML = '100%';
 			}
 		}
 
 		function cb() {
-			console.log('ss');
+			// console.log('666');
 		}
 
-		drop_area.addEventListener('dragover',  function(e) {
+		wrapper.addEventListener('dragover',  function(e) {
 			e.preventDefault();
 		});
-		var loader;
-		drop_area.addEventListener('drop',  function(e) {
+		
+		wrapper.addEventListener('drop',  function(e) {
 			// 拖拽文件上传
 			e.preventDefault();
-			// console.log(e.dataTransfer.files);
 			var file = e.dataTransfer.files[0];
-			loader = new FileLoader(file, events);
+			console.log(file);
+			//判断文件格式
+			// if(file.type.indexOf('image') != -1) {}
+			var loader = new FileLoader(file, events);
 		})
 
 	</script>
