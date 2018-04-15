@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		.item{
+			width: 100px;
+			height: 100px;
+			margin:20px auto;
+			border: 1px solid #000;
+			border-radius: 50%;
+		}
+		ul{
+			position: relative;
+			width: 100%;
+			height: 100%;
+		}
+		li{
+			/*position: absolute;
+			top: 0;
+			left: 50%;
+			margin-left: -2px;
+			width: 4px;
+			height: 10px;
+			background: #333;
+			list-style: none;
+			transform-origin: 2px 50px;
+			font-size: 12px;*/
+
+			position: absolute;
+			top: 0;
+			left: 50%;
+			transform: translateX(-50%);
+			transform-origin: 50% 50px;
+			list-style: none;
+			font-size: 12px;
+			text-align: center;
+		}
+		span{
+			display: inline-block;
+		}
+		li:nth-of-type(2){
+			transform: translateX(-50%) rotateZ(30deg);
+		}
+		li:nth-of-type(2) span{
+			transform: rotateZ(-30deg);
+		}
+		li:nth-of-type(3){
+			transform: translateX(-50%) rotateZ(60deg);
+		}
+		li:nth-of-type(3) span{
+			transform: rotateZ(-60deg);
+		}
+		li:nth-of-type(4){
+			transform: translateX(-50%) rotateZ(90deg);
+		}
+		li:nth-of-type(4) span{
+			transform: rotateZ(-90deg);
+		}
+		li:nth-of-type(5){
+			transform: translateX(-50%) rotateZ(120deg);
+		}
+		li:nth-of-type(5) span{
+			transform: rotateZ(-120deg);
+		}
+		li:nth-of-type(6){
+			transform: translateX(-50%) rotateZ(150deg);
+		}
+		li:nth-of-type(6) span{
+			transform: rotateZ(-150deg);
+		}
+		li:nth-of-type(7){
+			transform: translateX(-50%) rotateZ(180deg);
+		}
+		li:nth-of-type(7) span{
+			transform: rotateZ(-180deg);
+		}
+		li:nth-of-type(8){
+			transform: translateX(-50%) rotateZ(-150deg);
+		}
+		li:nth-of-type(8) span{
+			transform: rotateZ(150deg);
+		}
+		li:nth-of-type(9){
+			transform: translateX(-50%) rotateZ(-120deg);
+		}
+		li:nth-of-type(9) span{
+			transform: rotateZ(1200deg);
+		}
+		li:nth-of-type(10){
+			transform: translateX(-50%) rotateZ(-90deg);
+		}
+		li:nth-of-type(10) span{
+			transform: rotateZ(90deg);
+		}
+		li:nth-of-type(11){
+			transform: translateX(-50%) rotateZ(-60deg);
+		}
+		li:nth-of-type(11) span{
+			transform: rotateZ(60deg);
+		}
+		li:nth-of-type(12){
+			transform: translateX(-50%) rotateZ(-30deg);
+		}
+		li:nth-of-type(12) span{
+			transform: rotateZ(30deg);
+		}
+
+	</style>
+</head>
+<body>
+	<div class="item">
+		<ul>
+			<li><span>12</span></li>
+			<li><span>1</span></li>
+			<li><span>2</span></li>
+			<li><span>3</span></li>
+			<li><span>4</span></li>
+			<li><span>5</span></li>
+			<li><span>6</span></li>
+			<li><span>7</span></li>
+			<li><span>8</span></li>
+			<li><span>9</span></li>
+			<li><span>10</span></li>
+			<li><span>11</span></li>
+		</ul>
+	</div>
+</body>
+</html>

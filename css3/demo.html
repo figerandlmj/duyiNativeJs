@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		@font-face{
+			font-family: 'myFontFace';
+			src: url('./Another day in Paradise.ttf');
+		}
+		.wrapper{
+			padding: 10px 0;
+			margin: 10px;
+			background: rgb(255,193,7);
+			text-align: center;
+			border-radius: 8px 8px 6px 6px;
+			box-shadow: 0 4px 6px #000;
+		}
+		li{
+			display: inline-block;
+			padding: 0 20px;
+			list-style: none;
+			color: #fff;
+			text-shadow: 2px 2px 5px #000;
+			font-family: 'myFontFace';
+			font-size: 20px;
+		}
+		li:not(:last-child){
+			border-right: 1px dashed #fff;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<ul>
+			<li>Home</li>
+			<li>About me</li>
+			<li>Portfolio</li>
+			<li>Blog</li>
+			<li>Resources</li>
+			<li>Contact me</li>
+		</ul>
+	</div>
+</body>
+</html>

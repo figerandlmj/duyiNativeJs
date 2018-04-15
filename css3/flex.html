@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			font-size: 0;
+		}
+		/*.wrapper{
+			width: 500px;
+			height: 500px;
+			border: 1px solid #000;
+		}
+		.item{
+			display: inline-block;
+			width: 33.33%;
+			height: 30px;
+			line-height: 30px;
+			text-align: center;
+			border: 1px solid #000;
+			box-sizing: border-box;
+			font-size: 20px;
+		}*/
+		.wrapper{
+			display: flex;
+			width: 500px;
+			height: 500px;
+			border: 1px solid #000;
+		}
+		.item{
+			height: 30px;
+			line-height: 30px;
+			text-align: center;
+			border: 1px solid #000;
+			box-sizing: border-box;
+			font-size: 20px;
+			/*width: 20px;
+			flex-grow: 1;*/
+			/*width: 200px;*/
+			width: 50px;
+		}
+
+		.item:nth-of-type(1){
+			flex-grow: 1;
+			/*width: (500 - 150) / 6 * 1;*/
+		}
+		.item:nth-of-type(2){
+			flex-grow: 2;
+			/*width: (500 - 150) / 6 * 2;*/
+		}
+		.item:nth-of-type(3){
+			flex-grow: 3;
+			/*width: (500 - 150) / 6 * 3;*/
+		}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="item">1</div>
+		<div class="item">2</div>
+		<div class="item">3</div>
+	</div>
+</body>
+</html>

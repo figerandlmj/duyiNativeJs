@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		/* class以item开头 */
+		/*div[class^='item']{
+			color: #f00;
+		}*/
+
+		/* 有item的class */
+		/*div[class~='item']{
+			color: #f00;
+		}*/
+
+		/* class以item结尾 */
+		/*div[class$='item']{
+			color: #f00;
+		}*/
+		
+		/* class有item */
+		/*div[class*='item']{
+			color: #f00;
+		}
+
+		:root{
+			background: #ccc;
+		}*/
+
+		/*div:not([class='item'])::after{
+			color: red;
+			content: 'hello';
+		}*/
+
+		/*.demo{
+			width: 100px;
+			height: 100px;
+		}
+		.demo::first-letter{
+			color: red;
+		}
+
+		div:empty{
+			width: 20px;
+			height: 20px;
+			background: green;
+		}*/
+
+		/* 伪元素不占dom结构，div还为空 */
+		/*div:after{
+			content: 'hello';
+		}*/
+
+		/*body{
+			height: 2000px;
+		}
+		#item{
+			position: absolute;
+			top:1000px;
+			width: 100px;
+			height: 100px;
+			background: green;
+		}
+		#item:target{
+			background: #f00;
+		}*/
+
+		input:checked + span{
+			color: red;
+		}
+
+	</style>
+</head>
+<body>
+	<input type="radio">
+	<span>hello</span>
+	<!-- <a href="#item">锚点</a>
+	<div id="item"></div> -->
+	<!-- <div class="itemdemo">1</div>
+	<div class="itemdemoitem">2</div> -->
+	<!-- <div></div>
+	<div class="demo">jissfiso</div>
+	<div class="item">1</div>
+	<div class="item">2</div>
+	<div class="demoaa">3</div> -->
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.item{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+
+			width: 100px;
+			height: 100px;
+			line-height: 100px;
+			text-align: center;
+			background: red;
+			/*transform: rotateX(60deg);*/
+			/*transform: rotateY(60deg);*/
+			/*transform: rotateZ(60deg);*/
+
+			/*transform: scaleX(2);*/
+			/*transform: scaleX(-1);*/
+			/*transform: scaleY(.5);*/
+
+			/*transform: skewX(45deg);*/
+			/*transform: skewY(45deg);*/
+
+			/*transform: translate(100px, 100px);*/
+			/*transform: translate(50%, 50%);*/
+
+			/*transform: rotateY(89deg) translateZ(100px);*/
+
+			/*transform: rotate(10deg);*/
+			/*左上角*/
+			/*transform-origin: top left;*/
+			/*transform-origin: 0 0;*/
+			/* 右下角 */
+			/*transform-origin: 100px 100px;*/
+			/*transform-origin: 100% 100%;*/
+
+			/*transition: width 2s linear 1s, height 2s linear;*/
+			/*transition: all 2000ms linear;*/
+			/*transition: all 2000ms cubic-bezier(1,0,1,0);*/
+
+
+		}
+		.item:hover{
+			/*width: 300px;
+			height: 300px;*/
+			animation: demoMove 2s linear;
+		}
+
+		@keyframes demoMove{
+			/*0%{
+				background: red;
+			}
+			10%{
+				background: green;
+			}
+			20%{
+				background: orange;
+			}
+			50%{
+				background: yellow;
+			}
+			100%{
+				background: blue;
+			}*/
+			
+			/* 0% */
+			/*from{
+				background: red;
+			}*/
+			/* 100% */
+			to{
+				background: green;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="item">B</div>
+</body>
+</html>

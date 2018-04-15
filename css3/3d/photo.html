@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>照片翻转</title>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		li{
+			list-style: none;
+		}
+		.wrapper{
+			max-width: 700px;
+			max-height: 700px;
+			margin:30px auto;
+			border: 1px solid #000;
+		}
+		.wrapper ul{
+			display: flex;
+			justify-content: center;
+			flex-wrap: wrap;
+			width: 100%;
+		}
+		.wrapper li{
+			width: 200px;
+			height: 200px;
+			margin: 10px;
+			perspective: 300px;
+		}
+		.box{
+			position: relative;
+			width: 100%;
+			height: 100%;
+			transform-style: preserve-3d;
+			transform-origin: 50% 50% -100px;
+			animation: .3s ease-out forwards;
+		}
+		.show,
+		.hide{
+			width: 100%;
+			height: 100%;
+			/*opacity: .5;*/
+		}
+		.show img{
+			width: 100%;
+			height: 100%;
+		}
+		.hide{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: #000;
+			color: #fff;
+			font-size: 20px;
+			text-align: center;
+			line-height: 200px;
+			transform: translate3d(0,0,-1px);
+		}
+		.in-top .hide, 
+		.out-top .hide{
+			transform-origin: bottom;
+			transform: translate3d(0,-100%,0) rotate3d(1, 0, 0, 90deg);
+		}
+		.in-top .box{
+			animation-name: in-top;
+		}
+		.out-top .box{
+			animation-name: out-top;
+		}
+		@keyframes in-top{
+			0%{
+				transform: rotate3d(0,0,0,0);
+			}
+			100%{
+				transform: rotate3d(-1,0,0,90deg);
+			}
+		}
+		@keyframes out-top{
+			0%{
+				transform: rotate3d(-1,0,0,90deg);
+			}
+			100%{
+				transform: rotate3d(0,0,0,0);
+			}
+		}
+		.in-right .hide, 
+		.out-right .hide{
+			transform-origin: left;
+			transform: translate3d(100%,0,0) rotate3d(0, 1, 0, 90deg);
+		}
+		.in-right .box{
+			animation-name: in-right;
+		}
+		.out-right .box{
+			animation-name: out-right;
+		}
+		@keyframes in-right{
+			0%{
+				transform: rotate3d(0,0,0,0);
+			}
+			100%{
+				transform: rotate3d(0,-1,0,90deg);
+			}
+		}
+		@keyframes out-right{
+			0%{
+				transform: rotate3d(0,-1,0,90deg);
+			}
+			100%{
+				transform: rotate3d(0,0,0,0);
+			}
+		}
+
+		.in-bottom .hide, 
+		.out-bottom .hide{
+			transform-origin: top;
+			transform: translate3d(0,100%,0) rotate3d(1, 0, 0, -90deg);
+		}
+		.in-bottom .box{
+			animation-name: in-bottom;
+		}
+		.out-bottom .box{
+			animation-name: out-bottom;
+		}
+		@keyframes in-bottom{
+			0%{
+				transform: rotate3d(0,0,0,0);
+			}
+			100%{
+				transform: rotate3d(1,0,0,90deg);
+			}
+		}
+		@keyframes out-bottom{
+			0%{
+				transform: rotate3d(1,0,0,90deg);
+			}
+			100%{
+				transform: rotate3d(0,0,0,0);
+			}
+		}
+		.in-left .hide, 
+		.out-left .hide{
+			transform-origin: right;
+			transform: translate3d(-100%,0,0) rotate3d(0, 1, 0, -90deg);
+		}
+		.in-left .box{
+			animation-name: in-left;
+		}
+		.out-left .box{
+			animation-name: out-left;
+		}
+		@keyframes in-left{
+			0%{
+				transform: rotate3d(0,0,0,0);
+			}
+			100%{
+				transform: rotate3d(0,1,0,90deg);
+			}
+		}
+		@keyframes out-left{
+			0%{
+				transform: rotate3d(0,1,0,90deg);
+			}
+			100%{
+				transform: rotate3d(0,0,0,0);
+			}
+		}
+
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<ul>
+			<li>
+				<div class="box">
+					<div class="show">
+						<img src="./img/1.jpg" alt="">
+					</div>
+					<div class="hide">可爱的我1</div>
+				</div>
+			</li>
+			<li>
+				<div class="box">
+					<div class="show">
+						<img src="./img/2.jpg" alt="">
+					</div>
+					<div class="hide">可爱的我2</div>
+				</div>
+			</li>
+			<li>
+				<div class="box">
+					<div class="show">
+						<img src="./img/3.jpg" alt="">
+					</div>
+					<div class="hide">可爱的我3</div>
+				</div>
+			</li>
+			<li>
+				<div class="box">
+					<div class="show">
+						<img src="./img/4.jpg" alt="">
+					</div>
+					<div class="hide">可爱的我4</div>
+				</div>
+			</li>
+			<li>
+				<div class="box">
+					<div class="show">
+						<img src="./img/5.jpg" alt="">
+					</div>
+					<div class="hide">可爱的我5</div>
+				</div>
+			</li>
+			<li>
+				<div class="box">
+					<div class="show">
+						<img src="./img/6.jpg" alt="">
+					</div>
+					<div class="hide">可爱的我6</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<script src='./js/index.js'></script>
+</body>
+</html>

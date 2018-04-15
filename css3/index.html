@@ -58,7 +58,7 @@
 			border-radius: 10px;
 			border: 1px solid #888;
 			background: #ccc;
-			box-shadow: 10px 10px 10px 1px #f00 inset;
+			box-shadow: 10px 10px 10px 1px #f00;
 		}
 
 		ul{
@@ -76,9 +76,120 @@
 		li:hover{
 			box-shadow: 0 0 5px #666;
 		}
+		p{
+			text-shadow: 5px 5px 3px deeppink;
+		}
+		.bg{
+			width: 100px;
+			height: 100px;
+			/*background: rgb(255, 0, 0);
+			opacity: .5;*/
+			background: rgba(255, 0, 0, .5);
+		}
+		.lg{
+			width: 100px;
+			height: 100px;
+			/*background: linear-gradient(to bottom, red, green);*/
+			/*background: linear-gradient(to top, red, green);*/
+			/*background: linear-gradient(to bottom right, red, green);*/
+			background: linear-gradient(0deg, red 0%, green 20%, yellow 40%, transparent 60%);
+		}
+		.rg{
+			width: 100px;
+			height: 100px;
+			/*background: radial-gradient(circle 50px at 50px 50px, red, green, yellow);*/
+			/*background: radial-gradient(circle 50px at 100px 0px, red, green, yellow);*/
+			/*background: radial-gradient(circle 50px at 100% 0%, red, green, yellow);*/
+			/*background: radial-gradient(circle 50px at 50% 50%, red, green, yellow);*/
+			/*background: radial-gradient(circle 50px at center center, red, green, yellow);*/
+			/* 第二个参数默认走center */ 
+			/*background: radial-gradient(circle 50px at 0px, red, green, yellow);*/
+			/*background: radial-gradient(circle 50px at 0px center, red, green, yellow);*/
+			/*background: radial-gradient(ellipse 25px 50px at center, red, green, yellow);*/
+			background: radial-gradient(ellipse 50px 25px at center, red, green, yellow);
+		}
+		@font-face{
+			font-family: 'myFontFace';
+			src: url('./Another day in Paradise.ttf');
+		}
+		.wr{
+			width: 100px;
+			height: 100px;
+			border: 1px solid #000;
+			word-wrap: break-word;
+			font-family: 'myFontFace';
+		}
+		.bor{
+			width: 100px;
+			height: 100px;
+			background: #f00;
+			border: 50px solid #000;
+			/*border-image: url('./default.jpg');*/
+			/*border-image: url('./default.jpg') 100;*/
+			/*border-image: url('./default.jpg') 100 repeat;*/
+			/*border-image: url('./default.jpg') 100 round;*/
+			border-image: url('./default.jpg') 100 120 130 140 round;
+		}
+		.bo{
+			width: 100px;
+			height: 100px;
+			border: 50px solid rgba(0, 0, 0, .5);
+			padding: 50px;
+			background: url('./default.jpg') no-repeat;
+			background-origin: border-box;
+			/*background-origin: padding-box;*/
+			/*background-origin: content-box;*/
+			/*background-clip: content-box;*/
+			/*background-clip: padding-box;*/
+			background-clip: border-box;
+		}
+		.tc{
+			width: 300px;
+			height: 300px;
+			border: 50px solid rgba(0, 0, 0, .5);
+			padding: 50px;
+			background: url('./default.jpg') no-repeat;
+			background-origin: border-box;
+
+
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			font-size: 40px;
+			font-weight: 900;
+
+		}
+
+		.bs{
+			width: 300px;
+			height: 300px;
+			border: 1px solid #000;
+			background: url('./default.jpg') no-repeat;
+			/*background-size: 100%;*/
+			/*background-size: 100px 100px;*/
+			background-size: cover;
+			/*background-size: contain;*/
+			/*background-position: 0px 50%;*/
+			background-position: center;
+		}
+		.start{
+			width: 110px;
+			height: 23px;
+			background-image: url('./starts.png');
+			background-repeat: no-repeat;
+			background-position: 0 -22px;
+		}
 	</style>
 </head>
 <body>
+	<div class="start"></div>
+	<div class="bs"></div>
+	<div class="tc">原来你还在这里，文字有背景</div>
+	<div class="bo"></div>
+	<div class="bor"></div>
+	<div class="wr">http://www.baodu.com</div>
+	<div class="rg"></div>
+	<div class="lg"></div>
+	<div class="bg">文字不透明</div>
 	<div class="demo"></div>
 	<div class="demo1"></div>
 	<div class="demo2"></div>
@@ -92,5 +203,6 @@
 		<li>4</li>
 		<li>5</li>
 	</ul>
+	<p>原来你还在这里</p>
 </body>
 </html>

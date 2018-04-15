@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>旋转照片墙</title>
+	<style>
+		.wrapper{
+			position: relative;
+			width: 300px;
+			height: 300px;
+			border: 1px solid #000;
+			perspective: 600px;
+		}
+		.box{
+			position: absolute;
+			top: 50px;
+			left: 50px;
+			width: 200px;
+			height: 200px;
+			transform-style: preserve-3d;
+			animation: turn 3s linear infinite;
+		}
+		.box div{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 200px;
+			height: 200px;
+			opacity: .5;
+			text-align: center;
+			line-height: 200px;
+			color: #fff;
+			font-size: 30px;
+		}
+		.box div:nth-of-type(1){
+			background-color: red;
+			transform: translate3d(0,0,100px);
+		}
+		.box div:nth-of-type(2){
+			background-color: green;
+			transform: rotate3d(1, 0, 0, 90deg) translate3d(0,0,100px);
+		}
+		.box div:nth-of-type(3){
+			background-color: yellow;
+			transform: rotate3d(1, 0, 0, 180deg) translate3d(0,0,100px);
+		}
+		.box div:nth-of-type(4){
+			background-color: blue;
+			transform: rotate3d(1, 0, 0, -90deg) translate3d(0,0,100px);
+		}
+		.box div:nth-of-type(5){
+			background-color: purple;
+			transform: rotate3d(0, 1, 0, 90deg) translate3d(0,0,100px);
+		}
+		.box div:nth-of-type(6){
+			background-color: orange;
+			transform: rotate3d(0, 1, 0, -90deg) translate3d(0,0,100px);
+		}
+		@keyframes turn{
+			0%{
+				transform: rotateX(0) rotateY(0);
+				/*transform: rotate3d(0, 0, 0, 0);*/
+			}
+			100%{
+				transform: rotateX(360deg) rotatey(360deg);
+				/*transform: rotate3d(1, 1, 0, 360deg);*/
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="box">
+			<div>1</div>
+			<div>2</div>
+			<div>3</div>
+			<div>4</div>
+			<div>5</div>
+			<div>6</div>
+		</div>
+	</div>
+</body>
+</html>
