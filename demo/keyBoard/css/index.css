@@ -3,6 +3,197 @@
 	margin: 0;
 }
 input{
+	border: 0;
+}
+.none{
+	display: none;
+}
+.cash-desk{
+	position: relative;
+	width: 100%;
+	height: 680px;
+	background-image: url('../img/bg.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+}
+.cash-desk .wrapper{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-410px, -50%);
+}
+.cash-desk .wrapper > p{
+	margin-bottom: 10px;
+	color: #fff;
+	font-size: 30px;
+}
+.keyboard{
+	width: 630px;
+	height: 484px;
+	background: #fff;
+	border: 8px solid #e7e7e7;
+	border-radius: 4px;
+}
+.keyboard input{
+	width: 100%;
+	height: 100%;
+	padding: 10px;
+	box-sizing: border-box;
+	text-align: right;
+	font-size: 46px;
+	color: #24c890;
+}
+.keyboard th{
+	border-bottom: 8px solid #e7e7e7;
+}
+.keyboard table{
+	width: 100%;
+	height: 484px;
+	text-align: center;
+	font-size: 24px;
+	user-select: none;
+}
+.keyboard td{
+	width: 25%;
+	border: 1px solid #e7e7e7;
+	border-top: 0;
+	border-right: 0;
+	color: #6b6868;
+	font-size: 38px;
+	cursor: pointer;
+}
+.keyboard i{
+	display: inline-block;
+	font-style: normal;
+	font-size: 30px;
+}
+i.icon{
+	display: inline-block;
+	background-image: url('../img/icon.png');
+	background-size: 200px 200px;
+}
+.keyboard i.icon{
+	width:31px;
+	height:32px;
+	background-position:-75px -16px;
+}
+.keyboard label{
+	font-size: 30px;
+	cursor: pointer;
+}
+.cash-desk .pay-btn{
+	position: absolute;
+	left: 0;
+	top: 0;
+	margin-top: 50px;
+	margin-left: 666px;
+	height: 500px;
+	line-height: 100px;
+	padding: 150px 52px;
+	box-sizing: border-box;
+	background: #24c890;
+	color: #fff;
+	font-size: 48px;
+	border-radius: 4px;
+	cursor: pointer;
+}
+.code-mask{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, .7);
+	z-index: -1;
+	transition: all .2s linear;
+}
+.code-mask.active{
+	z-index: 1;
+}
+.code-mask .code{
+	width: 850px;
+	height: 124px;
+	margin: 170px auto;
+}
+.code-mask .code p{
+	margin-bottom: 10px;
+	color: #fff;
+	font-size: 30px;
+}
+.code-mask .code input{
+	width: 830px;
+	height: 50px;
+	padding: 10px;
+	font-size: 30px;
+}
+.pay-result{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-left: -400px;
+	margin-top: -228px;
+	width: 800px;
+	height: 456px;
+	background: #fff;
+	border-radius: 4px;
+	text-align: center;
+}
+.pay-result i.success-icon{
+	width:65px;
+	height:65px;
+	background-position:-103px -74px;
+}
+.pay-result i.fail-icon{
+	width:65px;
+	height:65px;
+	background-position:-25px -74px;
+}
+.pay-result .icon-p{
+	margin: 68px 0 30px;
+}
+.pay-result p{
+	font-size: 30px;
+	color: #5c5c5c;
+}
+.pay-result .tip{
+	margin-top: 10px;
+	font-size: 24px;
+	color: #8b8a8a;
+}
+.pay-result span{
+	display: inline-block;
+	width: 195px;
+	height: 50px;
+	margin-top: 88px;
+	text-align: center;
+	line-height: 50px;
+	border-radius: 4px;
+	font-size: 28px;
+	cursor: pointer;
+}
+.pay-result span.order{
+	margin-right: 40px;
+	color: #a2a2a2;
+	border: 1px solid #a2a2a2;
+}
+.pay-result span.repay{
+	color: #fff;
+	background: #24c890;
+}
+.pay-result svg{
+	margin: 100px 0 30px;
+}
+.pay-result circle, .pay-result path{
+	fill:transparent;
+	stroke: #fff;
+	stroke-width: 5px;
+	stroke-linecap: round;
+}
+.pay-result circle{
+	stroke:rgb(36, 200, 144);
+}
+/*input{
 	-webkit-appearance: none;
  	-moz-appearance: none;
  	-o-appearance: none; 
@@ -31,8 +222,8 @@ input{
 	height: 38px;
 	padding: 10px;
 	box-sizing: border-box;
-	-moz-box-sizing: border-box;  /* Firefox */
-	-webkit-box-sizing: border-box; /* Safari */
+	-moz-box-sizing: border-box;  
+	-webkit-box-sizing: border-box; 
 	font-size: 24px;
 }
 .input-wrap input.pay-status{
@@ -73,7 +264,7 @@ input{
 	font-size: 20px;
 	color: #fff;
 }
-/* 数字键盘 */
+
 .keyboard-wrap{
 	position: fixed;
 	left: 0;
@@ -96,4 +287,4 @@ input{
 }
 .keyboard-wrap td.bg{
 	background: #d3d9df;
-}
+}*/

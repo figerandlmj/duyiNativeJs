@@ -1,17 +1,22 @@
 (function(exports) {
     var keyBoard = function(oKeyboard, input, pointNum) {
         oKeyboard.onclick = addEvent;
+        input.oninput = addEvent;
         function addEvent(e) {
         	var ev = e || window.event;
         	var clickEl = ev.element || ev.target;
-        	var value = clickEl.textContent || clickEl.innerText;
-        	if (clickEl.tagName.toLocaleLowerCase() === 'td') {
-        		if (value === "×") {
+            // var value = clickEl.textContent || clickEl.innerText;
+        	var value = clickEl.getAttribute('val');
+            // console.log(value)
+        	// if (clickEl.tagName.toLocaleLowerCase() !== 'th') {
+        		if (value === "<-") {
         			var num = input.value;
         			if(num) {
         				input.value = num.substr(0, num.length - 1);
         			}
-        		}else {
+        		}else if (value === "c") {
+                    input.value = '';
+                }else {
         			if (value === "." && pointNum <= 0) {
         				input.value = input.value;
         			}else {
@@ -19,7 +24,7 @@
         				clearNoNum(input);
         			}
         		}
-        	}
+        	// }
         }
 
         //控制输入框中的格式
@@ -33,7 +38,7 @@
         	}
         	if(obj.value.indexOf(".") >= 0){//判断是否有小数点
         		if(obj.value.split(".")[1].length > pointNum){//控制只能输入小数点后2位
-        			obj.value = obj.value.substr(0, obj.value.length - 1);
+        			obj.value = obj.value.split(".")[0] + '.' + obj.value.split(".")[1].substr(0, 2);
         		}
         	}
         }

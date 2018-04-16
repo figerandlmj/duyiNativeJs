@@ -8,7 +8,69 @@
 </head>
 <body>
 	<object id="exdev" classid="clsid:F704E0FC-AA80-4559-987B-32587D020B82" codebase="./PaxExDev.CAB" type="application/x-oleobject" width="0" height="0"></object>
-	<div class="container">
+	<div class="cash-desk">
+		<div id="keyboard-box" class="wrapper">
+			<p>收款金额</p>
+			<div class="keyboard">
+				<table id="keyboard" border="0" cellspacing="0" cellpadding="0">
+					<tr>
+						<th colspan="4"><input id="pay-money" type="text" value="" placeholder="请输入金额"></th>
+					</tr>
+					<tr>
+						<td val="7">7</td>
+						<td val="8">8</td>
+						<td val="9">9</td>
+						<td val="<-" rowspan="2"><i val="<-" class="icon"></i><br><label val="<-">退格</label></td>
+					</tr>
+					<tr>
+						<td val="4">4</td>
+						<td val="5">5</td>
+						<td val="6">6</td>
+					</tr>
+					<tr>
+						<td val="1">1</td>
+						<td val="2">2</td>
+						<td val="3">3</td>
+						<td val="c" rowspan="2"><i val="c">C</i><br><label val="c">清除</label></td>
+					</tr>
+					<tr>
+						<td val="0">0</td>
+						<td val="00">00</td>
+						<td val=".">.</td>
+					</tr>
+				</table>
+			</div>
+			<div id="pay-btn" class="pay-btn">收款</div>
+		</div>
+		<div id="code-box" class="code-mask">
+			<div class="code">
+				<p>用户付款码</p>
+				<input id="pay-code" type="text" placeholder="请使用扫描枪或者输入">
+			</div>
+		</div>
+		<div id="success-box" class="pay-result none">
+			<p class="icon-p"><i class="icon success-icon"></i></p>
+			<p>支付成功</p>
+			<span class="order">查看订单</span>
+			<span class="repay">继续收款</span>
+		</div>
+		<div id="fail-box" class="pay-result none">
+			<p class="icon-p"><i class="icon fail-icon"></i></p>
+			<p>支付失败</p>
+			<p class="tip">余额不足，对方的金额不满足支付条件</p>
+			<span class="repay">重新收款</span>
+		</div>
+		<div id="paying-box" class="pay-result none">
+			<svg width="100" height="100">
+				<circle r="40" cx="50" cy="50"></circle>
+				<path d="M 10 50 A 40 40 0 0 1 50 10">
+					<animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="0.5s" repeatCount="indefinite"></animateTransform>
+				</path>
+			</svg>
+			<p>支付中...</p>
+		</div>
+	</div>
+	<!-- <div class="container">
 		<div class="input-wrap">
 			<label for="pay-money">支付金额</label>
 			<input id="pay-money" class="text-input" type="text">
@@ -60,7 +122,7 @@
 				<td class="bg">×</td>
 			</tr>
 		</table>
-	</div>
+	</div> -->
 	<script type="text/javascript" src="./js/keyboard.js"></script>
 	<script type="text/javascript" src="./js/index.js?2018041106"></script>
 </body>
