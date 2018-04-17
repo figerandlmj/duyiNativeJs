@@ -86,7 +86,8 @@ var oPayBtn = document.getElementById("pay-btn");
     // oPayStatus = document.getElementById("pay-status");
 
 oPayBtn.onclick = function(){
-   pay();
+   // pay();
+   exdevTest();
 }
 
 document.onkeydown = function(e){
