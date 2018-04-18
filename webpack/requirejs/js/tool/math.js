@@ -1,4 +1,4 @@
-define(['http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min'], function($){
+define(['./js/tool/jquery.js'], function($){
 	function add(a, b) {
 		console.log($);
 		return a + b;
