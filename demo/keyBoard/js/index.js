@@ -14,16 +14,17 @@ keyBoard(oKeyboard, oPayMoney, pointNum);
 //     },1000);
 // }
 
+var oExdev = document.getElementById("exdev");
+// 打开扫描盒子
 function exdevTest() {
-    
-    exdev.SetCommParam('4','9600,8,e,1');
-    exdev.ScanOpen();
-    exdev.ScanSetParam('20');   //打开前置补光灯
-    var result = exdev.ScanRead('20000');
+    oExdev.SetCommParam('4','9600,8,e,1');
+    oExdev.ScanOpen();
+    oExdev.ScanSetParam('20');   //打开前置补光灯
+    var result = oExdev.ScanRead('20000');
     oPayCode.value = result;
-    exdev.ScanSetParam('21');//关闭前置补光灯
-    exdev.ScanClose();
-    exdev.PiccDispBarCode(result,'1','2','-1','-1'); //显示二维码
+    oExdev.ScanSetParam('21');//关闭前置补光灯
+    oExdev.ScanClose();
+    oExdev.PiccDispBarCode(result,'1','2','-1','-1'); //显示二维码
 }
 
 // 付款

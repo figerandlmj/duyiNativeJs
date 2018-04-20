@@ -1,0 +1,41 @@
+@width: 200px;
+.border(@width, @style, @color){
+	border: @width @style @color;
+}
+html, body{
+	width: 100%;
+	height: 100%;
+	background-color: #fff;
+}
+
+.img{
+	width: @width;
+	height: 100px;
+	background: url('../img/1.jpg');
+	.border(4px, solid, #000);
+}
+
+@import './tool.less';
+.triangle{
+	width: 0;
+	height: 0;
+	.triangleStyle(left, blue);
+}
+
+.box{
+	width: 300px;
+	height: 200px;
+	border: 1px solid #000;
+	&:hover{
+		width: 500px;
+	}
+	.item{
+		// width: 100% + 30px;
+		// width: calc(100% + 30px);//css3方法
+		width: ~'calc(100% + 30px)';//避免编译
+		height: 100px;
+		background: red;
+	}
+}
+
+

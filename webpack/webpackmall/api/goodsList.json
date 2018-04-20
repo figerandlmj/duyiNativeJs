@@ -1,0 +1,69 @@
+{
+	"list":[
+		{
+			"id": "1",
+			"name": "商品名称",
+			"imgurl": ["http://localhost:8080/src/img/1.jpg","http://localhost:8080/src/img/2.jpg"],
+			"spectList": [
+				{
+					"nid": "商品库存id",
+					"spect": "商品规格1",
+					"price": "2",
+					"quantity": "3"
+				}
+			]
+		},
+		{
+			"id": "2",
+			"name": "商品名称2",
+			"imgurl": ["http://localhost:8080/src/img/3.jpg","http://localhost:8080/src/img/2.jpg"],
+			"spectList": [
+				{
+					"nid": "商品库存id",
+					"spect": "商品规格1",
+					"price": "2",
+					"quantity": "3"
+				}
+			]
+		},
+		{
+			"id": "3",
+			"name": "商品名称3",
+			"imgurl": ["http://localhost:8080/src/img/2.jpg","http://localhost:8080/src/img/2.jpg"],
+			"spectList": [
+				{
+					"nid": "商品库存id",
+					"spect": "商品规格1",
+					"price": "2",
+					"quantity": "3"
+				}
+			]
+		},
+		{
+			"id": "4",
+			"name": "商品名称4",
+			"imgurl": ["http://localhost:8080/src/img/1.jpg","http://localhost:8080/src/img/2.jpg"],
+			"spectList": [
+				{
+					"nid": "商品库存id",
+					"spect": "商品规格1",
+					"price": "2",
+					"quantity": "3"
+				}
+			]
+		},
+		{
+			"id": "5",
+			"name": "商品名称5",
+			"imgurl": ["http://localhost:8080/src/img/1.jpg","http://localhost:8080/src/img/2.jpg"],
+			"spectList": [
+				{
+					"nid": "商品库存id",
+					"spect": "商品规格1",
+					"price": "2",
+					"quantity": "3"
+				}
+			]
+		}
+	]
+}

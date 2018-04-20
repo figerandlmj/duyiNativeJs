@@ -10,15 +10,12 @@ var providePlugin = new webpack.ProvidePlugin({
 
 module.exports = {
 	entry: {
-		index: './src/js/entry.js',
-		index2: './src/js/entry2.js'
+		index: './src/js/index.js',
+		goodsInfo: './src/js/goodsInfo.js'
 	},
 	output: {
-		// filename: '[name]-[chunkhash:8].js',
 		filename: '[name].js',
 		path: __dirname + '/out', //绝对路径
-		// publicPath: './out' // css里面图片的路径不对
-		// publicPath: './' // html里面图片路径不对
 		publicPath: 'http://localhost:8080/out/'
 	},
 	module: {
@@ -45,8 +42,7 @@ module.exports = {
 			},
 			{
 				test: /.jpg|png|gif|svg$/,
-				// use: ['url-loader?limit=8192&name=img/[name].[ext]']
-				use: ['url-loader?limit=3072&name=img/[name].[ext]']
+				use: ['url-loader?limit=8192&name=img/[name].[ext]']
 			}
 		]
 	},
@@ -55,7 +51,6 @@ module.exports = {
 		new webpack.optimize.CommonsChunkPlugin({
 			name: 'commons',//模块名
 			filename: 'commons.js',//文件名
-			// minChunks: 3//引用>=3次被提取
 			minChunks: 2//引用>=2次被提取
 		}),
 		new ExtractTextPlugin('css/[name].css'),

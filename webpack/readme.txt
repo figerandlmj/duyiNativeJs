@@ -113,9 +113,9 @@
 	开发模式  监听文件变化，自动打包合并
 	生产模式  文件压缩 文件md5名修改 替换html
 
-	node.js环境安装  包含了npm命令  node -v （8.9.4）4.4.5 me
+	node.js环境安装  包含了npm命令  node -v （8.9.4）
 
-	全局安装  npm install webpack@3.3.5 -g   webpack -v（3.5.5）3.6.0 me
+	全局安装  npm install webpack@3.5.5 -g   webpack -v
 
 	webpackdemo
 		npm init  项目初始化
@@ -165,12 +165,40 @@
 			npm install css-loader style-loader --save-dev
 			img
 			npm install url-loader file-loader --save-dev
+			less
+			npm install less-loader less --save-dev
 
-		npm install webpack --save-dev  局部安装webpack
+		npm install webpack@3.5.5 --save-dev  局部安装webpack
 		
 		插件
 			压缩代码
 			npm install uglifyjs-webpack-plugin --save-dev
+			提取公共模块
+			webpack.optimize.CommonsChunkPlugin
+			独立出css样式
+			npm install extract-text-webpack-plugin --save-dev
+
+		安装node.js express服务器
+			npm install webpack-dev-server@2.9.7 -g 
+			http://localhost:8080/ 
+		开启服务器页面自动打包刷新
+			webpack-dev-server --progress --colors --watch 
+		方便错误查询 
+			webpack-dev-server --devtool eval-source-map
+
+		jquery挂载全局
+			npm install jquery --save  安装jquery插件
+			var providePlugin = new webpack.ProvidePlugin({
+				$: 'jquery',
+				jQuery: 'jquery',
+				'window.jQuery': 'jquery'
+			});
+
+
+
+less  动态样式语言  css预处理语言
+
+	变量、继承、运算、函数
 
 
 
