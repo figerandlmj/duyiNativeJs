@@ -1,0 +1,69 @@
+@import './base.less';
+
+.buy_wrap{
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 10;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, .7);
+	.con{
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		background: @white;
+		p{
+			padding: 10px;
+			font-size: 1rem;
+			border-bottom: 1px solid @gray-e0;
+			.price{
+				padding-left: 10px;
+				color: @gray-6;
+			}
+		}
+		.guige{
+			span{
+				padding: 5px;
+				margin-left: 10px;
+				font-size: .8rem;
+				border: 1px solid @gray-e0;
+				border-radius: 4px;
+			}
+			.active{
+				border: 1px solid @red;
+			}
+		}
+		.number{
+			overflow: hidden;
+			i{
+				float: left;
+				font-style: normal;
+			}
+			span{
+				float: right;
+				display: inline-block;
+				padding: 3px 5px;
+				background: @gray-e0;
+				font-size: 1.2rem;
+				border-radius: 4px;
+			}
+			label{
+				float: right;
+				padding: 5px 10px 0;
+			}
+		}
+		input{
+			width: 100%;
+			height: 40px;
+			line-height: 40px;
+			background: @red;
+			text-align: center;
+			color: @white;
+			font-size: 1rem;
+			border: 0;
+		}
+	}
+}

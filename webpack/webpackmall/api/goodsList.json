@@ -8,7 +8,7 @@
 				{
 					"nid": "商品库存id",
 					"spect": "商品规格1",
-					"price": "2",
+					"price": "1",
 					"quantity": "3"
 				}
 			]
@@ -21,7 +21,19 @@
 				{
 					"nid": "商品库存id",
 					"spect": "商品规格1",
+					"price": "8",
+					"quantity": "3"
+				},
+				{
+					"nid": "商品库存id",
+					"spect": "商品规格2",
 					"price": "2",
+					"quantity": "3"
+				},
+				{
+					"nid": "商品库存id",
+					"spect": "商品规格3",
+					"price": "3",
 					"quantity": "3"
 				}
 			]
@@ -34,7 +46,7 @@
 				{
 					"nid": "商品库存id",
 					"spect": "商品规格1",
-					"price": "2",
+					"price": "3",
 					"quantity": "3"
 				}
 			]
@@ -47,7 +59,7 @@
 				{
 					"nid": "商品库存id",
 					"spect": "商品规格1",
-					"price": "2",
+					"price": "4",
 					"quantity": "3"
 				}
 			]
@@ -60,7 +72,7 @@
 				{
 					"nid": "商品库存id",
 					"spect": "商品规格1",
-					"price": "2",
+					"price": "5",
 					"quantity": "3"
 				}
 			]

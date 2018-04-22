@@ -1,5 +1,4 @@
 require('../css/index.less');
-
 require('jquery');
 
 function getGoodsList() {
