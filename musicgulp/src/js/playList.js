@@ -1,12 +1,13 @@
 (function($, root) {
+	var control;
 	var $scope = $(document.body);
 	var $playList = $('<div class="play-list">\
-							<div class="play-header">播放列表</div>\
-							<ul class="list-wrapper">\
-							</ul>\
-							<div class="play-close-btn">关闭</div>\
-						</div>');
-	var control;
+						<div class="play-header">播放列表</div>\
+						<ul class="list-wrapper">\
+						</ul>\
+						<div class="play-close-btn">关闭</div>\
+					</div>');
+	
 	function renderList(songList) {
 		var html = '',
 			len = songList.length;
@@ -46,6 +47,7 @@
 	}
 	root.playList = {
 		renderList: renderList,
-		show: show
+		show: show,
+		signSong: signSong
 	};
 })(window.Zepto, window.player || (window.player = {}));

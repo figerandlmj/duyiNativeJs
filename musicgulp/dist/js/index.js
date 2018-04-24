@@ -1,8 +1,7 @@
-var $ = window.Zepto;
 var root = window.player;
-
+var $ = window.Zepto;
 var $scope = $(document.body);
-var songList;
+var songList;//歌曲列表
 var controlManager;
 var audio = new root.AudioManager();
 
@@ -36,7 +35,9 @@ function bindTouch() {
 
 function bindClick() {
 	$scope.on('play:change', function(event, index, flag) {
-		audio.setAudioSource(songList[index].audio);
+		root.playList.signSong(index);
+		root.lyric.renderLyric(songList[index].lyric);
+		audio.setAudioSource(songList[index].audio, songList[index].lyric);
 		if(audio.status == 'play' || flag) {
 			audio.play();
 			root.processor.start();
@@ -77,13 +78,11 @@ function getData(url) {
 		url: url,
 		success: function(data) {
 			console.log(data);
+			songList = data;
 			bindClick();
 			bindTouch();
-			root.playList.renderList(data);
-			controlManager = new root.ControlManager(data.length);
-			songList = data;
-			// root.render(data[0]);
-			audio.setAudioSource(songList[0].audio);
+			controlManager = new root.ControlManager(songList.length);
+			root.playList.renderList(songList);
 			$scope.trigger('play:change', 0);
 		},
 		error: function() {
@@ -91,5 +90,4 @@ function getData(url) {
 		}
 	})
 }
-
 getData('./mock/data.json');

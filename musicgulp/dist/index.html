@@ -4,21 +4,24 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>Document</title>
+	<title>音乐播放器</title>
 	<link rel="stylesheet" href="./css/index.css">
 </head>
 <body>
 	<div class="wrapper">
+		<!-- 歌曲图片 -->
 		<div class="song-img">
 			<div class="img-wrapper">
 				<img src="./img/1.jpg" alt="">
 			</div>
 		</div>
+		<!-- 歌曲信息 -->
 		<div class="song-info">
 			<div class="song-name">丑八怪</div>
 			<div class="singer-name">薛之谦</div>
 			<div class="album-name">那年花开</div>
 		</div>
+		<!-- 时间进度 -->
 		<div class="pro">
 			<div class="cur-time">00:00</div>
 			<div class="pro-wrapper">
@@ -29,6 +32,17 @@
 			</div>
 			<div class="all-time">04:00</div>
 		</div>
+		<!-- 歌词 -->
+		<div class="lyric">
+			<ul class="lyric-wrapper">
+				<!-- <li>演唱：薛之谦</li>
+				<li>作词：甘世佳</li>
+				<li>作曲：李荣浩</li>
+				<li>专辑：丑八怪</li>
+				<li>如果世界漆黑 其实我很美</li> -->
+			</ul>
+		</div>
+		<!-- 控制按钮 -->
 		<div class="control">
 			<div class="btn-wrapper like-btn"></div>
 			<div class="btn-wrapper prev-btn"></div>
@@ -37,6 +51,7 @@
 			<div class="btn-wrapper list-btn"></div>
 		</div>
 	</div>
+	<!-- 歌曲列表 -->
 	<!-- <div class="play-list">
 		<div class="play-header">播放列表</div>
 		<ul class="list-wrapper">
@@ -51,6 +66,7 @@
 	<script src="./js/audioManager.js"></script>
 	<script src="./js/processor.js"></script>
 	<script src="./js/playList.js"></script>
+	<script src="./js/lyric.js"></script>
 	<script src="./js/index.js"></script>
 </body>
 </html>

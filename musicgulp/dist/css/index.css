@@ -141,6 +141,26 @@ body {
 .wrapper .control .list-btn {
   background-image: url('../img/icon-list.png');
 }
+.wrapper .lyric {
+  position: relative;
+  height: 30px;
+  margin-top: 30px;
+  overflow: hidden;
+}
+.wrapper .lyric ul {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transition: top 200ms ease-out;
+}
+.wrapper .lyric ul li {
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  font-size: 1.6rem;
+  color: #fff;
+}
 .play-list {
   position: fixed;
   bottom: 0;
