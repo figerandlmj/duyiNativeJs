@@ -91,6 +91,131 @@
 		let {add,sum} = methods();
 
 
+3.字符串的扩展
+	模板字符串
+		增强字符串
+			var str = `life 
+			is 
+			shit!!!`;
+		在字符串中添加变量或表达式
+			var xm = {
+				name: 'xiaoming',
+				age: 18,
+				height: 180
+			};
+			var {name,age,height} = xm;
+
+			var str = 'name: ' + name + ' age: ' + age + ' height: ' + height;
+			console.log(str);
+
+			var newStr = `name: ${name} age: ${age} height: ${height}`;
+			console.log(newStr);
+	标签模板
+		实质 函数调用的特殊形式
+			var name = 'xiaoming',
+				where = 'bj';
+			function show() {
+				console.log(arguments);
+			}
+			show`hello ${name} , welcome to ${where}`;
+		应用 过滤html字符串 防xss攻击
+			var name = '<script>alert("hello")<\/script>';
+			safeHTML`<p>${name} welcome to bj</p>`;
+
+			function safeHTML(data) {
+				// ["<p>", " welcome to bj</p>"], name
+				// console.log(arguments);
+				// ["<p>", " welcome to bj</p>"]
+				// console.log(data);
+
+				var str = data[0];
+				for(let i = 1; i < arguments.length; i ++) {
+					var arg = String(arguments[i]);
+					str += arg.replace(/&/g, '&amp').replace(/</g, '&lt').replace(/>/g, '&gt');
+					str += data[i];
+				}
+				console.log(str);
+			}
+
+4.函数的扩展
+	函数参数的默认值
+		基本使用
+			function Person(name, age = 18) {
+				console.log(name, age);
+			}
+			Person('xm', 12);//12
+			Person('xm');//18
+			Person('xm', undefined);//18 
+			Person('xm', 0);//0 
+			Person('xm', null);//null
+			Person('xm', false);//false
+		与解构赋值结合使用
+			function fn({x,y=5}){
+				console.log(x,y);
+			}
+			fn({});//undefined 5
+			fn({x:1});//1 5
+			fn({x:1,y:2});//1 2
+			fn();//报错 不构成解构赋值
+		参数作用域以及注意事项
+			function fn(x=5) {
+				let x = 10;
+			}
+			fn();//报错
+			// 报错
+			// function fn(x, x, z=10){}
+
+	REST参数（扩展运算符）
+			function fn(...arg) {
+				console.log(arg);
+			}
+			fn(1,2,3);//[1, 2, 3]
+			// ...arg  1,2,3
+			// arg     [1,2,3]
+
+			function fn(...arg) {
+				console.log(arg);
+			}
+			// fn.call(null, 1,2,3);//[1,2,3]
+			// fn.apply(null,[1,2,3]);//[1,2,3]
+
+			var arg = [1,2,3];
+			fn.call(null, ...arg);//[1,2,3]
+			fn.apply(null,arg);//[1,2,3]
+
+	箭头函数
+		基本使用
+		var f = function(num) {
+			return num;
+		}
+		var f = num => num;//参数为num
+		var f = () => num;//没有参数
+		var f = (num1,num2) => num1 + num2;
+		var f = () => ({name:123});//返回值为对象时要加个()
+		var fn = num => {
+			num = num +1;
+			return num * 5;
+		}
+		注意事项
+			var age = 'window 18';
+			var obj = {
+				age: 18,
+				getAge: () => this.age
+			}
+			console.log(obj.getAge());//'window 18'
+			// this 指向obj的父级window
+			// 没有arguments 通过...arg获取到参数
+		嵌套的箭头函数
+			function fn(str) {
+				return function() {
+					return str.split('')
+				}
+			}
+			var fn = str => () => str.split('');
+			console.log(fn('123')());
+
+5.数组的扩展
+
 
 
 

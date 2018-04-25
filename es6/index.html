@@ -189,6 +189,211 @@
 
 		// import {vuex, mapState, mapMutation} from 'vuex';
 
+
+
+		// var str = 'hello world';
+		// var newStr = `hello world`;
+		// console.log(str);
+		// console.log(newStr);
+
+		// var str = 'life \n is \n shit!!!';
+		// var str = 'life \
+		// is \
+		// shit!!!';
+
+		// var str = `life 
+		// is 
+		// shit!!!`;
+
+		// var str = `
+		// 		<div>
+		// 			<p></p>
+		// 		</div>`;
+
+		// var xm = {
+		// 	name: 'xiaoming',
+		// 	age: 18,
+		// 	height: 180
+		// };
+		// var {name,age,height} = xm;
+
+		// var str = 'name: ' + name + ' age: ' + age + ' height: ' + height;
+		// console.log(str);
+
+		// var newStr = `name: ${name} age: ${age} height: ${height}`;
+		// console.log(newStr);
+
+		// var x=1,y=5;
+		// function getName() {
+		// 	return 'xiaoming';
+		// }
+		// var str = `${x} + ${y} = ${x + y}`;
+		// var str = `${3} + ${y} = ${x + y}`;
+		// var str = `${false} + ${y} = ${x + y}`;
+		// var str = `my name is ${getName()}`;
+
+		// var arr = [1,2,3,4,5];
+		// var resStr = `${arr.map(function(item,index){
+		// 	return `${item} : ${index}`;
+		// })}`;
+
+		// alert`123`;
+
+		// function show(name) {
+		// 	console.log(name);
+		// }
+		// show`xiaoming`;
+
+		// var name = 'xiaoming',
+		// 	where = 'bj';
+		// function show() {
+		// 	console.log(arguments);
+		// }
+		// show`hello ${name} , welcome to ${where}`;
+
+		// fn`hello ${name} , welcome to ${where}`;
+		// fn(["hello ", " , welcome to ", ""], name, where);
+
+		// var `<p>${name} welcome to bj</p>`;
+		// name <script>
+
+		// var name = '<script>alert("hello")<\/script>';
+		// safeHTML`<p>${name} welcome to bj</p>`;
+
+		// function safeHTML(data) {
+		// 	// ["<p>", " welcome to bj</p>"], name
+		// 	// console.log(arguments);
+		// 	// ["<p>", " welcome to bj</p>"]
+		// 	// console.log(data);
+
+		// 	var str = data[0];
+		// 	for(let i = 1; i < arguments.length; i ++) {
+		// 		var arg = String(arguments[i]);
+		// 		str += arg.replace(/&/g, '&amp').replace(/</g, '&lt').replace(/>/g, '&gt');
+		// 		str += data[i];
+		// 	}
+		// 	console.log(str);
+		// }
+
+		// function Person(name, age) {
+		// 	var age = age || 18;
+
+		// 	// if(typeof age == 'undefined') {
+		// 	// 	age = 18;
+		// 	// }
+			
+		// 	console.log(name, age);
+		// }
+		// Person('xm', 12);//12
+		// Person('xm');//18
+		// Person('xm', 0);//18 
+		// Person('xm', null);//18
+		// Person('xm', false);//18
+
+		// function Person(name, age = 18) {
+		// 	console.log(name, age);
+		// }
+		// Person('xm', 12);//12
+		// Person('xm');//18
+		// Person('xm', undefined);//18 
+		// Person('xm', 0);//0 
+		// Person('xm', null);//null
+		// Person('xm', false);//false
+
+		// function fn({x,y=5}){
+		// 	console.log(x,y);
+		// }
+		// fn({});//undefined 5
+		// fn({x:1});//1 5
+		// fn({x:1,y:2});//1 2
+		// fn();//报错 不构成解构赋值
+
+		// function f1({x=0,y=0} = {}) {
+		// 	console.log(x,y);
+		// }
+		// function f2({x,y} = {x:0,y:0}) {
+		// 	console.log(x,y);
+		// }
+
+		// f1();//0 0
+		// f2();//0 0
+
+		// f1({x:1,y:2});//1 2
+		// f2({x:1,y:2});//1 2
+
+		// f1({x:1});//1 0
+		// f2({x:1});//1 undefined
+
+		// function fn(x=5) {
+		// 	let x = 10;
+		// }
+		// fn();//报错
+
+		// // 不报错
+		// function fn(x, x){}
+		// // 相当于
+		// function fn(var x, var x){}
+		// // 报错
+		// function fn(x, x, z=10){}
+		// // 相当于
+		// function fn(let x, let x, let z=10){}
+
+		// let x = 10;
+		// function fn(y=x){
+		// 	let x = 9;
+		// 	console.log(y,x);
+		// }
+		// fn();//10 9
+
+		// function fn(...arg) {
+		// 	console.log(arg);
+		// }
+		// fn(1,2,3);//[1, 2, 3]
+		// // ...arg  1,2,3
+		// // arg     [1,2,3]
+
+		// function fn(...arg) {
+		// 	console.log(arg);
+		// }
+		// // fn.call(null, 1,2,3);//[1,2,3]
+		// // fn.apply(null,[1,2,3]);//[1,2,3]
+
+		// var arg = [1,2,3];
+		// fn.call(null, ...arg);//[1,2,3]
+		// fn.apply(null,arg);//[1,2,3]
+
+		// var f = function(num) {
+		// 	return num;
+		// }
+		// var f = num => num;//参数为num
+		// var f = () => num;//没有参数
+		// var f = (num1,num2) => num1 + num2;
+		// var f = () => ({name:123});//返回值为对象时要加个()
+		// var fn = num => {
+		// 	console.log(this);//window
+		// 	num = num +1;
+		// 	return num * 5;
+		// }
+
+		// var age = 'window 18';
+		// var obj = {
+		// 	age: 18,
+		// 	getAge: () => this.age
+		// }
+		// console.log(obj.getAge());//'window 18'
+
+		// this 指向obj的父级window
+		// 没有arguments 通过...arg获取到参数
+
+		// function fn(str) {
+		// 	return function() {
+		// 		return str.split('')
+		// 	}
+		// }
+		// var fn = str => () => str.split('');
+		// console.log(fn('123')());
+
+
 	</script>
 </body>
 </html>
