@@ -1,5 +1,6 @@
 (function($, root) {
 	var $lyric = $('.lyric-wrapper');
+	// 渲染当前歌曲歌词列表
 	function renderLyric(data) {
 		var html = '',
 			len = data.length;

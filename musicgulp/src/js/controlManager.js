@@ -1,12 +1,15 @@
 (function($, root) {
+	// 记录当前歌曲的index
 	function ControlManager(len) {
 		this.index = 0;
 		this.len = len;
 	}
 	ControlManager.prototype = {
+		// 获取上一首的index
 		prev: function() {
 			return this.getIndex(-1);
 		},
+		// 获取下一首的index
 		next: function() {
 			return this.getIndex(1);
 		},

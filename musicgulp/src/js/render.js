@@ -11,11 +11,12 @@
 	function renderImg(src) {
 		var img = new Image();
 		img.onload = function() {
-			root.blurImg(img, $scope);
+			root.blurImg(img, $scope);//背景高斯模糊图
 			$scope.find('.song-img img').attr('src', src);
 		}
 		img.src = src;
 	}
+	// 渲染是否喜欢歌曲的状态
 	function renderIsLike(isLike) {
 		if(isLike) {
 			$scope.find('.like-btn').addClass('liking');

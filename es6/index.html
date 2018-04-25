@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		// var fn = [];
+		// for(var i = 0; i < 10; i ++) {
+		// 	fn[i] = function() {
+		// 		console.log(i);
+		// 	}
+		// }
+		// fn[0]();//10
+		// console.log(i);//10
+
+		// var num = 100;
+		// function fn() {
+		// 	console.log(num);
+		// 	if(false) {
+		// 		var num = 10;
+		// 	}
+		// }
+		// fn();//undefined
+
+		// if(true) {
+		// 	function fn(){}
+		// }
+		// if(true) {
+		// 	let fn = function(){};
+		// }
+
+		// console.log(a);//undefined
+		// var a = 10;
+		// console.log(a);//报错
+		// let a = 10;
+
+		// var arr = [];
+		// for(var i = 0; i < 10; i ++) {
+		// 	(function(j) {
+		// 		arr[j] = function(){console.log(j);};
+		// 	})(i);
+		// }
+		// arr[0]();//0
+
+		// var arr = [];
+		// for(let i = 0; i < 10; i ++) {
+		// 	arr[i] = function(){console.log(i);};
+		// }
+		// arr[0]();//0
+
+		// for(let i = 0; i < 10; i ++) {
+		// 	let i = 123;
+		// 	console.log(i);
+		// }//10个123
+
+		// const MAX = 999;
+		// MAX ++;//报错
+
+		// const OBJ = {};
+		// OBJ.a = 100;
+		// OBJ = {a:100};
+
+		// let [a,b,c] = [1,2,3];
+		// let [a,[b,[c]]] = [1,[2,[3]]];
+
+		// let [a,b] = [1];//a 1 b undefined
+		// let [a,b] = [1,2,3];//a 1 b 2
+
+		// let [a] = 1;//报错
+
+		// let [a=10] = [20];//20
+		// let [a=10] = [];//10
+		// let [a=10] = [undefined];//10
+		// let [a=10] = [null];//null
+
+		// function fn() {
+		// 	console.log('hello');
+		// 	return 2;
+		// }
+		// let [x = fn()] = [3];//3
+		// let [x = fn()] = [];//hello 2
+
+		// let [x=1,y=1] = [];
+		// console.log(x,y);//1 1
+
+		// let [x=1,y=x] = [2];
+		// console.log(x,y);//2 2
+
+		// let [x=1,y=x] = [2,4];
+		// console.log(x,y);//2 4
+
+		// let [x=y,y=1] = [];
+		// console.log(x,y);//报错
+
+		// let [x=y,y=1] = [2];
+		// console.log(x,y);//2 1
+
+		// let {foo,bar} = {foo:123,bar:234};
+		// console.log(foo,bar);//123 234
+
+		// let {foo,bar} = {bar:234,foo:123};
+		// console.log(foo,bar);//123 234
+		
+		// let {bar} = {foo:123,bar:234};
+		// console.log(bar);//234
+		// let {bar} = {foo:123};
+		// console.log(bar);//undefined
+		// let {bar} = {foo:123,bar:undefined};
+		// console.log(bar);//undefined
+
+		// let {foo:bar} = {foo:123};
+		// console.log(bar);//123
+		// console.log(foo);//报错
+
+		// let {aa,bb} = {aa:123,bb:234};
+		// let {aa:aa,bb:bb} = {aa:123,bb:234};//前面的aa和bb代表的是一种模式
+
+		// let obj = {
+		// 	p:[
+		// 		'hello',
+		// 		{y:123}
+		// 	]
+		// };
+		// let {p:[x,{y:aa}]} = obj;
+		// console.log(x,aa);//hello 123
+		// console.log(p,y);//报错
+
+		// let obj = {
+		// 	p:[
+		// 		'hello',
+		// 		{y:123}
+		// 	]
+		// };
+		// let {p,p:[x,{y}]} = obj;
+		// console.log(x,y);//hello 123
+		// console.log(p);//["hello", {y:123}]
+
+		// let {x=3} = {};
+		// console.log(x);//3
+
+		// let {x,y=3} = {x:1};
+		// console.log(x,y);//1 3
+		// let {x,y=3} = {x:1,y:undefined};
+		// console.log(x,y);//1 3
+
+		// 包装类
+		// let [a,b,c,d] = 'love';//[0:'l',1:'o',2:'v',3:'e']
+		// let {length} = '123';//{0:'1',1:'2',2:'3',length:3}
+
+		// let {pow, ceil, floor} = Math;
+
+		// let {toString} = 123;
+		// console.log(toString == Number.prototype.toString);//true
+		// let {toString:s} = false;
+		// console.log(s == Boolean.prototype.toString);//true
+
+		// function add([x,y]) {
+		// 	return x + y;
+		// }
+		// add([1,2]);//3
+
+		// map遍历数组执行函数，返回一个函数处理后的数组
+		// let arr = [[1,2],[3,4]].map(function([a,b]) {
+		// 	return a + b;
+		// })
+		// arr;//[3,7]
+
+		// swap
+		// let a = 1,
+		// 	b = 2,
+		// 	temp;
+		// temp = a;
+		// a = b;
+		// b = temp;
+
+		// let a=1,b=2;
+		// [a,b] = [b,a];
+
+		// function methods() {
+		// 	return {
+		// 		add: function() {},
+		// 		sum: function() {}
+		// 	}
+		// }
+
+		// let {add,sum} = methods();
+
+		// import {vuex, mapState, mapMutation} from 'vuex';
+
+	</script>
+</body>
+</html>
