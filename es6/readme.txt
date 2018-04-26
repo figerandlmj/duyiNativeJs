@@ -420,18 +420,352 @@
 7.class的基本用法
 
 	基本使用
-		class Person {
-			constructor(name = 'xiaoming') {
-				this.name = name;
+		constructor 实例属性 实例方法
+
+			class Person {
+				constructor(name = 'xiaoming') {
+					this.name = name;
+				}
+				showMsg() {
+					console.log(this.name);
+				}
 			}
-			showMsg() {
-				console.log(this.name);
+
+			var p1 = new Person('zhangsan');
+			var p2 = new Person('lisi');
+			p1.showMsg();
+
+			// console.log(typeof Person);//function
+			// console.log(Person.prototype.constructor == Person);//true
+			// console.log(Person.prototype.showMsg);
+			// console.log(p1.__proto__ == p2.__proto__);//true
+			// Person();//报错
+
+			// var fn = function(){}
+			// var A = class{}
+
+			// (function(){})();
+			// let a = new class{}
+
+			// 报错 
+			// var a = new A();
+			// class A{}
+
+			class A{
+				constructor(name){
+					this.name = name;//实例属性
+				}
+				toString(){//实例方法
+					console.log(this.name);
+				}
+			}
+
+		this指向
+			var name = 'xz';
+			var obj = {
+				name:'xm',
+				showMsg: function() {
+					console.log(this.name);
+				}
+			}
+			obj.showMsg();//'xm'
+			// var showMsg = obj.showMsg;
+			// showMsg();//'xz' this => window
+
+			var showMsg = obj.showMsg.bind(obj);
+			showMsg();//'xm' this => obj
+
+			class Person{
+				constructor(name, age) {
+					this.name = name;
+					this.age = age;
+					// this.showName = this.showName.bind(this);
+					this.showName = () =>this.show(`hi ${this.name}`);
+				}
+				showName() {
+					this.show(`hi ${this.name}`);
+				}
+				show(name) {
+					console.log(name);
+				}
+			}
+			// var p = new Person('xiaoming', 18);
+			var { showName } = new Person('xm', 18);
+			showName();//报错 bind之后 hi xm
+
+
+			var name = 'xm';
+			var obj = {
+				name:'lmj',
+				show: () => console.log(this.name)
+			}
+			obj.show();//'xm' 箭头函数中this指向父级
+
+		静态属性 静态方法
+			绑定在类上 通过类来获取
+			class Person{
+				// static sex
+				constructor(name, age) {
+					this.name = name;
+					this.age = age;
+				}
+				static newShow() {
+
+				}
+				showName() {
+					this.show(`hi ${this.name}`);
+				}
+				show(name) {
+					console.log(name);
+				}
+			}
+			Person.newShow;
+			Person.sex = 'male';
+	继承
+		extends super
+			class A {
+				constructor(name) {
+					this.name = name;
+				}
+				toString() {
+					console.log(this.name);
+				}
+			}
+			class B extends A {
+				// constructor(name, age) {
+				// 	super(name);//此时super必须
+				// 	this.age = age;
+				// }
+				// constructor(...arg) {
+				// 	super(...arg);
+				// }
+				toString() {
+					console.log('aaa');
+					super.toString();
+				}
+			}
+			var b = new B('xm');
+			console.log(B.__proto__ === A);//true
+			console.log(B.prototype.__proto__ === A.prototype);//true
+
+			// function Person(){}
+			// var p = new Person();
+			// console.log(p.__proto__ === Person.prototype);//true
+
+8.promise对象
+	含义
+		定义未来会发生的情况
+	3种状态
+		pending   就绪
+		resolved  成功
+		rejected  失败
+	实例方法 Promise.prototype.then()
+		var promise = new Promise(function(resolve , reject) {
+			if(){
+				resolve()
+			}else{
+				reject()
+			}
+		})
+
+		const loadImg = url => new Promise((resolve, reject) => {
+			let img = new Image();
+			img.onload = () => resolve(img);
+			img.onerror = () => reject('can not load image at' + url);
+			img.url = url;
+		})
+
+		const myPromise = (type='GET', url) => new Promise((resolve, reject) => {
+			$.ajax({
+				type,
+				url,
+				success: data => resolve(data),
+				error: err => reject(err)
+			})
+		})
+
+		myPromise('xxxx').then(function(){
+
+		},function() {
+
+		});
+
+		//执行顺序 promise 1  hello 3   resolve 2
+		let promise = new Promise(function(resolve, reject){
+			console.log('promise 1');
+			resolve();
+		})
+		promise.then(function(){
+			console.log('resolve 2');
+		})
+		console.log('hello 3');
+
+	Promise.all
+	Promise.race
+	Promise.resolve
+	Promise.reject
+		const myPromise = (type='GET', url) => new Promise((resolve, reject) => {
+			$.ajax({
+				type,
+				url,
+				success: data => resolve(data),
+				error: err => reject(err)
+			})
+		})
+
+		var promiseArr = [1,2,3,4,5].map(function(item){
+			return myPromise(item);
+		})
+
+		Promise.all(promiseArr);//所有请求都成功后执行resolve
+		Promise.race(promiseArr);//有一个成功就执行resolve
+
+		// (new Promise()).then(function() {})       Promise.resolve
+		// (new Promise()).then(null, function(){})  Promise.reject
+
+		myPromise.then(function(){
+			console.log('xxxx');
+		}).then(function(){
+			console.log('xxxx');
+		})
+
+	1.状态 pending -> resolve / reject
+	2.状态 一旦变化了 就不能改变了
+	3.then 返回promise对象 进行链式调用
+		var p = new Promise((resolve, reject) => {
+			var num = Math.random() * 100;
+			if(num < 50) {
+				resolve(num);
+			}else {
+				reject('太大了，要不起');
+			}
+		})
+
+		// p.then(function(data){
+		// 	console.log(data);
+		// },function(err) {
+		// 	console.log(err);
+		// })
+		p.then(data => data, err => err).then(data => console.log('data' + data), err => console.log('err' + err));
+
+	手动封装myPromise
+		function myPromise(fn) {
+			if(typeof fn !== 'function') {
+				throw Error(`Promise resolver ${fn} is not a function`);
+			}
+			var self = this;
+			this.status = 'pending';
+			this.data = null;
+			this.resolvedArr = [];
+			this.rejectedArr = [];
+			function resolved(data) {
+				if(self.status == 'pending'){
+					setTimeout(function(){
+						self.status = 'resolved';
+						self.data = data;
+						self.resolvedArr.forEach(fn => fn());
+					},0)
+				}
+			}
+			function rejected(err) {
+				if(self.status == 'pending'){
+					setTimeout(function(){
+						self.status = 'rejected';
+						self.err = err;
+						self.rejectedArr.forEach(fn => fn());
+					},0)
+				}
+			}
+			fn(resolved, resolved);
+		}
+		myPromise.prototype.then = function(onResolved, onRejected) {
+			var self = this;
+			if(this.status == 'resolved') {
+				return new myPromise(function(resolve, reject) {
+					var res = onResolved(self.data);
+					if(res instanceof myPromise) {
+						res.then(resolve,reject);
+					}else{
+						resolve(res);
+					}
+				})
+			}
+			if(this.status == 'rejected') {
+				return new myPromise(function(resolve, reject) {
+					var res = onRejected(self.data);
+					if(res instanceof myPromise) {
+						res.then(resolve,reject);
+					}else{
+						resolve(res);
+					}
+				})
+			}
+			if(this.status == 'pending') {
+				return new myPromise(function(resolve,reject){
+					self.resolvedArr.push((function(onResolved){
+						return function(){
+							var res = onResolved(self.data);
+							if(res instanceof myPromise) {
+								res.then(resolve,reject);
+							}else{
+								resolve(res);
+							}
+						};
+					})(onResolved));
+
+					self.rejectedArr.push((function(onRejected){
+						return function(){
+							var res = onRejected(self.data);
+							if(res instanceof myPromise) {
+								res.then(resolve,reject);
+							}else{
+								resolve(res);
+							}
+						};
+					})(onRejected))
+				})
 			}
 		}
+		// var p = new myPromise(function(resolve, reject) {
+		// 	resolve(10);
+		// 	// reject('error');
+		// })
+		// p.then(data => data).then(data => console.log(data));
+		// p.then(data => new myPromise((resove,reject) => reject(data))).then((data) => console.log(data));
 
-		var p1 = new Person('zhangsan');
-		p1.showMsg();
-	继承
+		// var p = new myPromise(function(resolve, reject) {
+		// 	setTimeout(function(){
+		// 		resolve(123);
+		// 	},1000)
+		// })
+		// p.then(data => console.log(data));
+		// console.log(p)
+
+		var p = new myPromise(function(resolve) {
+			console.log(1);
+			resolve(2);
+		});
+		p.then(data => console.log(data));
+		console.log(3);
+
+
+9.fetch 新一代的ajax
+	// fetch(url).then(res => res)
+	fetch('http://127.0.0.1:8888').then(res => console.log(res));
+	fetch('http://127.0.0.1:8888').then(res => res.text()).then(text => console.log(text));
+
+	fetch('http://127.0.0.1:8888',{
+		method:'POST',
+		headers:new Headers({
+			'Content-Type':'application/x-www-form-urlencoded'
+		}),
+		credentials: 'include',//可接受cookie
+		body: new URLSearchParams([['name','xm'],['age',18]]).toString()
+	}).then(res => console.log(res));
+
+
+
+
 
 
 
