@@ -216,6 +216,222 @@
 
 5.数组的扩展
 
+	扩展运算符
+		// ...[1,2,3] = 1,2,3
+
+		var arr = [];
+		var arr1 = [1,2,3];
+		// arr.push(1,2,3);
+		// Array.prototype.push.apply(arr, arr1);
+		arr.push(...arr1);
+		console.log(arr);
+
+		var arr = ['abc'];
+		var arr1 = [1,2,3];
+		console.log(arr.concat(arr1));
+
+		var arr = ['abc'];
+		var arr1 = [1,2,3];
+		var newArr = [...arr, ...arr1];
+		console.log(newArr);
+
+		var [x,...y] = [1,2,3,4,5];
+		console.log(x,y)
+
+		var strArr = [...'xiaoming'];//类数组转换为数组
+		console.log(strArr);
+
+	Array.from()
+		类数组转换为数组
+			var arr = Array.from('string');
+
+			var obj = {
+				'0': 'd',
+				'1': 'y',
+				'2': 'z',
+				length: 3
+			}
+			var arr = Array.from(obj, function(item, index) {
+				return item + index;
+			});
+			console.log(arr)
+			var arr1 = Array.from(obj).map((item, index) => item + index);
+			console.log(arr1)
+
+			var divs = document.getElementsByTagName('div');
+			var divTexts = Array.from(divs, item => item.innerText);
+
+			var arr = [1,2,3];
+			var arr1 = Array.from(arr);
+			arr == arr1;//false
+
+			function typeOf() {
+				return Array.from(arguments, item => typeof item);
+			}
+			console.log(typeOf('1', false, NaN, null, []));
+	Array.of()
+		将一组数转换为数组
+			// var arr = Array.of(1,2,3);
+			var arr = Array.of(3);
+			console.log(arr);
+			// var arr1 = new Array(1,2,3);
+			var arr1 = new Array(3);
+			console.log(arr1);
+
+	数组实例的方法copyWithin()
+		按照一定的格式进行重写
+			var arr = [1,2,3,4,5];
+			// Array.prototype.copyWithin(target, start=0, end=this.length);
+			// 从第0位开始被覆盖，用3-length的数覆盖 
+			console.log(arr.copyWithin(0,3));//[4,5,3,4,5]
+			console.log(arr);//[4,5,3,4,5]
+	数组实例的方法
+		fill()
+			var arr = new Array(5);
+			// arr.fill(7);//[7,7,7,7,7]
+			arr.fill(7,3,4);//[,,,7,]
+			console.log(arr);
+		keys()
+			var arr = [1,2,3,4,5];
+			for(item of arr.keys()){//迭代器 for of 来循环key
+				console.log(item);//0 1 2 3 4
+			}
+		values()
+			var arr = [1,2,3,4,5];
+			for(item of arr.values()){//chrome不支持，报错
+				console.log(item);//1 2 3 4 5
+			}
+		entries()
+			var arr = [1,2,3,4,5];
+			for(item of arr.entries()){
+				console.log(item);//[0, 1] [1, 2] [2, 3] [3, 4] [4, 5]
+			}
+			for([index,item] of arr.entries()){
+				console.log(index,item);//0 1  1 2  2 3  3 4  4 5
+			}
+	数组实例的方法
+		includes()
+			var arr = [1,2,3,4,5];
+			var num = arr.indexOf(6);//-1
+			var num = arr.includes(2);//true
+			var num = arr.includes(6);//false
+
+			var arr = [NaN];
+			var num = arr.indexOf(NaN);//-1
+			var num = arr.includes(NaN);//true
+		find()
+			找到满足条件的第一个数
+			var arr = [1,2,3,4,5];
+			var num = arr.find(item => item > 4);//5
+			var num = arr.find(item => item > 2);//3
+
+		findIndex()
+			找到满足条件的第一个数的下标
+			var arr = [1,2,3,4,5];
+			var num = arr.findIndex(item => item > 2);//2
+			var num = arr.findIndex(item => item > 6);//-1
+
+6.对象的扩展
+	属性的简洁表示法以及属性名表达式
+		// var foo = '123';
+		// // var obj = {foo:foo};
+		// var obj = {foo};
+
+		// function fn(x,y) {
+		// 	// return {x,y};
+		// 	return {x:x,y:y};
+		// }
+
+		var obj = {
+			name: 'xm',
+			age: 18,
+			// getMsg: function() {
+			// 	console.log(this.name, this.age);
+			// }
+			getMsg() {
+				console.log(this.name, this.age);
+			}
+		}
+
+		var name = 'name',
+			age = 'age';
+		var obj = {
+			[name]: 'xm',
+			[age]: 18
+		}
+
+	属性的可枚举性以及属性的遍历
+
+	Object.is()
+		用来判断两个值是否相等
+		console.log(Object.is('foo','foo'));//true
+		console.log(Object.is(NaN,NaN));//true
+		console.log(NaN === NaN);//false
+		console.log(Object.is(+0,-0));//false
+		console.log(+0 === -0);//true
+	Object.assign()
+		将多个对象的可枚举属性放到一个对象中
+			var obj = {};
+			var obj1 = {name: 'xm'};
+			var obj2 = {age: 18};
+			var obj3 = {getName() {console.log(this.name)}};
+			var newObj = Object.assign(obj, obj1, obj2, obj3);
+			// var newObj = Object.assign(obj);
+			// console.log(newObj == obj);//true
+			// var newObj = Object.assign(2);
+			// var newObj = Object.assign(null);//报错
+			// var newObj = Object.assign(undefined);//报错
+
+	Object.keys()
+	Object.values()
+	Object.entries()
+
+		// 属性遍历 (for key in obj)  Object.keys()
+
+		// Object.getOwnPropertyDescriptor() 获取某个对象的某个属性的描叙
+		// var obj = {
+		// 	name: 'xm',
+		// 	age: 18
+		// }
+		// console.log(Object.getOwnPropertyDescriptor(obj, 'age'));
+		// {value: 18, writable: true, enumerable: true, configurable: true}
+
+		var obj = {
+			name: 'xm',
+			age: 18,
+			getMsg() {
+				return this.name + this.age;
+			}
+		}
+		var keys = Object.keys(obj);
+		var values = Object.values(obj);
+		var entries = Object.entries(obj);
+
+	对象的扩展运算符
+		var {a, b, ...c} = {a:123, b:234, c: 456, d:789};
+
+		var obj = {name:'xm'};
+		var obj1 = {age:18};
+		var newObj = {...obj, ...obj1};
+
+		let merge = (...source) => Object.assign({}, ...source);
+		console.log(merge(obj,obj1));
+
+7.class的基本用法
+
+	基本使用
+		class Person {
+			constructor(name = 'xiaoming') {
+				this.name = name;
+			}
+			showMsg() {
+				console.log(this.name);
+			}
+		}
+
+		var p1 = new Person('zhangsan');
+		p1.showMsg();
+	继承
 
 
 
