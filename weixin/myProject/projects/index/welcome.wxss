@@ -1,0 +1,31 @@
+page{
+  background: red;
+}
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.user-image{
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+  margin-top: 120rpx;
+}
+.user-name{
+  margin-top: 120rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+.moveto-container{
+  width: 200rpx;
+  height: 80rpx;
+  margin-top: 200rpx;
+  font-size: 25rpx;
+  border: 1px solid #000;
+  text-align: center;
+  border-radius: 5px;
+}
+.moveto{
+  line-height: 80rpx;
+}
