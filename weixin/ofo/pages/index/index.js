@@ -15,33 +15,50 @@ Page({
         this.movetoCenter();
         break;
       case 2:
-        wx.scanCode({
-          success: () => {
-            console.log(111);
-            wx.showLoading({
-              title: '正在获取密码',
-            });
-            wx.request({
-              url: 'https://www.easy-mock.com/mock/5ae430622bfb1a7e1d60f6ce/ofo/password',
-              success: (res) => {
-                console.log(res);
-                wx.hideLoading();
-                wx.redirectTo({
-                  url: '../scanResult/index?password=' + res.data.data.password + '&number=' + res.data.data.number,
-                  success: () => {
-                    wx.showToast({
-                      title: '获取密码成功',
-                      duration: 1000
-                    })
-                  }
-                })
-              }
-            });
-          },
-          fail: () => {
-            console.log(222);
-          }
+        if(this.timer) {
+          wx.navigateBack({
+            delta:1
+          });
+        }else{
+          wx.scanCode({
+            success: () => {
+              console.log(111);
+              wx.showLoading({
+                title: '正在获取密码',
+              });
+              wx.request({
+                url: 'https://www.easy-mock.com/mock/5ae430622bfb1a7e1d60f6ce/ofo/password',
+                success: (res) => {
+                  console.log(res);
+                  wx.hideLoading();
+                  wx.redirectTo({
+                    url: '../scanResult/index?password=' + res.data.data.password + '&number=' + res.data.data.number,
+                    success: () => {
+                      wx.showToast({
+                        title: '获取密码成功',
+                        duration: 1000
+                      })
+                    }
+                  })
+                }
+              });
+            },
+            fail: () => {
+              console.log(222);
+            }
+          })
+        }
+        break;
+      case 3:
+        wx.navigateTo({
+          url: '../warn/index',
         })
+        break;
+      case 4:
+        wx.navigateTo({
+          url: '../my/index',
+        })
+        break;
     }
   },
 
@@ -51,6 +68,7 @@ Page({
   onLoad: function (options) {
     console.log('onLoad');
     console.log(this);
+    this.timer = options.timer;
     // var self = this;
     wx.getLocation({
       success: (res) => {
