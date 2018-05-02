@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<p>{{title}}</p>
+		<button @click='title="update"'>change</button>
+		<button @click='destroy'>destroy</button>
+	</div>
+	<script>
+		new Vue({
+			el:'#app',
+			data:{
+				title:'the vue instance'
+			},
+			beforeCreate:function(){//数据、事件方法的初始化
+				console.log('beforeCreate');
+			},
+			created:function(){//数据绑定
+				console.log('created');
+			},
+			beforeMount:function(){//el 和 template 编译哪一个模板
+				console.log('beforeMount');
+			},
+			mounted:function(){//编译好的模板渲染到真实的html dom节点里面去
+				console.log('mounted');
+			},
+			beforeUpdate:function(){
+				console.log('beforeUpdate');
+			},
+			updated:function(){
+				console.log('updated');
+			},
+			beforeDestroy:function(){
+				console.log('beforeDestroy');
+			},
+			destroyed:function(){
+				console.log('destroyed');
+			},
+			methods:{
+				destroy:function(){
+					this.$destroy();
+				}
+			}
+
+		})
+	</script>
+</body>
+</html>

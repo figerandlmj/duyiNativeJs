@@ -7,3 +7,11 @@ mvc
 mvp
 mvvm: model view vueModel
 	  数据  视图 vue实例层 连接dom和js
+
+
+vue :
+
+虚拟dom
+生命周期
+
+

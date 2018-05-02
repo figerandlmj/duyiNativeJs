@@ -1,0 +1,52 @@
+.healthBar{
+	width: 80%;
+	height: 40px;
+	background-color: #eee;
+	margin:auto;
+	transition: width 500ms;
+}
+.controls,
+.log{
+	margin-top: 30px;
+	padding: 10px;
+	box-shadow: 0 3px 6px #ccc;
+	text-align: center;
+	border: 1px solid #ccc;
+}
+button{
+	font-size: 20px;
+	background: #ccc;
+	padding: 12px;
+	box-shadow: 0 1px 1px #000;
+	margin:10px;
+	color: #000;
+}
+#start-game{
+	background: #aaffb0;
+}
+#attack{
+	background: #ff7367;
+}
+#special-attack{
+	background: #ffaf4f;
+}
+#heal{
+	background: #aaffb0;
+}
+#give-up{
+	background: #00f;
+}
+.log li{
+	list-style: none;
+	font-weight: bold;
+	text-transform: uppercase;
+	margin:5px;
+}
+.log .player-log{
+	color:blue;
+	background-color: #e4e8ff;
+}
+.log .monster-log{
+	color:red;
+	background-color: #ffc0c1;
+}
