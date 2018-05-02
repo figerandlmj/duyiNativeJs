@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<p v-once>{{title}}</p>
+		<input type="text" v-on:input = "changeTitle">
+		<p>{{sayHello()}} <a v-bind:href="link">baidu</a></p>
+		<p v-html='linkBaidu'>{{linkBaidu}}</p>
+	</div>
+	<script>
+		new Vue({
+			el:'#app',
+			data:{
+				title:'hello world',
+				link:'http://baidu.com',
+				linkBaidu:'<a href="http://baidu.com">baidu</a>'
+			},
+			methods:{
+				changeTitle:function(event){
+					this.title = event.target.value;
+				},
+				sayHello:function(){
+					this.title = 'hello';
+					return this.title;
+				}
+			}
+		})
+	</script>
+</body>
+</html>

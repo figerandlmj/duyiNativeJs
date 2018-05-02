@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<!-- <input type="text" :value='name' v-on:input='changName'> -->
+		<input type="text" v-model='name'>
+		<p>{{name}}</p>
+	</div>
+	<script>
+		new Vue({
+			el:'#app',
+			data:{
+				name:'lmj'
+			},
+			methods:{
+				changName:function(e){
+					this.name = e.target.value;
+				}
+			}
+		})
+	</script>
+</body>
+</html>

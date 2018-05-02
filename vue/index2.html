@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<button v-on:click = 'increase(2,$event)'>click me</button>
+		<button v-on:click = 'count++'>click me2</button>
+		<p>{{count > 5 ? 'greater than 5' : 'less than 5'}}</p>
+		<!-- <p v-on:mousemove = 'setXY'>x/y:{{x}}/{{y}} <span v-on:mousemove = 'stop'>stop</span></p> -->
+		<!-- <p v-on:mousemove = 'setXY'>x/y:{{x}}/{{y}} <span v-on:mousemove.stop.prevent = ''>stop</span></p> -->
+		<p v-on:mousemove = 'setXY'>x/y:{{x}}/{{y}} <span v-on:mousemove.stop = ''>stop</span></p>
+		<input type="text" v-on:keyup.enter.space.esc = 'alert'>
+	</div>
+	<script>
+		new Vue({
+			el:'#app',
+			data:{
+				count:0,
+				x:0,
+				y:0
+			},
+			methods:{
+				increase:function(step,event){
+					this.count += step;
+				},
+				setXY:function(event){
+
+					this.x = event.clientX;
+					this.y = event.clientY;
+				},
+				stop:function(event){
+					event.stopPropagation();
+				},
+				alert:function(event){
+					// if(event.which == 13) {
+						alert(event.which)
+					// }
+				}
+			}
+		})
+	</script>
+</body>
+</html>

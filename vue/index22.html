@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>通过改变style改变样式</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<style>
+		.demo{
+			width: 100px;
+			height: 100px;
+			background-color: gray;
+			display: inline-block;
+			margin-left: 10px;
+		}
+		.red{
+			background-color: red;
+		}
+		.green{
+			background-color: green;
+		}
+		.blue{
+			background-color: blue;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<div class="demo" :style='{"background-color":color}'></div>
+		<div class="demo" :style='divStyle'></div>
+		<div class="demo" :style='[divStyle,{height:height + "px"}]'></div>
+		<input type="text" v-model='color'>
+		<input type="text" v-model='width'>
+		<input type="text" v-model='height'>
+	</div>
+	<script>
+		new Vue({
+			el:'#app',
+			data:{
+				color:'red',
+				width:100,
+				height:100
+			},
+			computed:{
+				divStyle:function(){
+					return {
+						backgroundColor:this.color,
+						width:this.width + 'px'
+					}
+				}
+			}
+		})
+	</script>
+</body>
+</html>

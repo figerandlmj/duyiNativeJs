@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>条件渲染</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<ul>
+			<li v-for='(girl,index) in denggeGirles' @click='changeGirl(index)'>{{girl}}({{index}})</li>
+		</ul>
+		<button @click='newGirl'>new girl</button>
+		<template v-for='(girl,index) in denggeGirles'>
+			<h1>{{girl}}</h1>
+			<p>{{index}}</p>
+		</template>
+		<ul>
+			<li v-for='person in persons'>
+				<p v-for='(value,key,i) in person'>{{value}}|{{key}}|{{i}}</p>
+			</li>
+		</ul>
+		<ul>
+			<!-- <li v-for='num in 10'>{{num}}</li> -->
+			<li v-for='num in "lmj"'>{{num}}</li>
+		</ul>
+		<div v-for='value in inputValue' :key='value'>{{value}} <input type="text"></div>
+		<button @click='reverseInput'>reverse</button>
+	</div>
+	<script>
+		// var data = [{
+		// 	picUrl:'www.baidu.com',
+		// 	title:'孤独者的荣光时刻'
+		// }]
+		new Vue({
+			el:'#app',
+			data:{
+				denggeGirles:['凤姐','芙蓉姐姐','虹桥一姐'],
+				persons:[{
+					name:'dg',
+					color:'green'
+				},
+				{
+					name:'cg',
+					color:'gold'
+				}],
+				inputValue:[1,2,3]
+			},
+			computed:{
+				
+			},
+			methods:{
+				changeGirl:function(index){
+					console.log(index);
+					var arr = [].concat(this.denggeGirles);
+					arr[index] = '如花';
+					this.denggeGirles = arr;
+				},
+				newGirl:function(){
+					this.denggeGirles.push('如花');//push用vue重写的方法
+				},
+				reverseInput:function(){
+					this.inputValue.reverse();
+				}
+			}
+		})
+	</script>
+</body>
+</html>

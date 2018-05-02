@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<h1>{{title}}</h1>
+		<button @click='show' ref='myButton'>让你看见我</button>
+		<p v-if='showP'>你能看见我吗</p>
+		{{newProp}}
+		<button @click='changeNew'>change newProp</button>
+	</div>
+	<div id="app2">
+		<h1>{{title}}</h1>
+		<button @click='changeVm1'>change vm1</button>
+	</div>
+
+	<script>
+		// 不要以$ _ 命名变量
+		// 数据绑定核心 get set
+		// $el  _data  $refs 
+		var vm1 = new Vue({
+			el:'#app',
+			data:{
+				title:'the VueJs instance',
+				showP:false
+			},
+			methods:{
+				show:function(){
+					this.title = 'the VueJs instance update';
+					this.showP = true;
+				},
+				changeNew:function(){
+					this.newProp = 'new new';//报错
+				}
+			},
+			computed:{
+				uppercase:function(){
+					return this.title.toUpperCase();
+				}
+			},
+			watch:{
+				title:function(){
+					alert(this.uppercase);
+				}
+			}
+		});
+
+		vm1.newProp = 'new';
+		console.log(vm1);
+
+		setTimeout(function(){
+			vm1.title = 'change by timer';
+			vm1.show();
+		},2000);
+
+		var vm2 = new Vue({
+			el:'#app2',
+			data:{
+				title:'the VueJs instance2'
+			},
+			methods:{
+				changeVm1:function(){
+					vm1.title = 'change by vm2';
+				}
+			}
+		});
+
+		var obj = {};
+		// 兼容性 es5 ie9+
+		Object.defineProperty(obj, 'a', {
+			// value:10,
+			// writable:false,//不可写
+			// enumerable:false,//不可遍历
+			// configurable:false//不可配置
+			get:function(){
+				console.log('get')
+			},
+			set:function(){
+				console.log('set')
+			}
+		})
+		console.log(obj);
+		for(var i in obj){
+			console.log(i);
+		}
+	</script>
+</body>
+</html>

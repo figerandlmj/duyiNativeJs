@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>通过改变class改变样式</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<style>
+		.demo{
+			width: 100px;
+			height: 100px;
+			background-color: gray;
+			display: inline-block;
+			margin-left: 10px;
+		}
+		.red{
+			background-color: red;
+		}
+		.green{
+			background-color: green;
+		}
+		.blue{
+			background-color: blue;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<!-- <div class="demo" @click = 'attach = !attach' :class = '{red:attach,blue:!attach}'></div> -->
+		<div class="demo" @click = 'attach = !attach' :class = 'divClass'></div>
+		<div class="demo" :class = '{red:attach}'></div>
+		<div class="demo" :class='[color,{blue:attach}]'></div>
+		<input type="text" v-model='color'>
+	</div>
+	<script>
+		new Vue({
+			el:'#app',
+			data:{
+				attach:false,
+				color:'green'
+			},
+			computed:{
+				divClass:function(){
+					return {
+						red:this.attach,
+						blue:!this.attach
+					}
+				}
+			},
+			methods:{
+				
+			}
+		})
+	</script>
+</body>
+</html>

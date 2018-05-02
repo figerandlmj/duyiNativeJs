@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<!-- <button v-on:click = 'increaseFirst'>increase</button>
+		<button v-on:click = 'decreaseFirst'>decrease</button> -->
+		<button @click = 'increase++'>increase</button>
+		<button v-on:click = 'increase--'>decrease</button>
+		<button v-on:click = 'increaseSecond++'>increaseSecond</button>
+		<p>{{increase}}</p>
+		<p>{{increaseSecond}}</p>
+		<!-- <p>{{result}}</p> -->
+		<p>{{results()}} | {{resultCom}}</p>
+	</div>
+	<script>
+		new Vue({
+			el:'#app',
+			data:{
+				increase:0,
+				// result:'',
+				increaseSecond:0
+			},
+			computed:{
+				resultCom:function(){
+					console.log('computed')
+					return this.increase > 5 ? 'greater than 5' : 'less than 5';
+				}
+			},
+			watch:{
+				increase:function(){
+					var vm = this;
+					setTimeout(function(){
+						vm.increase = 0;
+					},2000)
+				}
+			},
+			methods:{
+				// increaseFirst:function(){
+				// 	this.increase ++;
+				// 	this.result = this.increase > 5 ? 'greater than 5' : 'less than 5';
+				// },
+				// decreaseFirst:function() {
+				// 	this.increase --;
+				// 	this.result = this.increase > 5 ? 'greater than 5' : 'less than 5';
+				// }
+				results:function() {
+					console.log('methods')
+					return this.increase > 5 ? 'greater than 5' : 'less than 5';
+				}
+			}
+		})
+	</script>
+</body>
+</html>

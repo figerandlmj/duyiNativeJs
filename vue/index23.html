@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>条件渲染</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<!-- <p v-if='show == "a"'>你能看见我吗？</p>
+		<p v-else-if='show == "b"'>你看见我啦</p>
+		<p v-else>你看不见我，嘻嘻</p>
+		<button @click='show = "b"'>click me</button>
+		<button @click='show = "c"'>click me</button> -->
+
+		<p v-if='show'>你能看见我吗？</p>
+		<p v-else>你看不见我，嘻嘻</p>
+
+		<!-- <p v-if='show'>我是第一段p</p>
+		<p v-if='show'>我是第二段p</p> -->
+		<template v-if='show'>
+			<p>请输入用户名</p>
+			<input type="text" placeholder="请输入用户名" key='username'>
+		</template>
+		<template v-else>
+			<p>请输入密码</p>
+			<input type="text" placeholder="请输入密码" key='password'>
+		</template>
+		<p v-show='show'>你看见我了吗</p>
+		<button @click='show = !show'>click me</button>
+	</div>
+	<script>
+		new Vue({
+			el:'#app',
+			data:{
+				// show:"a"
+				show:true
+			},
+			computed:{
+				
+			},
+			methods:{
+				
+			}
+		})
+	</script>
+</body>
+</html>
