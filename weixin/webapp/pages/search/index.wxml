@@ -1,0 +1,8 @@
+<!--pages/search/index.wxml-->
+<view class='container'>
+  <view class='search-movie'>
+    <icon type='search' size='16' class='search-icon'></icon>
+    <input placeholder='影视搜索' class='search-input' bindinput='bindSearch'></input>
+    <text class='search-cancel' bindtap='bindToHome'>取消</text>
+  </view>
+</view>

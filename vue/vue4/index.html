@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<lmj-cmp></lmj-cmp>
+		<lmj-cmp2></lmj-cmp2>
+	</div>
+	<div id="app2">
+		<!-- <table>
+			<tr is='lmj-cmp'></tr>
+		</table> -->
+		<!-- <lmj-cmp title='figer' age= '18' v-show='show'></lmj-cmp> -->
+		<lmj-cmp title='figer' :age='age' v-show='show'></lmj-cmp>
+		<button @click='show = !show'>click me</button>
+	</div>
+	<script>
+		// 全局组件
+		Vue.component('lmj-cmp', {
+			// template:`<div><div @click="title = 'hello'">{{t}}</div></div>`,
+			template:`<div><div @click="t = 'hello'">{{t}}{{age}}</div></div>`,
+			// data:function(){
+			// 	return {
+			// 		title:'hello'
+			// 	};
+			// },
+			data:function(){
+				return {
+					t:this.title
+				};
+			},
+			// props:['title','age']
+			props:{
+				title:{
+					type:String,
+					default:'figer',
+					required:true
+				},
+				age:{
+					type:Number,
+					default:20
+				}
+			}
+		})
+		var title = 'hello world';
+		new Vue({
+			el:'#app',
+			components:{//局部组件
+				'lmj-cmp2':{
+					template:`<div><div>${title}</div></div>`
+				}
+			}
+		})
+		new Vue({
+			el:'#app2',
+			// template:`<div><table><lmj-cmp></lmj-cmp></table></div>`
+			data:{
+				show:true,
+				age:18
+			}
+		})
+	</script>
+</body>
+</html>

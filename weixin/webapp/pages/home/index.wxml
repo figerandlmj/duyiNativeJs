@@ -1,0 +1,7 @@
+<!--pages/home/index.wxml-->
+<view class='container'>
+  <view class='search-movie' bindtap='bindToSearch'>
+    <icon type='search' size='16' class='search-icon'></icon>
+    <text class='search-placeholder'>搜素电影</text>
+  </view>
+</view>

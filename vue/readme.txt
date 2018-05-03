@@ -13,5 +13,21 @@ vue :
 
 虚拟dom
 生命周期
+数据绑定
+组件化
+
+vuejs.org
+
+vue-cli
+ npm install vue-cli -g
+ vue -V
+
+ vue init webpack-simple vue4-1
+ cd vue4-1
+ npm install
+
+组件库
+http://element-cn.eleme.io/#/zh-CN
+
 
 
