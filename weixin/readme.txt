@@ -46,10 +46,13 @@ location / {
 
 cmd控制台
 cd 下载的nginx解压目录
-nginx 开启服务命令
+start nginx 开启服务命令
+netstat -aon | findstr :8080  查看端口占用情况
+nginx -s stop / nginx -s quit  关闭服务命令
+
 
 https://api.douban.com/v2/movie/search?q=x&start=0&count=10
-https://localhost/v2/movie/search?q=x&start=0&count=10
+http://localhost:8080/v2/movie/search?q=x&start=0&count=10
 
 
 
