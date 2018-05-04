@@ -37,6 +37,8 @@ App({
     userInfo: null,
     // doubanBase:'https://api.douban.com',
     doubanBase:'http://localhost:8080',
-    searchUrl:'/v2/movie/search?q='
+    searchUrl:'/v2/movie/search?q=',
+    intheaters:'/v2/movie/in_theaters',
+    comingSoon:'/v2/movie/coming_soon'
   }
 })

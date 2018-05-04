@@ -1,7 +1,11 @@
 {
   "pages":[
-    "pages/search/index",
+    "pages/movie-more/movie-more",
     "pages/home/index",
+    
+    "pages/search/index",
+    "pages/movie-grid/movie-grid",
+    "pages/movie-rating/movie-rating",
     "pages/index/index",
     
     "pages/logs/logs"

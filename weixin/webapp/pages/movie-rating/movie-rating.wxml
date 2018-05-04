@@ -1,0 +1,7 @@
+<!--pages/movie-rating/movie-rating.wxml-->
+<template name='movie-rating'>
+  <view class='rating'>
+    <view class='rating-star allstar{{rating.stars || 0}}'></view>
+    <text class='rating-average'>{{rating.average}}</text>
+  </view>
+</template>

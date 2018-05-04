@@ -46,6 +46,7 @@ location / {
 
 cmd控制台
 cd 下载的nginx解压目录
+nginx -t 检查配置是否成功
 start nginx 开启服务命令
 netstat -aon | findstr :8080  查看端口占用情况
 nginx -s stop / nginx -s quit  关闭服务命令

@@ -1,11 +1,13 @@
 // pages/home/index.js
+var app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    intheaters:[],
+    comingSoon:[]
   },
 
   bindToSearch(){
@@ -14,11 +16,43 @@ Page({
     })
   },
 
+  bindToMore(e){
+    wx.navigateTo({
+      url: '../movie-more/movie-more?typeId=' + e.currentTarget.dataset.typeId,
+    });
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    var intheatersUrl = app.globalData.doubanBase + app.globalData.intheaters + '?start=0&count=10';
+    var comingSoonUrl = app.globalData.doubanBase + app.globalData.comingSoon + '?start=0&count=10';
+    this.getMovieListData(intheatersUrl,'intheaters');
+    this.getMovieListData(comingSoonUrl,'comingSoon');
+  },
+
+  getMovieListData(url,type){
+    wx.showToast({
+      title: '加载中',
+      icon:'loading',
+      duration:10000
+    });
+    wx.request({
+      url: url,
+      method:'GET',
+      header:{'content-type':'json'},
+      success:(res) => {
+        console.log(res);
+        this.setData({
+          [type]:res.data.subjects
+        })
+      },
+      fail:err => console.log(err),
+      complete(){
+        wx.hideToast();
+      }
+    })
   },
 
   /**

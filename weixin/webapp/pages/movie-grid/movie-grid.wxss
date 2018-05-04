@@ -1,0 +1,32 @@
+/* pages/movie-grid/movie-grid.wxss */
+@import '/pages/movie-rating/movie-rating.wxss';
+.movie-wrapper{
+  display: inline-block;
+  margin:0 auto;
+}
+.movie-wrapper:not(:last-child){
+  margin-right:10rpx;
+}
+.movie-content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.movie-content .poster{
+  width:200rpx;
+  height: 200rpx;
+}
+.movie-content .name{
+  width: 200rpx;
+  color: #4a4a4a;
+  font-size: 28rpx;
+  font-weight: 600;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.movie-content .wish-count{
+  color: #9e9e9e;
+  font-size: 24rpx;
+}
