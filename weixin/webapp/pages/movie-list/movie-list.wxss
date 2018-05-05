@@ -1,0 +1,56 @@
+/* pages/movie-list/movie-list.wxss */
+@import '/pages/movie-rating/movie-rating.wxss';
+.movie-wrapper{
+  padding: 30rpx;
+  border-bottom: 2rpx solid #e6e6e6;
+  background: #fff;
+}
+.movie-content{
+  display: flex;
+  flex-direction: row;
+}
+.movie-content .poster{
+  width: 160rpx;
+  height: 240rpx;
+}
+.movie-content .movie-desc{
+  /* flex: 1; */
+  display: flex;
+  flex-direction: column;
+  margin:0 20rpx;
+  color: #9e9e9e;
+  font-size: 24rpx;
+}
+.movie-content .name{
+  font-weight: 600;
+  color: #4a4a4a;
+  font-size: 32rpx;
+  line-height: 1.6;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.movie-content .directors, 
+.movie-content .casts,
+.movie-content .genres,
+.movie-content .wish-count{
+  color: #9e9e9e;
+  font-size: 24rpx;
+  font-weight: 500;
+  line-height: 1.6;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.wish-btn{
+  width:90rpx;
+  height: 50rpx;
+  color: #9dbff9;
+  line-height: 50rpx;
+  text-align: center;
+  font-weight: 550;
+  border-radius: 3rpx;
+  border: 3rpx solid #9dbff9;
+  align-self: center;
+  box-sizing: border-box;
+}

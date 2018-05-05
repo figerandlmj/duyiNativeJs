@@ -1,7 +1,7 @@
 <!--pages/movie-grid/movie-grid.wxml-->
 <import src='../movie-rating/movie-rating'/> 
 <template name='movie-grid'>
-  <view class='movie-wrapper'>
+  <view class='movie-wrapper' bindtap='bindToDetail' data-id='{{id}}'>
     <view class='movie-content'>
       <image class='poster' src='{{images.medium}}'></image>
       <text class='name'>{{title}}</text>

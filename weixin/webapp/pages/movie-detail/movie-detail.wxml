@@ -1,0 +1,46 @@
+<!--pages/movie-detail/movie-detail.wxml-->
+<import src='../movie-rating/movie-rating'/> 
+<view class='container'>
+  <view class='poster-wrapper'>
+    <image src='{{movie.images.large}}' class='poster' bindtap='bindToImg' data-url='{{movie.images.large}}'></image>
+  </view>
+  <view class='movie-desc'>
+    <view class='fl'>
+      <text class='name'>{{movie.title}}</text>
+      <text class='year-genres'>{{movie.allGenres}}</text>
+      <text class='original-name'>{{movie.originName}}</text>
+      <text class='countries'>{{movie.country}}</text>
+    </view>
+    <view class='fr'>
+      <text class='average'>{{rating.average}}</text>
+      <template is='movie-rating' data='{{rating}}'></template>
+      <text class='ratings-count'>{{movie.ratings_count}}人</text>
+    </view>
+  </view>
+  <view class='wish-do'>
+    <text class='wish-btn' bindtap='bindWish'>想看</text>
+    <text class='do-btn' bindtap='bindDo'>看过</text>
+  </view>
+  <view class='summary'>
+    <text class='title'>简介</text>
+    <view class='summary-wrapper {{showAllDesc ? "summary-all" : "summary-line"}}'>
+      <text class='summary-content'>{{movie.summary}}</text>
+    </view>
+    <block wx:if='{{!showAllDesc}}'>
+        <text class='extension' bindtap ='bindExtension'>展开</text>
+    </block>
+  </view>
+  <view class='casts'>
+    <text class='title'>影人</text>
+    <scroll-view scroll-x class='casts-scroll'>
+      <block wx:for='{{movie.dirsAndCasts}}' wx:key='{{movie.dirsAndCasts}}'>
+        <view class='cast-wrapper' bindtap='bindToCelebrity' data-id='{{item.id}}'>
+          <view class='cast-content'>
+            <image src='{{item.avatars.small}}' class='img'></image>
+            <text class='name'>{{item.name}}</text>
+          </view>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+</view>

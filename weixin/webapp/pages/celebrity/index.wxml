@@ -1,0 +1,46 @@
+<!--pages/celebrity/index.wxml--> 
+<import src='../movie-rating/movie-rating'/> 
+<view class='container'>
+  <view class='poster-wrapper'>
+    <image src='{{celebrity.avatars.large}}' class='poster'></image>
+  </view>
+  <view class='movie-desc'>
+    <view class='fl'>
+      <text class='name'>{{celebrity.name}}</text>
+      <text class='year-genres'>出生地：{{celebrity.born_place}}</text>
+      <text class='original-name'>1991-01-01</text>
+      <text class='countries'>演员/导演/制片人</text>
+    </view>
+    <view class='fr'>
+      <text class='average'>12345粉丝</text>
+    </view>
+  </view>
+  <view class='summary'>
+    <text class='title'>简介</text>
+    <view class='summary-wrapper {{showAllDesc ? "summary-all" : "summary-line"}}'>
+      <text class='summary-content'>中国著名演员中国著名演员中国著名演员中国著名演员中国著名演员中国著名演员中国著名演员中国著名演员中国著名演员中国著名演员中国著名演员中国著名演员中国著名演员中国著名演员中国著名演员中国著名演员中国著名演员</text>
+    </view>
+    <block wx:if='{{!showAllDesc}}'>
+        <text class='extension' bindtap ='bindExtension'>展开</text>
+    </block>
+  </view>
+  <view class='casts'>
+    <text class='title'>代表作品</text>
+    <scroll-view scroll-x class='casts-scroll'>
+      <block wx:for='{{celebrity.works}}' wx:key='{{celebrity.works}}'>
+        <view class='cast-wrapper' bindtap='bindToDetail' data-id='{{item.subject.id}}'>
+          <view class='cast-content'>
+            <image src='{{item.subject.images.small}}' class='img'></image>
+            <text class='name'>{{item.subject.title}}</text>
+            <view class='rating'>
+              <view class='rating-star allstar{{item.subject.rating.stars || 0}}'></view>
+              <text class='rating-average'>{{item.subject.rating.average}}</text>
+            </view>
+            <text class='wish-count'>{{item.subject.collect_count}}人想看</text>
+          </view>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+</view>
+

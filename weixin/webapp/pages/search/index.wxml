@@ -7,7 +7,7 @@
   </view>
   <view class='search-list'>
     <block wx:for='{{resultArr}}' wx:key='result'>
-      <view class='movie-wrapper' data-id='{{item.id}}'>
+      <view class='movie-wrapper' bindtap='bindToDetail' data-id='{{item.id}}'>
         <view class='movie-content'>
           <image src='{{item.image}}'></image>
           <view class='total'>

@@ -1,30 +1,24 @@
-// pages/home/index.js
-var app = getApp();
+// pages/celebrity/index.js
+const app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    intheaters:[],
-    comingSoon:[]
+    celebrity:{},
+    showAllDesc: false
   },
 
-  bindToSearch(){
-    wx.navigateTo({
-      url: '../search/index'
+  bindExtension() {
+    this.setData({
+      showAllDesc: true
     })
   },
 
-  bindToMore(e){
-    wx.navigateTo({
-      url: '../movie-more/movie-more?typeId=' + e.currentTarget.dataset.typeId,
-    });
-  },
-  
   bindToDetail(e) {
     let id = e.currentTarget.dataset.id;
-    wx.navigateTo({
+    wx.redirectTo({
       url: '../movie-detail/movie-detail?id=' + id,
     })
   },
@@ -33,30 +27,28 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var intheatersUrl = app.globalData.doubanBase + app.globalData.intheaters + '?start=0&count=10';
-    var comingSoonUrl = app.globalData.doubanBase + app.globalData.comingSoon + '?start=0&count=10';
-    this.getMovieListData(intheatersUrl,'intheaters');
-    this.getMovieListData(comingSoonUrl,'comingSoon');
-  },
-
-  getMovieListData(url,type){
+    let id = options.id;
+    let url = app.globalData.doubanBase + app.globalData.celebrity + id;
     wx.showToast({
       title: '加载中',
-      icon:'loading',
-      duration:10000
+      icon: 'loading',
+      duration: 10000
     });
+    console.log(url)
     wx.request({
       url: url,
-      method:'GET',
-      header:{'content-type':'json'},
-      success:(res) => {
+      type: 'GET',
+      header: { 'content-type': 'json' },
+      success: (res) => {
         console.log(res);
         this.setData({
-          [type]:res.data.subjects
+          celebrity: res.data
         })
       },
-      fail:err => console.log(err),
-      complete(){
+      fail: (error) => {
+        console.log(error);
+      },
+      complete() {
         wx.hideToast();
       }
     })

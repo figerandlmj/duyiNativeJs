@@ -1,0 +1,30 @@
+/* pages/score/index.wxss */
+.container{
+  background: #fff;
+}
+.star-wrapper{
+  position: relative;
+}
+.star-image{
+  position: absolute;
+  top: 50rpx; 
+  width: 150rpx;
+  height: 150rpx;
+  src: "../../images/normal.png";
+}
+.item{
+  position: absolute;
+  top: 0;
+  width: 75rpx;
+  height: 150rpx;
+}
+.txtarea{
+  display: block;
+  margin:0 auto;
+  width: 90%;
+  margin-top: 250rpx;
+}
+.comfirm-btn{
+  width: 90%;
+  margin:60rpx auto 100rpx;
+}

@@ -7,15 +7,43 @@ Page({
    * 页面的初始数据
    */
   data: {
+    windowWidth: app.globalData.windowWidth,
+    windowHeight:app.globalData.windowHeight,
     showIntheaters:true,
     showComingSoon:false,
-    intheaters:[],
-    comingSoon:[]
+    block:true,
+    intheaters:{
+      offset:0,
+      total:999,
+      movies:[]
+    },
+    comingSoon:{
+      offset: 0,
+      total: 999,
+      movies: []
+    }
   },
 
   bindSelect(e){
     var tabId = e.currentTarget.dataset.tabId;
     this.getMovieListData(tabId);
+  },
+
+  handleLower(){
+    let typeId = '';
+    if (this.data.showIntheaters){
+      typeId = 'intheaters';
+    }else{
+      typeId = 'comingSoon';
+    }
+    this.getMovieListData(typeId);
+  },
+
+  bindToDetail(e){
+    let id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '../movie-detail/movie-detail?id=' + id,
+    })
   },
 
   /**
@@ -27,38 +55,44 @@ Page({
   },
 
   getMovieListData(typeId) {
-    if (typeId == 'intheaters') {
-      this.setData({
-        showIntheaters: true,
-        showComingSoon: false,
-      })
-    } else {
-      this.setData({
-        showIntheaters: false,
-        showComingSoon: true,
-      })
-    }
-    var url = app.globalData.doubanBase;
-    if (typeId == 'intheaters'){
-      url += app.globalData.intheaters + '?start=0&count=10';
+    let offset = this.data[typeId].offset;
+    let total = this.data[typeId].total;
+    console.log(offset+'/'+total)
+    if (!this.data.block || offset >= total){
+      return;
     }else{
-      url += app.globalData.comingSoon + '?start=0&count=10';
+      this.data.block = false;
     }
     wx.showToast({
       title: '加载中',
       icon: 'loading',
       duration: 10000
     });
+    var url = app.globalData.doubanBase;
+    if (typeId == 'intheaters') {
+      url += app.globalData.intheaters;
+      this.setData({
+        showIntheaters: true,
+        showComingSoon: false
+      })
+    } else {
+      url += app.globalData.comingSoon;
+      this.setData({
+        showIntheaters: false,
+        showComingSoon: true
+      })
+    }
     wx.request({
       url: url,
       method: 'GET',
       header: { 'content-type': 'json' },
+      data:{
+        start: offset,
+        count:5,
+      },
       success: (res) => {
         console.log(res);
-        this.arrageData(res.data.subjects, typeId);
-        // this.setData({
-        //   [type]: res.data.subjects
-        // })
+        this.arrageData(res.data.subjects, typeId, res.data.total);
       },
       fail: err => console.log(err),
       complete() {
@@ -67,8 +101,8 @@ Page({
     })
   },
 
-  arrageData(res, typeId) {
-    let resultArr = [];
+  arrageData(res, typeId, total) {
+    let resultArr = this.data[typeId].movies;
     res.forEach(item => {
       let allCasts = item.casts.map(i => i.name).join('/');
       let totalDir = item.directors.map(i => i.name).join('/');
@@ -79,6 +113,8 @@ Page({
         // title: item.title,
         // image: item.images.small,
         // total: total
+        typeId: typeId,
+        windowWidth: this.data.windowWidth,
         allCasts,
         totalDir,
         allGenres,
@@ -86,7 +122,12 @@ Page({
       });
     })
     this.setData({
-      [typeId]: resultArr
+      [typeId]: {
+        offset: this.data[typeId].offset + res.length,
+        total: total,
+        movies: resultArr
+      },
+      block:true
     })
   },
 

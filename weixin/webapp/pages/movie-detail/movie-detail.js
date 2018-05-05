@@ -1,31 +1,51 @@
-// pages/home/index.js
-var app = getApp();
+// pages/movie-detail/movie-detail.js
+const app = getApp();
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    intheaters:[],
-    comingSoon:[]
+    id:'',
+    movie:{},
+    showAllDesc:false
   },
 
-  bindToSearch(){
-    wx.navigateTo({
-      url: '../search/index'
+  bindExtension(){
+    this.setData({
+      showAllDesc: true
     })
   },
 
-  bindToMore(e){
+  bindToImg(e){
+    let url = e.currentTarget.dataset.url;
     wx.navigateTo({
-      url: '../movie-more/movie-more?typeId=' + e.currentTarget.dataset.typeId,
-    });
+      url: '../movie-img/index?url=' + url
+    })
   },
-  
-  bindToDetail(e) {
+
+  bindWish(){
+    wx.showModal({
+      title: '提示',
+      content: '一起去看吧',
+      showCancel:false,
+      success:(res) => {
+        console.log(res)
+      }
+    })
+  },
+
+  bindDo(e){
+    wx.navigateTo({
+      url: '../score/index?id=' + this.data.id
+    })
+  },
+
+  bindToCelebrity(e) {
     let id = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: '../movie-detail/movie-detail?id=' + id,
+      url: '../celebrity/index?id=' + id
     })
   },
 
@@ -33,13 +53,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var intheatersUrl = app.globalData.doubanBase + app.globalData.intheaters + '?start=0&count=10';
-    var comingSoonUrl = app.globalData.doubanBase + app.globalData.comingSoon + '?start=0&count=10';
-    this.getMovieListData(intheatersUrl,'intheaters');
-    this.getMovieListData(comingSoonUrl,'comingSoon');
-  },
-
-  getMovieListData(url,type){
+    let id = options.id;
+    let url = app.globalData.doubanBase + app.globalData.subject + id;
     wx.showToast({
       title: '加载中',
       icon:'loading',
@@ -47,15 +62,29 @@ Page({
     });
     wx.request({
       url: url,
-      method:'GET',
+      type:'GET',
       header:{'content-type':'json'},
       success:(res) => {
         console.log(res);
+        let dirsAndCasts = [...res.data.directors,...res.data.casts];
+        let allGenres = res.data.year + '/' + res.data.genres.join('/');
+        let originName = '原名：' + res.data.original_title;
+        let country = '国家：' + res.data.countries.join('/');
         this.setData({
-          [type]:res.data.subjects
+          id,
+          movie:{
+            dirsAndCasts,
+            allGenres,
+            originName,
+            country,
+            ...res.data
+          },
+          rating:res.data.rating
         })
       },
-      fail:err => console.log(err),
+      fail: (error) => {
+        console.log(error);
+      },
       complete(){
         wx.hideToast();
       }

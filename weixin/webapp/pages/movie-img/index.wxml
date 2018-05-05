@@ -1,0 +1,4 @@
+<!--pages/movie-img/index.wxml-->
+<view class='container'>
+  <image src='{{imgUrl}}' class='poster'></image>
+</view>

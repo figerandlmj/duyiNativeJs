@@ -1,0 +1,122 @@
+/* pages/movie-detail/movie-detail.wxss */
+@import '/pages/movie-rating/movie-rating.wxss';
+.poster-wrapper{
+  background-color: #fff;
+}
+.poster{
+  display: block;
+  width: 300rpx;
+  height: 350rpx;
+  margin: 60rpx auto;
+}
+.movie-desc{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-between;
+  padding:0 30rpx 40rpx;
+  background-color: #fff;
+}
+.fl{
+  display: flex;
+  flex-direction: column;
+}
+.fl .name{
+   font-size:32rpx;
+  font-weight: 600;
+  line-height: 1.6;
+}
+.fl .year-genres, 
+.fl .original-name,
+.fl .countries{
+  font-size: 28rpx;
+  color: #4a4a4a;
+  font-weight: 500;
+  line-height: 1.6;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.fr{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10rpx;
+  border: 2rpx solid #e6e6e6;
+  line-height: 2;
+}
+.wish-do{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background: #fff;
+  padding-bottom: 30rpx;
+}
+.wish-btn,
+.do-btn{
+  padding: 10rpx 60rpx;
+  border: 2rpx solid #ff9800;
+  color: #ff9800;
+  font-size: 28rpx;
+}
+.summary{
+  background: #fff;
+  padding: 0 30rpx 40rpx;
+}
+.summary .title{
+  color: #4a4a4a;
+  font-size: 32rpx;
+}
+.summary-wrapper{
+  margin:10rpx 0;
+}
+.summary-line{
+  overflow: hidden;
+	height: 130rpx;
+}
+.summary-content{
+  font-size: 28rpx;
+  text-indent: 60rpx;
+  padding-left: 60rpx;
+  text-align: justify;
+  text-align-last: justify;
+}
+.extension{
+  display: block;
+  color: #8bc34a;
+}
+.casts{
+  background: #fff;
+  padding: 0 30rpx 40rpx;
+}
+.casts .title{
+  display: block;
+  color: #4a4a4a;
+  font-size: 32rpx;
+  margin-bottom: 20rpx;
+}
+.casts-scroll{
+  width: 100%;
+  white-space: nowrap;
+}
+.cast-wrapper{
+  display: inline-block;
+  margin:0 auto;
+}
+.cast-wrapper:not(:last-child){
+  margin-right:10rpx;
+}
+.cast-content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.cast-content .img{
+  width: 200rpx;
+  height: 300rpx;
+}
+.cast-content .name{
+  font-size: 28rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

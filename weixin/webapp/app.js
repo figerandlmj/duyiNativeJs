@@ -32,6 +32,12 @@ App({
         }
       }
     })
+    wx.getSystemInfo({
+      success: (res) => {
+        this.globalData.windowHeight = res.windowHeight;
+        this.globalData.windowWidth = res.windowWidth;
+      },
+    })
   },
   globalData: {
     userInfo: null,
@@ -39,6 +45,8 @@ App({
     doubanBase:'http://localhost:8080',
     searchUrl:'/v2/movie/search?q=',
     intheaters:'/v2/movie/in_theaters',
-    comingSoon:'/v2/movie/coming_soon'
+    comingSoon:'/v2/movie/coming_soon',
+    subject:'/v2/movie/subject/',
+    celebrity:'/v2/movie/celebrity/'
   }
 })
