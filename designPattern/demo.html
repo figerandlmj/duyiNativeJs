@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>单例模式</title>
+</head>
+<body>
+	<div class="toast">
+		<button id="alertBtn">点我弹窗</button>
+	</div>
+	<script>
+
+		// 用一个变量来标识是否为某个类创建了对象，如果是则在下一次获取该类的时候直接返回之前创建的
+		// var Singleton = function(name) {
+		// 	this.name = name;
+		// 	this.instance = null;
+		// };
+		// Singleton.prototype.getName = function(){
+		// 	alert(name);
+		// };
+		// Singleton.getInstance = function(name){
+		// 	if(!this.instance) {
+		// 		this.instance = new Singleton(name);
+		// 	}
+		// 	return this.instance;
+		// }
+		// var a = Singleton.getInstance("a");
+		// var b = Singleton.getInstance("b");
+		// console.log(a === b);
+
+		// 1创建时就会生成一个dom，并且插入页面当中
+		// var alert = (function() {
+		// 	var div = document.createElement('div');
+		// 	div.innerHTML = '我是一个弹窗';
+		// 	div.style.display = 'none';
+		// 	document.body.appendChild(div);
+		// 	return div;
+		// })();
+		// document.getElementById('alertBtn').onclick = function(){
+		// 	alert.style.display = 'block';
+		// }
+
+		// 2
+		// var alert = function(){
+		// 	var div = document.createElement('div');
+		// 	div.innerHTML = '我是一个弹窗';
+		// 	div.style.display = 'none';
+		// 	document.body.appendChild(div);
+		// 	return div;
+		// }
+		// document.getElementById('alertBtn').onclick = function(){
+		// 	var createAlert = alert();
+		// 	createAlert.style.display = 'block';
+		// }
+
+		// 3
+		var alert = (function(){
+			var div;
+			return function(){
+				if(!div){
+					div = document.createElement('div');
+					div.innerHTML = '我是一个弹窗';
+					div.style.display = 'none';
+					document.body.appendChild(div);
+				}
+				return div;
+			};
+		})();
+		document.getElementById('alertBtn').onclick = function(){
+			var createAlert = alert();
+			createAlert.style.display = 'block';
+		}
+
+	</script>
+</body>
+</html>
