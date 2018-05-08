@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>迭代器模式</title>
+</head>
+<body>
+	<script>
+		var agg = (function(){
+			var data = [1,2,3,4,5],
+				length = data.length,
+				index = 0;
+			return {
+				next:function(){
+					var element;
+					if(!this.hasNext()){
+						return null;
+					}
+					element = data[index];
+					index ++;
+					return element;
+				},
+				hasNext:function(){
+					return index < length;
+				},
+				current:function(){
+					return data[index];
+				}
+			}
+		})();
+		while(agg.hasNext()){
+			console.log(agg.next());
+		}
+	</script>
+</body>
+</html>

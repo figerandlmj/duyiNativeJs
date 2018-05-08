@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>观察者模式</title>
+</head>
+<body>
+	<script>
+		var observer = (function(){
+			var _message = {};
+			return {
+				// 订阅消息
+				regist:function(type,fn){
+					if(typeof _message[type] === 'undefined'){
+						_message[type] = [fn];
+					}else{
+						_message[type].push(fn);
+					}
+				},
+				// 发布
+				fire:function(type,args){
+					if(!_message[type]){
+						return;
+					}
+					var events = {
+						type:type,
+						args:args || {}
+					};
+					var len = _message[type].length;
+					for(var i = 0; i < len; i ++) {
+						_message[type][i].call(this,events);
+					}
+				},
+				// 退订
+				remove:function(type,fn){
+					if(_message[type] instanceof Array){
+						var i = _message[type].length - 1;
+						for(; i >= 0; i--){
+							_message[type][i] === fn && _message[type].aplice(i,1);
+						}
+					}
+				}
+			}
+		})();
+		observer.regist('test',function(e){
+			console.log(e.type,e.args.msg)
+		});
+		observer.fire('test',{msg:'测试'});
+		observer.fire('test',{msg:'测试1'});
+	</script>
+</body>
+</html>

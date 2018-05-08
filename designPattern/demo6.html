@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>装饰者模式</title>
+</head>
+<body>
+	<script>
+		function Macbook(){
+			this.cost = function(){
+				return 1000;
+			}
+		}
+		function Memory(computer){
+			this.cost = function(){
+				return computer.cost() + 100;
+			}
+		}
+		function BlurayDrive(computer){
+			this.cost = function(){
+				return computer.cost() + 200;
+			}
+		}
+		function Insurance(computer){
+			this.cost = function(){
+				return computer.cost() + 300;
+			}
+		}
+		var myMacbook = new Insurance(new BlurayDrive(new Memory(new Macbook())));
+		var yourMacbook = new BlurayDrive(new Memory(new Macbook()));
+		console.log(myMacbook.cost());
+		console.log(yourMacbook.cost());
+	</script>
+</body>
+</html>

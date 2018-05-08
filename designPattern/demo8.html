@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>适配器模式</title>
+</head>
+<body>
+	<script>
+		function doThing(obj){
+			var _obj = {
+				name:'duyi',
+				title:'设计模式',
+				age:10,
+				width:1000,
+				height:1000
+			};
+			for(var i in _obj){
+				_obj[i] = obj[i] || _obj[i];
+			}
+			console.log(_obj);
+		}
+		var myObj = {
+			name:'figer',
+			title:'lmj'
+		}
+		doThing(myObj);
+	</script>
+</body>
+</html>

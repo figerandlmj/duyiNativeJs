@@ -7,6 +7,7 @@
 <body>
 	<div class="toast">
 		<button id="alertBtn">点我弹窗</button>
+		<button id="iframeBtn">点我创建iframe</button>
 	</div>
 	<script>
 
@@ -54,21 +55,61 @@
 		// }
 
 		// 3
-		var alert = (function(){
-			var div;
+		// var alert = (function(){
+		// 	var div;
+		// 	return function(){
+		// 		if(!div){
+		// 			div = document.createElement('div');
+		// 			div.innerHTML = '我是一个弹窗';
+		// 			div.style.display = 'none';
+		// 			document.body.appendChild(div);
+		// 		}
+		// 		return div;
+		// 	};
+		// })();
+		// document.getElementById('alertBtn').onclick = function(){
+		// 	var createAlert = alert();
+		// 	createAlert.style.display = 'block';
+		// }
+
+		// 判断逻辑
+		var getSingle = function(fn){
+			console.log(arguments)
+			var result;
+			if(!result) {
+				result = fn.apply(this,arguments)
+			}
 			return function(){
-				if(!div){
-					div = document.createElement('div');
-					div.innerHTML = '我是一个弹窗';
-					div.style.display = 'none';
-					document.body.appendChild(div);
-				}
-				return div;
-			};
-		})();
+				return result;
+			}
+		};
+		// 创建obj逻辑
+		var createAlert = function(){
+			console.log(arguments)
+			var div = document.createElement('div');
+			div.innerHTML = '我是一个弹窗';
+			div.style.display = 'none';
+			document.body.appendChild(div);
+			return div;
+		};
+		var createSingleAlert = getSingle(createAlert);
 		document.getElementById('alertBtn').onclick = function(){
-			var createAlert = alert();
+			var createAlert = createSingleAlert();
 			createAlert.style.display = 'block';
+		}
+		
+		var createIframe = function(){
+			console.log(arguments)
+			var iframe = document.createElement('iframe');
+			iframe.style.display = 'none';
+			document.body.appendChild(iframe);
+			return iframe;
+		};
+		var createSingleIframe = getSingle(createIframe);
+		document.getElementById('iframeBtn').onclick = function(){
+			var createIframe = createSingleIframe();
+			createIframe.src = 'http://www.baidu.com';
+			createIframe.style.display = 'block';
 		}
 
 	</script>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>工厂模式</title>
+</head>
+<body>
+	<script>
+		function CarFactory(){}
+		CarFactory.BMW = function(){
+			this.name = '宝马';
+		}
+		CarFactory.Benz = function(){
+			this.name = '奔驰';
+		}
+		CarFactory.Audi = function(){
+			this.name = '奥迪';
+		}
+		CarFactory.prototype.drive = function(){
+			return '该批次的' + this.name + '添加了自动驾驶功能';
+		}
+		// 生产车
+		CarFactory.create = function(carName){
+			if(typeof CarFactory[carName] !== 'function'){
+				console.log('对不起，没有改生产线');
+			}
+			if(typeof CarFactory[carName].prototype.drive !== 'function'){
+				CarFactory[carName].prototype = new CarFactory();
+			}
+			var newCar = new CarFactory[carName]();
+			return newCar;
+		}
+		var car = CarFactory.create('BMW');
+		console.log(car.drive());
+	</script>
+</body>
+</html>

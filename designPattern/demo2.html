@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>代理模式</title>
+</head>
+<body>
+	<script>
+		// 直接送花
+		// var Flower = function(name){
+		// 	var flower = {
+		// 		name:name
+		// 	}
+		// 	return flower;
+		// }
+		// var dengGe ={
+		// 	sendFlower:function(target){
+		// 		var flower = new Flower('向日葵');
+		// 		target.receiveFlower(flower.name);
+		// 	}
+		// };
+		// var godder1 = {
+		// 	receiveFlower:function(flower){
+		// 		console.log('收到：' + flower);
+		// 	}
+		// }
+		// dengGe.sendFlower(godder1);
+		// 拜托别人送
+		var Flower = function(name){
+			var flower = {
+				name:name
+			}
+			return flower;
+		}
+		var dengGe ={
+			sendFlower:function(target){
+				// var flower = new Flower('向日葵');
+				// target.receiveFlower(flower.name);
+				target.receiveFlower();
+			}
+		};
+		var chengGe = {
+			receiveFlower:function(){
+				// godder2.receiveFlower(flower);
+				var flower = new Flower('向日葵');
+				godder2.listenGoodMood(function(){
+					godder2.receiveFlower(flower.name);
+				})
+			}
+		}
+		var godder2 = {
+			receiveFlower:function(flower){
+				console.log('女神收到：' + flower);
+			},
+			listenGoodMood:function(fn){
+				setTimeout(function(){
+					fn();
+				},1000);
+			}
+		}
+		dengGe.sendFlower(chengGe);
+
+	</script>
+</body>
+</html>
