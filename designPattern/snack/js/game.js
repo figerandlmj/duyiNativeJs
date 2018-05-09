@@ -30,11 +30,12 @@ var SnackBody = jsUtil.extends(Square);
 // 蛇头继承方格
 var SnackHead = jsUtil.extends(Square);
 // 食物继承方格
-var Food = jsUtil.extends(Square);
+// var Food = jsUtil.extends(Square);
 
 var Game = jsUtil.single();//游戏
 var Ground = jsUtil.single();//广场
 var Snack = jsUtil.single();//蛇
+var Food = jsUtil.single(jsUtil.extends(Square));//食物
 
 // 触及方法的枚举
 var TouchEventEnum = {
@@ -49,7 +50,7 @@ var game = new Game();
 game.score = 0;
 // 设置时间
 game.timer = null;
-// 地板
+// 广场
 game.ground = null;
 // 蛇
 game.snack = null;
@@ -64,15 +65,37 @@ game.init = function(){
 	var gameSnack = new Snack();
 	gameSnack.init(gameGround);
 	this.snack = gameSnack;
+	// 初始化食物
+	var food = new Food();
+	food.init(gameGround, game);
+	this.food = food;
 }
 // 游戏运行
 game.run = function(){
 	this.timer = setInterval(function(){
 		var result = game.snack.move(game);
 	},SPEED);
+
+	// 上38下40左37右39
+	document.onkeydown = function(e){
+		var keyNum = window.event ? e.keyCode : e.which;
+		if(keyNum === 38 && game.snack.direction !== DirectionEnum.Down){
+			game.snack.direction = DirectionEnum.Up;
+		}else if(keyNum === 40 && game.snack.direction !== DirectionEnum.Up){
+			game.snack.direction = DirectionEnum.Down;
+		}else if(keyNum === 37 && game.snack.direction !== DirectionEnum.Right){
+			game.snack.direction = DirectionEnum.Left;
+		}else if(keyNum === 39 && game.snack.direction !== DirectionEnum.Left){
+			game.snack.direction = DirectionEnum.Right;
+		}
+	}
+	// var result = game.snack.move(game);
 }
 // 游戏结束
-game.over = function(){}
+game.over = function(){
+	alert('你的当前得分' + this.score);
+	clearInterval(this.timer);
+}
 
 
 // 初始化广场
@@ -109,7 +132,23 @@ ground.init = function(){
 			viewGround.appendChild(square.view);
 		}
 	}
+	ground.view = viewGround;
+	// console.log(ground.view);
 }
+// 拆格子方法
+ground.remove =function(x, y){
+	// view
+	this.view.removeChild(this.squareTable[y][x].view);
+	// 数据
+	this.squareTable[y][x] = null;
+}
+// 添加格子方法
+ground.append = function(x, y, square){
+	this.squareTable[y][x] = square;
+	this.view.appendChild(this.squareTable[y][x].view);
+}
+
+
 
 // 工厂模式
 function SquareFactory(){}
@@ -124,6 +163,7 @@ SquareFactory.create = function(type, x, y){
 SquareFactory.commonInit = function(obj, x1, y1, color, touchEvent){
 	obj.x = x1;
 	obj.y = y1;
+	obj.color = color;
 	obj.view = document.createElement('div');
 	obj.view.style.position = 'absolute';
 	obj.view.style.display = 'inline-block';
@@ -157,7 +197,7 @@ SquareFactory.Wall = function(x1, y1){
 }
 SquareFactory.SnackHead = function(x1, y1){
 	var snackHead = new SnackHead();
-	// 造蛇身小格子
+	// 造蛇头小格子
 	this.commonInit(snackHead, x1, y1, 'red', TouchEventEnum.Dead);
 	return snackHead;
 }
@@ -170,8 +210,8 @@ SquareFactory.SnackBody = function(x1, y1){
 
 // 蛇初始化
 var snack = new Snack();
-snack.head = null;
-snack.tail = null;
+snack.head = null;//蛇头
+snack.tail = null;//蛇尾
 snack.direction = 0;
 var DirectionEnum = {
 	Up:{x: 0, y: -1},
@@ -183,6 +223,94 @@ snack.init = function(gameGround) {
 	var tempHead = SquareFactory.create('SnackHead', 3, 1);//蛇头
 	var tempBody1 = SquareFactory.create('SnackBody', 2, 1);//蛇身
 	var tempBody2 = SquareFactory.create('SnackBody', 1, 1);//蛇身
+	// 拆格子 添加方法
+	gameGround.remove(3, 1);
+	gameGround.append(3, 1, tempHead);
+	gameGround.remove(2, 1);
+	gameGround.append(2, 1, tempBody1);
+	gameGround.remove(1, 1);
+	gameGround.append(1, 1, tempBody2);
+	// 把蛇链接起来
+	tempHead.last = null;
+	tempHead.next = tempBody1;
+	tempBody1.last = tempHead;
+	tempBody1.next = tempBody2;
+	tempBody2.last = tempBody1;
+	tempBody2.next = null;
+	this.head = tempHead;
+	this.tail = tempBody2;
+	this.direction = DirectionEnum.Right;
 }
+snack.move = function(game){
+	// 蛇头移动
+	var square = game.ground.squareTable[this.head.y + this.direction.y][this.head.x + this.direction.x];
+	// 蛇移动策略
+	if(typeof this.strategy[square.touch()] === 'function'){
+		this.strategy[square.touch()](game, snack, square, false);
+	}
+}
+snack.strategy = {
+	Move:function(game, snack, square, fromEat){
+		// 原蛇身1
+		var tempBody1 = snack.head.next;
+		// 新建蛇身1
+		var newBody1 = SquareFactory.create('SnackBody', snack.head.x, snack.head.y);
+		newBody1.next = tempBody1;
+		tempBody1.last = newBody1;
+		// tempBody1.next = null;
+		// 拆蛇头方格变为新建蛇身1
+		game.ground.remove(snack.head.x, snack.head.y);
+		game.ground.append(snack.head.x, snack.head.y, newBody1);
+		// 长出新的蛇头
+		var newHead = SquareFactory.create('SnackHead', square.x, square.y);
+		newHead.last = null;
+		newHead.next = newBody1;
+		newBody1.last = newHead;
+		// 拆地面方格变为新建蛇头
+		game.ground.remove(square.x, square.y);
+		game.ground.append(square.x, square.y, newHead);
+		// 更新蛇头
+		snack.head = newHead;
+		// 删除蛇尾
+		if(!fromEat){
+			var floor = SquareFactory.create('Floor', snack.tail.x, snack.tail.y);
+			// 拆蛇身2方格变为新建地面
+			game.ground.remove(snack.tail.x, snack.tail.y);
+			game.ground.append(snack.tail.x, snack.tail.y, floor);
+			// 更新蛇尾
+			tempBody1.next = null;
+			snack.tail = tempBody1;
+		}else{
+			tempBody1.next = snack.tail;
+			snack.tail.last = tempBody1;
+		}
+	},
+	Eat:function(game, snack, square){
+		game.score ++;
+		this.Move(game, snack, square, true);
+		var food = new Food();
+		food.init(game.ground, game);
+	},
+	Dead:function(game){
+		game.over();
+	}
+}
+
+// 初始化食物
+var food = new Food();
+food.init = function(ground, game){
+	// 获取食物位置
+	var x = jsUtil.random(1, X_LEN - 2);
+	var y = jsUtil.random(1, Y_LEN - 2);
+	if(ground.squareTable[y][x].color === 'orange'){
+		var food = SquareFactory.create('Food', x, y);
+		// 拆格子 添加方法
+		ground.remove(x, y);
+		ground.append(x, y, food);
+	}
+}
+
+
+
 
 

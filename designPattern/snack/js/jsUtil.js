@@ -10,14 +10,28 @@ var jsUtil = {
 		return result;
 	},
 	// 单例模式
-	single:function(){
-		var result = function(){
-			if(typeof result.instance === 'object'){
-				return result.instance;
-			}
-			result.instance = this;
-			return this;
-		};
+	single:function(origin){
+		if(typeof origin === 'function'){
+			var result = function(){
+				if(typeof origin.instance === 'object'){
+					return origin.instance;
+				}
+				origin.instance = this;
+				return this;
+			};
+		}else{
+			var result = function(){
+				if(typeof result.instance === 'object'){
+					return result.instance;
+				}
+				result.instance = this;
+				return this;
+			};
+		}
+		return result;
+	},
+	random:function(min, max){
+		var result = Math.floor(Math.random() * (max - min + 1)) + min;
 		return result;
 	}
 }
