@@ -9,6 +9,8 @@ var BASE_Y = 100;
 // 蛇的速度
 var SPEED = 500;
 
+var oApp = document.getElementById('app');
+
 // 方格基本对象
 function Square(x1, y1){
 	this.x = x1;
@@ -89,12 +91,15 @@ game.run = function(){
 			game.snack.direction = DirectionEnum.Right;
 		}
 	}
-	// var result = game.snack.move(game);
 }
 // 游戏结束
 game.over = function(){
-	alert('你的当前得分' + this.score);
-	clearInterval(this.timer);
+	var res = confirm('你当前的得分是' + this.score + '，再来一局？');
+	if(res){
+		location.reload();
+	}else{
+		clearInterval(this.timer);
+	}
 }
 
 
@@ -111,11 +116,9 @@ ground.init = function(){
 	viewGround.style.position = 'relative';
 	viewGround.style.height = this.xLen * SQUARE_WIDTH + 'PX';
 	viewGround.style.width = this.yLen * SQUARE_WIDTH + 'px';
-	viewGround.style.display = 'inline-block';
-	viewGround.style.left = this.basePointX + 'px';
-	viewGround.style.top = this.basePointY + 'px';
+	viewGround.style.margin = '20px auto';
 	viewGround.style.background = 'green';
-	document.body.appendChild(viewGround);
+	oApp.appendChild(viewGround);
 	// x = 0  || y = 0 || x = max || y = max  墙
 	for(var i = 0; i < this.yLen; i ++) {
 		for(var j = 0; j < this.xLen; j ++) {
@@ -133,7 +136,6 @@ ground.init = function(){
 		}
 	}
 	ground.view = viewGround;
-	// console.log(ground.view);
 }
 // 拆格子方法
 ground.remove =function(x, y){
@@ -221,8 +223,8 @@ var DirectionEnum = {
 };
 snack.init = function(gameGround) {
 	var tempHead = SquareFactory.create('SnackHead', 3, 1);//蛇头
-	var tempBody1 = SquareFactory.create('SnackBody', 2, 1);//蛇身
-	var tempBody2 = SquareFactory.create('SnackBody', 1, 1);//蛇身
+	var tempBody1 = SquareFactory.create('SnackBody', 2, 1);//蛇身1
+	var tempBody2 = SquareFactory.create('SnackBody', 1, 1);//蛇身2
 	// 拆格子 添加方法
 	gameGround.remove(3, 1);
 	gameGround.append(3, 1, tempHead);
@@ -278,11 +280,9 @@ snack.strategy = {
 			game.ground.remove(snack.tail.x, snack.tail.y);
 			game.ground.append(snack.tail.x, snack.tail.y, floor);
 			// 更新蛇尾
-			tempBody1.next = null;
-			snack.tail = tempBody1;
-		}else{
-			tempBody1.next = snack.tail;
-			snack.tail.last = tempBody1;
+			var newTail = snack.tail.last;
+			newTail.next = null;
+			snack.tail = newTail;
 		}
 	},
 	Eat:function(game, snack, square){
@@ -307,8 +307,12 @@ food.init = function(ground, game){
 		// 拆格子 添加方法
 		ground.remove(x, y);
 		ground.append(x, y, food);
+	}else{
+		var food = new Food();
+		food.init(game.ground, game);
 	}
 }
+
 
 
 

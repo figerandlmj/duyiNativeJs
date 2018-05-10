@@ -30,6 +30,7 @@ var jsUtil = {
 		}
 		return result;
 	},
+	// [min,max]随机数
 	random:function(min, max){
 		var result = Math.floor(Math.random() * (max - min + 1)) + min;
 		return result;
