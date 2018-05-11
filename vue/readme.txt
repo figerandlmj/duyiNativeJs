@@ -29,5 +29,9 @@ vue-cli
 组件库
 http://element-cn.eleme.io/#/zh-CN
 
+组件化
+高内聚低耦合
+代码利用率高
+代码维护性好
 
 

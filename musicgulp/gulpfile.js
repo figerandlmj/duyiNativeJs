@@ -21,7 +21,7 @@ var folder = {
 	dist: 'dist/'
 }
 
-var devMode = process.env.NODE_ENV == 'production';//是否是开发环境
+var devMode = process.env.NODE_ENV == 'production';//是否是生产环境
 
 gulp.task('html', function() {
 	var page = gulp.src(folder.src + '*.html')

@@ -18,112 +18,112 @@
 
 	1. window对象
 
-	属性:
+		属性:
 
-	innerWidth  文档显示区    outerWidth   窗口的外部
-	innerHeight               outerHeight
+		innerWidth  文档显示区    outerWidth   窗口的外部
+		innerHeight               outerHeight
 
-	pageXOffset 当前页面相对于窗口左上角 screenLeft screenX  窗口左上角在屏幕上的x,y坐标
-	pageYOffset                          screenTop  screenY
+		pageXOffset 当前页面相对于窗口左上角 screenLeft screenX  窗口左上角在屏幕上的x,y坐标
+		pageYOffset                          screenTop  screenY
 
-	top         顶层窗口       defaultStatus 状态栏默认文本
-	parent      父窗口         status
-	self window 当前窗口
+		top         顶层窗口       defaultStatus 状态栏默认文本
+		parent      父窗口         status
+		self window 当前窗口
 
-	name   窗口名称
-	closed 窗口是否被关闭
-	length 窗口中框架数量
-	opener 创建此窗口的窗口的引用
+		name   窗口名称
+		closed 窗口是否被关闭
+		length 窗口中框架数量
+		opener 创建此窗口的窗口的引用
 
-	document  document对象的只读引用
-	navigator
-	screen
-	history
-	location
+		document  document对象的只读引用
+		navigator
+		screen
+		history
+		location
 
-	方法：
+		方法：
 
-	alert()    弹框     close() 
-	confirm()           open(url, name, features)
-	prompt()            createPopup() 创建一个弹出窗口
+		alert()    弹框     close() 
+		confirm()           open(url, name, features)
+		prompt()            createPopup() 创建一个弹出窗口
 
-	print()  打印当前窗口的内容
+		print()  打印当前窗口的内容
 
-	blur()       moveBy()  resizeBy()  scrollBy()
-	focus()      moveTo()  resizeTo()  scrollTo()
-	
-	setInterval()     setTimeout()
-	clearInterval()   clearTimeout()
+		blur()       moveBy()  resizeBy()  scrollBy()
+		focus()      moveTo()  resizeTo()  scrollTo()
+		
+		setInterval()     setTimeout()
+		clearInterval()   clearTimeout()
 
 	2. navigator对象
 
-	属性：
+		属性：
 
-	appCodeName   浏览器代码名 'Mozilla'   appName         浏览器名称
-	appVersion    浏览器平台和版本         appMinorVersion 浏览器次级版本
-	userAgent     包括上面两种信息  
+		appCodeName   浏览器代码名 'Mozilla'   appName         浏览器名称
+		appVersion    浏览器平台和版本         appMinorVersion 浏览器次级版本
+		userAgent     包括上面两种信息  
 
-	cookieEnabled  是否启用cookie
-	online         是否处于脱机模式       
+		cookieEnabled  是否启用cookie
+		online         是否处于脱机模式       
 
-	browserLanguage  浏览器语言
-	userLanguage     os设定的自然语言
-	systemLanguage   os默认语言
+		browserLanguage  浏览器语言
+		userLanguage     os设定的自然语言
+		systemLanguage   os默认语言
 
-	cpuClass  cpu等级
-	platform  操作系统 win64
-	plugins   安装的插件数组
+		cpuClass  cpu等级
+		platform  操作系统 win64
+		plugins   安装的插件数组
 
-	方法：
+		方法：
 
-	javaEnabled()  是否支持启用java
-	tainEnabled()  是否启用数据污点
+		javaEnabled()  是否支持启用java
+		tainEnabled()  是否启用数据污点
 
 	3. screen对象
 
-	属性：
+		属性：
 
-	availWidth    width    显示屏幕宽度
-	availHeight   height
+		availWidth    width    显示屏幕宽度
+		availHeight   height
 
-	bufferDepth   调色板比特深度
-	colorDepth
-	
-	deviceXDPI   屏幕每英寸水平点数   logicalXDPI   常规点数
-	deviceYDPI                        logicalYDPI
+		bufferDepth   调色板比特深度
+		colorDepth
+		
+		deviceXDPI   屏幕每英寸水平点数   logicalXDPI   常规点数
+		deviceYDPI                        logicalYDPI
 
-	fontSmoothingEnabled  控制面板中是否启用字体平滑
-	pixelDepth            屏幕颜色分辨率
-	updateInterval        屏幕刷新率
+		fontSmoothingEnabled  控制面板中是否启用字体平滑
+		pixelDepth            屏幕颜色分辨率
+		updateInterval        屏幕刷新率
 
 	4. history对象
 
-	属性：
+		属性：
 
-	length  历史列表中url数量
+		length  历史列表中url数量
 
-	方法：
+		方法：
 
-	back()    前一个url
-	forward() 下一个url
-	go(2/-2)   
+		back()    前一个url
+		forward() 下一个url
+		go(2/-2)   
 
 	5. location对象
 	
-	属性：
+		属性：
 
-	href完整的url
-	protocol协议 hostname主机名 port端口号  pathname路径 hash锚 search查询部分
-	https://     www.baidu.com  :80         /d/abc       #/3    ?name=figer&age=18
-	             host主机名和端口号
+		href完整的url
+		protocol协议 hostname主机名 port端口号  pathname路径 hash锚 search查询部分
+		https://     www.baidu.com  :80         /d/abc       #/3    ?name=figer&age=18
+		             host主机名和端口号
 
-	方法：
+		方法：
 
-	assign() 加载新的文档
-	replace() 新文档替换当前文档
+		assign() 加载新的文档
+		replace() 新文档替换当前文档
 
-	reload() / reload(false) 重新加载当前文档(取缓存文档)
-	reload('force')        不读缓存
+		reload() / reload(false) 重新加载当前文档(取缓存文档)
+		reload('force')        不读缓存
 
 
 

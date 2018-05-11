@@ -191,7 +191,7 @@ function deepClone(origin, target){
 }
 
 // 封装type
-// 1.封两类，原始值和引用值
+// 1.分两类，原始值和引用值
 // 2.区分引用值
 // Object.prototype.toString.call(new Number(123));//"[object Number]"
 // Object.prototype.toString.call(123);//"[object Number]"
