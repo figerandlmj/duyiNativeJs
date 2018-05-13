@@ -113,6 +113,12 @@ https://figerandlmj.github.io/blog/
 hexo n "我的博客" == hexo new "我的博客" #新建文章
 hexo s == hexo server #启动服务预览
 
+git报错 Unknown SSL protocol error in connection to github.com:443
+git config http.sslVerify "false"  
+
+git报错 The remote end hung up unexpectedly
+[http]
+	postBuffer = 1048576000
 
 
 
