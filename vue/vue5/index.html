@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>组件化</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<!-- <my-inpu></my-inpu>
+		<my-div></my-div> -->
+		{{title}}
+	</div>
+	<script>
+		// // 全局组件
+		// Vue.component('my-inpu', {
+		// 	template:`
+		// 		<div>
+		// 			<input type="text" />
+		// 		</div>
+		// 	`
+		// })
+		// // 局部组件
+		// new Vue({
+		// 	el:'#app',
+		// 	components:{
+		// 		myDiv:{
+		// 			template:`
+		// 				<div>welcome to duyi</div>
+		// 			`
+		// 		}
+		// 	}
+		// })
+		// const config ={
+		// 	el, // 挂载点
+		// 	data, // 当前组件下面的数据,可写可读
+		// 	props, // 进行数据传递，单向数据流（父 -》 子），只读
+		// 	computed, // 计算属性，根据已有属性（data、props）计算出新的属性,与已有属性保持同步
+		// 	watch, // 监听器，监听data、props、computed
+		// 	components, // 引入组件
+		// 	template, // 当前组件的模板
+		//  methods, // 定义当前组件的方法
+		// 	...lifeCycle // 生命周期
+		// }
+
+		new Vue({
+			el:'#app',
+			data(){
+				return {
+					title:'lmj'
+				}
+			}
+		});
+	</script>
+</body>
+</html>

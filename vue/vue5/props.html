@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		{{obj.title}}
+		<my-com :msg='obj'></my-com>
+	</div>
+	<script>
+		const myCom = {
+			template:`
+				<div>
+					{{msg.title}}
+					<span @click='doit'>{{newMsg}}</span>
+				</div>
+			`,
+			// template:`
+			// 	<div>
+			// 		{{changeMsg}}
+			// 		<span @click='doit'>{{newMsg}}</span>
+			// 	</div>
+			// `,
+			props:{
+				// msg:{
+				// 	// type:String
+				// 	type:Object
+				// }
+				msg:{
+					type:Object,
+					required:true,
+					// default:null,
+					default:{title:'lmj'},
+				}
+			},
+			computed:{
+				changeMsg(){
+					return this.newMsg.split('').join();
+				}
+			},
+			data(){
+				return{
+					// newMsg:this.msg
+					newMsg:this.msg.title
+				}
+			},
+			methods:{
+				doit(){
+					// this.newMsg = 'lalala';
+					this.msg.title = 'lalala';
+				}
+			}
+		}
+		new Vue({
+			el:'#app',
+			components:{
+				myCom
+			},
+			data(){
+				return {
+					// title:'welcome to my home'
+					obj:{
+						title:'welcome to my home'
+					}
+				}
+			}
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>插槽</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<my-inp>
+			<h2 slot='wel'>welcome to duyi</h2>
+			<h2 slot='name'>lmj</h2>
+		</my-inp>
+		<my-com :names='names'>
+			<li slot='item' slot-scope='props'>
+				{{props.txt}}
+			</li>
+		</my-com>
+	</div>
+	<script>
+		const myInp = {
+			template:`
+				<div>
+					<slot name='name'></slot>
+					<span>你好</span>
+					<slot name='wel'></slot>
+					<span>再见</span>
+				</div>
+			`
+		}
+		const myCom = {
+			template:`
+				<ul>
+					<slot name='item' v-for='name in names' :txt='name'></slot>
+				</ul>
+			`,
+			props:{
+				names:Array
+			}
+		}
+		new Vue({
+			el:'#app',
+			components:{
+				myInp,
+				myCom
+			},
+			data(){
+				return{
+					names:['lmj','mj','xm','xw']
+				}
+			}
+		})
+	</script>
+</body>
+</html>

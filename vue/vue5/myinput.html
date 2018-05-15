@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>多功能输入框</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<my-inpu :title='tlt' :reg='reg' :err='errMsg' :success='successMsg' @ret='retValue'></my-inpu>
+		<!-- <span>{{msg}}</span> -->
+		<show-inp :qq='msg'></show-inp>
+	</div>
+	<script>
+		const showInp = {
+			template:`
+				<div>
+					<span>qqNumber：{{qqNum}}</span>
+				</div>
+			`,
+			props:['qq'],
+			computed:{
+				qqNum(){
+					return this.qq.slice(0,-7);
+				}
+			}
+		}
+		const myInpu = {
+			template:`
+				<div>
+					<span>{{title}}</span>
+					<input type="text" v-model='myText' @input='changeVal'/>
+					<span :style="showMsg.flag ? 'color:lime' : 'color:red'">{{showMsg.value}}</span>
+				</div>
+			`,
+			data(){
+				return{
+					myText:this.def
+				}
+			},
+			methods:{
+				changeVal(e){
+					// this.$emit('ret',e.target.value);
+					if(this.showMsg.flag){
+						this.$emit('ret',this.myText);
+					}
+				}
+			},
+			computed:{
+				showMsg(){
+					if(this.reg === null || this.myText === ''){
+						return {
+							value:'',
+							flag:false
+						};
+					}else{
+						return this.reg.test(this.myText) ? {
+							value:this.success,
+							flag:true
+						} : {
+							value:this.err,
+							flag:false
+						}
+					}
+				}
+			},
+			props:{
+				def:{
+					type:String,
+					default:''
+				},
+				title:{
+					type:String,
+					default:''
+				},
+				reg:{
+					type:RegExp,
+					default:null
+				},
+				err:{
+					type:String,
+					default:'NO'
+				},
+				success:{
+					type:String,
+					default:'OK'
+				}
+			}
+		}
+		new Vue({
+			el:'#app',
+			components:{
+				myInpu,
+				showInp
+			},
+			data(){
+				return{
+					tlt:'QQ邮箱',
+					reg:/@qq.com$/,
+					errMsg:'X 请输入以@qq.com为结尾的邮箱',
+					successMsg:'√ 输入正确',
+					msg:''
+				}
+			},
+			methods:{
+				retValue(value){
+					this.msg = value;
+				}
+			}
+		})
+	</script>
+</body>
+</html>

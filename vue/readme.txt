@@ -3,6 +3,7 @@ vue 虚拟dom 数据绑定 轻量级
 react facebook 虚拟dom es6语法 jsx语法
 angular google 1 pc端 2 4 typeScript js超集 数据绑定
 
+架构设计模式
 mvc 
 mvp
 mvvm: model view vueModel
@@ -27,11 +28,24 @@ vue-cli
  npm install
 
 组件库
-http://element-cn.eleme.io/#/zh-CN
+	http://element-cn.eleme.io/#/zh-CN
 
 组件化
-高内聚低耦合
-代码利用率高
-代码维护性好
+	高内聚低耦合
+	代码利用率高
+	代码维护性好
+
+props 
+	进行数据传递，单向数据流（父 -》 子），只读
+	多功能输入框
+
+	非父子组件同信（vuex）
+
+编译作用域
+
+插槽
+
+作用域插槽
+
 
 
