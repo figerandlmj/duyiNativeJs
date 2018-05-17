@@ -17,15 +17,20 @@ vue :
 数据绑定
 组件化
 
-vuejs.org
+官网 vuejs.org
 
 vue-cli
  npm install vue-cli -g
  vue -V
+ vue list
 
  vue init webpack-simple vue4-1
  cd vue4-1
  npm install
+
+ vue init webpack my-app
+ cd my-app
+ cnpm install
 
 组件库
 	http://element-cn.eleme.io/#/zh-CN
