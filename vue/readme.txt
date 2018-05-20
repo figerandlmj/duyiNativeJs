@@ -19,7 +19,7 @@ vue :
 
 官网 vuejs.org
 
-vue-cli
+vue-cli 自动化构建
  npm install vue-cli -g
  vue -V
  vue list
@@ -31,6 +31,11 @@ vue-cli
  vue init webpack my-app
  cd my-app
  cnpm install
+ npm start
+ cnpm install node-sass --save-dev
+ cnpm install sass-loader --save-dev
+ npm install less-loader less --save-dev 
+
 
 组件库
 	http://element-cn.eleme.io/#/zh-CN
@@ -46,11 +51,45 @@ props
 
 	非父子组件同信（vuex）
 
-编译作用域
+	编译作用域
 
-插槽
+	插槽
 
-作用域插槽
+	作用域插槽
+
+SPA 单页面应用
+
+vue-router
+	路由
+
+vuex 状态管理模式
+	cnpm install vuex --save
+	组件间数据传递
+	数据共享store 公共状态
+
+	vue浏览器调试插件
+	github
+	vue devtools
+
+	state
+		多个组件共享的状态（值）state  mapState
+	getters
+		组件共享状态，派生出来的
+	mutations
+		定义同步处理state当中的值，commit / mapMutations
+	actions
+		定义异步函数，调用mutations当中的方法，改变state当中的值 dispatch /mapActions
+	module
+		store 分成不同的模块
+
+
+
+
+flow 静态类型检测
+
+rollup 模块打包工具
+
+Vue = 组件（数据） + 指令
 
 
 
