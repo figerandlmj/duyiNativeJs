@@ -22,109 +22,6 @@ http://cv.qiaobutang.com/
 标准设备一位图像素对应的就是一设备像素
 Retina屏幕
 
-二、css单位
-px: 绝对单位
-em: 相对单位，相对自身或是父节点字体大小
-    1em = 16px
-    10/16 = 62.5%
-    1em = 10px
-rem: 相对单位，相对html根节点的字体大小，css3新属性，ie9+
-vw：viewpoint width，视窗宽度，1vw等于视窗宽度的1%。
-vh：viewpoint height，视窗高度，1vh等于视窗高度的1%。
-vmin：vw和vh中较小的那个。
-vmax：vw和vh中较大的那个。
-（1）% 是相对于父元素的大小设定的比率，vw、vh 是视窗大小决定的。
-（2）vw、vh 优势在于能够直接获取高度，而用 % 在没有设置 body 高度的情况下，是无法正确获得可视区域的高度的，所以这是挺不错的优势。
-做移动页面开发时，如果使用 vw、wh 设置字体大小（比如 5vw），在竖屏和横屏状态下显示的字体大小是不一样的。
-由于 vmin 和 vmax 是当前较小的 vw 和 vh 和当前较大的 vw 和 vh。这里就可以用到 vmin 和 vmax。使得文字大小在横竖屏下保持一致。
-
-除了height以外垂直方向上的margin-top（bottom）或者padding-top（bottom）的百分比取值都是相对于父元素的宽度
-
-height, top, bottom根据其containing block的height进行计算, 如果该height没有指定(根据内容自适应), 那么计算值为0
-width, left, right, padding, margin根据其containing block的width进行计算
-transform - translate, translateX, translateY, 根据__自身元素__的实际宽度计算
-background:
-4.1 background-position根据__自身元素(不是containing block)__的宽高计算
-4.2 background-size根据图片的大小进行计算. 需要注意的时, 当使用单个百分比(比如background-size: 50%;)计算时, height会隐式设为auto, 当其height计算出来的值大于容器的高度时, 超出部分会隐藏. 如果需要全部显示, 需要明确设置宽和高的值(比如, background-size: 50% 50%;)
-
-background-size: length|percentage|cover|contain;
-
-length	设置背景图片高度和宽度。第一个值设置宽度，第二个值设置的高度。如果只给出一个值，第二个是设置为 auto(自动)
-percentage	将计算相对于背景定位区域的百分比。第一个值设置宽度，第二个值设置的高度。如果只给出一个值，第二个是设置为"auto(自动)"
-cover	此时会保持图像的纵横比并将图像缩放成将完全覆盖背景定位区域的最小大小。
-contain	此时会保持图像的纵横比并将图像缩放成将适合背景定位区域的最大大小。
-
-slideWrap {
-	position: relative;
-	width: 100%;
-	height: 0;
-	padding-bottom: 40%;//图片h/w
-}
-
-slide {
-	position: absolute;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
-}
-
-三、获取屏幕宽高
-1.获取屏幕可视区域宽高，不包括滚动条与工具条
-width + padding
-height + padding
-
-$(window).width()  
-$(window).height()
-等同于
-document.documentElement.clientWidth
-document.documentElement.clientHeight
-
-2.获得的是可视区域的宽高，但是包含了滚动条的宽度和高度，IE8以及以下不支持
-width + padding + border + 纵向滚动条宽度
-height + padding + border + 横向滚动条高度
-
-window.innerWidth
-window.innerHeight
-
-3.获得的是加上工具条与滚动条窗口的宽度与高度,IE8以及以下不支持
-width + padding + border + 纵向滚动条宽度
-height + padding + border + 横向滚动条高度 + 工具条高度
-
-window.outerWidth
-window.outerHeight
-
-4.获得的是body内容的高度，如果内容只有200px，那么这个高度也是200px,如果想通过它得到屏幕可视区域的宽高，需要样式设置
-body {
-	height: 100%;
-	overflow: hidden;
-	margin: 0;
-	padding: 0;
-}
-
-document.body.clientWidth
-document.body.clientHeight
-
-5.本身的宽高 + padding + border + 滚动条
-
-offsetWidth
-offsetHeight
-
-6.返回元素的X和Y坐标
-
-offsetLeft
-offsetTop
-
-7.元素的内容区域加上内边距，在加上任何溢出内容的尺寸.
-
-scrollWidth
-scrollHeight
-
-8.指定的是元素的滚动条的位置,可写的属性，通过设置它们来让元素中的内容滚动。
-
-scrollLeft
-scrollTop
-
 四、重复提交
 1.cookie记录提交表单的状态
 2.设置disabled为false
@@ -134,93 +31,6 @@ complete  $("#submit").removeAttr("disabled"); $("loading").hide();方法执行�
 
 abort()这个方法把 XMLHttpRequest 对象重置为 readyState 为 0 的状态，并且取消所有未决的网络活动。例如，如果请求用了太长时间，而且响应不再必要的时候，可以调用这个方法
 
-五、伪类和伪元素
-
-状态伪类:
-	:link  未被访问过的链接
-	:visited 被访问过的链接
-	:hover 鼠标悬停
-	:active 被激活的元素
-	:focus 获得焦点的元素
-
-结构性伪类：css3新增选择器
-	:first-child 
-	:last-child
-
-	:nth-child(n + 2)
-	:nth-last-child()  选择某个元素的一个或多个特定的子元素，从这个元素的最后一个子元素开始算；
-
-	:nth-of-type() 选择指定的元素
-	:nth-last-of-type()
-
-	:first-of-type 选择一个上级元素下的第一个同类子元素
-	:last-of-type  选择一个上级元素下的最后一个同类子元素
-
-	:only-child 选择的元素是它的父元素的唯一一个子元素
-	:only-of-type 选择一个元素是它的上级元素的唯一一个相同类型的子元素
-	:empty 选择的元素里面没有任何内容
-
-伪元素  对元素中的特定内容进行操作，而不是描述状态
-
-	:first-letter 选择元素文本的第一个字母
-	:first-line 选择元素文本的第一行
-	:before 在元素内容的最前面添加新内容
-	:after 在元素内容的最后面添加新内容
-
-	如果你的网站只需要兼容 webkit、firefox、opera 等浏览器，建议对于伪元素采用双冒号的写法，如果不得不兼容 IE 浏览器，还是用 CSS2 的单冒号写法比较安全
-
-伪元素的应用：
-1.清除浮动
-	如果父元素的所有子元素都是浮动的，父元素的高度则无法撑开。可以通过对父元素添加after伪类撑开父元素高度，因为after就是其最后一个子元素。
-	.clear:after {
-	    content: '';
-	    display: block;
-	    clear: both;
-	}
-2.画分割线
-	<p class="spliter">分割线</p>
-	.spliter::before, .spliter::after {
-	  content: '';
-	  display: inline-block;
-	  border-top: 1px solid black;
-	  width: 200px;
-	  margin: 5px;
-	}
-
-3.计数器
-
-	1> counter-reset: 属性设置某个选择器出现次数的计数器的值。默认为 0。
-
-	2> counter-increment: 属性设置某个选取器每次出现的计数器增量。默认增量是 1。
-
-	3> content: 插入生成内容。
-
-4.形变
-
-	perspective 属性定义 3D 元素距视图的距离，以像素计
-
-5.增大点击热区
-	.btn::before {
-	  content:"";
-	  position:absolute;
-	  top:-10px;
-	  right:-10px;
-	  bottom:-10px;
-	  left:-10px;
-	}
-
-
-
-六、盒模型
-	盒模型的组成 content,padding,border,margin
-
-	标准模型
-	内容（content）
-	box-sizing:content-box;
-
-	IE模型
-	内容（content）+填充(padding)+边框(border)
-	box-sizing:border-box;
 
 	JS获取宽高
 
@@ -882,6 +692,37 @@ d) 栅格布局：这种布局方式使得模块之间非常容易对齐，易�
 
 this指向详解及改变它的指向的方法,call/apply/bind
 https://blog.csdn.net/qq_37467034/article/details/78311591
+
+
+
+function getUserPromise(promiseX, promiseY){
+ return Promise.all([promiseX, promiseY])
+ .then(values =>
+ // 返回的values由 promiseX 与 promiseY返回的值所构成的数组。
+  values
+ )
+}
+function getUserName(){
+ let data = 'superman';
+ return new Promise((resolve, reject) => {
+  setTimeout(resolve(data), 1000);
+ })
+}
+function getUser(){
+ let data = {
+ id:1,
+ username: 'superman',
+ gender: 'male'
+ }
+ return new Promise((resolve, reject) => {
+ setTimeout(resolve(data), 2000);
+ })
+}
+getUserPromise(getUserName(), getUser())
+.then(data => {
+ // 这里的data就是包含了getUserName 和 getUser返回值所组成的数组
+ console.log(data); // [ 'superman', { id: 1, username: 'superman', gender: 'male' } ]
+ })
 
 
 

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<form action="">
+		<input type="text" name="h" value="h">
+		<input type="text" name="e" value="e">
+		<input type="text" name="l" value="l">
+		<input type="text" name="o" value="o">
+	</form>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script>
+		var form = document.getElementsByTagName('form')[0];
+		var formData = new FormData(form);
+		console.log(formData.get('h'));
+		$.ajax({
+	        url: '',
+	        type: 'POST',
+	        data: formData,                    // 上传formdata封装的数据
+	        dataType: 'JSON',
+	        cache: false,                      // 不缓存
+	        processData: false,                // 告诉jQuery不要去处理发送的数据
+	        contentType: false,                // 告诉jQuery不要去设置Content-Type请求头
+	        success:function (txt) {           //成功回调
+	            console.log(txt);
+	        }
+	    });
+	</script>
+</body>
+</html>
