@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <title>输入验证</title>
+</head>
+<body>
+    <div id="app">
+        <my-inp v-bind="bindmsg" @tellme="tell"></my-inp>
+        <div> 输入的数据：{{msg}}</div>
+    </div>
+    <script>
+        const myInp = {
+            template:`<div>
+                <span>{{title}}</span>
+                <input type="text" v-model="val" @input="change"/>
+                <span>{{msg}}</span>
+            </div>`,
+            data(){
+                return {
+                    val:''
+                }
+            },
+            props:{
+                title:{
+                    type:String,
+                    default:''
+                },
+                reg:{
+                    type:RegExp,
+                    required:true
+                },
+                errmsg:{
+                    type:String,
+                    default:''
+                },
+                sucmsg:{
+                    type:String,
+                    default:''
+                }
+            },
+            computed:{
+                msg(){
+                    if(!this.val){
+                        return;
+                    }
+                    return this.reg.test(this.val) ? this.sucmsg : this.errmsg;
+                }
+            },
+            methods:{
+                change(){
+                    this.$emit('tellme',this.val);
+                }
+            }
+        }
+        new Vue({
+            el:'#app',
+            data:{
+                bindmsg:{
+                    title:'Please input QQ email:',
+                    reg:/@qq.com$/,
+                    sucmsg:'输入正确，√',
+                    errmsg:'输入错误，请重新输入！'
+                },
+                msg:''
+            },
+            methods:{
+                tell(val){
+                    this.msg = val;
+                }
+            },
+            components:{
+                myInp
+            }
+        })
+    </script>
+</body>
+</html>

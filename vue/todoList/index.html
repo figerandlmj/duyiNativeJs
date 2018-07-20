@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <title>待办事件</title>
+    <style>
+        .isFinish{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app" class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <div class="form-group">
+                    <label>添加工作事项</label>
+                    <input type="text" class="form-control" v-model="newItem" @keyup.enter="addItem">
+                </div>
+                <div class="list-group">
+                    <a href="#" class="list-group-item">工作清单：</a>
+                    <a href="#" class="list-group-item" v-for="(item, index) in itemList">
+                        <span>{{index + 1}}</span>
+                        {{item.title}}
+                        <span class="badge" @click="removeItem(index)">
+                            <i class="glyphicon glyphicon-remove"></i>
+                        </span>
+                        <span class="badge" :class="{isFinish:item.isFinish}" @click="toggleItem(item)">
+                            <i class="glyphicon glyphicon-ok"></i>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const LS = (function (){
+            return {
+                add(value){
+                    localStorage.setItem('todoList',JSON.stringify(value));
+                },
+                get(){
+                    return JSON.parse(localStorage.getItem('todoList'));
+                },
+                remove(){
+                    localStorage.removeItem('todoList');
+                }
+            }
+        })();
+        new Vue({
+            el:'#app',
+            data:{
+                newItem:'',
+                itemList:LS.get() || []
+            },
+            methods:{
+                addItem(){
+                    let item = {
+                        id:this.itemList.length + 1,
+                        title:this.newItem,
+                        isFinish:false
+                    };
+                    this.itemList.push(item);
+                    LS.add(this.itemList);
+                    this.newItem = '';
+                },
+                removeItem(index){
+                    this.itemList.splice(index,1);
+                    LS.add(this.itemList);
+                },
+                toggleItem(item){
+                    item.isFinish = !item.isFinish;
+                    LS.add(this.itemList);
+                }
+            }
+        })
+    </script>
+</body>
+</html>
