@@ -121,6 +121,13 @@ git报错 The remote end hung up unexpectedly
 	postBuffer = 1048576000
 
 
+解决github 下载慢即无法下载的情况
+https://blog.csdn.net/qq_38977097/article/details/80770987
+error: RPC failed; curl 56 OpenSSL SSL_read: SSL_ERROR_SYSCALL, errno 10054
+fatal: The remote end hung up unexpectedly
+fatal: early EOF
+fatal: index-pack failed
+
 
 
 
