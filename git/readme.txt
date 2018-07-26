@@ -115,7 +115,8 @@ hexo s == hexo server #启动服务预览
 
 git报错 Unknown SSL protocol error in connection to github.com:443
 git config http.sslVerify "false"  
-
+git config --global http.postBuffer 524288000
+git config http.postBuffer 1048576000
 git报错 The remote end hung up unexpectedly
 [http]
 	postBuffer = 1048576000
