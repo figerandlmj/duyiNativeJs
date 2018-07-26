@@ -129,6 +129,13 @@ fatal: The remote end hung up unexpectedly
 fatal: early EOF
 fatal: index-pack failed
 
+解决http方式clone下来的代码push时每次需要输入用户名密码
+配置本地ssh添加到github  
+创建密钥ssh-keygen -t rsa -C "youremail@example.com"
+git remote rm origin
+git remote add origin git@github.com:whbing147/learngit.git
+git push -u origin master
+
 
 
 
