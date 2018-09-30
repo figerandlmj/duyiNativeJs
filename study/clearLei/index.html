@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>扫雷</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .container{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("./img/bg.jpg");
+            background-size: 100% 100%;
+        }
+        .startBtn{
+            position: absolute;
+            left: 50px;
+            width: 170px;
+            height: 140px;
+            background-image: url("./img/startGame.png");
+            background-size: 100% 100%;
+            cursor: pointer;
+        }
+        .flagBox{
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            width: 200px;
+            height: 50px;
+            margin-left: -100px;
+            font-size: 20px;
+            color: #333;
+            font-weight: bolder;
+            display: none;
+        }
+        .box{
+            width: 500px;
+            height: 500px;
+            margin: 20px auto;
+            transform: perspective(800px) rotateX(45deg);
+            border-top: 1px solid #B25F27;
+            border-left: 1px solid #B25F27;
+            box-shadow: 5px 5px 5px rgba(0,0,0,.3);
+            display: none;
+        }
+        .mask{
+            position: absolute;;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,.2);
+            display: none;
+        }
+        .alertBox{
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            width: 600px;
+            height: 400px;
+            margin: auto;
+            background-size: 100% 100%;
+            border-radius: 20px;
+        }
+        .closeBtn{
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 40px;
+            height: 40px;
+            background-image: url("./img/closeBtn.png");
+            background-size: 100% 100%;
+            cursor: pointer;
+        }
+        .block{
+            width: 49px;
+            height: 49px;
+            background-image: url("./img/cao.jpg");
+            border-right: 1px solid #B25F27;
+            border-bottom: 1px solid #B25F27;
+            box-shadow: 0 0 4px #333 inset;
+            float: left;
+        }
+        .show{
+            background-image: url("./img/dilei.jpg");
+            background-size: 100% 100%;
+        }
+        .num{
+            line-height: 49px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            background: #ECD0A1;
+        }
+        .flag{
+            background-image: url("./img/hongqi.jpg");
+            background-size: 100% 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="startBtn" id="startBtn"></div>
+        <div class="flagBox" id="flagBox">
+            当前剩余雷数：<span id="score">10</span>
+        </div>
+        <div class="box" id="box"></div>
+        <div class="mask" id="mask">
+            <div class="alertBox" id="alertBox">
+                <div class="closeBtn" id="closeBtn"></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var startBtn = document.getElementById('startBtn');
+        var flagBox = document.getElementById('flagBox');
+        var score = document.getElementById('score');
+        var box = document.getElementById('box');
+        var mask = document.getElementById('mask');
+        var alertBox = document.getElementById('alertBox');
+        var closeBtn = document.getElementById('closeBtn');
+        var minesNum;//雷数
+        var mineOver;//所剩雷数
+        var block;//草块
+        var mineMap = [];//记录每一个草块的雷数
+        var startGameBool = true;//游戏是否开启
+
+        bindEvent();
+        // 绑定事件
+        function bindEvent() {
+            // 开始游戏
+            startBtn.onclick = function() {
+                if(startGameBool) {
+                    box.style.display = 'block';
+                    flagBox.style.display = 'block';
+                    init();
+                    startGameBool = false;
+                }
+            }
+            // 禁止右键菜单事件
+            box.oncontextmenu = function() {
+                return false;
+            }
+            // 绑定左键和右键事件
+            box.onmousedown = function(e) {
+                var event = e.target;
+                if(e.which == 1) {
+                    leftClick(event);
+                }else if(e.which == 3){
+                    rightClick(event);
+                }
+            }
+            // 弹框关闭按钮事件
+            closeBtn.onclick = function() {
+                mask.style.display = 'none';
+                flagBox.style.display = 'none';
+                box.style.display = 'none';
+                box.innerHTML = '';
+                startGameBool = true;
+            }
+        }
+
+        // 初始化
+        function init() {
+            minesNum = 10;
+            mineOver = 10;
+            score.innerHTML = mineOver;
+
+            // 初始化10*10的草地
+            for(var i = 0; i < 10; i ++) {
+                for(var j = 0; j < 10; j ++) {
+                    var con = document.createElement('div');
+                    con.classList.add('block');
+                    con.setAttribute('id', i + '-' + j);
+                     box.appendChild(con);
+                    mineMap.push({mine: 0});
+                }
+            }
+            // 获取所有草块元素
+            block = document.getElementsByClassName('block');
+            // 随机埋雷
+            while(minesNum) {
+                var mineIndex = Math.floor(Math.random() * 100);
+                if(mineMap[mineIndex].mine === 0) {
+                    mineMap[mineIndex].mine = 1;
+                    block[mineIndex].classList.add('isLei');
+                    minesNum --;
+                }
+            }
+        }
+
+        // 左键
+        function leftClick(dom) {
+            // 是否插旗
+            if(dom.classList.contains('flag')){
+                return;
+            }
+            var isLei = document.getElementsByClassName('isLei');
+            // 是否为雷
+            if(dom && dom.classList.contains('isLei')) {
+                // 显示所有雷
+                for(var i = 0; i < isLei.length; i ++) {
+                    isLei[i].classList.add('show');
+                }
+                // 显示失败弹框
+                setTimeout(function(){
+                    mask.style.display = 'block';
+                    alertBox.style.backgroundImage = 'url("img/over.jpg")';
+                }, 1000);
+            }else{
+                var n = 0;// 记录当前草块周边的雷数
+                var posArr = dom && dom.getAttribute('id').split('-');
+                var posX = posArr && +posArr[0];// 草块行指针
+                var posY = posArr && +posArr[1];// 草块列指针
+                dom && dom.classList.add('num');
+                // 获取草块周边8个草块的雷数
+                for(var i = posX - 1; i <= posX + 1; i ++) {
+                    for(var j = posY - 1; j <= posY + 1; j ++) {
+                        var aroundBox = document.getElementById(i + '-' + j);
+                        if(aroundBox && aroundBox.classList.contains('isLei')) {
+                            n ++;
+                        }
+                    }
+                }
+                // 给当前草块赋值
+                dom && (dom.innerHTML = n);
+                // 若当前草块周边雷数为0，则继续计算周边8个草块周边的雷数
+                if(n == 0) {
+                    for(var i = posX - 1; i <= posX + 1; i ++) {
+                        for(var j = posY - 1; j <= posY + 1; j ++) {
+                            var nearBox = document.getElementById(i + '-' + j);
+                            if(nearBox && nearBox.length != 0) {
+                                if(!nearBox.classList.contains('check')) {
+                                    nearBox.classList.add('check');
+                                    leftClick(nearBox);// 递归
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // 右键标旗
+        function rightClick(dom) {
+            // 是否为数字
+            if(dom.classList.contains('num')) {
+                return;
+            }
+            dom.classList.toggle('flag');
+            // 是雷 标旗
+            if(dom.classList.contains('isLei') && dom.classList.contains('flag')) {
+                mineOver --;
+            }
+            // 是雷 去标旗
+            if(dom.classList.contains('isLei') && !dom.classList.contains('flag')) {
+                mineOver ++;
+            }
+            score.innerHTML = mineOver;
+            // 所剩雷数为0，结束游戏，显示成功弹框
+            if(mineOver == 0) {
+                setTimeout(function(){
+                    mask.style.display = 'block';
+                    alertBox.style.backgroundImage = 'url("img/success.png")';
+                },1000);
+            }
+        }
+    </script>
+</body>
+</html>
