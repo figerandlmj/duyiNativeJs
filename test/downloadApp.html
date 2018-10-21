@@ -1,0 +1,199 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0"></meta>
+    <title></title>
+    <meta charset="UTF-8">
+    <style type="text/css">
+        html,body{
+            height:100%;
+            margin: 0px;
+            padding: 0px;
+        }
+        body {
+            background-image: url(/system/common/images/wei_down_bg.png);   //用于提示微信，QQ用户在浏览器中打开此网页面
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+    </style>
+
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript">
+        var openAppHref,officialHref;
+
+        var browser = {
+            ua: function () {
+                var u = navigator.userAgent;
+                var isChrome = u.match(/Chrome\/([\d.]+)/) || u.match(/CriOS\/([\d.]+)/);
+                var isAndroid = u.match(/(Android);?[\s\/]+([\d.]+)?/);
+                var iosVersion = function () {
+                    if (/iP(hone|od|ad)/.test(navigator.platform)) {
+                        var v = (navigator.appVersion).match(/OS (\d+)_(\d+)_?(\d+)?/);
+                        return [parseInt(v[1], 10), parseInt(v[2], 10), parseInt(v[3] || 0, 10)];
+                    }
+                }();
+                var chromeVersion = function () {
+                    var chrome = navigator.userAgent.match(/Chrome\/(\d+)\./);
+                    if (chrome) {
+                        return parseInt(chrome[1], 10);
+                    }
+                }();
+                var ios9 = iosVersion && iosVersion[0] >= 9;
+                var chrome18 = isChrome && isAndroid && chromeVersion && chromeVersion > 18;
+                return {         //移动终端浏览器版本信息
+                    trident: u.indexOf('Trident') > -1, //IE内核
+                    presto: u.indexOf('Presto') > -1, //opera内核
+                    webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+                    gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+                    mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+                    iOS: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+                    android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或uc浏览器
+                    iPhone: u.indexOf('iPhone') > -1, //是否为iPhone或者QQHD浏览器
+                    iPad: u.indexOf('iPad') > -1, //是否iPad
+                    webApp: u.indexOf('Safari') == -1, //是否web应该程序，没有头部与底部
+                    weChat: u.indexOf('MicroMessenger') > -1,
+                    UC: u.indexOf('UCBrowser') > -1,
+                    u3: u.indexOf('U3') > -1,
+                    chrome: u.indexOf('Chrome') > -1,
+                    windowsPhone: u.indexOf("Windows Phone") > -1,
+                    samsung: u.indexOf("Samsung") > -1,
+                    QQ: (u.match(/\sQQ/i)!=null ? u.match(/\sQQ/i).toLowerCase() == " qq":false),
+                    isChrome: isChrome,
+                    isAndroid: isAndroid,
+                    iosVersion: iosVersion,
+                    chromeVersion: chromeVersion,
+                    ios9: ios9,
+                    chrome18: chrome18
+                };
+            }()
+        }
+        var ua = browser.ua;
+        /**
+         * 尝试跳转openAppHref,如果跳转失败，进入officialHref
+         */
+        function timeoutRedirect() {
+            var startTime = Date.now();
+            var timeout = 500;
+            openApp();
+            var t = setTimeout(function () {
+                var endTime = Date.now();
+                if (endTime - startTime < timeout + 100) {   //若启动应用，则js会被中断较长时间，超出此范围
+                    if (ua.ios9) {   //ios9会弹出确认按钮，时间一定会超出
+                        openH5();    //此处请各位自行处理，暂时没有找到好的办法
+                        return;
+                    }
+                    openH5();
+                }
+            }, timeout);
+            window.beforeunload = function () {
+                clearTimeout(t);
+            }
+            window.pagehide = function () {
+                clearTimeout(t);
+            }
+            window.onblur = function () {
+                clearTimeout(t);
+            }
+        }
+        function openH5() {
+            window.location.href = officialHref;
+        }
+        function openApp() {
+            openAppByIframe();
+            if (ua.ios9) {
+                window.location = openAppHref;
+
+                return;
+            }
+            if (ua.chrome18) {
+                window.location = openAppHref;
+                return;
+            }
+        }
+        function openAppByIframe() {
+            if (!openAppHref ) {
+                window.location = officialHref;
+                return ;
+            }
+            if (ua.android) {
+                window.location = openAppHref;
+                return ;
+            }
+            if (ua.ios9) {return;}
+            var iframe = document.createElement("iframe");
+            iframe.style.display = "none";
+            iframe.style.border = "none";
+            iframe.style.width = "1px";
+            iframe.style.height = "1px";
+            iframe.src = openAppHref;
+            document.body.appendChild(iframe);
+        }
+
+        $(function () {
+
+
+
+            if (ua.android) {
+                openAppHref =  "myapp://mpp/wf";//打开某手机上的某个app应用, myapp需要与android配制对应
+                officialHref = "下载APK的地址";
+            } else if (ua.iOS){
+                openAppHref =  "myapp://";//打开某手机上的某个app应用
+                officialHref = "下载APP的地址";
+            }
+
+            if (ua.weChat && ua.iOS) { //iOS上的微信webview
+                return ;
+            } else if (ua.weChat && ua.android) { //安卓上的微信webview
+                return ;
+            } else if (ua.windowsPhone) {//winphone
+                return ;
+            } else {
+                if ((ua.UC && ua.android && !ua.u3 && !ua.chrome)) {
+                    //浏览器不支持
+                    return ;
+                } else {
+                    //chrome某些版本不允许自动进入app，手动点击触发重定向
+                    timeoutRedirect();
+                }
+            }
+        })
+
+
+        // if (browser.versions.ios) {
+        //
+        //     window.location.href = "taobao://";
+        //
+        //     setTimeout(function(){
+        //
+        //         window.location.href = "你的app在商店中的地址";
+        //
+        //         window.location.href = "你的app在商店中的地址";  //为什么要加两遍我下面会说到
+        //
+        //     },2000)
+        //
+        // }else if (browser.versions.android){
+        //
+        //     window.location.href = "taobao://**";
+        //
+        //     setTimeout(function(){
+        //
+        //         window.location.href = "你的app的下载地址";
+        //
+        //     },2000)
+        //
+        // }
+
+
+    </script>
+</head>
+<body>
+
+
+<!--https://segmentfault.com/a/1190000005848133-->
+
+
+</body>
+</html><!--[if !IE]>|xGv00|7d924dab7190c026e09e967c211a9ff8<![endif]-->

@@ -136,8 +136,8 @@ type<!DOCTYPE html>
 	var a = 123,
 		b = 234;
 	1.var c = a;
-      a = a;
-      b = a;
+      a = b;
+      b = c;
     2.a = a + b;
       b = a - b;
       a = a - b;
@@ -186,7 +186,7 @@ type<!DOCTYPE html>
 
 	!123;  //false
 	!"";   //true
-	!!"";  //flase
+	!!"";  //false
 
 	注释：
 	html: <!-- -->
@@ -377,6 +377,8 @@ type<!DOCTYPE html>
 	[] + "";//""
 	[] + 1;//"1"
 	{} + 1;//"1"
+	String([]);// ""
+	String({});// "[object Object]"
 
 	4. - * / %   用Number()转换
 

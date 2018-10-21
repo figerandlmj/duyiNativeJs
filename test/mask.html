@@ -207,6 +207,13 @@
                 window.scrollTo(0, top); // 回到原先的top
             }
         }
+        oMask.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+        });
+        oBox.addEventListener('touchmove', (e) => {
+            console.log();
+            console.log(e);
+        });
         // window.onscroll = stopBodyScroll(isFixed);
         document.addEventListener("onscroll", function (e) {
             stopBodyScroll(isFixed);

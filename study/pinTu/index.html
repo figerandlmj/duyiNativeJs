@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>拼图</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .wrapper{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate3d(-50%,-50%,0);
+        }
+        .startBtn{
+            width: 80px;
+            height: 40px;
+            margin: 0 auto 20px;
+            color: #fff;
+            line-height: 40px;
+            text-align: center;
+            border-radius: 4px;
+            background: #f40;
+            box-shadow: 0 0 2px #f40;
+            cursor: pointer;
+        }
+        .imgArea{
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: auto;
+        }
+        .imgCell{
+            position: absolute;
+            background-image: url("./img/img.jpg");
+            box-shadow: 0 0 2px #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="startBtn">开始</div>
+        <div class="imgArea"></div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        var imgArea = $('.imgArea');
+        var startBtn = $('.startBtn');
+        // 整个图片宽高
+        var imgW = parseInt(imgArea.css('width'));
+        var imgH = parseInt(imgArea.css('height'));
+        // 每一块图片宽高
+        var cellW = imgW / 3;
+        var cellH = imgH / 3;
+        var oriArr = [];//标准数组
+        var ranArr = [];//乱序数组
+        var flag = true;
+        var imgCell;
+
+        init();
+        function init() {
+            imgSplit();
+            gameState();
+        }
+        // 初始化图片分块
+        function imgSplit() {
+            var cell;
+            for(var i = 0; i < 3; i ++) {
+                for(var j = 0; j < 3; j ++) {
+                    oriArr.push(i * 3 + j);//标准数组
+                    cell = $('<div class="imgCell"></div>');
+                    $(cell).css({
+                        'width': cellW + 'px',
+                        'height': cellH + 'px',
+                        'left': cellW  * j + 'px',
+                        'top': cellH * i + 'px',
+                        'backgroundPosition': (-cellW ) * j + 'px ' + (-cellH ) * i + 'px'
+                    })
+                    imgArea.append(cell);
+                }
+            }
+            imgCell = $('.imgCell');
+        }
+
+        // 绑定按钮点击事件
+        function gameState() {
+            startBtn.on('click', function() {
+                if(flag) {
+                    $(this).text('复原');
+                    flag = false;
+                    randomArr();
+                    cellOrder(ranArr);
+                    imgCell.on('mousedown', function(e) {
+                        var index1 = $(this).index();
+                        var left = e.pageX - imgCell.eq(index1).offset().left;
+                        var top = e.pageY - imgCell.eq(index1).offset().top;
+                        $(document).on('mousemove', function(e2) {
+                            imgCell.eq(index1).css({
+                                'z-index': '40',
+                                'left': e2.pageX - left - imgArea.offset().left + 'px',
+                                'top': e2.pageY - top - imgArea.offset().top + 'px'
+                            })
+                        }).on('mouseup', function(e3) {
+                            var left = e3.pageX - imgArea.offset().left;
+                            var top = e3.pageY - imgArea.offset().top;
+                            var index2 = changeIndex(left, top, index1);
+                            if(index2 == index1) {
+                                cellReturn(index1);
+                            }else{
+                                cellChange(index1, index2);
+                            }
+                            $(document).off('mousemove').off('mouseup');
+                        })
+                    });
+                }else{
+                    $(this).text('开始');
+                    flag = true;
+                    cellOrder(oriArr);
+                    $(imgCell).off('mousedown');
+                }
+            })
+        }
+
+        // 打乱当前数组
+        function randomArr() {
+            ranArr = [];
+            var len = oriArr.length;
+            var order;
+            for(var i = 0; i < len; i ++) {
+                order = Math.floor(Math.random() * len);
+                if(ranArr.length > 0) {
+                    while(ranArr.indexOf(order) > -1) {
+                        order = Math.floor(Math.random() * len);
+                    }
+                }
+                ranArr.push(order);
+            }
+        }
+
+        // 根据数组顺序显示图片分块
+        function cellOrder(arr) {
+            var len = arr.length;
+            for(var i = 0; i < len; i ++) {
+                imgCell.eq(i).animate({
+                    'left': arr[i] % 3 * cellW + 'px',
+                    'top': Math.floor(arr[i] / 3) * cellH + 'px'
+                }, 300);
+            }
+        }
+
+        // 计算拖拽处的元素索引
+        function changeIndex(left, top, index) {
+            if(left < 0 || left > imgW || top < 0 || top > imgH) {
+                return index;
+            }
+            var row = Math.floor(top / cellH);
+            var col = Math.floor(left / cellW);
+            return ranArr.indexOf(row * 3 + col);
+        }
+
+        // 还原拖拽图片
+        function cellReturn(index) {
+            imgCell.eq(index).animate({
+                'left': ranArr[index] % 3 * cellW + 'px',
+                'top': Math.floor(ranArr[index] / 3) * cellH + 'px'
+            }, 300);
+        }
+        // 交换拖拽图片
+        function cellChange(from, to) {
+            var temp = ranArr[from];
+            imgCell.eq(from).animate({
+                'left': ranArr[to] % 3 * cellW + 'px',
+                'top': Math.floor(ranArr[to] / 3) * cellH + 'px'
+            }, 300, function() {
+                $(this).css('z-index', '10');
+            });
+            imgCell.eq(to).animate({
+                'left': ranArr[from] % 3 * cellW + 'px',
+                'top': Math.floor(ranArr[from] / 3) * cellH + 'px'
+            }, function() {
+                $(this).css('z-index', '10');
+                ranArr[from] = ranArr[to];
+                ranArr[to] = temp;
+                check();
+            });
+        }
+
+        // 判断游戏是否成功
+        function check() {
+            if(oriArr.toString() == ranArr.toString()) {
+                alert('success!');
+                startBtn.text('开始');
+                flag = true;
+                $(imgCell).off('mousedown');
+            }
+        }
+    </script>
+</body>
+</html>

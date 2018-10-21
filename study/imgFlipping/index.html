@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>图片智能翻转</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        body{
+            background: #ccc;
+        }
+        .wrapper{
+            width: 500px;
+            height: 500px;
+            margin: 100px auto;
+        }
+        .wrapper li{
+            position: relative;
+            display: inline-block;
+            width: 200px;
+            height: 200px;
+            margin: 15px;
+            perspective: 400px;/* 景深 */
+        }
+        .wrapper li img{
+            width: 100%;
+            height: 100%;
+        }
+        .picBox,
+        .show,
+        .hide{
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+        .picBox{
+            transform-style: preserve-3d;/* 3D环境 */
+            transform-origin: 50% 50% -100px;/* 基点 */
+        }
+        .hide{
+            font-size: 25px;
+            color: #fff;
+            text-align: center;
+            line-height: 200px;
+            background: #000;
+            transform: translate3d(0,0,-1px);
+        }
+        .out-top .hide,
+        .in-top .hide{
+            transform-origin: 0 100%;
+            transform: translate3d(0,-100%,0) rotate3d(1,0,0,90deg);
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <ul>
+        <li>
+            <div class="picBox">
+                <div class="show">
+                    <img src="./img/img.jpg" alt="">
+                </div>
+                <div class="hide">这里是文字</div>
+            </div>
+        </li>
+        <li>
+            <div class="picBox">
+                <div class="show">
+                    <img src="./img/img.jpg" alt="">
+                </div>
+                <div class="hide">这里是文字</div>
+            </div>
+        </li>
+        <li>
+            <div class="picBox">
+                <div class="show">
+                    <img src="./img/img.jpg" alt="">
+                </div>
+                <div class="hide">这里是文字</div>
+            </div>
+        </li>
+        <li>
+            <div class="picBox">
+                <div class="show">
+                    <img src="./img/img.jpg" alt="">
+                </div>
+                <div class="hide">这里是文字</div>
+            </div>
+        </li>
+    </ul>
+</div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</body>
+</html>
