@@ -374,7 +374,7 @@
             业务：对对象进行操作
             如果要存储：对象转为数据
             如果要读取：数据转为对象
-            LoginDAO （从数据库获取数据，并转换为数据）
+            LoginDAO （从数据库获取数据，并转换为对象）
             Domain：对象
                 User
         持久层
@@ -387,9 +387,17 @@
         js规范缺乏管理机制 bootstrap jquery
             NPM 下载的中央仓库
     1.3 nodeJs模块化
-
+        require
+        module.exports
     2.基础的API
+       http https  应用层
 
+       tcp         运输层/传输层
+       ip          网络层
+
+       net
+
+       http协议是基于tcp/ip协议的
     3.常用的框架
 
     4.web项目
