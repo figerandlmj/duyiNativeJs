@@ -392,10 +392,9 @@
     2.基础的API
        http https  应用层
 
+       net:
        tcp         运输层/传输层
        ip          网络层
-
-       net
 
        http协议是基于tcp/ip协议的
     3.常用的框架
