@@ -10,7 +10,7 @@ var providePlugin = new webpack.ProvidePlugin({
 
 module.exports = {
 	entry: {
-		index: './src/js/index.js',
+		index: './src/js/login.js',
 		goodsInfo: './src/js/goodsInfo.js'
 	},
 	output: {

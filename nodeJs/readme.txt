@@ -405,7 +405,12 @@
         文件操作
         数据库
             关系型   mysql
+                mySql官网 下载mySql
+                mySql 小海豚
+                mySql navicat
+                mySql dataGrip   (jetbrains公司)
             非关系型 mongoDB
+
         反向代理服务器
             ip哈希
             轮询

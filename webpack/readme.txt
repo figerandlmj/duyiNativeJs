@@ -30,7 +30,7 @@
 	exports/module.exports 导出需要暴露的接口
 	require同步加载所依赖的模块
 
-	// index.js
+	// login.js
 	var module = require('module.js');
 	console.log(module.add(1, 2));
 
@@ -124,7 +124,7 @@
 				entry: './src/js/entry.js',
 				output: {
 					// filename: 'index-[chunkhash:8].js',
-					filename: 'index.js',
+					filename: 'login.js',
 					path: __dirname + '/out', //绝对路径
 					publicPath: './out'
 				},

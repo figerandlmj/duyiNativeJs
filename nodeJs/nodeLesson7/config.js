@@ -1,4 +1,9 @@
 var fs = require("fs");
+//异步读
+// fs.readFile("./server.conf", function(err, data) {
+//     //成功data有值，失败err有值
+// });
+//同步读
 var conf = fs.readFileSync("./server.conf");
 // console.log(conf.toString());
 var confArr = conf.toString().split("\r\n");

@@ -2,6 +2,8 @@ var http = require("http");
 var url = require("url");
 var fs = require("fs");
 var globalConfig = require("./config");
+var loader = require("./loader");
+var log = require(".log");
 
 http.createServer(function(request, response) {
     // console.log(request.url);
@@ -13,10 +15,14 @@ http.createServer(function(request, response) {
     // console.log(params);
     var params = url.parse(request.url, true).query;
     // console.log(params);
+
+    log("url:" + pathname);
+    log("params:" + JSON.stringify(params));
+
     var isStatic = isStaticRequest(pathname);
     // console.log(isStatic);
     if(isStatic) {
-        //静态文件
+        //静态文件请求
         // console.log(globalConfig.page_path + pathname)
         try{
             var data = fs.readFileSync(globalConfig.page_path + pathname);
@@ -29,9 +35,24 @@ http.createServer(function(request, response) {
             response.end();
         }
     }else{
-        //动态文件
+        //动态请求
+        if(loader.get(pathname) !=null) {
+            try{
+                loader.get(pathname)(request, response);
+            }catch(e) {
+                response.writeHead(500);
+                response.write("<html><body>500 BadServer</body></html>");
+                response.end();
+            }
+        }else{
+            response.writeHead(404);
+            response.write("<html><body>404 Not Found</body></html>");
+            response.end();
+        }
     }
 }).listen(globalConfig.port);
+
+log("服务已启动");
 
 //判断请求的资源类型，静态资源/动态资源
 function isStaticRequest(pathname) {

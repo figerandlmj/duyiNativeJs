@@ -17,7 +17,7 @@ server.on("connection", function(socket) {
         var url = data.toString().split("\r\n")[0].split(" ")[1];
         // console.log(url);
         try{
-            // var data = fs.readFileSync("index.html");//相对路径
+            // var data = fs.readFileSync("login.html");//相对路径
             // var dataFile = fs.readFileSync(__dirname + globalConf.path + url);//绝对路径
             var dataFile = fs.readFileSync(globalConf['basePath'] + url);
             // console.log(dataFile.toString());

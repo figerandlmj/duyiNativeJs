@@ -38,5 +38,8 @@ window.onload = function() {
     ajax("get", "/getData", {
         a: 1,
         b: 2
+    },function(data) {
+        console.log(typeof data);
+        console.log(data);
     });
 }
