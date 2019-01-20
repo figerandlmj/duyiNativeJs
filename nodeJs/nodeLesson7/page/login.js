@@ -34,12 +34,30 @@ function getParams(data) {
     return arr.join('&');
 }
 
-window.onload = function() {
-    ajax("get", "/getData", {
-        a: 1,
-        b: 2
+function login() {
+    var stuNum = document.getElementById("stuNum").value;
+    var password = document.getElementById("password").value;
+    ajax("post", "/login", {
+        stuNum: stuNum,
+        password: password
     },function(data) {
         console.log(typeof data);
         console.log(data);
-    });
+        if(data == 'Ok') {
+            alert("成功");
+            location.href = "./main.html";
+        }else{
+            alert("失败");
+        }
+    }, true);
+}
+
+window.onload = function() {
+    // ajax("get", "/getData", {
+    //     a: 1,
+    //     b: 2
+    // },function(data) {
+    //     console.log(typeof data);
+    //     console.log(data);
+    // });
 }

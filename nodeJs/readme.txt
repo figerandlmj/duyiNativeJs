@@ -404,17 +404,55 @@
         处理业务逻辑
         文件操作
         数据库
-            关系型   mysql
+            关系型   mysql oracle DB2 sqlServer（存在硬盘里）
                 mySql官网 下载mySql
                 mySql 小海豚
                 mySql navicat
                 mySql dataGrip   (jetbrains公司)
-            非关系型 mongoDB
+                    破解：
+                    百度idea 2018注册码  http://idea.lanyus.com/
+                    将“0.0.0.0 account.jetbrains.com”添加到hosts文件中
+                    c/windows/system32/drivers/etc/hosts
+            非关系型 mongoDB（存在硬盘里）    redis memcache(主要存在内存里)
+
+            show databases;//显示所有数据库
+            use mysql;//连接数据库mysql
+            show tables;//显示数据库mysql所有的表
+            desc db;//显示表db里所有字段
+            show create table db;//查看表db的创建语句
+            select * from db;//查看表db里所有内容
+            create database school;//创建数据库school
+            //修改库、表、字段的字符集
+            alter database school character set utf8;
+            alter table student default character set  utf8;
+            alter table student convert to character set utf8;
+            //增、删、改、查
+            insert into student (`stu_num`,`name`,`age`,`class`) values (2,"figer",18,2);
+            update student set age=18,class=3 where name="figer";
+            select * from student ;
+            select name,age from student ;
+            select name,age from student where age=18;
+            select count(1) from student;//查总数
+            select count(1) from student where age=18 and class=1;
+            select count(1) from student where age=18 or class=2;
+            select sum(age) from student;//年龄总数
+            select avg(age) as avg_age from student;//平均数
+            select sum(age)/count(1) from student;
+            select class,count(1),avg(age) from student group by class;
+            select * from student limit 1,2;
+            select * from student order by id desc limit 3,2;
+            delete from student where name="小王"
 
         反向代理服务器
             ip哈希
             轮询
+        
+        window + r  打开运行窗口
+        services.msc  打开服务
+
     5.大项目
+
+    webstorm f8 断电调试 f9 退出断点调试
 
 
 

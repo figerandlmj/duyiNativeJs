@@ -3,10 +3,11 @@ var url = require("url");
 var fs = require("fs");
 var globalConfig = require("./config");
 var loader = require("./loader");
-var log = require(".log");
+var filterLoader = require("./filterLoader");
+var log = require("./log");
 
 http.createServer(function(request, response) {
-    // console.log(request.url);
+    console.log(request.url);
     //路径
     var pathname = url.parse(request.url).pathname;
     // console.log(pathname);
@@ -18,6 +19,13 @@ http.createServer(function(request, response) {
 
     log("url:" + pathname);
     log("params:" + JSON.stringify(params));
+
+    for(var i = 0; i < filterLoader.length; i ++) {
+        var flag = filterLoader[i](request, response);
+        if(!flag) {
+            return;
+        }
+    }
 
     var isStatic = isStaticRequest(pathname);
     // console.log(isStatic);

@@ -10,9 +10,15 @@
 </head>
 <body>
     <img src="baidu.png" alt="">
-    <input type="text" placeholder="用户名">
-    <input type="password" placeholder="密码">
-    <input type="submit" value="提交">
+    <!-- <input type="text" placeholder="学号" id="stuNum">
+    <input type="password" placeholder="密码" id="password">
+    <input type="submit" value="提交" onclick="login()"> -->
+    <!-- 第二种方式 -->
+    <form method="post" action="/login">
+        <input type="text" placeholder="学号" name="stuNum">
+        <input type="password" placeholder="密码" name="password">
+        <input type="submit" value="提交">
+    </form>
     <script src="login.js"></script>
 </body>
 </html>
