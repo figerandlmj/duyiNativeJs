@@ -1,0 +1,151 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+#chat {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.head {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    background: #5e5e5e;
+}
+
+.inputContainer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 9;
+    width: 100%;
+    height: 50px;
+    background: #D3D3D3;
+}
+.inputWrap{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+}
+
+#chatArea {
+    flex: 1;
+    height: 30px;
+    padding: 0 10px;
+    margin-left: 10px;
+    border-radius: 5px;
+    border: 0;
+    outline: none;
+}
+
+#sendBtn {
+    width: 65px;
+    height: 30px;
+    line-height: 30px;
+    margin: 0 10px;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    background: rgb(158,234,106);
+}
+
+.content {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    margin-bottom: 60px;
+}
+.chatWrap{
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+}
+.clearfix{
+    content: '';
+    clear: both;
+}
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+.myChatImg{
+    display: block;
+    width: 35px;
+    height: 35px;
+    margin-right: 10px;
+}
+.myChat {
+    position: relative;
+    padding: 5px 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    text-align: right;
+    word-break:break-all;
+    border-radius: 5px;
+    background: rgb(158,234,106);
+}
+
+.myChat:after {
+    position: absolute;
+    right: -10px;
+    top: 8px;
+    display: block;
+    width: 0;
+    height: 0;
+    line-height: 0;
+    content: "";
+    font-size: 0;
+    border: 5px solid #fff;
+    border-left-color: rgb(158,234,106);
+}
+
+.robotChatImg{
+    display: block;
+    width: 35px;
+    height: 35px;
+    margin-left: 10px;
+}
+.robotChat {
+    flex: 1;
+    position: relative;
+    padding: 5px 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    word-break:break-all;
+    border-radius: 5px;
+    background: rgb(209, 246, 184);
+}
+
+.robotChat:after {
+    position: absolute;
+    left: -10px;
+    top: 8px;
+    display: block;
+    width: 0;
+    height: 0;
+    line-height: 0;
+    content: "";
+    font-size: 0;
+    border: 5px solid #fff;
+    border-right-color: rgb(209, 246, 184);
+}

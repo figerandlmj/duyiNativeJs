@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Robot</title>
+    <link rel="stylesheet" href="robot.css">
+    <script src="robot.js"></script>
+</head>
+<body>
+    <div id="chat">
+        <div class="head">聊天机器人</div>
+        <div class="content">
+            <!--<div class="chatWrap fr">-->
+                <!--<p class="myChat">aaaaaaaaaaaaaaaaaaa</p>-->
+                <!--<img src="./panda.jpeg" class="myChatImg">-->
+            <!--</div>-->
+            <!--<div class="clearfix"></div>-->
+            <!--<div class="chatWrap fl">-->
+                <!--<img src="./xiaodu.jpeg" class="robotChatImg">-->
+                <!--<p class="robotChat">bbbbbbbbbbbb</p>-->
+            <!--</div>-->
+        </div>
+        <div class="inputContainer">
+            <div class="inputWrap">
+                <input type="text" id="chatArea" onkeydown="send(event)"/>
+                <div id="sendBtn" onclick="send(event)">发送</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -2,21 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a24b76ce-d825-4d85-80a1-9811a3b6d2b5" name="默认" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/nodeJs/Turing/index.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/nodeJs/Turing/page/robot.js" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/demo/homologousStrategy/index.html" afterPath="$PROJECT_DIR$/demo/homologousStrategy/index.html" />
-      <change beforePath="$PROJECT_DIR$/nodeJs/nodeLesson6/server.js" afterPath="$PROJECT_DIR$/nodeJs/nodeLesson6/server.js" />
-      <change beforePath="$PROJECT_DIR$/nodeJs/nodeLesson7/config.js" afterPath="$PROJECT_DIR$/nodeJs/nodeLesson7/config.js" />
-      <change beforePath="$PROJECT_DIR$/nodeJs/nodeLesson7/index.js" afterPath="$PROJECT_DIR$/nodeJs/nodeLesson7/index.js" />
-      <change beforePath="$PROJECT_DIR$/nodeJs/nodeLesson7/page/index.html" afterPath="$PROJECT_DIR$/nodeJs/nodeLesson7/page/login.html" />
-      <change beforePath="$PROJECT_DIR$/nodeJs/nodeLesson7/page/index.js" afterPath="$PROJECT_DIR$/nodeJs/nodeLesson7/page/login.js" />
+      <change beforePath="$PROJECT_DIR$/nodeJs/nodeLesson7/log/server.log" afterPath="$PROJECT_DIR$/nodeJs/nodeLesson7/log/server.log" />
+      <change beforePath="$PROJECT_DIR$/nodeJs/nodeLesson7/package-lock.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/nodeJs/nodeLesson7/package.json" afterPath="$PROJECT_DIR$/nodeJs/nodeLesson7/package.json" />
       <change beforePath="$PROJECT_DIR$/nodeJs/nodeLesson7/server.conf" afterPath="$PROJECT_DIR$/nodeJs/nodeLesson7/server.conf" />
       <change beforePath="$PROJECT_DIR$/nodeJs/readme.ppt" afterPath="$PROJECT_DIR$/nodeJs/readme.ppt" />
-      <change beforePath="$PROJECT_DIR$/nodeJs/readme.txt" afterPath="$PROJECT_DIR$/nodeJs/readme.txt" />
-      <change beforePath="$PROJECT_DIR$/vue/my-app/my-app/config/index.js" afterPath="$PROJECT_DIR$/vue/my-app/my-app/config/index.js" />
-      <change beforePath="$PROJECT_DIR$/vue/my-app/my-spa/config/index.js" afterPath="$PROJECT_DIR$/vue/my-app/my-spa/config/index.js" />
-      <change beforePath="$PROJECT_DIR$/vue/my-app/my-vuex/config/index.js" afterPath="$PROJECT_DIR$/vue/my-app/my-vuex/config/index.js" />
-      <change beforePath="$PROJECT_DIR$/webpack/readme.txt" afterPath="$PROJECT_DIR$/webpack/readme.txt" />
-      <change beforePath="$PROJECT_DIR$/webpack/webpackmall/webpack.config.js" afterPath="$PROJECT_DIR$/webpack/webpackmall/webpack.config.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -29,32 +22,54 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/nodeJs/nodeLesson7/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-315">
-              <caret line="5" column="26" lean-forward="false" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="log.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/nodeJs/nodeLesson7/log.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="15" column="7" lean-forward="false" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="readme.txt" pinned="false" current-in-tab="true">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
+      <file leaf-file-name="readme.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/nodeJs/readme.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="439">
-              <caret line="409" column="29" lean-forward="true" selection-start-line="409" selection-start-column="29" selection-end-line="409" selection-end-column="29" />
+            <state relative-caret-position="304">
+              <caret line="448" column="8" lean-forward="false" selection-start-line="448" selection-start-column="8" selection-end-line="448" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="robot.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/nodeJs/Turing/page/robot.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="405">
+              <caret line="39" column="19" lean-forward="true" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="robot.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/nodeJs/Turing/page/robot.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="81" column="16" lean-forward="true" selection-start-line="81" selection-start-column="16" selection-end-line="81" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/nodeJs/Turing/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="675">
+              <caret line="65" column="29" lean-forward="true" selection-start-line="65" selection-start-column="29" selection-end-line="65" selection-end-column="29" />
+              <folding>
+                <element signature="e#879#1228#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="robot.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/nodeJs/Turing/page/robot.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="276">
+              <caret line="19" column="44" lean-forward="true" selection-start-line="19" selection-start-column="44" selection-end-line="19" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -118,11 +133,15 @@
         <option value="$PROJECT_DIR$/nodeJs/nodeLesson7/web/loginController.js" />
         <option value="$PROJECT_DIR$/nodeJs/nodeLesson7/page/login.html" />
         <option value="$PROJECT_DIR$/nodeJs/nodeLesson7/page/login.css" />
-        <option value="$PROJECT_DIR$/nodeJs/nodeLesson7/server.conf" />
         <option value="$PROJECT_DIR$/nodeJs/nodeLesson7/config.js" />
         <option value="$PROJECT_DIR$/nodeJs/nodeLesson7/index.js" />
         <option value="$PROJECT_DIR$/nodeJs/nodeLesson7/log.js" />
         <option value="$PROJECT_DIR$/nodeJs/readme.txt" />
+        <option value="$PROJECT_DIR$/nodeJs/nodeLesson7/server.conf" />
+        <option value="$PROJECT_DIR$/nodeJs/Turing/index.js" />
+        <option value="$PROJECT_DIR$/nodeJs/Turing/page/robot.css" />
+        <option value="$PROJECT_DIR$/nodeJs/Turing/page/robot.html" />
+        <option value="$PROJECT_DIR$/nodeJs/Turing/page/robot.js" />
       </list>
     </option>
   </component>
@@ -132,11 +151,18 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/nodeJs/Turing/node_modules" />
+    <handled-path value="$PROJECT_DIR$/nodeJs/nodeLesson7/node_modules" />
+  </component>
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="642" />
     <option name="y" value="190" />
     <option name="width" value="987" />
     <option name="height" value="645" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="添加" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -153,6 +179,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -166,75 +193,10 @@
               <item name="duyiNativeJs" type="462c0819:PsiDirectoryNode" />
               <item name="nodeJs" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="duyiNativeJs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="duyiNativeJs" type="462c0819:PsiDirectoryNode" />
-              <item name="nodeJs" type="462c0819:PsiDirectoryNode" />
-              <item name="nodeLesson2" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="duyiNativeJs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="duyiNativeJs" type="462c0819:PsiDirectoryNode" />
-              <item name="nodeJs" type="462c0819:PsiDirectoryNode" />
-              <item name="nodeLesson3" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="duyiNativeJs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="duyiNativeJs" type="462c0819:PsiDirectoryNode" />
-              <item name="nodeJs" type="462c0819:PsiDirectoryNode" />
-              <item name="nodeLesson4" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="duyiNativeJs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="duyiNativeJs" type="462c0819:PsiDirectoryNode" />
-              <item name="nodeJs" type="462c0819:PsiDirectoryNode" />
-              <item name="nodeLesson5" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="duyiNativeJs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="duyiNativeJs" type="462c0819:PsiDirectoryNode" />
-              <item name="nodeJs" type="462c0819:PsiDirectoryNode" />
-              <item name="nodeLesson6" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="duyiNativeJs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="duyiNativeJs" type="462c0819:PsiDirectoryNode" />
-              <item name="nodeJs" type="462c0819:PsiDirectoryNode" />
-              <item name="nodeLesson6" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="duyiNativeJs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="duyiNativeJs" type="462c0819:PsiDirectoryNode" />
-              <item name="nodeJs" type="462c0819:PsiDirectoryNode" />
-              <item name="nodeLesson7" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="duyiNativeJs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="duyiNativeJs" type="462c0819:PsiDirectoryNode" />
-              <item name="nodeJs" type="462c0819:PsiDirectoryNode" />
-              <item name="nodeLesson7" type="462c0819:PsiDirectoryNode" />
-              <item name="log" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="duyiNativeJs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="duyiNativeJs" type="462c0819:PsiDirectoryNode" />
-              <item name="nodeJs" type="462c0819:PsiDirectoryNode" />
-              <item name="nodeLesson7" type="462c0819:PsiDirectoryNode" />
-              <item name="page" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="duyiNativeJs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="duyiNativeJs" type="462c0819:PsiDirectoryNode" />
-              <item name="nodeJs" type="462c0819:PsiDirectoryNode" />
-              <item name="nodeLesson7" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -262,28 +224,28 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Node.js.log.js">
-    <configuration name="config.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-js-file="config.js" working-dir="$PROJECT_DIR$/nodeJs/nodeLesson7" />
+  <component name="RunManager" selected="Node.js.index.js (1)">
+    <configuration name="index.js (1)" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-js-file="index.js" working-dir="$PROJECT_DIR$/nodeJs/Turing" />
     <configuration name="index.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-js-file="index.js" working-dir="$PROJECT_DIR$/nodeJs/nodeLesson7" />
     <configuration name="loader.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-js-file="loader.js" working-dir="$PROJECT_DIR$/nodeJs/nodeLesson7" />
     <configuration name="log.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-js-file="log.js" working-dir="$PROJECT_DIR$/nodeJs/nodeLesson7" />
-    <configuration name="server.js (1)" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-js-file="server.js" working-dir="$PROJECT_DIR$/nodeJs/nodeLesson6" />
+    <configuration name="loginController.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-js-file="loginController.js" working-dir="$PROJECT_DIR$/nodeJs/nodeLesson7/web" />
     <configuration name="service.js" type="NodeJSConfigurationType" factoryName="Node.js" path-to-js-file="service.js" working-dir="$PROJECT_DIR$/nodeJs/nodeLesson4" />
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Node.js.service.js" />
-      <item index="1" class="java.lang.String" itemvalue="Node.js.server.js (1)" />
-      <item index="2" class="java.lang.String" itemvalue="Node.js.index.js" />
-      <item index="3" class="java.lang.String" itemvalue="Node.js.config.js" />
-      <item index="4" class="java.lang.String" itemvalue="Node.js.loader.js" />
-      <item index="5" class="java.lang.String" itemvalue="Node.js.log.js" />
+      <item index="1" class="java.lang.String" itemvalue="Node.js.index.js" />
+      <item index="2" class="java.lang.String" itemvalue="Node.js.loader.js" />
+      <item index="3" class="java.lang.String" itemvalue="Node.js.log.js" />
+      <item index="4" class="java.lang.String" itemvalue="Node.js.loginController.js" />
+      <item index="5" class="java.lang.String" itemvalue="Node.js.index.js (1)" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Node.js.index.js" />
-        <item index="1" class="java.lang.String" itemvalue="Node.js.log.js" />
-        <item index="2" class="java.lang.String" itemvalue="Node.js.loader.js" />
-        <item index="3" class="java.lang.String" itemvalue="Node.js.config.js" />
-        <item index="4" class="java.lang.String" itemvalue="Node.js.server.js (1)" />
+        <item index="0" class="java.lang.String" itemvalue="Node.js.index.js (1)" />
+        <item index="1" class="java.lang.String" itemvalue="Node.js.loginController.js" />
+        <item index="2" class="java.lang.String" itemvalue="Node.js.index.js" />
+        <item index="3" class="java.lang.String" itemvalue="Node.js.log.js" />
+        <item index="4" class="java.lang.String" itemvalue="Node.js.loader.js" />
       </list>
     </recent_temporary>
   </component>
@@ -353,11 +315,12 @@
       <workItem from="1547433289759" duration="61595000" />
       <workItem from="1547802345064" duration="549000" />
       <workItem from="1547802929876" duration="2889000" />
+      <workItem from="1548035923989" duration="27829000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="224886000" />
+    <option name="totallyTimeSpent" value="252715000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
@@ -369,25 +332,25 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-11" y="-11" width="1942" height="1042" extended-state="6" />
+    <frame x="-11" y="-11" width="1942" height="1042" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22799575" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22799575" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293556" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293556" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293556" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26968974" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2398568" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293556" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24821003" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.47613364" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293556" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -424,66 +387,12 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="6" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/demo/ajax/jqueryAjax.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-183">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/demo/ajax/form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/demo/photoFlow/ajax.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/demo/photoFlow/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/demo/photoFlow/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="17" column="18" lean-forward="false" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css3/rotatePhoto.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css3/photoList/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/BOM/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="114" column="18" lean-forward="false" selection-start-line="114" selection-start-column="18" selection-end-line="114" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resume/test.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1080">
@@ -687,20 +596,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nodeJs/nodeLesson7/page/login.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="41" column="31" lean-forward="true" selection-start-line="41" selection-start-column="31" selection-end-line="41" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/nodeJs/nodeLesson7/web/loginController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="9" column="30" lean-forward="true" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/nodeJs/nodeLesson7/page/login.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
@@ -736,21 +631,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nodeJs/nodeLesson7/server.conf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="5" column="19" lean-forward="true" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/nodeJs/nodeLesson7/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-315">
-          <caret line="5" column="26" lean-forward="false" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/javascript/nodejs/8.11.3/core-modules/fs.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="268">
@@ -761,16 +641,114 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/nodeJs/nodeLesson7/log.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
+        <state relative-caret-position="130">
           <caret line="15" column="7" lean-forward="false" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Windows/System32/drivers/etc/hosts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="445">
+          <caret line="26" column="25" lean-forward="true" selection-start-line="26" selection-start-column="25" selection-end-line="26" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nodeJs/nodeLesson7/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="10" column="19" lean-forward="false" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nodeJs/nodeLesson7/page/login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="604">
+          <caret line="46" column="24" lean-forward="false" selection-start-line="46" selection-start-column="24" selection-end-line="46" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nodeJs/nodeLesson7/service/studentService.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nodeJs/nodeLesson7/web/loginController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="34" column="37" lean-forward="true" selection-start-line="34" selection-start-column="37" selection-end-line="34" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nodeJs/nodeLesson7/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="56" column="32" lean-forward="false" selection-start-line="56" selection-start-column="32" selection-end-line="56" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/nodeJs/readme.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="439">
-          <caret line="409" column="29" lean-forward="true" selection-start-line="409" selection-start-column="29" selection-end-line="409" selection-end-column="29" />
+        <state relative-caret-position="304">
+          <caret line="448" column="8" lean-forward="false" selection-start-line="448" selection-start-column="8" selection-end-line="448" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nodeJs/nodeLesson7/server.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="2" column="43" lean-forward="false" selection-start-line="2" selection-start-column="43" selection-end-line="2" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nodeJs/Turing/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="9" column="18" lean-forward="false" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nodeJs/Turing/page/robot.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="81" column="16" lean-forward="true" selection-start-line="81" selection-start-column="16" selection-end-line="81" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nodeJs/Turing/page/robot.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="19" column="44" lean-forward="true" selection-start-line="19" selection-start-column="44" selection-end-line="19" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nodeJs/Turing/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="65" column="29" lean-forward="true" selection-start-line="65" selection-start-column="29" selection-end-line="65" selection-end-column="29" />
+          <folding>
+            <element signature="e#879#1228#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nodeJs/Turing/page/robot.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="39" column="19" lean-forward="true" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="19" />
           <folding />
         </state>
       </provider>
