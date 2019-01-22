@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a24b76ce-d825-4d85-80a1-9811a3b6d2b5" name="默认" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/nodeJs/Turing/index.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/nodeJs/Turing/page/robot.js" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/nodeJs/nodeLesson7/log/server.log" afterPath="$PROJECT_DIR$/nodeJs/nodeLesson7/log/server.log" />
-      <change beforePath="$PROJECT_DIR$/nodeJs/nodeLesson7/package-lock.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/nodeJs/nodeLesson7/package.json" afterPath="$PROJECT_DIR$/nodeJs/nodeLesson7/package.json" />
-      <change beforePath="$PROJECT_DIR$/nodeJs/nodeLesson7/server.conf" afterPath="$PROJECT_DIR$/nodeJs/nodeLesson7/server.conf" />
       <change beforePath="$PROJECT_DIR$/nodeJs/readme.ppt" afterPath="$PROJECT_DIR$/nodeJs/readme.ppt" />
+      <change beforePath="$PROJECT_DIR$/nodeJs/readme.txt" afterPath="$PROJECT_DIR$/nodeJs/readme.txt" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -26,51 +20,33 @@
       <file leaf-file-name="readme.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/nodeJs/readme.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="448" column="8" lean-forward="false" selection-start-line="448" selection-start-column="8" selection-end-line="448" selection-end-column="8" />
+            <state relative-caret-position="-236">
+              <caret line="442" column="46" lean-forward="false" selection-start-line="442" selection-start-column="46" selection-end-line="442" selection-end-column="46" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="robot.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/nodeJs/Turing/page/robot.js">
+      <file leaf-file-name="add_student.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/nodeJs/StuMS/page/add_student.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="39" column="19" lean-forward="true" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="robot.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/nodeJs/Turing/page/robot.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="81" column="16" lean-forward="true" selection-start-line="81" selection-start-column="16" selection-end-line="81" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/nodeJs/Turing/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="675">
-              <caret line="65" column="29" lean-forward="true" selection-start-line="65" selection-start-column="29" selection-end-line="65" selection-end-column="29" />
+            <state relative-caret-position="-1209">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
-                <element signature="e#879#1228#0" expanded="false" />
+                <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="robot.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/nodeJs/Turing/page/robot.html">
+      <file leaf-file-name="student.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/nodeJs/StuMS/page/student.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="19" column="44" lean-forward="true" selection-start-line="19" selection-start-column="44" selection-end-line="19" selection-end-column="44" />
-              <folding />
+            <state relative-caret-position="154">
+              <caret line="4" column="23" lean-forward="false" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
+              <folding>
+                <element signature="n#script#4;n#head#0;n#html#0;n#!!top" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -136,12 +112,12 @@
         <option value="$PROJECT_DIR$/nodeJs/nodeLesson7/config.js" />
         <option value="$PROJECT_DIR$/nodeJs/nodeLesson7/index.js" />
         <option value="$PROJECT_DIR$/nodeJs/nodeLesson7/log.js" />
-        <option value="$PROJECT_DIR$/nodeJs/readme.txt" />
         <option value="$PROJECT_DIR$/nodeJs/nodeLesson7/server.conf" />
         <option value="$PROJECT_DIR$/nodeJs/Turing/index.js" />
         <option value="$PROJECT_DIR$/nodeJs/Turing/page/robot.css" />
         <option value="$PROJECT_DIR$/nodeJs/Turing/page/robot.html" />
         <option value="$PROJECT_DIR$/nodeJs/Turing/page/robot.js" />
+        <option value="$PROJECT_DIR$/nodeJs/readme.txt" />
       </list>
     </option>
   </component>
@@ -156,9 +132,9 @@
     <handled-path value="$PROJECT_DIR$/nodeJs/nodeLesson7/node_modules" />
   </component>
   <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="642" />
-    <option name="y" value="190" />
-    <option name="width" value="987" />
+    <option name="x" value="138" />
+    <option name="y" value="219" />
+    <option name="width" value="1793" />
     <option name="height" value="645" />
   </component>
   <component name="ProjectLevelVcsManager">
@@ -192,6 +168,46 @@
               <item name="duyiNativeJs" type="b2602c69:ProjectViewProjectNode" />
               <item name="duyiNativeJs" type="462c0819:PsiDirectoryNode" />
               <item name="nodeJs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="duyiNativeJs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="duyiNativeJs" type="462c0819:PsiDirectoryNode" />
+              <item name="nodeJs" type="462c0819:PsiDirectoryNode" />
+              <item name="StuMS" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="duyiNativeJs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="duyiNativeJs" type="462c0819:PsiDirectoryNode" />
+              <item name="nodeJs" type="462c0819:PsiDirectoryNode" />
+              <item name="StuMS" type="462c0819:PsiDirectoryNode" />
+              <item name="page" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="duyiNativeJs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="duyiNativeJs" type="462c0819:PsiDirectoryNode" />
+              <item name="nodeJs" type="462c0819:PsiDirectoryNode" />
+              <item name="StuMS" type="462c0819:PsiDirectoryNode" />
+              <item name="page" type="462c0819:PsiDirectoryNode" />
+              <item name="bootstrap" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="duyiNativeJs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="duyiNativeJs" type="462c0819:PsiDirectoryNode" />
+              <item name="nodeJs" type="462c0819:PsiDirectoryNode" />
+              <item name="StuMS" type="462c0819:PsiDirectoryNode" />
+              <item name="page" type="462c0819:PsiDirectoryNode" />
+              <item name="bootstrap" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="duyiNativeJs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="duyiNativeJs" type="462c0819:PsiDirectoryNode" />
+              <item name="nodeJs" type="462c0819:PsiDirectoryNode" />
+              <item name="StuMS" type="462c0819:PsiDirectoryNode" />
+              <item name="page" type="462c0819:PsiDirectoryNode" />
+              <item name="bootstrap" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="bootstrap.js" type="620a8d5e:NestingTreeNode" />
             </path>
           </expand>
           <select />
@@ -315,12 +331,12 @@
       <workItem from="1547433289759" duration="61595000" />
       <workItem from="1547802345064" duration="549000" />
       <workItem from="1547802929876" duration="2889000" />
-      <workItem from="1548035923989" duration="27829000" />
+      <workItem from="1548035923989" duration="32492000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="252715000" />
+    <option name="totallyTimeSpent" value="257378000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
@@ -335,13 +351,13 @@
     <frame x="-11" y="-11" width="1942" height="1042" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22799575" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24602333" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293556" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293556" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293556" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2398568" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.49522674" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24821003" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -393,20 +409,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resume/test.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1080">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/study/clearLei/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="568">
-          <caret line="188" column="23" lean-forward="true" selection-start-line="188" selection-start-column="23" selection-end-line="188" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/study/fiveCircle.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="447">
@@ -695,14 +697,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nodeJs/readme.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="448" column="8" lean-forward="false" selection-start-line="448" selection-start-column="8" selection-end-line="448" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/nodeJs/nodeLesson7/server.conf">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -719,14 +713,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nodeJs/Turing/page/robot.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="81" column="16" lean-forward="true" selection-start-line="81" selection-start-column="16" selection-end-line="81" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/nodeJs/Turing/page/robot.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="276">
@@ -737,19 +723,55 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/nodeJs/Turing/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="65" column="29" lean-forward="true" selection-start-line="65" selection-start-column="29" selection-end-line="65" selection-end-column="29" />
+        <state relative-caret-position="180">
+          <caret line="54" column="41" lean-forward="true" selection-start-line="54" selection-start-column="41" selection-end-line="54" selection-end-column="41" />
           <folding>
             <element signature="e#879#1228#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/nodeJs/Turing/page/robot.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="81" column="16" lean-forward="true" selection-start-line="81" selection-start-column="16" selection-end-line="81" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/nodeJs/Turing/page/robot.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="39" column="19" lean-forward="true" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="19" />
+        <state relative-caret-position="360">
+          <caret line="62" column="59" lean-forward="true" selection-start-line="62" selection-start-column="59" selection-end-line="62" selection-end-column="59" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nodeJs/readme.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-236">
+          <caret line="442" column="46" lean-forward="false" selection-start-line="442" selection-start-column="46" selection-end-line="442" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nodeJs/StuMS/page/add_student.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1209">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#head#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nodeJs/StuMS/page/student.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="4" column="23" lean-forward="false" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
+          <folding>
+            <element signature="n#script#4;n#head#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

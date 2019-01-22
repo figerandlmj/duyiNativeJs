@@ -439,7 +439,7 @@
             select avg(age) as avg_age from student;//平均数
             select sum(age)/count(1) from student;
             select class,count(1),avg(age) from student group by class;
-            select * from student limit 1,2;
+            select * from student limit 1,2;//1,2表示偏移1，获取两条数据
             select * from student order by id desc limit 3,2;
             delete from student where name="小王"
 
@@ -449,10 +449,10 @@
         
         window + r  打开运行窗口
         services.msc  打开服务
-
+        webstorm f8 断电调试 f9 退出断点调试
     5.大项目
 
-    webstorm f8 断电调试 f9 退出断点调试
+
 
 
 
