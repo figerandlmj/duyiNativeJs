@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>学生列表</title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.css">
     <script src="/bootstrap/js/jquery-3.3.1.min.js"></script>
     <script src="/bootstrap/js/bootstrap.js"></script>
-    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css" />
-
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/locale/bootstrap-table-zh-CN.min.js"></script>
     <script>
@@ -21,27 +20,26 @@
                 pagination:true,
                 sidePagination:'server',
                 columns: [{
-                    field: 'id',
-                    title: '学生id'
+                    field: 'stu_num',
+                    title: '学号'
                 }, {
                     field: 'name',
                     title: '姓名'
                 }, {
-                    field: 'sex',
-                    title: '性别'
+                    field: 'age',
+                    title: '年龄'
                 }, {
-                    field: 'birth',
-                    title: '生日'
+                    field: 'class',
+                    title: '班级'
                 }, {
                     field: 'ctime',
                     title: '创建时间'
-                }, ]
+                }]
             });
         }
     </script>
 </head>
 <body>
-<table id="table">
-</table>
+    <table id="table"></table>
 </body>
 </html>
