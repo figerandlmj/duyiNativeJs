@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        function submitFile() {
+            var file = document.getElementById("file").files[0];
+            var pic = document.getElementById("pic");
+
+            var form = new FormData();
+            form.append("file", file);
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("post", "/upload", true);
+            xhr.onload = function() {
+                alert("上传完成");
+            };
+            xhr.send(form);
+            xhr.onreadystatechange = function() {
+                if(xhr.readyState == 4 && xhr.status == 200) {
+                    var path = xhr.responseText;
+                    console.log(path);
+                    pic.src = "/getPic?path=" + path;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    this is a upload page
+    <input type="file" id="file">
+    <input type="button" onclick="submitFile()" value="上传">
+    <img src="#" alt="" id="pic">
+    <a href="/getPic?path=file\ac4077de8064e801bc9efaf2f3bb5e46" download="avatar.jpg">点击下载</a>
+</body>
+</html>

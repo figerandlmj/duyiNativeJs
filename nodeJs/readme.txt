@@ -450,7 +450,63 @@
         window + r  打开运行窗口
         services.msc  打开服务
         webstorm f8 断电调试 f9 退出断点调试
+        qq文件下载默认地址：C:\Users\acer\Documents\Tencent Files\2270200373\FileRecv
     5.大项目
+
+    6. redis 缓存
+    下载地址：https://github.com/MicrosoftArchive/redis/releases
+    下载  Redis-x64-3.2.100.msi   安装
+    默认安装目录 C:\Program Files\Redis
+    修改  redis.windows-service.conf 文件
+        #requirepass foobared  下增加
+        requirepass lmj917857
+        注释所有 bind 127.0.0.1
+    重启redis服务
+    双击redis-cli.exe 文件，打开redis客户端
+
+    auto lmj917857  //登录
+    set key1 "panda"  //设置redis
+    get key1  //获取
+    hset map2 key1 value1
+    hset map2 key2 value2
+    hget map2 key1
+    hgetall map2
+    hmset map3 k1 v1 k2 v2 k3 v3
+
+
+    Centos 下安装Redis
+    yum install wget //安装wget
+    wget http://download.redis.io/releases/redis-4.0.2.tar.gz  //下载
+    tar xzf redis-4.0.2.tar.gz  //解压
+    cd redis-4.0.2 //进入redis文件夹
+    yum install gcc  //安装c语言环境
+    make MALLOC=libc  //指定安装redisc环境
+    make install  //安装
+    cd /usr/local/bin  //进入安装的默认路径
+    ./redis-server  //启动redis
+    redis-server & //启动redis在后台运行
+    ps aux |grep "redis"  //查询运行进程
+    kill 2306  //停止运行进程
+
+    7. mongoDB
+    window下安装
+        www.mongodb.com
+        try free -> server ->   current
+                                release msi
+                                windows 64-bit x64
+
+        进入安装目录 bin目录
+        双击mongodb.exe
+        命令：
+        db
+        show dbs //查看当前数据库
+
+    Centos下安装
+
+
+
+
+
 
 
 
