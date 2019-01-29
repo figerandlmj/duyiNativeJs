@@ -502,6 +502,49 @@
         show dbs //查看当前数据库
 
     Centos下安装
+        wget http://fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.4.9.tgz  //下载安装包
+        tar zxvf mongodb-linux-x86_64-2.4.9.tgz //解压
+        mv ./mongodb-linux-x86_64-2.4.9 /usr/local/mongodb  //移动文件路径
+        cd home/
+        rm -rf mongo*
+        midir mongodb
+        mkdir mongolog
+        cd mongolog
+        vi mongodb.log
+        cd /user/local/
+        cd ..
+        ./bin/mongod --dbpath /home/mongodb/ --logpath /home/mongolog/mongodb.log --fork --port 27017
+        ps aux |grep "mongo"
+
+    基本指令
+        show dbs //显示所有数据库
+        use panda //切换数据库
+        db.getName() //查看当前数据库名
+        use test2 //创建数据库
+        show collections //查看库下集合（表）
+        db.createCollection("student") //创建集合
+        db.student.save({
+            name: "panda",
+            age: 18,
+            sex: 1
+        }) //增加
+        db.student.find() //查询
+        db.student.find({age: 18}); // =18
+        db.student.find({age: {$gt: 20}}) // >20
+        db.student.find({age: {$lt: 20}}) // <20
+        db.student.find({age: {$gte: 20}}) //  >=20
+        db.student.find({age: {$lte: 20}}) //  <=20
+        db.student.distinct("name") //去重 select distinct name from student
+        db.student.find({$and:[{age:18},{name:"panda"}]}) // age=18 & name="panda"
+        db.student.find({$or:[{age:18},{name:"panda"}]}) // age=18 || name="panda"
+        db.student.find({age:{$gt:16,$lt:20}}) //  16< x <20 select * from student where age between 16 and 20
+        db.student.find().limit(2); // select * from student limit 2
+        db.student.find().skip(2).limit(2);// 跳过2个查2个
+        db.student.find().count() // 总条数
+        db.student.remove({sex:0}) //删除
+        db.student.update({name: "panda"},{$set:{age:19}},false,true) //修改panda的age为19
+
+
 
 
 
