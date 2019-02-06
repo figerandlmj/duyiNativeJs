@@ -27,6 +27,24 @@ SSR  (server side render) 服务器端渲染
     牺牲服务器计算时间，换取一次数据请求
 
 
+利用ssr技术搭建单页面应用
+    npm init
+    cnpm install express vue vue-server-renderer --save
+    cnpm install vue-loader babel-polyfill --save
+    cnpm install babel-loader --save
+    cnpm install webpack webpack-cli babel-core --save
+    cnpm install css-loader vue-style-loader --save
+    cnpm install vue-template-compiler --save
+
+    webpack --config ./webpack/webpack.server.js
+    node server.js
+
+    cnpm install vue-router --save
+    cnpm install vuex --save
+    cnpm install axios --save
+
+    webpack --config ./webpack/webpack.client.js
+
 
 
 

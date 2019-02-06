@@ -306,7 +306,7 @@
     systemctl disable firewalld 关闭防火墙
     reboot 重启
 
-三、http协议（HyperText Transfer Protocol）超文本传出协议
+三、http协议（HyperText Transfer Protocol）超文本传输协议
     1.协议层次
     五层网络协议
         应用层 浏览器 app HTTP FTP（文件传输）DNS（域名解析） SMTP(邮箱) Telnet（天王盖地虎--邓哥）
