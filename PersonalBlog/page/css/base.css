@@ -107,7 +107,7 @@ body{
 	float: right;
 	padding: 0 0 0 0;
 	box-sizing: border-box;
-	background: blue;
+	/*background: blue;*/
 }
 
 .right_module{
