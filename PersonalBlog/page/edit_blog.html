@@ -19,8 +19,24 @@
     <script type="text/javascript">
       function submit() {
         var content = $("#editor").html();
-        var title = $("#title").html();
-        var tags = $("#tags").html();
+        var title = $("#title").val();
+        var tags = $("#tags").val();
+        $.ajax({
+          url: "/editBlog?title=" + title + "&tags=" + tags,
+          method: "post",
+          data: content,
+          success: function(resp) {
+            console.log(resp);
+            var result = JSON.parse(resp);
+            alert(result.msg);
+            $("#title").val("");
+            $("#tags").val("");
+            $("#editor").html("");
+          },
+          error: function(resp) {
+            console.log(resp);
+          }
+        })
       }
     </script>
   </head>

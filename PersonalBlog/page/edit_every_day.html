@@ -19,6 +19,20 @@
     <script type="text/javascript">
       function submit() {
         var content = $("#editor").html();
+        $.ajax({
+          url: "/editEveryDay",
+          method: "post",
+          data: content,
+          success: function(resp) {
+            console.log(resp);
+            var result = JSON.parse(resp);
+            alert(result.msg);
+            $("#editor").html("");
+          },
+          error: function(resp) {
+            console.log(resp);
+          }
+        })
       }
     </script>
   </head>
