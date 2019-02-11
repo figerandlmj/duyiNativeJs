@@ -137,6 +137,18 @@ git remote add origin git@github.com:whbing147/learngit.git
 git push -u origin master
 
 
+git checkout -b dev    //创建dev分支并切换到dev
+=>
+git branch dev
+git checkout dev
+
+git branch  //查看当前分支
+
+git merge dev //合并dev与当前分支
+git branch -d dev //删除dev分支
+
+
+
 
 
 
