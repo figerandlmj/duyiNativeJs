@@ -6,16 +6,17 @@
 	box-shadow: 3px 4px 3px #888;
 	padding: 10px 15px;
 	box-sizing: border-box;
+	overflow: hidden;
 }
 
-.every_day span{
+.every_day .tip{
 	display: block;
 	font-size: 12px;
 	margin-bottom: 5px;
 	color: slateblue;
 }
 
-.every_day span:before{
+.every_day .tip:before{
 	font-family: MyIcon;
 	content: '\e122';
 	font-size: 12px;

@@ -1,7 +1,7 @@
 var dbutil = require("./DBUtil.js");
 
 function insertTag(tag, ctime, utime, success) {
-	var insertSql = "insert into every_day (`tag`, `ctime`, `utime`) values (?, ?, ?);";
+	var insertSql = "insert into tags (`tag`, `ctime`, `utime`) values (?, ?, ?);";
 	var params = [tag, ctime, utime];
 
 	var connection = dbutil.createConnection();

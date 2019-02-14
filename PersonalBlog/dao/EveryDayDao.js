@@ -18,7 +18,7 @@ function insertEveryDay(content, ctime, success) {
 }
 
 function queryEveryDay(success) {
-	var querySql = "select * from every_day order by desc limit 1;";
+	var querySql = "select * from every_day order by id desc limit 1;";
 	var params = [];
 
 	var connection = dbutil.createConnection();

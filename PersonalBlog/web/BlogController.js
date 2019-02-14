@@ -50,16 +50,38 @@ function insertTagBlogMapping(tagId, blogId) {
 }
 
 
-// function queryBlog(request, response) {
-// 	request.on("data", function(data) {
-// 		// console.log(data.toString());
-// 		BlogDao.queryBlog(function(result) {
-// 			response.writeHead(200);
-// 			response.write(respUtil.writeResult("success", "查询成功", result));
-// 			response.end();
-// 		});
-// 	});
-// }
-path.set("/queryBlog", queryBlog);
+function queryBlogByPage(request, response) {
+	var params = url.parse(request.url, true).query;
+    BlogDao.queryBlogByPage(parseInt(params.page), parseInt(params.pageSize), function(result) {
+    	for(var i = 0; i < result.length; i ++) {
+        	result[i].content = result[i].content.replace(/<img[\w\W]*">/, "");
+        	result[i].content = result[i].content.replace(/<[^<>]+>/g, "");
+        	result[i].content = result[i].content.substring(0, 300);
+		}
+    	response.writeHead(200);
+        response.write(respUtil.writeResult("success", "查询成功", result));
+        response.end();
+    });
+}
+path.set("/queryBlogByPage", queryBlogByPage);
+
+function queryBlogCount(request, response) {
+    BlogDao.queryBlogCount(function(result) {
+        response.writeHead(200);
+        response.write(respUtil.writeResult("success", "查询成功", result));
+        response.end();
+    });
+}
+path.set("/queryBlogCount", queryBlogCount);
+
+function queryBlogById(request, response) {
+    var params = url.parse(request.url, true).query;
+    BlogDao.queryBlogById(parseInt(params.bid), function(result) {
+        response.writeHead(200);
+        response.write(respUtil.writeResult("success", "查询成功", result));
+        response.end();
+    });
+}
+path.set("/queryBlogById", queryBlogById);
 
 module.exports.path = path;

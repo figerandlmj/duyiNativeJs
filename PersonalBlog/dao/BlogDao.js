@@ -17,9 +17,9 @@ function insertBlog(title, content, tags, views, ctime, utime, success) {
 	connection.end();
 }
 
-function queryBlog(success) {
-	var querySql = "select * from every_day order by desc limit 1;";
-	var params = [];
+function queryBlogByPage(page, pageSize, success) {
+	var querySql = "select * from blog order by id desc limit ?, ?;";
+	var params = [page * pageSize, pageSize];
 
 	var connection = dbutil.createConnection();
 	connection.connect();
@@ -34,7 +34,43 @@ function queryBlog(success) {
 	connection.end();
 }
 
+function queryBlogCount(success) {
+    var querySql = "select count(1) as count from blog;";
+    var params = [];
+
+    var connection = dbutil.createConnection();
+    connection.connect();
+
+    connection.query(querySql, params, function(error, result) {
+        if(error == null) {
+            success(result);
+        }else{
+            console.log(error);
+        }
+    });
+    connection.end();
+}
+
+function queryBlogById(id, success) {
+    var querySql = "select * from blog where id = ?;";
+    var params = [id];
+
+    var connection = dbutil.createConnection();
+    connection.connect();
+
+    connection.query(querySql, params, function(error, result) {
+        if(error == null) {
+            success(result);
+        }else{
+            console.log(error);
+        }
+    });
+    connection.end();
+}
+
 module.exports = {
 	insertBlog: insertBlog,
-	queryBlog: queryBlog
+    queryBlogByPage: queryBlogByPage,
+    queryBlogCount: queryBlogCount,
+    queryBlogById: queryBlogById
 }

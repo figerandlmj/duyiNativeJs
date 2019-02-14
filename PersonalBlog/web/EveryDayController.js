@@ -14,20 +14,15 @@ function editEveryDay(request, response) {
 		});
 	});
 }
-
 path.set("/editEveryDay", editEveryDay);
 
 function queryEveryDay(request, response) {
-	request.on("data", function(data) {
-		// console.log(data.toString());
-		everyDayDao.queryEveryDay(function(result) {
-			response.writeHead(200);
-			response.write(respUtil.writeResult("success", "查询成功", result));
-			response.end();
-		});
-	});
+    everyDayDao.queryEveryDay(function(result) {
+    	response.writeHead(200);
+    	response.write(respUtil.writeResult("success", "查询成功", result));
+    	response.end();
+    });
 }
-
 path.set("/queryEveryDay", queryEveryDay);
 
 module.exports.path = path;

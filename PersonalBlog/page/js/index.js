@@ -17,10 +17,11 @@ var everyDay = new Vue({
 		axios({
 			method: "get",
 			url: "/queryEveryDay",
-		}).then(function(resp) {
+		}).then((resp) => {
+			console.log(resp);
 			console.log(resp.data.data[0].content);
 			this.content = resp.data.data[0].content;
-		}).catch(function(resp) {
+		}).catch((resp) => {
 			console.log("请求失败：" + resp);
 		})
 	}
@@ -29,6 +30,10 @@ var everyDay = new Vue({
 var articleList = new Vue({
 	el: "#article_list",
 	data: {
+		page: 1,
+		pageSize: 1,
+		count: 0,
+		pageNumList: [],
 		articleList: [
 			{
 				title: "四联杀幽门螺杆菌第三天",
@@ -51,9 +56,86 @@ var articleList = new Vue({
 		]
 	},
 	computed: {
-
+		getPage() {
+			return function(page, pageSize) {
+				axios({
+					method: "get",
+					url: "/queryBlogByPage?page=" + (page - 1) + "&pageSize=" + pageSize
+				}).then((resp) => {
+					console.log(resp);
+					var result = resp.data.data;
+					var list = [];
+					for(var i = 0; i < result.length; i ++) {
+						var temp = {};
+						temp.title = result[i].title;
+						temp.content = result[i].content;
+						temp.date = result[i].ctime;
+						temp.views = result[i].views;
+						temp.tags = result[i].tags;
+						temp.id = result[i].id;
+						temp.link = "/blog_detail.html?bid=" + result[i].id;
+						list.push(temp);
+					}
+					this.articleList = list;
+					this.page = page;
+                }).catch((resp) => {
+					console.log("请求错误：" + resp);
+				});
+				axios({
+					method: "get",
+					url: "/queryBlogCount"
+				}).then((resp) => {
+					console.log(resp);
+					this.count = resp.data.data[0].count;
+                    this.generatePageTool();
+				}).catch((resp) => {
+					console.log("请求错误：" + resp);
+				})
+			};
+		},
+		generatePageTool() {
+			return function() {
+                var nowPage = this.page;
+                var pageSize = this.pageSize;
+                var totalCount = this.count;
+                var result = [];
+                result.push({text: "<<", page: 1});
+                if(nowPage > 2) {
+                    result.push({text: nowPage - 2, page: nowPage - 2});
+                }
+                if(nowPage > 1) {
+                    result.push({text: nowPage - 1, page: nowPage - 1});
+                }
+                result.push({text: nowPage, page: nowPage});
+                if((nowPage + 1) <= (totalCount + pageSize - 1) / pageSize) {
+                    result.push({text: nowPage + 1, page: nowPage + 1});
+                }
+                if((nowPage + 2) <= (totalCount + pageSize - 1) / pageSize) {
+                    result.push({text: nowPage + 2, page: nowPage + 2});
+                }
+                result.push({text: ">>", page: parseInt((totalCount + pageSize - 1) / pageSize)});
+                this.pageNumList = result;
+			};
+		},
+        jumpTo() {
+			return function(pageText, page) {
+                var nowPage = this.page;
+				if(pageText == "<<" && nowPage == 1) {
+                    return;
+				}else if(pageText == ">>" && nowPage == parseInt((this.count + this.pageSize - 1) / this.pageSize)) {
+                    return;
+                }
+                if(pageText == "<<") {
+                    this.getPage(nowPage - 1, this.pageSize);
+				}else if(pageText == ">>") {
+                    this.getPage(nowPage + 1, this.pageSize);
+                }else {
+                    this.getPage(page, this.pageSize);
+				}
+			};
+		}
 	},
 	created(){
-
+		this.getPage(this.page, this.pageSize);
 	}
 })

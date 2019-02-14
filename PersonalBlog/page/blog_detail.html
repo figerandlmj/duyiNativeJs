@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>个人博客</title>
+    <link rel="stylesheet" type="text/css" href="./css/base.css">
+    <link rel="stylesheet" type="text/css" href="./css/blog_detail.css">
+    <script type="text/javascript" src="js/vue-2.6.3.js"></script>
+    <script src="https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.min.js"></script>
+</head>
+<body>
+<header class="header">
+    <div class="container">
+        <a href="/" class="title">我的个人博客 | 技术博客</a>
+        <ul class="menu">
+            <li><a href="/">首页</a></li>
+            <li><a href="/sitemap.html">地图</a></li>
+            <li><a href="/about.html">关于</a></li>
+            <li><a href="/guestbook.html">留言</a></li>
+        </ul>
+        <div class="search_bar">
+            <input type="text" name="" placeholder="输入关键词查找">
+            <button>搜索</button>
+        </div>
+    </div>
+</header>
+<div class="content">
+    <div class="content_left">
+        <div class="blog" id="blog_detail">
+            <div class="blog_title">{{title}}</div>
+            <div class="blog_msg">作者: 李满姣  标签：{{tags}}  发布于: {{ctime}}  浏览({{views}})  评论(1)</div>
+            <div class="blog_content" v-html="content"></div>
+        </div>
+    </div>
+    <div class="content_right">
+        <div class="right_module" id="random_tags">
+            <div>随机标签云</div>
+            <a v-for="(tag, index) in tags" :key="index" v-bind:style="{color: randomColor(), fontSize: randomSize()}" href="#">{{tag}}</a>
+        </div>
+        <div class="right_module" id="new_hot">
+            <div>最近热门</div>
+            <ul>
+                <li v-for="(hot, index) in hotList" :key="index"><a v-bind:href="hot.link">{{hot.title}}</a></li>
+            </ul>
+        </div>
+        <div class="right_module" id="new_comments">
+            <div>最新评论</div>
+            <ul>
+                <li v-for="(comment, index) in commentList" :key="index">
+                    <div>
+                        <span>{{comment.name}}</span>
+                        <span class="pull_right">[{{comment.date}}]</span>
+                    </div>
+                    <p><a href="#">{{comment.comment}}</a></p>
+                </li>
+                <!-- <li>
+                    <div>
+                        <span>阿杰学长</span>
+                        <span class="pull_right">[1周前]</span>
+                    </div>
+                    <p><a href="#">你好，启用ssl代理是SSL Pro赵晨阳</a></p>
+                </li> -->
+            </ul>
+        </div>
+        <div class="right_module">
+            <div>友情链接</div>
+            <span><a href="#">挨踢茶馆</a></span>
+            <span><a href="#">挨踢茶馆</a></span>
+            <span><a href="#">挨踢茶馆</a></span>
+            <span><a href="#">佛布朗斯基</a></span>
+            <span><a href="#">佛布朗斯基</a></span>
+            <span><a href="#">佛布朗斯基</a></span>
+            <span><a href="#">挨踢茶馆</a></span>
+            <span><a href="#">挨踢茶馆</a></span>
+            <span><a href="#">挨踢茶馆</a></span>
+        </div>
+    </div>
+</div>
+<footer class="footer">
+    <div class="container">
+        <div class="link">
+            <a href="#">C/C++</a>
+            <a href="#">CSS/DIV</a>
+            <a href="#">java</a>
+            <a href="#">java</a>
+            <a href="#">java</a>
+            <a href="#">java</a>
+            <a href="#">java</a>
+            <a href="#">java</a>
+            <a href="#">java</a>
+            <a href="#">java</a>
+            <a href="#">java</a>
+            <a href="#">java</a>
+            <a href="#">java</a>
+            <a href="#">java</a>
+            <a href="#">java</a>
+            <a href="#">java</a>
+            <a href="#">java</a>
+            <a href="#">java</a>
+            <a href="#">java</a>
+            <a href="#">java</a>
+            <a href="#">java</a>
+            <a href="#">java</a>
+            <a href="#">java</a>
+            <a href="#">java</a>
+            <a href="#">Linux</a>
+            <a href="#">Linux</a>
+            <a href="#">Linux</a>
+            <a href="#">Linux</a>
+            <a href="#">Linux</a>
+            <a href="#">Linux</a>
+            <a href="#">Linux</a>
+            <a href="#">Linux</a>
+        </div>
+        <p>
+            Copyright © 2010-2017 郑晓个人博客 All rights reserved. 由免费开源的WordPress强力驱动. 鲁ICP备14017955号站长统计
+        </p>
+    </div>
+</footer>
+<script type="text/javascript" src="./js/blog_detail.js"></script>
+<script type="text/javascript" src="./js/base.js"></script>
+</body>
+</html>

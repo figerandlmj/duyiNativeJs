@@ -8,7 +8,7 @@
     <title>个人博客</title>
     <link rel="stylesheet" type="text/css" href="./css/base.css">
     <link rel="stylesheet" type="text/css" href="./css/index.css">
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script type="text/javascript" src="js/vue-2.6.3.js"></script>
     <script src="https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.min.js"></script>
 </head>
 <body>
@@ -30,12 +30,12 @@
 	<div class="content">
 		<div class="content_left">
 			<div class="every_day" id="every_day">
-				<span>每日一句</span>
-				<p v-html="getContent">
+				<span class="tip">每日一句</span>
+				<div v-html="getContent">
 					<!-- It's been my experience that you can nearly always enjoy something if you make up your mind firmly that you will.<br>
 
 					我的经验是，事情只要下定决心去享受，就基本都能享受。———— 《小小安妮》 -->
-				</p>
+				</div>
 			</div>
 			<div class="article_list" id="article_list">
 				<div class="article" v-for="(article, index) in articleList" :key="index">
@@ -56,6 +56,17 @@
 						发布于2018-10-30 |  浏览(578) | Tags：幽门螺杆菌 萎缩性胃炎
 					</div>
 				</div> -->
+				<div class="page_tool">
+					<ul>
+						<li v-for="(pageNum, index) in pageNumList" :key="index" v-on:click="jumpTo(pageNum.text, pageNum.page)" v-bind:class="{now_page: pageNum.text == page}">{{pageNum.text}}</li>
+						<!--<li><<</li>-->
+						<!--<li>1</li>-->
+						<!--<li>2</li>-->
+						<!--<li>3</li>-->
+						<!--<li>4</li>-->
+						<!--<li>>></li>-->
+					</ul>
+				</div>
 			</div>
 		</div>
 		<div class="content_right">

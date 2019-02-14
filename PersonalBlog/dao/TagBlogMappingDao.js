@@ -1,7 +1,7 @@
 var dbutil = require("./DBUtil.js");
 
 function insertTagBlogMapping(tagId, blogId, ctime, utime, success) {
-	var insertSql = "insert into every_day (`tag_id`, `blog_id`, `ctime`, `utime`) values (?, ?, ?, ?);";
+	var insertSql = "insert into tag_blog_mapping (`tag_id`, `blog_id`, `ctime`, `utime`) values (?, ?, ?, ?);";
 	var params = [tagId, blogId, ctime, utime];
 
 	var connection = dbutil.createConnection();
