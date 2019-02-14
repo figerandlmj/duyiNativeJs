@@ -20,3 +20,71 @@
 .blog_content{
     margin-top: 20px;
 }
+
+.send_comments{
+    background: #f5f5f5;
+    width: 100%;
+    border-radius: 5px;
+    padding: 10px 15px;
+    box-shadow: 3px 4px 3px #888;
+    text-align: left;
+    margin-top: 20px;
+    box-sizing: border-box;
+}
+.send_comments input{
+    width: 300px;
+    height: 34px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding-left: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+.send_comments textarea{
+    width: 90%;
+    height: 100px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 10px 0;
+}
+.send_comments button{
+    width: 100px;
+    height: 30px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 10px 0;
+    font-size: 14px;
+    cursor: pointer;
+}
+.send_comments button:hover{
+    background: #adadad;
+}
+
+.blog_comments{
+    width: 100%;
+    text-align: left;
+}
+
+.blog_comments_msg{
+    margin-top: 20px;
+    padding: 10px;
+    display: block;
+}
+
+.blog_comment{
+    width: 100%;
+    box-sizing: border-box;
+    background: #d9edf7;
+    border: 1px dashed #7ca4c1;
+    padding: 10px 10px 20px 10px;
+    margin-top: 10px;
+    color: #31708f;
+}
+
+.blog_comment > div{
+    margin-top: 10px;
+    text-indent: 25px;
+    font-size: 14px;
+}
