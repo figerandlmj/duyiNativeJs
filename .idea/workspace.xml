@@ -2,29 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a24b76ce-d825-4d85-80a1-9811a3b6d2b5" name="默认" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/PersonalBlog/page/js/about.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/PersonalBlog/page/js/guestbook.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/PersonalBlog/page/js/sitemap.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/PersonalBlog/web/TagsController.js" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/PersonalBlog/dao/BlogDao.js" afterPath="$PROJECT_DIR$/PersonalBlog/dao/BlogDao.js" />
-      <change beforePath="$PROJECT_DIR$/PersonalBlog/dao/CommentDao.js" afterPath="$PROJECT_DIR$/PersonalBlog/dao/CommentDao.js" />
-      <change beforePath="$PROJECT_DIR$/PersonalBlog/dao/TagBlogMappingDao.js" afterPath="$PROJECT_DIR$/PersonalBlog/dao/TagBlogMappingDao.js" />
-      <change beforePath="$PROJECT_DIR$/PersonalBlog/dao/TagsDao.js" afterPath="$PROJECT_DIR$/PersonalBlog/dao/TagsDao.js" />
-      <change beforePath="$PROJECT_DIR$/PersonalBlog/index.js" afterPath="$PROJECT_DIR$/PersonalBlog/index.js" />
-      <change beforePath="$PROJECT_DIR$/PersonalBlog/page/about.html" afterPath="$PROJECT_DIR$/PersonalBlog/page/about.html" />
-      <change beforePath="$PROJECT_DIR$/PersonalBlog/page/blog_detail.html" afterPath="$PROJECT_DIR$/PersonalBlog/page/blog_detail.html" />
-      <change beforePath="$PROJECT_DIR$/PersonalBlog/page/css/about.css" afterPath="$PROJECT_DIR$/PersonalBlog/page/css/about.css" />
-      <change beforePath="$PROJECT_DIR$/PersonalBlog/page/css/blog_detail.css" afterPath="$PROJECT_DIR$/PersonalBlog/page/css/blog_detail.css" />
-      <change beforePath="$PROJECT_DIR$/PersonalBlog/page/css/guestbook.css" afterPath="$PROJECT_DIR$/PersonalBlog/page/css/guestbook.css" />
-      <change beforePath="$PROJECT_DIR$/PersonalBlog/page/guestbook.html" afterPath="$PROJECT_DIR$/PersonalBlog/page/guestbook.html" />
-      <change beforePath="$PROJECT_DIR$/PersonalBlog/page/index.html" afterPath="$PROJECT_DIR$/PersonalBlog/page/index.html" />
-      <change beforePath="$PROJECT_DIR$/PersonalBlog/page/js/base.js" afterPath="$PROJECT_DIR$/PersonalBlog/page/js/base.js" />
-      <change beforePath="$PROJECT_DIR$/PersonalBlog/page/js/blog_detail.js" afterPath="$PROJECT_DIR$/PersonalBlog/page/js/blog_detail.js" />
-      <change beforePath="$PROJECT_DIR$/PersonalBlog/page/js/index.js" afterPath="$PROJECT_DIR$/PersonalBlog/page/js/index.js" />
-      <change beforePath="$PROJECT_DIR$/PersonalBlog/page/sitemap.html" afterPath="$PROJECT_DIR$/PersonalBlog/page/sitemap.html" />
-      <change beforePath="$PROJECT_DIR$/PersonalBlog/web/BlogController.js" afterPath="$PROJECT_DIR$/PersonalBlog/web/BlogController.js" />
-      <change beforePath="$PROJECT_DIR$/PersonalBlog/web/CommentController.js" afterPath="$PROJECT_DIR$/PersonalBlog/web/CommentController.js" />
+      <change beforePath="$PROJECT_DIR$/PersonalBlog/readme.txt" afterPath="$PROJECT_DIR$/PersonalBlog/readme.txt" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -155,7 +133,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="guestbook.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="guestbook.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PersonalBlog/page/guestbook.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="218">
@@ -166,6 +144,16 @@
                 <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#footer#0;n#body#0;n#html#0;n#!!top" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="readme.txt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/PersonalBlog/readme.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="320">
+              <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -217,7 +205,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/nodeJs/TestExpress/web/upload.js" />
         <option value="$PROJECT_DIR$/nodeJs/TestExpress/index.js" />
         <option value="$PROJECT_DIR$/nodeJs/TestExpress/web/getPic.js" />
         <option value="$PROJECT_DIR$/nodeJs/TestExpress/page/upload.html" />
@@ -268,6 +255,7 @@
         <option value="$PROJECT_DIR$/PersonalBlog/page/blog_detail.html" />
         <option value="$PROJECT_DIR$/PersonalBlog/page/about.html" />
         <option value="$PROJECT_DIR$/PersonalBlog/page/guestbook.html" />
+        <option value="$PROJECT_DIR$/PersonalBlog/readme.txt" />
       </list>
     </option>
   </component>
@@ -494,12 +482,12 @@
       <workItem from="1548757114486" duration="15803000" />
       <workItem from="1549854965725" duration="994000" />
       <workItem from="1549952710837" duration="31566000" />
-      <workItem from="1550110876897" duration="30841000" />
+      <workItem from="1550110876897" duration="32243000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="411890000" />
+    <option name="totallyTimeSpent" value="413292000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
@@ -724,13 +712,6 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PersonalBlog/readme.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1034,6 +1015,14 @@
             <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#footer#0;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PersonalBlog/readme.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
