@@ -2,15 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a24b76ce-d825-4d85-80a1-9811a3b6d2b5" name="默认" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/PersonalBlog/dao/CommentDao.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/PersonalBlog/web/CommentController.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/PersonalBlog/page/js/about.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/PersonalBlog/page/js/guestbook.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/PersonalBlog/page/js/sitemap.js" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/PersonalBlog/web/TagsController.js" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/PersonalBlog/dao/DBUtil.js" afterPath="$PROJECT_DIR$/PersonalBlog/dao/DBUtil.js" />
+      <change beforePath="$PROJECT_DIR$/PersonalBlog/dao/BlogDao.js" afterPath="$PROJECT_DIR$/PersonalBlog/dao/BlogDao.js" />
+      <change beforePath="$PROJECT_DIR$/PersonalBlog/dao/CommentDao.js" afterPath="$PROJECT_DIR$/PersonalBlog/dao/CommentDao.js" />
+      <change beforePath="$PROJECT_DIR$/PersonalBlog/dao/TagBlogMappingDao.js" afterPath="$PROJECT_DIR$/PersonalBlog/dao/TagBlogMappingDao.js" />
+      <change beforePath="$PROJECT_DIR$/PersonalBlog/dao/TagsDao.js" afterPath="$PROJECT_DIR$/PersonalBlog/dao/TagsDao.js" />
       <change beforePath="$PROJECT_DIR$/PersonalBlog/index.js" afterPath="$PROJECT_DIR$/PersonalBlog/index.js" />
-      <change beforePath="$PROJECT_DIR$/PersonalBlog/package.json" afterPath="$PROJECT_DIR$/PersonalBlog/package.json" />
+      <change beforePath="$PROJECT_DIR$/PersonalBlog/page/about.html" afterPath="$PROJECT_DIR$/PersonalBlog/page/about.html" />
       <change beforePath="$PROJECT_DIR$/PersonalBlog/page/blog_detail.html" afterPath="$PROJECT_DIR$/PersonalBlog/page/blog_detail.html" />
+      <change beforePath="$PROJECT_DIR$/PersonalBlog/page/css/about.css" afterPath="$PROJECT_DIR$/PersonalBlog/page/css/about.css" />
       <change beforePath="$PROJECT_DIR$/PersonalBlog/page/css/blog_detail.css" afterPath="$PROJECT_DIR$/PersonalBlog/page/css/blog_detail.css" />
+      <change beforePath="$PROJECT_DIR$/PersonalBlog/page/css/guestbook.css" afterPath="$PROJECT_DIR$/PersonalBlog/page/css/guestbook.css" />
+      <change beforePath="$PROJECT_DIR$/PersonalBlog/page/guestbook.html" afterPath="$PROJECT_DIR$/PersonalBlog/page/guestbook.html" />
+      <change beforePath="$PROJECT_DIR$/PersonalBlog/page/index.html" afterPath="$PROJECT_DIR$/PersonalBlog/page/index.html" />
+      <change beforePath="$PROJECT_DIR$/PersonalBlog/page/js/base.js" afterPath="$PROJECT_DIR$/PersonalBlog/page/js/base.js" />
       <change beforePath="$PROJECT_DIR$/PersonalBlog/page/js/blog_detail.js" afterPath="$PROJECT_DIR$/PersonalBlog/page/js/blog_detail.js" />
+      <change beforePath="$PROJECT_DIR$/PersonalBlog/page/js/index.js" afterPath="$PROJECT_DIR$/PersonalBlog/page/js/index.js" />
+      <change beforePath="$PROJECT_DIR$/PersonalBlog/page/sitemap.html" afterPath="$PROJECT_DIR$/PersonalBlog/page/sitemap.html" />
+      <change beforePath="$PROJECT_DIR$/PersonalBlog/web/BlogController.js" afterPath="$PROJECT_DIR$/PersonalBlog/web/BlogController.js" />
+      <change beforePath="$PROJECT_DIR$/PersonalBlog/web/CommentController.js" afterPath="$PROJECT_DIR$/PersonalBlog/web/CommentController.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -27,32 +41,86 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PersonalBlog/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="17" column="31" lean-forward="false" selection-start-line="17" selection-start-column="10" selection-end-line="17" selection-end-column="31" />
+            <state relative-caret-position="296">
+              <caret line="23" column="29" lean-forward="false" selection-start-line="23" selection-start-column="10" selection-end-line="23" selection-end-column="29" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CommentController.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PersonalBlog/web/CommentController.js">
+      <file leaf-file-name="BlogController.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PersonalBlog/web/BlogController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="347">
-              <caret line="36" column="32" lean-forward="true" selection-start-line="36" selection-start-column="32" selection-end-line="36" selection-end-column="32" />
+            <state relative-caret-position="223">
+              <caret line="129" column="63" lean-forward="false" selection-start-line="129" selection-start-column="58" selection-end-line="129" selection-end-column="63" />
               <folding>
-                <element signature="n#!!block;n#queryRandomCode#0" expanded="false" />
+                <element signature="n#!!block;n#editBlog#0" expanded="false" />
+                <element signature="n#!!block;n#queryTag#0" expanded="false" />
+                <element signature="n#!!block;n#queryBlogByPage#0" expanded="false" />
+                <element signature="n#!!block;n#queryBlogCount#0" expanded="false" />
+                <element signature="n#!!block;n#queryBlogById#0" expanded="false" />
+                <element signature="n#!!block;n#queryAllBlog#0" expanded="false" />
+                <element signature="n#!!block;n#queryHotBlog#0" expanded="false" />
+                <element signature="n#!!block;n#queryBlogByTag#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CommentDao.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PersonalBlog/dao/CommentDao.js">
+      <file leaf-file-name="BlogDao.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PersonalBlog/dao/BlogDao.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-315">
-              <caret line="20" column="56" lean-forward="false" selection-start-line="20" selection-start-column="49" selection-end-line="20" selection-end-column="56" />
+            <state relative-caret-position="270">
+              <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="51" selection-end-column="1" />
               <folding>
-                <element signature="n#!!block;n#insertComment#0" expanded="false" />
+                <element signature="n#!!block;n#insertBlog#0" expanded="false" />
+                <element signature="n#!!block;n#queryBlogByPage#0" expanded="false" />
+                <element signature="n#!!block;n#queryBlogCount#0" expanded="false" />
+                <element signature="n#!!block;n#queryBlogById#0" expanded="false" />
+                <element signature="n#!!block;n#queryAllBlog#0" expanded="false" />
+                <element signature="n#!!block;n#addViews#0" expanded="false" />
+                <element signature="n#!!block;n#queryHotBlog#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TagBlogMappingDao.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PersonalBlog/dao/TagBlogMappingDao.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-675">
+              <caret line="36" column="28" lean-forward="false" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="28" />
+              <folding>
+                <element signature="n#!!block;n#insertTagBlogMapping#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PersonalBlog/page/js/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-50">
+              <caret line="123" column="66" lean-forward="false" selection-start-line="123" selection-start-column="66" selection-end-line="123" selection-end-column="66" />
+              <folding>
+                <element signature="e#23#585#0" expanded="false" />
+                <element signature="e#1653#3245#0" expanded="false" />
+                <element signature="e#2054#2593#0" expanded="false" />
+                <element signature="e#4969#6011#0" expanded="false" />
+                <element signature="e#6030#6623#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PersonalBlog/page/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="185">
+              <caret line="113" column="14" lean-forward="true" selection-start-line="71" selection-start-column="8" selection-end-line="113" selection-end-column="14" />
+              <folding>
+                <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -61,8 +129,8 @@
       <file leaf-file-name="blog_detail.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PersonalBlog/page/blog_detail.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
-              <caret line="39" column="67" lean-forward="false" selection-start-line="39" selection-start-column="67" selection-end-line="39" selection-end-column="67" />
+            <state relative-caret-position="360">
+              <caret line="103" column="10" lean-forward="false" selection-start-line="103" selection-start-column="10" selection-end-line="103" selection-end-column="10" />
               <folding>
                 <element signature="n#header#0;n#body#0;n#html#0;n#!!top" expanded="false" />
                 <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
@@ -72,15 +140,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="blog_detail.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/PersonalBlog/page/js/blog_detail.js">
+      <file leaf-file-name="about.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PersonalBlog/page/about.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="458">
-              <caret line="154" column="34" lean-forward="false" selection-start-line="154" selection-start-column="34" selection-end-line="154" selection-end-column="34" />
+            <state relative-caret-position="128">
+              <caret line="126" column="14" lean-forward="false" selection-start-line="126" selection-start-column="14" selection-end-line="126" selection-end-column="14" />
               <folding>
-                <element signature="e#25#1163#0" expanded="false" />
-                <element signature="e#1193#3707#0" expanded="false" />
-                <element signature="e#1231#1278#0" expanded="false" />
+                <element signature="n#header#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#footer#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="guestbook.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/PersonalBlog/page/guestbook.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="218">
+              <caret line="106" column="10" lean-forward="true" selection-start-line="106" selection-start-column="10" selection-end-line="106" selection-end-column="10" />
+              <folding>
+                <element signature="n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#footer#0;n#body#0;n#html#0;n#!!top" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -90,9 +174,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>scrollTop</find>
-      <find>prevent</find>
-      <find>receiveRecord</find>
       <find>localStorage</find>
       <find>ajax</find>
       <find>typeof</find>
@@ -115,6 +196,14 @@
       <find>everyDayDao</find>
       <find>queryEveryDay</find>
       <find>queryBlogCount</find>
+      <find>comment_reply_name</find>
+      <find>blog</find>
+      <find>blog_comment</find>
+      <find>queryHotBlog</find>
+      <find>BlogDao</find>
+      <find>queryBlogById</find>
+      <find>queryBlogByTag</find>
+      <find>queryBlogCountByTag</find>
     </findStrings>
     <dirStrings>
       <dir>E:\wamp\www\myFile\duyiNativeJs\ECMAScript</dir>
@@ -128,16 +217,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/nodeJs/TestExpress/page/index.html" />
-        <option value="$PROJECT_DIR$/nodeJs/TestExpress/page/test.html" />
-        <option value="$PROJECT_DIR$/nodeJs/TestExpress/loader.js" />
-        <option value="$PROJECT_DIR$/nodeJs/TestExpress/server.conf" />
-        <option value="$PROJECT_DIR$/nodeJs/TestExpress/config.js" />
-        <option value="$PROJECT_DIR$/nodeJs/TestExpress/page/login.html" />
-        <option value="$PROJECT_DIR$/nodeJs/TestExpress/page/loginError.html" />
-        <option value="$PROJECT_DIR$/nodeJs/TestExpress/dao/studentDao.js" />
-        <option value="$PROJECT_DIR$/nodeJs/TestExpress/web/studentController.js" />
-        <option value="$PROJECT_DIR$/nodeJs/TestExpress/dao/fileListDao.js" />
         <option value="$PROJECT_DIR$/nodeJs/TestExpress/web/upload.js" />
         <option value="$PROJECT_DIR$/nodeJs/TestExpress/index.js" />
         <option value="$PROJECT_DIR$/nodeJs/TestExpress/web/getPic.js" />
@@ -159,26 +238,36 @@
         <option value="$PROJECT_DIR$/vueSSR/lesson2/package.json" />
         <option value="$PROJECT_DIR$/vueSSR/lesson2/server.js" />
         <option value="$PROJECT_DIR$/git/readme.txt" />
-        <option value="$PROJECT_DIR$/PersonalBlog/page/js/base.js" />
         <option value="$PROJECT_DIR$/PersonalBlog/page/js/vue-2.5.1.min.js" />
         <option value="$PROJECT_DIR$/PersonalBlog/dao/EveryDayDao.js" />
         <option value="$PROJECT_DIR$/PersonalBlog/page/css/index.css" />
         <option value="$PROJECT_DIR$/PersonalBlog/web/EveryDayController.js" />
-        <option value="$PROJECT_DIR$/PersonalBlog/dao/TagsDao.js" />
-        <option value="$PROJECT_DIR$/PersonalBlog/dao/TagBlogMappingDao.js" />
         <option value="$PROJECT_DIR$/PersonalBlog/page/edit_blog.html" />
         <option value="$PROJECT_DIR$/PersonalBlog/page/css/base.css" />
-        <option value="$PROJECT_DIR$/PersonalBlog/page/index.html" />
-        <option value="$PROJECT_DIR$/PersonalBlog/page/js/index.js" />
-        <option value="$PROJECT_DIR$/PersonalBlog/web/BlogController.js" />
-        <option value="$PROJECT_DIR$/PersonalBlog/dao/BlogDao.js" />
         <option value="$PROJECT_DIR$/PersonalBlog/dao/DBUtil.js" />
         <option value="$PROJECT_DIR$/PersonalBlog/page/css/blog_detail.css" />
-        <option value="$PROJECT_DIR$/PersonalBlog/page/blog_detail.html" />
-        <option value="$PROJECT_DIR$/PersonalBlog/index.js" />
-        <option value="$PROJECT_DIR$/PersonalBlog/web/CommentController.js" />
-        <option value="$PROJECT_DIR$/PersonalBlog/dao/CommentDao.js" />
+        <option value="$PROJECT_DIR$/PersonalBlog/page/css/about.css" />
+        <option value="$PROJECT_DIR$/PersonalBlog/page/css/guestbook.css" />
+        <option value="$PROJECT_DIR$/PersonalBlog/page/js/guessbook.js" />
         <option value="$PROJECT_DIR$/PersonalBlog/page/js/blog_detail.js" />
+        <option value="$PROJECT_DIR$/PersonalBlog/page/js/about.js" />
+        <option value="$PROJECT_DIR$/PersonalBlog/page/js/guestbook.js" />
+        <option value="$PROJECT_DIR$/PersonalBlog/page/js/sitemap.js" />
+        <option value="$PROJECT_DIR$/PersonalBlog/page/sitemap.html" />
+        <option value="$PROJECT_DIR$/PersonalBlog/dao/TagsDao.js" />
+        <option value="$PROJECT_DIR$/PersonalBlog/web/TagsController.js" />
+        <option value="$PROJECT_DIR$/PersonalBlog/dao/CommentDao.js" />
+        <option value="$PROJECT_DIR$/PersonalBlog/web/CommentController.js" />
+        <option value="$PROJECT_DIR$/PersonalBlog/page/js/base.js" />
+        <option value="$PROJECT_DIR$/PersonalBlog/page/index.html" />
+        <option value="$PROJECT_DIR$/PersonalBlog/dao/BlogDao.js" />
+        <option value="$PROJECT_DIR$/PersonalBlog/index.js" />
+        <option value="$PROJECT_DIR$/PersonalBlog/dao/TagBlogMappingDao.js" />
+        <option value="$PROJECT_DIR$/PersonalBlog/web/BlogController.js" />
+        <option value="$PROJECT_DIR$/PersonalBlog/page/js/index.js" />
+        <option value="$PROJECT_DIR$/PersonalBlog/page/blog_detail.html" />
+        <option value="$PROJECT_DIR$/PersonalBlog/page/about.html" />
+        <option value="$PROJECT_DIR$/PersonalBlog/page/guestbook.html" />
       </list>
     </option>
   </component>
@@ -405,12 +494,12 @@
       <workItem from="1548757114486" duration="15803000" />
       <workItem from="1549854965725" duration="994000" />
       <workItem from="1549952710837" duration="31566000" />
-      <workItem from="1550110876897" duration="9802000" />
+      <workItem from="1550110876897" duration="30841000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="390851000" />
+    <option name="totallyTimeSpent" value="411890000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
@@ -430,7 +519,7 @@
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293556" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2026726" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3062361" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3436754" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -483,55 +572,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/nodeJs/TestExpress/page/upload.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="36" column="33" lean-forward="true" selection-start-line="36" selection-start-column="33" selection-end-line="36" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Program Files/Redis/redis.windows-service.conf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="442" column="22" lean-forward="true" selection-start-line="442" selection-start-column="22" selection-end-line="442" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/nodeJs/TestRedis/test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="64" column="27" lean-forward="true" selection-start-line="64" selection-start-column="27" selection-end-line="64" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/nodeJs/TestRedis/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="54" column="27" lean-forward="true" selection-start-line="54" selection-start-column="27" selection-end-line="54" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/nodeJs/TestMongoDB/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="5" column="14" lean-forward="true" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/nodeJs/TestRedis/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="8" column="15" lean-forward="false" selection-start-line="8" selection-start-column="15" selection-end-line="8" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vueSSR/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-135">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/nodeJs/TestExpress/config.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
@@ -668,31 +708,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PersonalBlog/page/js/base.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="43" column="25" lean-forward="false" selection-start-line="43" selection-start-column="25" selection-end-line="43" selection-end-column="25" />
-          <folding>
-            <element signature="e#25#560#0" expanded="false" />
-            <element signature="e#585#855#0" expanded="false" />
-            <element signature="e#885#1215#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/PersonalBlog/page/edit_every_day.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
           <caret line="144" column="7" lean-forward="true" selection-start-line="144" selection-start-column="7" selection-end-line="144" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PersonalBlog/web/EveryDayController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="15" column="1" lean-forward="false" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
           <folding>
-            <element signature="n#!!block;n#editEveryDay#0" expanded="false" />
+            <marker date="1549855010502" expanded="true" signature="5760:5790" ph="..." />
+            <marker date="1549855010502" expanded="true" signature="7099:7106" ph="×" />
           </folding>
         </state>
       </provider>
@@ -712,31 +734,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PersonalBlog/dao/TagBlogMappingDao.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="2" column="68" lean-forward="false" selection-start-line="2" selection-start-column="68" selection-end-line="2" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PersonalBlog/dao/TagsDao.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="2" column="47" lean-forward="false" selection-start-line="2" selection-start-column="47" selection-end-line="2" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/PersonalBlog/page/css/base.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="397">
           <caret line="244" column="24" lean-forward="false" selection-start-line="244" selection-start-column="24" selection-end-line="244" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PersonalBlog/page/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="62" column="41" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="159" selection-end-column="7" />
           <folding />
         </state>
       </provider>
@@ -767,16 +768,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PersonalBlog/page/js/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-45">
-          <caret line="80" column="36" lean-forward="true" selection-start-line="80" selection-start-column="36" selection-end-line="80" selection-end-column="36" />
-          <folding>
-            <element signature="e#23#585#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/PersonalBlog/page/edit_blog.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
@@ -788,34 +779,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PersonalBlog/page/about.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="580">
-          <caret line="67" column="18" lean-forward="true" selection-start-line="57" selection-start-column="12" selection-end-line="67" selection-end-column="18" />
-          <folding>
-            <element signature="n#header#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#footer#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PersonalBlog/page/css/about.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="593">
-          <caret line="47" column="1" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="47" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PersonalBlog/page/css/blog_detail.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="593">
-          <caret line="89" column="1" lean-forward="false" selection-start-line="89" selection-start-column="1" selection-end-line="89" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/PersonalBlog/loader.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -824,63 +787,222 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PersonalBlog/web/BlogController.js">
+    <entry file="file://$PROJECT_DIR$/PersonalBlog/page/css/guestbook.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="472">
-          <caret line="74" column="44" lean-forward="true" selection-start-line="67" selection-start-column="0" selection-end-line="74" selection-end-column="44" />
-          <folding>
-            <element signature="n#!!block;n#editBlog#0" expanded="false" />
-            <element signature="n#!!block;n#queryTag#0" expanded="false" />
-            <element signature="n#!!block;n#queryBlogByPage#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PersonalBlog/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="17" column="31" lean-forward="false" selection-start-line="17" selection-start-column="10" selection-end-line="17" selection-end-column="31" />
+        <state relative-caret-position="413">
+          <caret line="76" column="1" lean-forward="true" selection-start-line="76" selection-start-column="1" selection-end-line="76" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PersonalBlog/dao/BlogDao.js">
+    <entry file="file://$PROJECT_DIR$/PersonalBlog/page/css/about.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="599">
-          <caret line="74" column="17" lean-forward="false" selection-start-line="74" selection-start-column="4" selection-end-line="74" selection-end-column="17" />
+        <state relative-caret-position="278">
+          <caret line="89" column="0" lean-forward="true" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PersonalBlog/page/css/blog_detail.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="593">
+          <caret line="93" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PersonalBlog/page/js/guestbook.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1485">
+          <caret line="52" column="27" lean-forward="false" selection-start-line="52" selection-start-column="27" selection-end-line="52" selection-end-column="27" />
           <folding>
-            <element signature="n#!!block;n#insertBlog#0" expanded="false" />
-            <element signature="n#!!block;n#queryBlogByPage#0" expanded="false" />
-            <element signature="n#!!block;n#queryBlogCount#0" expanded="false" />
-            <element signature="n#!!block;n#queryBlogById#0" expanded="false" />
+            <element signature="e#65#112#0" expanded="false" />
+            <element signature="e#151#597#0" expanded="false" />
+            <element signature="e#1874#3329#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PersonalBlog/dao/CommentDao.js">
+    <entry file="file://$PROJECT_DIR$/PersonalBlog/page/js/about.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-315">
-          <caret line="20" column="56" lean-forward="false" selection-start-line="20" selection-start-column="49" selection-end-line="20" selection-end-column="56" />
+        <state relative-caret-position="-262">
+          <caret line="79" column="52" lean-forward="true" selection-start-line="79" selection-start-column="52" selection-end-line="79" selection-end-column="52" />
           <folding>
-            <element signature="n#!!block;n#insertComment#0" expanded="false" />
+            <element signature="e#27#1844#0" expanded="false" />
+            <element signature="e#65#112#0" expanded="false" />
+            <element signature="e#151#597#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PersonalBlog/page/js/sitemap.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="14" column="25" lean-forward="false" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PersonalBlog/page/sitemap.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="21" column="91" lean-forward="true" selection-start-line="21" selection-start-column="91" selection-end-line="21" selection-end-column="91" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PersonalBlog/web/EveryDayController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="16" column="40" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="27" selection-end-column="27" />
+          <folding>
+            <element signature="n#!!block;n#editEveryDay#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PersonalBlog/web/TagsController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="10" column="11" lean-forward="false" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PersonalBlog/dao/TagsDao.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="54" column="25" lean-forward="true" selection-start-line="54" selection-start-column="25" selection-end-line="54" selection-end-column="25" />
+          <folding>
+            <element signature="n#!!block;n#insertTag#0" expanded="false" />
+            <element signature="n#!!block;n#queryTag#0" expanded="false" />
+            <element signature="n#!!block;n#queryAllTag#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/PersonalBlog/web/CommentController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="36" column="32" lean-forward="true" selection-start-line="36" selection-start-column="32" selection-end-line="36" selection-end-column="32" />
+        <state relative-caret-position="170">
+          <caret line="45" column="51" lean-forward="false" selection-start-line="45" selection-start-column="51" selection-end-line="45" selection-end-column="51" />
           <folding>
             <element signature="n#!!block;n#queryRandomCode#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/PersonalBlog/dao/CommentDao.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="36" column="24" lean-forward="false" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="24" />
+          <folding>
+            <element signature="n#!!block;n#insertComment#0" expanded="false" />
+            <element signature="n#!!block;n#queryCommentsByBlogId#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PersonalBlog/page/js/blog_detail.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="141" column="9" lean-forward="true" selection-start-line="130" selection-start-column="8" selection-end-line="141" selection-end-column="9" />
+          <folding>
+            <element signature="e#26#1164#0" expanded="false" />
+            <element signature="e#1194#3569#0" expanded="false" />
+            <element signature="e#1232#1279#0" expanded="false" />
+            <element signature="e#1318#1764#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PersonalBlog/page/js/base.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="448">
+          <caret line="92" column="28" lean-forward="false" selection-start-line="92" selection-start-column="17" selection-end-line="92" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PersonalBlog/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="23" column="29" lean-forward="false" selection-start-line="23" selection-start-column="10" selection-end-line="23" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PersonalBlog/dao/BlogDao.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="51" selection-end-column="1" />
+          <folding>
+            <element signature="n#!!block;n#insertBlog#0" expanded="false" />
+            <element signature="n#!!block;n#queryBlogByPage#0" expanded="false" />
+            <element signature="n#!!block;n#queryBlogCount#0" expanded="false" />
+            <element signature="n#!!block;n#queryBlogById#0" expanded="false" />
+            <element signature="n#!!block;n#queryAllBlog#0" expanded="false" />
+            <element signature="n#!!block;n#addViews#0" expanded="false" />
+            <element signature="n#!!block;n#queryHotBlog#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PersonalBlog/dao/TagBlogMappingDao.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-675">
+          <caret line="36" column="28" lean-forward="false" selection-start-line="36" selection-start-column="9" selection-end-line="36" selection-end-column="28" />
+          <folding>
+            <element signature="n#!!block;n#insertTagBlogMapping#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PersonalBlog/web/BlogController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="129" column="63" lean-forward="false" selection-start-line="129" selection-start-column="58" selection-end-line="129" selection-end-column="63" />
+          <folding>
+            <element signature="n#!!block;n#editBlog#0" expanded="false" />
+            <element signature="n#!!block;n#queryTag#0" expanded="false" />
+            <element signature="n#!!block;n#queryBlogByPage#0" expanded="false" />
+            <element signature="n#!!block;n#queryBlogCount#0" expanded="false" />
+            <element signature="n#!!block;n#queryBlogById#0" expanded="false" />
+            <element signature="n#!!block;n#queryAllBlog#0" expanded="false" />
+            <element signature="n#!!block;n#queryHotBlog#0" expanded="false" />
+            <element signature="n#!!block;n#queryBlogByTag#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PersonalBlog/page/js/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-50">
+          <caret line="123" column="66" lean-forward="false" selection-start-line="123" selection-start-column="66" selection-end-line="123" selection-end-column="66" />
+          <folding>
+            <element signature="e#23#585#0" expanded="false" />
+            <element signature="e#1653#3245#0" expanded="false" />
+            <element signature="e#2054#2593#0" expanded="false" />
+            <element signature="e#4969#6011#0" expanded="false" />
+            <element signature="e#6030#6623#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PersonalBlog/page/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="113" column="14" lean-forward="true" selection-start-line="71" selection-start-column="8" selection-end-line="113" selection-end-column="14" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/PersonalBlog/page/blog_detail.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
-          <caret line="39" column="67" lean-forward="false" selection-start-line="39" selection-start-column="67" selection-end-line="39" selection-end-column="67" />
+        <state relative-caret-position="360">
+          <caret line="103" column="10" lean-forward="false" selection-start-line="103" selection-start-column="10" selection-end-line="103" selection-end-column="10" />
           <folding>
             <element signature="n#header#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
@@ -889,14 +1011,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PersonalBlog/page/js/blog_detail.js">
+    <entry file="file://$PROJECT_DIR$/PersonalBlog/page/about.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="458">
-          <caret line="154" column="34" lean-forward="false" selection-start-line="154" selection-start-column="34" selection-end-line="154" selection-end-column="34" />
+        <state relative-caret-position="128">
+          <caret line="126" column="14" lean-forward="false" selection-start-line="126" selection-start-column="14" selection-end-line="126" selection-end-column="14" />
           <folding>
-            <element signature="e#25#1163#0" expanded="false" />
-            <element signature="e#1193#3707#0" expanded="false" />
-            <element signature="e#1231#1278#0" expanded="false" />
+            <element signature="n#header#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#footer#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PersonalBlog/page/guestbook.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="106" column="10" lean-forward="true" selection-start-line="106" selection-start-column="10" selection-end-line="106" selection-end-column="10" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#footer#0;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>

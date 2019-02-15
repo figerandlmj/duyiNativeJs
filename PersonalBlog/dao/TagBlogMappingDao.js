@@ -17,24 +17,42 @@ function insertTagBlogMapping(tagId, blogId, ctime, utime, success) {
 	connection.end();
 }
 
-// function queryTag(tag, success) {
-// 	var querySql = "select * from tags where tag = ?;";
-// 	var params = [tag];
+function queryBlogByTag(tagId, page, pageSize, success) {
+    var querySql = "select * from tag_blog_mapping where tag_id = ? limit ?, ?;";
+    var params = [tagId, page * pageSize, pageSize];
 
-// 	var connection = dbutil.createConnection();
-// 	connection.connect();
+    var connection = dbutil.createConnection();
+    connection.connect();
 
-// 	connection.query(querySql, params, function(error, result) {
-// 		if(error == null) {
-// 			success(result);
-// 		}else{
-// 			console.log(error);
-// 		}
-// 	});
-// 	connection.end();
-// }
+    connection.query(querySql, params, function(error, result) {
+        if(error == null) {
+            success(result);
+        }else{
+            console.log(error);
+        }
+    });
+    connection.end();
+}
+
+function queryBlogCountByTag(tagId, success) {
+    var querySql = "select count(1) as count from tag_blog_mapping where tag_id = ?;";
+    var params = [tagId];
+
+    var connection = dbutil.createConnection();
+    connection.connect();
+
+    connection.query(querySql, params, function(error, result) {
+        if(error == null) {
+            success(result);
+        }else{
+            console.log(error);
+        }
+    });
+    connection.end();
+}
 
 module.exports = {
 	insertTagBlogMapping: insertTagBlogMapping,
-	// queryTag: queryTag
+    queryBlogByTag: queryBlogByTag,
+    queryBlogCountByTag: queryBlogCountByTag
 }

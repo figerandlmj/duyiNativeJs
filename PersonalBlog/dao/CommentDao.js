@@ -1,8 +1,8 @@
 var dbutil = require("./DBUtil.js");
 
-function insertComment(blogId, parent, userName, email, comments, ctime, utime, success) {
-    var insertSql = "insert into comments (`blog_id`, `parent`, `user_name`, `email`, `comments`, `ctime`, `utime`) values (?, ?, ?, ?, ?, ?, ?);";
-    var params = [blogId, parent, userName, email, comments, ctime, utime];
+function insertComment(blogId, parent, parentName, userName, email, comments, ctime, utime, success) {
+    var insertSql = "insert into comments (`blog_id`, `parent`, `parent_name`, `user_name`, `email`, `comments`, `ctime`, `utime`) values (?, ?, ?, ?, ?, ?, ?, ?);";
+    var params = [blogId, parent, parentName, userName, email, comments, ctime, utime];
 
     var connection = dbutil.createConnection();
     connection.connect();
@@ -34,7 +34,25 @@ function queryCommentsByBlogId(blogId, success) {
     connection.end();
 }
 
+function queryNewComment(size, success) {
+    var querySql = "select * from comments order by id desc limit ?;";
+    var params = [size];
+
+    var connection = dbutil.createConnection();
+    connection.connect();
+
+    connection.query(querySql, params, function(error, result) {
+        if(error == null) {
+            success(result);
+        }else{
+            console.log(error);
+        }
+    });
+    connection.end();
+}
+
 module.exports = {
     insertComment: insertComment,
-    queryCommentsByBlogId: queryCommentsByBlogId
+    queryCommentsByBlogId: queryCommentsByBlogId,
+    queryNewComment: queryNewComment
 }

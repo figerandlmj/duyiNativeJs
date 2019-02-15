@@ -8,6 +8,8 @@
     <title>个人博客</title>
     <link rel="stylesheet" type="text/css" href="./css/base.css">
     <link rel="stylesheet" type="text/css" href="./css/about.css">
+	<script type="text/javascript" src="js/vue-2.6.3.js"></script>
+	<script src="https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.min.js"></script>
 </head>
 <body>
 	<header class="header">
@@ -55,56 +57,59 @@
 					kvm vps:hostEONS 洛杉矶节点，我在用，速度可以，可以干一些羞羞的事。
 				</p>
 			</div>
-			<div class="blog_comments">
-				<span class="blog_comments_msg">关于：目前有61 条留言</span>
-				<div class="blog_comment">
-					<span> <b>cjh333</b>：发表于 2018年06月26日 12:37[回复]</span>
-					<div>wordpress是后台管理框架吧？wordpress是后台管理框架吧？wordpress是后台管理框架吧？wordpress是后台管理框架吧？</div>
+			<div class="blog_comments" id="blog_comments">
+				<span class="blog_comments_msg">关于：目前有{{total}} 条留言</span>
+				<div class="blog_comment" v-for="(comment, index) in comments" :key="index">
+					<span> <b>{{comment.name}}</b>：{{comment.options}} 发表于 {{comment.ctime}} <a v-on:click="reply(comment.id, comment.name)">[回复]</a></span>
+					<div>{{comment.content}}</div>
 				</div>
-				<div class="blog_comment">
-					<span> <b>cjh333</b>：发表于 2018年06月26日 12:37[回复]</span>
-					<div>wordpress是后台管理框架吧？wordpress是后台管理框架吧？wordpress是后台管理框架吧？wordpress是后台管理框架吧？</div>
+			</div>
+			<div class="send_comments" id="send_comments">
+				<span>发表评论</span>
+				<div>
+					<input type="hidden" id="comment_reply" value="-10">
+					<input type="hidden" id="comment_reply_name" value="">
+					<input type="text" placeholder="呢称" id="comment_name">
+					<input type="text" placeholder="邮箱（评论被回复时你能收到通知）" id="comment_email">
 				</div>
+				<div>
+					<textarea placeholder="无意义的内容我可能不会回复你" id="comment_content" cols="30" rows="10"></textarea>
+				</div>
+				<div>
+					<input type="text" placeholder="验证码" id="comment_code">
+					<span v-html="vcode" v-on:click="changeCode()"></span>
+				</div>
+				<button v-on:click="sendComment">提交评论</button>
 			</div>
 		</div>
 		<div class="content_right">
-			<div class="right_module">
+			<div class="right_module" id="random_tags">
 				<div>随机标签云</div>
-				<a href="#">蛋疼</a>
-				<a href="#">游戏</a>
-				<a href="#">selenium数据结构分区</a>
-				<a href="#">macwin7独立博客</a>
-				<a href="#">摄像头模拟</a>
-				<a href="#">css+div</a>
-				<a href="#">五笔</a>
+				<a v-for="(tag, index) in tags" :key="index" v-bind:style="{color: randomColor(), fontSize: randomSize()}" :href="'/?tagId=' + tag.id">{{tag.tag}}</a>
 			</div>
-			<div class="right_module">
+			<div class="right_module" id="new_hot">
 				<div>最近热门</div>
 				<ul>
-					<li><a href="#">查看你的AWS服务器已使用流量</a></li>
-					<li><a href="#">查看你的AWS服务器已使用流量</a></li>
-					<li><a href="#">查看你的AWS服务器已使用流量</a></li>
-					<li><a href="#">查看你的AWS服务器已使用流量</a></li>
-					<li><a href="#">查看你的AWS服务器已使用流量</a></li>
+					<li v-for="(hot, index) in hotList" :key="index"><a v-bind:href="'/blog_detail.html?bid=' + hot.id">{{hot.title}}</a></li>
 				</ul>
 			</div>
-			<div class="right_module">
+			<div class="right_module" id="new_comments">
 				<div>最新评论</div>
 				<ul>
-					<li>
+					<li v-for="(comment, index) in commentList" :key="index">
+						<div>
+							<span>{{comment.user_name}}</span>
+							<span class="pull_right">[{{comment.ctime}}]</span>
+						</div>
+						<p><a href="#">{{comment.comments}}</a></p>
+					</li>
+					<!-- <li>
 						<div>
 							<span>阿杰学长</span>
 							<span class="pull_right">[1周前]</span>
 						</div>
 						<p><a href="#">你好，启用ssl代理是SSL Pro赵晨阳</a></p>
-					</li>
-					<li>
-						<div>
-							<span>阿杰学长</span>
-							<span class="pull_right">[1周前]</span>
-						</div>
-						<p><a href="#">你好，启用ssl代理是SSL Pro赵晨阳</a></p>
-					</li>
+					</li> -->
 				</ul>
 			</div>
 			<div class="right_module">
@@ -162,5 +167,7 @@
 			</p>
 		</div>
 	</footer>
+	<script type="text/javascript" src="./js/about.js"></script>
+	<script type="text/javascript" src="./js/base.js"></script>
 </body>
 </html>

@@ -88,3 +88,7 @@
     text-indent: 25px;
     font-size: 14px;
 }
+
+.blog_comment a{
+    cursor: pointer;
+}

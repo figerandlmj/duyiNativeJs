@@ -80,8 +80,59 @@ function queryBlogById(request, response) {
         response.writeHead(200);
         response.write(respUtil.writeResult("success", "查询成功", result));
         response.end();
+        BlogDao.addViews(parseInt(params.bid), function(result){});
     });
 }
 path.set("/queryBlogById", queryBlogById);
+
+function queryAllBlog(request, response) {
+    BlogDao.queryAllBlog(function(result) {
+        response.writeHead(200);
+        response.write(respUtil.writeResult("success", "查询成功", result));
+        response.end();
+    });
+}
+path.set("/queryAllBlog", queryAllBlog);
+
+function queryHotBlog(request, response) {
+    var params = url.parse(request.url, true).query;
+    BlogDao.queryHotBlog(parseInt(params.size), function(result) {
+        response.writeHead(200);
+        response.write(respUtil.writeResult("success", "查询成功", result));
+        response.end();
+    });
+}
+path.set("/queryHotBlog", queryHotBlog);
+
+function queryBlogByTag(request, response) {
+    var params = url.parse(request.url, true).query;
+    TagBlogMappingDao.queryBlogByTag(parseInt(params.tagId), parseInt(params.page), parseInt(params.pageSize), function(result) {
+        var blogList = [];
+        for(var i = 0; i < result.length; i ++) {
+            BlogDao.queryBlogById(result[i].blog_id, function(result2) {
+                result2[0].content = result2[0].content.replace(/<img[\w\W]*">/, "");
+                result2[0].content = result2[0].content.replace(/<[^<>]+>/g, "");
+                result2[0].content = result2[0].content.substring(0, 300);
+            	blogList.push(result2[0]);
+                if(blogList.length == result.length) {
+                    response.writeHead(200);
+                    response.write(respUtil.writeResult("success", "查询成功", blogList));
+                    response.end();
+                }
+            });
+		}
+    });
+}
+path.set("/queryBlogByTag", queryBlogByTag);
+
+function queryBlogCountByTag(request, response) {
+    var params = url.parse(request.url, true).query;
+    TagBlogMappingDao.queryBlogCountByTag(parseInt(params.tagId), function(result) {
+        response.writeHead(200);
+        response.write(respUtil.writeResult("success", "查询成功", result));
+        response.end();
+    });
+}
+path.set("/queryBlogCountByTag", queryBlogCountByTag);
 
 module.exports.path = path;

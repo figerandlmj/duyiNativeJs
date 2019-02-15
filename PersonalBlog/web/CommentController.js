@@ -8,7 +8,7 @@ var path = new Map();
 
 function addComment(request, response) {
     var params = url.parse(request.url, true).query;
-    CommentDao.insertComment(params.bid, params.parent, params.userName, params.email, params.content, timeUtil.getNow(), timeUtil.getNow(), function(result) {
+    CommentDao.insertComment(params.bid, params.parent, params.parentName, params.userName, params.email, params.content, timeUtil.getNow(), timeUtil.getNow(), function(result) {
         response.writeHead(200);
         response.write(respUtil.writeResult("success", "添加成功", null));
         response.end();
@@ -40,5 +40,15 @@ function queryCommentsByBlogId(request, response) {
     });
 }
 path.set("/queryCommentsByBlogId", queryCommentsByBlogId);
+
+function queryNewComment(request, response) {
+    var params = url.parse(request.url, true).query;
+    CommentDao.queryNewComment(parseInt(params.size), function(result) {
+        response.writeHead(200);
+        response.write(respUtil.writeResult("success", "查询成功", result));
+        response.end();
+    });
+}
+path.set("/queryNewComment", queryNewComment);
 
 module.exports.path = path;

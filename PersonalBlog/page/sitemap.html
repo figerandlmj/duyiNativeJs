@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>个人博客</title>
     <link rel="stylesheet" type="text/css" href="./css/sitemap.css">
+	<script type="text/javascript" src="js/vue-2.6.3.js"></script>
+	<script src="https://cdn.bootcss.com/axios/0.19.0-beta.1/axios.min.js"></script>
 </head>
 <body>
 	<div class="title">个人博客's SiteMap</div>
@@ -14,14 +16,12 @@
 		<a href="/"><b>博客首页</b></a> » 
 		<a href="/sitemap.html">站点地图</a>
 	</div>
-	<div class="blog_list">
+	<div class="blog_list" id="blog_list">
 		<span>最新文章</span>
 		<ul>
-			<li><a href="#">四联杀幽门螺杆菌第三天</a></li>
-			<li><a href="#">四联杀幽门螺杆菌第三天</a></li>
-			<li><a href="#">四联杀幽门螺杆菌第三天</a></li>
-			<li><a href="#">四联杀幽门螺杆菌第三天</a></li>
+			<li v-for="(blog, index) in blogList" :key="index"><a :href="'/blog_detail.html?bid=' + blog.id">{{blog.title}}</a></li>
 		</ul>
 	</div>
+	<script src="./js/sitemap.js"></script>
 </body>
 </html>

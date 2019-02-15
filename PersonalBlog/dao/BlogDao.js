@@ -68,9 +68,63 @@ function queryBlogById(id, success) {
     connection.end();
 }
 
+function queryAllBlog(success) {
+    var querySql = "select * from blog;";
+    var params = [];
+
+    var connection = dbutil.createConnection();
+    connection.connect();
+
+    connection.query(querySql, params, function(error, result) {
+        if(error == null) {
+            success(result);
+        }else{
+            console.log(error);
+        }
+    });
+    connection.end();
+}
+
+function addViews(blogId, success) {
+    var updateSql = "update blog set views = views + 1 where id = ?;";
+    var params = [blogId];
+
+    var connection = dbutil.createConnection();
+    connection.connect();
+
+    connection.query(updateSql, params, function(error, result) {
+        if(error == null) {
+            success(result);
+        }else{
+            console.log(error);
+        }
+    });
+    connection.end();
+}
+
+function queryHotBlog(size, success) {
+    var querySql = "select * from blog order by views desc limit ?;";
+    var params = [size];
+
+    var connection = dbutil.createConnection();
+    connection.connect();
+
+    connection.query(querySql, params, function(error, result) {
+        if(error == null) {
+            success(result);
+        }else{
+            console.log(error);
+        }
+    });
+    connection.end();
+}
+
 module.exports = {
 	insertBlog: insertBlog,
     queryBlogByPage: queryBlogByPage,
     queryBlogCount: queryBlogCount,
-    queryBlogById: queryBlogById
+    queryBlogById: queryBlogById,
+    queryAllBlog: queryAllBlog,
+    addViews: addViews,
+    queryHotBlog: queryHotBlog
 }

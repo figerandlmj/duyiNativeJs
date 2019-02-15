@@ -72,12 +72,12 @@
 		<div class="content_right">
 			<div class="right_module" id="random_tags">
 				<div>随机标签云</div>
-				<a v-for="(tag, index) in tags" :key="index" v-bind:style="{color: randomColor(), fontSize: randomSize()}" href="#">{{tag}}</a>
+				<a v-for="(tag, index) in tags" :key="index" v-bind:style="{color: randomColor(), fontSize: randomSize()}" :href="'/?tagId=' + tag.id">{{tag.tag}}</a>
 			</div>
 			<div class="right_module" id="new_hot">
 				<div>最近热门</div>
 				<ul>
-					<li v-for="(hot, index) in hotList" :key="index"><a v-bind:href="hot.link">{{hot.title}}</a></li>
+					<li v-for="(hot, index) in hotList" :key="index"><a v-bind:href="'/blog_detail.html?bid=' + hot.id">{{hot.title}}</a></li>
 				</ul>
 			</div>
 			<div class="right_module" id="new_comments">
@@ -85,10 +85,10 @@
 				<ul>
 					<li v-for="(comment, index) in commentList" :key="index">
 						<div>
-							<span>{{comment.name}}</span>
-							<span class="pull_right">[{{comment.date}}]</span>
+							<span>{{comment.user_name}}</span>
+							<span class="pull_right">[{{comment.ctime}}]</span>
 						</div>
-						<p><a href="#">{{comment.comment}}</a></p>
+						<p><a href="#">{{comment.comments}}</a></p>
 					</li>
 					<!-- <li>
 						<div>
