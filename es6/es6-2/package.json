@@ -1,0 +1,12 @@
+{
+  "name": "es6-2",
+  "version": "1.0.0",
+  "description": "在线babel工具  https://babeljs.io/repl",
+  "main": "demo.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
