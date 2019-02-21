@@ -289,3 +289,103 @@ npx babel xxx.js -o xxx.js --watch //监控执行babel编译
     };
     obj.fn();// "abc"
 
+五、es5  Object.defineProperty
+
+    在一个对象上定义一个新的具有详细描述的属性，并返回这个对象
+    Object.defineProperty(对象，属性，描述符)
+    数据描述符：
+        value: 属性值，默认""
+        writable: 是否可写，默认false  obj.name
+        configurable: 是否可配置，默认false  delete obj.name
+        enumerable: 是否可枚举，默认false for in
+    存取描述符：
+        set: function(){} 属性访问器，进行写操作时调用此方法
+        get: function(){} 属性访问器，进行读操作时调用此方法
+    作用：
+        双向数据绑定的核心方法，主要做数据劫持操作（监控属性变化）
+        同时是es6中许多语法糖底层实现的核心方法
+
+    Function.prototype  //writable false
+    delete window.a   //configurable false
+    for(var prop in Object.prototype) {   //enumerable false
+        console.log(prop);
+    }
+    //======================================
+    var obj = {
+        name: "lmj"  //可读可写可配置可枚举
+    }
+    //==value,writable 和get,set不能同时使用=======================================
+    var obj = {};
+    var tempValue = "";
+    Object.defineProperty(obj, "name", {
+        // value: "lmj",
+        // writable: false, //不可写
+        configurable: true, //可配置
+        enumerable: true, //可枚举
+        get: function() {
+            // return "lmj";
+            return tempValue;
+        },
+        set: function(newValue) {
+            tempValue = newValue;
+        }
+    });
+    //===================================
+    var obj = {
+        tempValue: "lmj",
+        get name () {
+            return this.tempValue;
+        },
+        set name (newValue) {
+            this.tempValue = newValue;
+        }
+    }
+
+六、es5 数据劫持
+
+    vue 双向数据绑定核心功能由observer compile watcher 三部分实现，
+    其中observer功能实现由Object.defineProperty实现
+    observer：监测数据变化进行相应回调（数据劫持）
+    eg: demo.html
+
+七、es6新增 兼容性不好  proxy & reflect  (代理 & 映射)
+
+    植入代理模式的思想，以简洁易懂的方式控制对外部对象的访问
+
+    利用内置的set,get方法控制属性的读写功能
+    其余has,deleteProperty,...等方法不太使用到
+
+    解决了数组还有新增属性的监控问题
+
+    let oData = {
+        val: "hello",
+        _val: "haha"
+    };
+    let oProxyData = new Proxy(oData, {
+        set(target, key, value, receiver) {
+            console.log(target, key, value, receiver);
+            Reflect.get(target, key, value);
+            upDate();
+        },
+        get(target, key, receiver) {
+            console.log(target, key, receiver);
+            // return target[key];
+            return Reflect.get(target, key);
+        },
+        has(target, key) {
+            return key.indexOf("_") != -1 ? false : key in oData;//是私有属性返回false
+        },
+        deleteProperty() {
+
+        }
+    });
+    function upDate() {
+        console.log("更新了");
+    }
+    //读写控制
+    console.log(oProxyData.val);
+    oProxyData.val = 10;
+    oProxyData.name = "lmj";//新增属性也能被检测到
+
+    console.log("_val" in oProxyData);//false
+    console.log(delete oProxyData.val);

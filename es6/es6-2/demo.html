@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>observer数据劫持</title>
+</head>
+<body>
+    <input type="text" value="" id="demo">
+    <div id="show"></div>
+    <script>
+        var oInput = document.getElementById("demo");
+        var oDiv = document.getElementById("show");
+
+        var oData = {
+            valueObj: {
+                value: "hello world"
+            }
+        }
+        function upDate() {
+            oDiv.innerText = oData.valueObj.value;
+        }
+        upDate();
+
+        oInput.oninput = function() {
+            oData.valueObj.value = this.value;
+        };
+
+        //监控对象的某个属性是否发生变化
+        function observer(data) {
+            if(!data || typeof data != 'object') {
+                return data;
+            }
+            Object.keys(data).forEach(function(key) {
+                definedRective(data, key, data[key]);
+            })
+        }
+        function definedRective(data, key, val) {
+            observer(val);
+            Object.defineProperty(data, key, {
+                get() {
+                    return val;
+                },
+                set(newValue) {
+                    if(newValue == val) return;
+                    val = newValue;
+                    upDate();
+                }
+            })
+        }
+        observer(oData);
+        //=====数组的监控==================
+        let arr = [];
+        let {push} = Array.prototype;
+        function upData() {
+            console.log("更新");
+        }
+        Object.defineProperty(Array.prototype, 'push', {
+            value: (function() {
+                return (...arg) => {
+                    push.apply(arr, arg);
+                    upData();
+                }
+            }())
+        });
+        arr.push(1,2);
+
+        //oData.name = "lmj" 此时增加的属性无法监控
+        //vue3.0  用proxy reflect 解决这个问题
+    </script>
+</body>
+</html>
