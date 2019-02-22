@@ -389,3 +389,103 @@ npx babel xxx.js -o xxx.js --watch //监控执行babel编译
 
     console.log("_val" in oProxyData);//false
     console.log(delete oProxyData.val);
+
+八、class 构造函数
+
+    面向对象：
+        面向过程在于把功能拆分成步骤，一环扣一环的完成，但是需求复杂到一定程度后，
+        对开发者能力的挑战也是也来越强。
+        面向对象在于前期把功能拆分并抽象成不同的对象，聚焦于每个对象的能力和他们之间的配合，
+        项目复杂后相对于面向过程较为轻松一些。
+        面向对象： 继承、封装、多态
+        js: 基于对象，一切皆对象
+
+    es5 构造函数
+        构造对象，私有属性、公有属性，私有属性继承、公有属性继承
+
+        Plane.prototype.fly = function() {
+            console.log("fly");
+        };
+        function Plane(name) {
+            this.name = name || "普通飞机";
+            this.blood = 100;
+            // this.fly = function() {
+            //     console.log("fly");
+            // };
+        }
+        var oPlane = new Plane();
+        oPlane.fly();
+
+        // 继承 继承原型&继承私有属性
+        // AttackPlane.prototype = new Plane();
+
+        // var temp = function() {};
+        // temp.prototype = Plane.prototype;
+        // AttackPlane.prototype = new temp();
+
+        // AttackPlane.prototype = Object.create(Plane.prototype, {
+        //     constructor: AttackPlane
+        // });
+
+        // AttackPlane.prototype.__proto__ = Plane.prototype;
+        //=>
+        Object.setPrototypeOf(AttackPlane.prototype, Plane.prototype);
+
+        AttackPlane.prototype.dan = function(){
+            console.log("biubiubiu");
+        };
+        function AttackPlane(name) {
+            // this.name = "攻击机";
+            // this.blood = 100;
+            //借用构造函数的方式继承私有属性
+            Plane.call(this, name);
+        }
+        var oAP = new AttackPlane("攻击机");
+        oAP.fly();
+        oAP.dan();
+
+    es6 class语法糖
+        class constructor static extends super
+
+        //私有属性 公有属性（原型属性） 静态属性（函数）
+        class Plane {
+            //es7
+            // static alive = true;
+            static alive() {//静态属性（函数）
+                return true;
+            }
+            constructor(name) {//构造函数 私有属性
+                this.name = name || "普通飞机";
+                this.blood = 100;
+            }
+            fly() {//原型上的方法 公有属性
+                console.log("fly");
+            }
+            //es7 私有属性
+            //name = "hello";
+        };
+        var oPlane = new Plane();
+        console.log(oPlane);
+        oPlane.fly();
+        Plane.alive();
+
+        class AttackPlane extends Plane{
+            constructor(name) {
+                // Plane.call();
+                super(name);
+                this.logo = "duyi";
+            }
+            dan() {
+                console.log("biubiubiu");
+            }
+        }
+        var oAP = new AttackPlane("攻击机");
+        oAP.fly();
+        oAP.dan();
+        AttackPlane.alive();
+
+        //class 定义的类Plane只能通过new方式执行
+        //class定义的类Plane的prototype不能被枚举
+        //静态属性放在类Plane上,而非原型,且静态属性也不能被枚举
+
+    es5模拟实现class
