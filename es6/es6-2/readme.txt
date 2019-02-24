@@ -489,3 +489,129 @@ npx babel xxx.js -o xxx.js --watch //监控执行babel编译
         //静态属性放在类Plane上,而非原型,且静态属性也不能被枚举
 
     es5模拟实现class
+        //判断是否以new的方式来执行
+        function _classCallCheck(_this, _constructor) {
+            if(!(_this instanceof _constructor)) {
+                throw "TypeError: Class constructor Plane cannot be invoked without 'new'";
+            }
+        }
+
+        // 处理公有属性和静态属性
+        function _defineProperty(target, props) {
+            props.forEach(function(ele) {
+                Object.defineProperty(target, ele.key, {
+                    value: ele.value,
+                    writable: true,
+                    configurable: true
+                })
+            })
+        }
+        function _createClass(_constructor, _prototypeProperties, _staticProperties) {
+            // 给原型上赋值
+            if(_prototypeProperties) {
+                _defineProperty(_constructor.prototype, _prototypeProperties);
+            }
+            if(_staticProperties) {
+                _defineProperty(_constructor, _staticProperties);
+            }
+        }
+
+        var Plane = (function(){
+            function Plane(name) {
+                //判断是否以new的方式来执行
+                _classCallCheck(this, Plane);
+                this.name = name || "普通飞机";
+                this.blood = 100;
+            }
+            _createClass(Plane, [{
+                key: "fly",
+                value: function() {
+                    console.log("fly");
+                }
+            }], [{
+                key: "alive",
+                value: function() {
+                    return true;
+                }
+            }])
+            return Plane;
+        })();
+
+        new Plane();
+        // Plane();//报错
+
+        // 继承
+        function _inherit(sub, sup) {
+            Object.setPrototypeOf(sub.prototype, sup.prototype);
+        }
+
+        var AttackPlane = (function(Plane){
+            _inherit(AttackPlane, Plane);
+            function AttackPlane(name) {
+                _classCallCheck(this, AttackPlane);
+                this.logo = "duyi";
+                Plane.call(this, name);
+                
+                // 若是constructor返回一个对象
+                // var _this = this;
+                // var that = Plane.call(_this, name);
+                // if(typeof that == "object") {
+                //     _this = that;
+                // }
+                // _this.logo = "duyi";
+                // return _this;
+            }
+            _createClass(AttackPlane, [{
+                key: "dan",
+                value: function() {
+                    console.log("biubiubiu");
+                }
+            }], [{
+                key: "alive",
+                value: function() {
+                    return true;
+                }
+            }])
+            return AttackPlane;
+        })(Plane);
+
+    es7 class提案属性
+        新特性：
+            static property = xxx;//静态属性
+            property = xxx;//私有属性
+            @decorator //装饰器
+        提案属性需下载插件：
+            npm install @babel/plugin-proposal-class-properties
+            npm install @babel/plugin-proposal-decorators
+        配置：
+            {
+                "plugins": [
+                    ["@babel/plugin-proposal-decorators", {"legacy": true}],
+                    ["@babel/plugin-proposal-class-properties": {"loose": true}]
+                ]
+            }
+
+        class Search {
+            //es7 静态属性
+            sttaic num = 10;
+
+            // es6 静态属性
+            // static num() {
+            //     return 6;
+            // }
+            constructor() {
+                this.keyValue = "";
+            }
+            
+            // es7 私有属性定义方式
+            url = "urlA";
+
+            getCount() {
+                console.log("发送请求");
+            }
+        }
+        var search = new Search();
+
+        eg: demo2.html
+
+九、es6 set & map

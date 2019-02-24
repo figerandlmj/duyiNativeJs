@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>es7 class提案属性 装饰器</title>
+</head>
+<body>
+	<input type="text" name="" id="inp">
+	<button id="btn">search</button>
+	<script type="text/javascript">
+		// 张三
+		// var oInput = document.getElementById("inp");
+		// var oBtn = document.getElementById("btn");
+		// var keyValue = "";
+		// oInput.oninput = function() {
+		// 	keyValue = this.value;
+		// }
+		// oBtn.onclick = function() {
+		// 	getContent(keyValue);
+		// }
+		// function getContent(data) {
+		// 	var url = "urlA";
+		// 	console.log("向" + url + "发送网络请求，数据：" + data);
+		// 	return 10;
+		// }
+		// //具有李四额外功能的getContent
+		// var newGetContent = dealFunc(getContent);
+
+		// // 李四
+		// function dealFunc(func) {
+		// 	return function() {
+		// 		// ....
+		// 		var urlB = "urlB";
+		// 		console.log("向" + urlB + "发送网络请求，数据：" + data);
+		// 		// ....
+		// 		return func.apply(this, arguments);
+		// 	}
+		// }
+
+		// 面向对象的编程思想来做
+		var oInput = document.getElementById("inp");
+		var oBtn = document.getElementById("btn");
+		@Skin //修饰类
+		class Search {
+			constructor() {
+			  this.keyValue = "";
+			}
+			@myReadOnly
+			url = "urlA";
+			// @dealData
+			@dealData("张三");
+			getContent() {
+				console.log("向" + this.url + "发送网络请求，数据：" + this.keyValue);
+			}
+		}
+
+		// 装饰私有属性
+		function myReadOnly(ptoto, key, descriptor) {
+			console.log(ptoto, key, descriptor);//原型 属性 描述(此时没有value)
+			descriptor.writable = false;
+			console.log(descriptor.initializer);//属性值
+			descriptor.initializer = function() {
+				return "url";//改变属性值
+			}
+		}
+		// 修饰原型上的属性
+		// function dealData(ptoto, key, descriptor) {
+		// 	console.log(ptoto, key, descriptor);//原型 属性 描述(此时有value)
+		// 	let oldValue = descriptor.value;//getContent
+		// 	descriptor.value=function() {
+		// 		// ....
+		// 		var urlB = "urlB";
+		// 		console.log("向" + urlB + "发送网络请求，数据：" + this.keyValue);
+		// 		// ....
+		// 		return oldValue.apply(this, arguments);
+		// 	}
+		// }
+		function dealData(data) {
+			return function(ptoto, key, descriptor) {
+				console.log(ptoto, key, descriptor);//原型 属性 描述(此时有value)
+				let oldValue = descriptor.value;//getContent
+				descriptor.value=function() {
+					// ....
+					var urlB = "urlB";
+					console.log(data + "向" + urlB + "发送网络请求，数据：" + this.keyValue);
+					// ....
+					return oldValue.apply(this, arguments);
+				}
+			};
+		}
+
+		function Skin(target) {
+			target.aa = "10";//增加私有属性
+		}
+
+		var oS = new Search();
+		oInput.oninput = function() {
+			oS.keyValue = this.value;
+		}
+		oBtn.onclick = function() {
+			oS.getContent();
+		}
+
+	</script>
+</body>
+</html>
