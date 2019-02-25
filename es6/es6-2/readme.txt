@@ -614,4 +614,32 @@ npx babel xxx.js -o xxx.js --watch //监控执行babel编译
 
         eg: demo2.html
 
-九、es6 set & map
+九、es6新增  set & map
+    Set 构造函数，能够造出一种新的存储数据的结构
+        只有属性值，成员值唯一
+        可以转成数组，本身具备去重、交集、并集、差集的作用
+
+    //[] '' arguments NodeList 具有迭代接口的参数（其原型上有Symbol.iterator）
+    let oS = new Set([1, 2, 3, true, [1,2], {name: 'lnj'}, 1,2,3]);
+    let oS2 = new Set("abcabd");//"abcd"
+
+    oS.add(1);//增加
+    oS.add([1,2]);
+    oS.add(true);
+    oS.delete(1);//删除
+    oS.clear();//清空
+    oS.has(1);//false 是否有值
+    //遍历取值
+    oS.forEach(val => {
+        console.log(val);
+    })
+    //es6 for of(具备迭代接口) 遍历取值
+    for(let prop of oS) {
+        console.log(prop);
+    }
+    //[] => Set
+    let arr = [1,2,3];
+    let oS = new Set(arr);
+    //Set => []  Array.from  || ... 将具有迭代接口的数据转换成数组
+    console.log(Array.from(oS));
+    console.log([...oS]);
