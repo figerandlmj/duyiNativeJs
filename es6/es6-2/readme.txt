@@ -619,27 +619,237 @@ npx babel xxx.js -o xxx.js --watch //监控执行babel编译
         只有属性值，成员值唯一
         可以转成数组，本身具备去重、交集、并集、差集的作用
 
-    //[] '' arguments NodeList 具有迭代接口的参数（其原型上有Symbol.iterator）
-    let oS = new Set([1, 2, 3, true, [1,2], {name: 'lnj'}, 1,2,3]);
-    let oS2 = new Set("abcabd");//"abcd"
+        //[] '' arguments NodeList 具有迭代接口的参数（其原型上有Symbol.iterator）
+        let oS = new Set([1, 2, 3, true, [1,2], {name: 'lnj'}, 1,2,3]);
+        let oS2 = new Set("abcabd");//"abcd"
 
-    oS.add(1);//增加
-    oS.add([1,2]);
-    oS.add(true);
-    oS.delete(1);//删除
-    oS.clear();//清空
-    oS.has(1);//false 是否有值
-    //遍历取值
-    oS.forEach(val => {
-        console.log(val);
-    })
-    //es6 for of(具备迭代接口) 遍历取值
-    for(let prop of oS) {
-        console.log(prop);
-    }
-    //[] => Set
-    let arr = [1,2,3];
-    let oS = new Set(arr);
-    //Set => []  Array.from  || ... 将具有迭代接口的数据转换成数组
-    console.log(Array.from(oS));
-    console.log([...oS]);
+        oS.add(1);//增加
+        oS.add([1,2]);
+        oS.add(true);
+        oS.delete(1);//删除
+        oS.clear();//清空
+        oS.has(1);//false 是否有值
+        //遍历取值
+        oS.forEach(val => {
+            console.log(val);
+        })
+        //es6 for of(具备迭代接口) 遍历取值
+        for(let prop of oS) {
+            console.log(prop);
+        }
+        //[] => Set
+        let arr = [1,2,3];
+        let oS = new Set(arr);
+        //Set => []  Array.from  || ... 将具有迭代接口的数据转换成数组
+        console.log(Array.from(oS));
+        console.log([...oS]);
+        //=============================================
+        //去重
+        let arr = [1,2,3,4,5,1,2];
+        let obj = {};
+        let newArr = [];
+        for(let i = 0; i < arr.length; i ++) {
+            if(!obj[arr[i]]) {
+                newArr.push(arr[i]);
+                obj[arr[i]] = true;
+            }
+        }
+        console.log(arr);
+        //当数组中有对象时去重有误
+        let o = {name: "lmj"};
+        let arr = [1,2,3,o,4,o,2,3,{name:"lmj"}];//最后只剩一个{name:"lmj"}
+        //Set去重
+        let oS = new Set(arr);
+        //Set 并集、交集、差集
+        let arr1 = [1,2,3,2,3,4];
+        let arr2 = [3,4,5,4,5];
+        //并集 1,2,3,4,5
+        let oS = new Set([...arr1, ...arr2]);
+        //交集 3,4
+        let oS1 = new Set(arr1);
+        let oS2 = new Set(arr2);
+        let newArr = [...oS1].filter(ele => oS2.has(ele));
+        //差集 1,2,5
+        let oS1 = new Set(arr1);
+        let oS2 = new Set(arr2);
+        let newArr1 = [...oS1].filter(ele => !oS2.has(ele));
+        let newArr2 = [...oS2].filter(ele => !oS1.has(ele));
+        console.log([...newArr1, ...newArr2]);
+
+    Map 构造函数，能够造出一种新的存储数据的结构，本质上是键值对的集合
+        特点：key对应value,key和value唯一，任何值都可以当属性
+        用途：可以让对象当属性，去重等
+        实现原理：链接链表、hash算法、桶
+
+        //初始化
+        let oMp = new Map([['name', 'lmj'], ['age', 18], ['sex', true], [{}, '-----']]);
+        console.log(oMp);
+        //或者api
+        let oMp = new Map();
+        oMp.set('name', 'lmj');
+        oMp.set('age', 18);
+        oMp.set({}, '----------');
+        oMp.set({}, '==========');
+        let obj = {};
+        oMp.set(obj, "------");
+        //取值
+        oMp.get('name');
+        oMp.get(obj);
+        //删除
+        oMp.delete('name');
+        //清空
+        oMp.clear();
+        //大小
+        console.log(oMp.size);
+        //所有属性
+        oMp.keys();
+        //键值对
+        oMp.entries();
+        //遍历
+        oMp.forEach((ele, key, self) => {
+            console.log(ele, key, self);
+        });
+        for(let val of oMp) {
+            console.log(val);
+        }
+        //has
+        oMp.has('name');
+        //======实现原理=========================
+        //链表
+        let node3= {
+            key: 'name3',
+            value: '3',
+            next: null
+        }
+        let node2 = {
+            key: 'name2',
+            value: '2',
+            next: node3
+        }
+        let node1 = {
+            key: 'name1',
+            value: '1',
+            next: node2
+        }
+        //===总结================
+        //1.不重复
+        //2.属性 字符串 对象  NaN null [] function(){} 10
+        //3.set get delete has clear
+        function myMap() {
+            this.bucketLength = 8;
+            this.init();
+        }
+        myMap.prototype.init = function() {
+            //初始化桶
+            this.bucket = new Array(this.bucketLength);
+            for(let i = 0; i < this.bucketLength; i ++) {
+                this.bucket[i] = {
+                    type: "bucket" + i,
+                    next: null
+                };
+            }
+        };
+        //[0,8)
+        //重复算值固定
+        myMap.prototype.makeHash = function(key) {
+            let hash = 0;
+            // string  number NaN  null {} []  boolean  undefined function(){}
+            if(typeof key != "string") {
+                //number NaN
+                if(typeof key == "number") {
+                    hash = Object.is(key, NaN) ? 0 : key;
+                }else if(typeof key == "object") {
+                    //null {} []
+                    hash = 1;
+                }else if(typeof key == "boolean") {
+                    //boolean true false
+                    hash = +key;
+                }else{
+                    //undefined function(){}
+                    hash = 2;
+                }
+            }else{
+                //string 长度>=3  前3个字符 Ascii 累加
+                for(let i = 0; i < 3; i ++) {
+                    hash += key[i] ? key[i].charCodeAt(0) : 0;
+                }
+            }
+            return hash % 8;
+        };
+        myMap.prototype.set = function(key, value) {
+            let hash = this.makeHash(key);
+            let oTempBucket = this.bucket[hash];
+            while(oTempBucket.next) {
+                if(oTempBucket.next.key == key) {
+                    oTempBucket.next.value = value;
+                    return;
+                }else{
+                    oTempBucket = oTempBucket.next;
+                }
+            }
+            oTempBucket.next = {
+                key: key,
+                value: value,
+                next: null
+            };
+        };
+        myMap.prototype.get = function(key) {
+            let hash = this.makeHash(key);
+            let oTempBucket = this.bucket[hash];
+            while(oTempBucket) {
+                if(oTempBucket.key == key) {
+                    return oTempBucket.key;
+                }else{
+                    oTempBucket = oTempBucket.next;
+                }
+            }
+        };
+        myMap.prototype.delete = function(key) {
+            let hash = this.makeHash(key);
+            let oTempBucket = this.bucket[hash];
+            while(oTempBucket.next) {
+                if(oTempBucket.next.key == key) {
+                    oTempBucket.next = oTempBucket.next.next;
+                    return true;
+                }else {
+                    oTempBucket = oTempBucket.next;
+                }
+            }
+            return false;
+        };
+        myMap.prototype.has = function(key) {
+            let hash = this.makeHash(key);
+            let oTempBucket = this.bucket[hash];
+            while(oTempBucket) {
+                if(oTempBucket.next && oTempBucket.next.key == key) {
+                    return true;
+                }else {
+                    oTempBucket = oTempBucket.next;
+                }
+            }
+            return false;
+        };
+        myMap.prototype.clear = function() {
+            this.init();
+        };
+
+十、es6  Promise
+
+    异步编程
+        无论在浏览器环境中还是在node环境中，我们都会使用js完成各种异步操作。
+        在浏览器中的定时器、事件、ajax等
+        在node环境中的文件读取、事件等
+        伴随着异步编程的就是回调机制
+    异步编程问题
+        产生回调地狱，难于维护和扩展
+        try catch只能捕获同步代码中出现的异常
+        同步并发的异步存在一定问题
+
+    解决方案
+        es6 promise 可以解决回调地狱，以及同步并发的异步问题
+        es6的generator、es7的async await 能让异步代码看起来像同步一样
+    回调回顾
+        当做某件事满足一定条件后，在做另一件事
+        jquery: Callbacks 管理回调
+        Lodash: js工具库，提供各种方法提升工作效率，提供after高阶函数辅助回调函数
+        eg: demo3.html

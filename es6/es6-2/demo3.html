@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>回调</title>
+</head>
+<body>
+    <input type="text" id="inp">
+    <button id="btn">add</button>
+    <script>
+        let arr = [];
+        let oBtn = document.getElementById("btn");
+        let oInp = document.getElementById("inp");
+        oBtn.onclick = function() {
+            arr.push(oInp.value);
+            // if(arr.length == 5) {
+            //     show(arr);
+            // }
+            newShow(arr);
+        };
+        function show(data) {
+            console.log(data);
+        }
+
+        //高阶函数 函数参数为函数 、函数返回值是函数
+        function after(num, func) {
+            return function() {
+                if(--num == 0) {
+                    func.apply(window, arguments);
+                }
+            };
+        }
+        //有没有满足我所规定的执行次数
+        let newShow = after(5, show);
+    </script>
+</body>
+</html>
