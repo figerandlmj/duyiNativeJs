@@ -871,3 +871,66 @@ npx babel xxx.js -o xxx.js --watch //监控执行babel编译
     node环境里异步场景
         eg: demo2.js
 
+    Promise使用
+        内置构造函数
+        //传递一个参数 executor 执行器函数 同new Promise同步执行
+        // Promise 承诺
+        //相当于jquery deferred
+        //done     fail    progress
+        //resolve  reject  notify
+        //Promise
+        //pending  onFulfilled  onRejected
+        // let oP = new Promise(() => {
+        //     console.log(0);
+        // });
+        // console.log(1);
+
+        let oP = new Promise((resolve, reject) => {
+            //异步操作
+            setTimeout(() => {
+                Math.random * 100 > 60 ? resolve('ok') : reject('no');
+            }, 1000);
+        });
+        // then 成功  失败
+        //异步执行
+        //执行队列
+        //宏任务 setTimeout
+        //微任务  有优先执行权
+        //then返回值作为下一个then注册函数的执行参数
+        //1.链式调用时，如果上一个不抛出错误的话，那下一个then执行成功的函数
+        //2.如果上一个then抛出错误的话，那下一个then执行失败的函数
+        //3.返回值为Promise对象时,那下一个then成功与否取决于返回值Promise对象的成功与否
+        oP.then((val) => {
+            console.log(val);
+            // return 20;
+            // throw new Error("error");
+            return new Promise((resolve, reject) => {
+               resolve("new Promise ok");
+            });
+        }, (reason) => {
+            console.log(reason);
+            return 30;
+        }).then((val) => {//链式调用
+            console.log("ok then2:" + val);//20
+        },(reason) => {
+            console.log("no then2:" + reason);//30
+        });
+
+        //node中使用Promise
+        let fs = require("fs");
+        function readFile(path) {
+            return new Promise((res, rej) => {
+                fs.readFile(path, 'utf-8', (err, data) => {
+                    if(data) {
+                        res(data);
+                    }
+                });
+            })
+        }
+        readFile('./data/number.txt').then((data) => {
+           return readFile(data);
+        }).then((data) => {
+            return readFile(data);
+        }).then((data) => {
+            console.log(data);
+        });

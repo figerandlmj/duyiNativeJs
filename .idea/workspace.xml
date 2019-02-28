@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a24b76ce-d825-4d85-80a1-9811a3b6d2b5" name="默认" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/es6/es6-2/data/name.txt" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/es6/es6-2/data/number.txt" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/es6/es6-2/data/score.txt" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/es6/es6-2/demo2.js" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/es6/es6-2/demo.js" afterPath="$PROJECT_DIR$/es6/es6-2/demo.js" />
       <change beforePath="$PROJECT_DIR$/es6/es6-2/readme.txt" afterPath="$PROJECT_DIR$/es6/es6-2/readme.txt" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -32,61 +27,31 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="readme.txt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/es6/es6-2/readme.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="527">
+              <caret line="935" column="11" lean-forward="false" selection-start-line="935" selection-start-column="11" selection-end-line="935" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="demo.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/es6/es6-2/demo.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+            <state relative-caret-position="810">
+              <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="readme.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/es6/es6-2/readme.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-508">
-              <caret line="844" column="31" lean-forward="true" selection-start-line="844" selection-start-column="7" selection-end-line="844" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="demo2.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="demo2.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/es6/es6-2/demo2.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="460">
-              <caret line="84" column="23" lean-forward="true" selection-start-line="84" selection-start-column="23" selection-end-line="84" selection-end-column="23" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="number.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/es6/es6-2/data/number.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="1" column="4" lean-forward="false" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="4" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="name.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/es6/es6-2/data/name.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="1" column="3" lean-forward="false" selection-start-line="1" selection-start-column="3" selection-end-line="1" selection-end-column="3" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="score.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/es6/es6-2/data/score.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="2" lean-forward="false" selection-start-line="0" selection-start-column="2" selection-end-line="0" selection-end-column="2" />
+            <state relative-caret-position="370">
+              <caret line="19" column="7" lean-forward="true" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -185,11 +150,11 @@
         <option value="$PROJECT_DIR$/es6/es6-2/demo3.html" />
         <option value="$PROJECT_DIR$/es6/data/number.txt" />
         <option value="$PROJECT_DIR$/es6/es6-2/data/score.txt" />
-        <option value="$PROJECT_DIR$/es6/es6-2/demo.js" />
-        <option value="$PROJECT_DIR$/es6/es6-2/readme.txt" />
         <option value="$PROJECT_DIR$/es6/es6-2/data/number.txt" />
         <option value="$PROJECT_DIR$/es6/es6-2/data/name.txt" />
         <option value="$PROJECT_DIR$/es6/es6-2/demo2.js" />
+        <option value="$PROJECT_DIR$/es6/es6-2/demo.js" />
+        <option value="$PROJECT_DIR$/es6/es6-2/readme.txt" />
       </list>
     </option>
   </component>
@@ -217,7 +182,7 @@
     <handled-path value="$PROJECT_DIR$/vueSSR/lesson2/node_modules" />
     <handled-path value="$PROJECT_DIR$/vueSSR/node_modules" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="46" />
     <option name="y" value="16" />
     <option name="width" value="1793" />
@@ -401,12 +366,12 @@
       <workItem from="1549952710837" duration="31566000" />
       <workItem from="1550110876897" duration="32567000" />
       <workItem from="1550470490646" duration="42575000" />
-      <workItem from="1551080033688" duration="35178000" />
+      <workItem from="1551080033688" duration="40850000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="491369000" />
+    <option name="totallyTimeSpent" value="497041000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
@@ -418,7 +383,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-11" y="-11" width="1942" height="1102" extended-state="6" />
+    <frame x="-11" y="-11" width="1942" height="1102" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20731707" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -805,18 +770,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/es6/es6-2/data/score.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="2" lean-forward="false" selection-start-line="0" selection-start-column="2" selection-end-line="0" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/es6/es6-2/data/name.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="1" column="3" lean-forward="false" selection-start-line="1" selection-start-column="3" selection-end-line="1" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/es6/es6-2/data/score.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="2" lean-forward="false" selection-start-line="0" selection-start-column="2" selection-end-line="0" selection-end-column="2" />
           <folding />
         </state>
       </provider>
@@ -829,26 +794,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/es6/es6-2/demo2.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="370">
+          <caret line="19" column="7" lean-forward="true" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/es6/es6-2/demo.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+        <state relative-caret-position="810">
+          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/es6/es6-2/readme.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-508">
-          <caret line="844" column="31" lean-forward="true" selection-start-line="844" selection-start-column="7" selection-end-line="844" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/es6/es6-2/demo2.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="84" column="23" lean-forward="true" selection-start-line="84" selection-start-column="23" selection-end-line="84" selection-end-column="23" />
+        <state relative-caret-position="527">
+          <caret line="935" column="11" lean-forward="false" selection-start-line="935" selection-start-column="11" selection-end-line="935" selection-end-column="11" />
           <folding />
         </state>
       </provider>
