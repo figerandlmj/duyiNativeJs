@@ -843,6 +843,21 @@ npx babel xxx.js -o xxx.js --watch //监控执行babel编译
     异步编程问题
         产生回调地狱，难于维护和扩展
         try catch只能捕获同步代码中出现的异常
+            try{
+                setTimeout(() => {
+                    console.log(a);
+                }, 1000);
+            }catch(e) {
+                console.log(e);
+            }
+            //window中捕获错误
+            window.onerror = function() {
+                console.log('error');
+            }
+            //node中捕获错误
+            process.on("uncaughtException", (err) => {
+                console.log(err);
+            })
         同步并发的异步存在一定问题
 
     解决方案
@@ -853,3 +868,6 @@ npx babel xxx.js -o xxx.js --watch //监控执行babel编译
         jquery: Callbacks 管理回调
         Lodash: js工具库，提供各种方法提升工作效率，提供after高阶函数辅助回调函数
         eg: demo3.html
+    node环境里异步场景
+        eg: demo2.js
+
