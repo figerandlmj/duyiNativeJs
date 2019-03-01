@@ -873,64 +873,568 @@ npx babel xxx.js -o xxx.js --watch //监控执行babel编译
 
     Promise使用
         内置构造函数
-        //传递一个参数 executor 执行器函数 同new Promise同步执行
-        // Promise 承诺
-        //相当于jquery deferred
-        //done     fail    progress
-        //resolve  reject  notify
-        //Promise
-        //pending  onFulfilled  onRejected
-        // let oP = new Promise(() => {
-        //     console.log(0);
-        // });
-        // console.log(1);
+            //传递一个参数 executor 执行器函数 同new Promise同步执行
+            // Promise 承诺
+            //相当于jquery deferred
+            //done     fail    progress
+            //resolve  reject  notify
+            //Promise
+            //pending  onFulfilled  onRejected
+            // let oP = new Promise(() => {
+            //     console.log(0);
+            // });
+            // console.log(1);
 
-        let oP = new Promise((resolve, reject) => {
+            let oP = new Promise((resolve, reject) => {
+                //异步操作
+                setTimeout(() => {
+                    Math.random * 100 > 60 ? resolve('ok') : reject('no');
+                }, 1000);
+            });
+        then 注册函数返回值
+            //成功  失败
+            //异步执行
+            //执行队列
+            //宏任务 setTimeout
+            //微任务  有优先执行权
+            //then返回值作为下一个then注册函数的执行参数
+            //1.链式调用时，如果上一个不抛出错误的话，那下一个then执行成功的函数
+            //2.如果上一个then抛出错误的话，那下一个then执行失败的函数
+            //3.返回值为Promise对象时,那下一个then成功与否取决于返回值Promise对象的成功与否
+            oP.then((val) => {
+                console.log(val);
+                // return 20;
+                // throw new Error("error");
+                return new Promise((resolve, reject) => {
+                   resolve("new Promise ok");
+                });
+            }, (reason) => {
+                console.log(reason);
+                return 30;
+            }).then((val) => {//链式调用
+                console.log("ok then2:" + val);//20
+            },(reason) => {
+                console.log("no then2:" + reason);//30
+            });
+
+            //node中使用Promise
+            let fs = require("fs");
+            function readFile(path) {
+                return new Promise((res, rej) => {
+                    fs.readFile(path, 'utf-8', (err, data) => {
+                        if(data) {
+                            res(data);
+                        }
+                    });
+                })
+            }
+            readFile('./data/number.txt').then((data) => {
+               return readFile(data);
+            }).then((data) => {
+                return readFile(data);
+            }).then((data) => {
+                console.log(data);
+            });
+        catch 异常捕获
+        finally 最后处理函数
+            let oP = new Promise((res, rej) => {
+                // throw new Error("error");
+                res();
+            });
+            oP.then(() => {
+                throw new Error("error");
+            }, (reason) => {
+                console.log(reason);
+            }).then(() => {
+
+            }).then(null, (reason) => {
+                console.log(reason);
+            });
+
+            //链式调用的时候如果写一个空then，其实相当于不存在，可忽视
+            oP.then(() => {
+                throw new Error("error");
+            }, (reason) => {
+                console.log(reason);
+            }).then().then(() => {
+
+            }).catch((err) => {
+                console.log("catch", err);
+            }).then((val) => {
+                console.log("catch after ok:" + val);
+            },(reason) => {
+                console.log("catch after no:" + reason);
+            }).finally(() => {
+                console.log("over");
+            });
+        Promise.all 同步并发异步的结果
+            将多个Promise实例包装成一个新的Promise实例
+            成功时返回的是一个结果数组
+            失败时返回的最先被reject失败状态的值
+            function test(x){
+                return new Promise((res, rej) => {
+                    setTimeout(() =>{
+                        Math.random() * 100 > 50 ? res(x) : rej(x);
+                    }, 100);
+                });
+            }
+            let oP = Promise.all([test('a'), test('b'), test('c')]);
+            oP.then((val) => {
+                console.log(val);
+            }, (reason) => {
+                console.log(reason);
+            });
+        Promise.race 谁先成功就先处理谁
+            不管结果本身是失败还是成功状态，哪个结果获得的快就返回哪个结果
+            function test(x){
+                return new Promise((res, rej) => {
+                    setTimeout(() =>{
+                        Math.random() * 100 > 50 ? res(x) : rej(x);
+                    }, 100);
+                });
+            }
+            let oP = Promise.race([test('a'), test('b'), test('c')]);
+            oP.then((val) => {
+                console.log(val + 'ok');
+            }, (reason) => {
+                console.log(reason + 'no');
+            });
+
+            let fs = require("fs");
+            function readFile(path) {
+                return new Promise((res, rej) => {
+                    fs.readFile(path, 'utf-8', (err, data) => {
+                        if(data) {
+                            res(data);
+                        }
+                    });
+                })
+            }
+            Promise.all([readFile('./data/number.txt'), readFile('./data/name.txt'), readFile('./data/score.txt')]).then((val) => {
+                console.log(val);
+            });
+            Promise.race([readFile('./data/number.txt'), readFile('./data/name.txt'), readFile('./data/score.txt')]).then((val) => {
+                console.log(val);
+            });
+    //Promise原理
+        //1节
+        function MyPromise(executor) {
+            var self = this;
+            self.status = pending;
+            self.resolveValue = null;
+            self.rejectReason = null;
+            function resolve(value) {
+                if(self.status === 'pending') {
+                    self.status = 'Fulfilled';
+                    self.resolveValue = value;
+                }
+            }
+            function reject(reason) {
+                if(self.status === 'pending') {
+                    self.status = 'Rejected';
+                    self.rejectReason = reason;
+                }
+            }
+            try{
+                executor(resolve, reject);
+            }catch(e) {
+                reject(e);
+            }
+        }
+        MyPromise.prototype.then = function(onFulfilled, onRejected) {
+            var self = this;
+            if(self.status === 'Fulfilled') {
+                onFulfilled(self.resolveValue);
+            }
+            if(self.status === 'Rejected') {
+                onRejected(self.rejectReason);
+            }
+        }
+
+        let oP = new MyPromise((res, rej) => {
+            //throw new Error('error');
+            // res(0);
+            rej(0);
+        });
+        oP.then((val) => {
+            console.log(val + 'ok');
+        }, (reason) => {
+            console.log(reason + 'no');
+        });
+        //2节 异步操作
+        function MyPromise(executor) {
+            var self = this;
+            self.status = pending;
+            self.resolveValue = null;
+            self.rejectReason = null;
+            self.ResolveCallbackList = [];
+            self.RejectCallbackList = [];
+            function resolve(value) {
+                if(self.status === 'pending') {
+                    self.status = 'Fulfilled';
+                    self.resolveValue = value;
+                    self.ResolveCallbackList.forEach(function(ele) {
+                        ele();
+                    });
+                }
+            }
+            function reject(reason) {
+                if(self.status === 'pending') {
+                    self.status = 'Rejected';
+                    self.rejectReason = reason;
+                    self.RejectCallbackList.forEach(function(ele) {
+                        ele();
+                    });
+                }
+            }
+            try{
+                executor(resolve, reject);
+            }catch(e) {
+                reject(e);
+            }
+        }
+        MyPromise.prototype.then = function(onFulfilled, onRejected) {
+            var self = this;
+            if(self.status === 'Fulfilled') {
+                onFulfilled(self.resolveValue);
+            }
+            if(self.status === 'Rejected') {
+                onRejected(self.rejectReason);
+            }
+            if(self.status === 'pending') {
+                self.ResolveCallbackList.push(function() {
+                    onFulfilled(self.resolveValue);
+                });
+                self.RejectCallbackList.push(function() {
+                    onRejected(self.rejectReason);
+                });
+            }
+        }
+
+        let oP = new MyPromise((res, rej) => {
             //异步操作
             setTimeout(() => {
-                Math.random * 100 > 60 ? resolve('ok') : reject('no');
-            }, 1000);
+                // res(0);
+                rej(0);
+            }, 2000);
         });
-        // then 成功  失败
-        //异步执行
-        //执行队列
-        //宏任务 setTimeout
-        //微任务  有优先执行权
-        //then返回值作为下一个then注册函数的执行参数
-        //1.链式调用时，如果上一个不抛出错误的话，那下一个then执行成功的函数
-        //2.如果上一个then抛出错误的话，那下一个then执行失败的函数
-        //3.返回值为Promise对象时,那下一个then成功与否取决于返回值Promise对象的成功与否
         oP.then((val) => {
-            console.log(val);
-            // return 20;
-            // throw new Error("error");
-            return new Promise((resolve, reject) => {
-               resolve("new Promise ok");
-            });
+            console.log(val + 'ok');
         }, (reason) => {
-            console.log(reason);
-            return 30;
-        }).then((val) => {//链式调用
-            console.log("ok then2:" + val);//20
-        },(reason) => {
-            console.log("no then2:" + reason);//30
-        });
-
-        //node中使用Promise
-        let fs = require("fs");
-        function readFile(path) {
-            return new Promise((res, rej) => {
-                fs.readFile(path, 'utf-8', (err, data) => {
-                    if(data) {
-                        res(data);
-                    }
-                });
-            })
+            console.log(reason + 'no');
+        })
+        //3节 链式操作
+        function MyPromise(executor) {
+            var self = this;
+            self.status = pending;
+            self.resolveValue = null;
+            self.rejectReason = null;
+            self.ResolveCallbackList = [];
+            self.RejectCallbackList = [];
+            function resolve(value) {
+                if(self.status === 'pending') {
+                    self.status = 'Fulfilled';
+                    self.resolveValue = value;
+                    self.ResolveCallbackList.forEach(function(ele) {
+                        ele();
+                    });
+                }
+            }
+            function reject(reason) {
+                if(self.status === 'pending') {
+                    self.status = 'Rejected';
+                    self.rejectReason = reason;
+                    self.RejectCallbackList.forEach(function(ele) {
+                        ele();
+                    });
+                }
+            }
+            try{
+                executor(resolve, reject);
+            }catch(e) {
+                reject(e);
+            }
         }
-        readFile('./data/number.txt').then((data) => {
-           return readFile(data);
-        }).then((data) => {
-            return readFile(data);
-        }).then((data) => {
-            console.log(data);
+        MyPromise.prototype.then = function(onFulfilled, onRejected) {
+            var self = this;
+            var nextPromise = new MyPromise(function(res, rej) {
+                if(self.status === 'Fulfilled') {
+                    var nextResolveValue = onFulfilled(self.resolveValue);
+                    res(nextResolveValue);
+                }
+                if(self.status === 'Rejected') {
+                    var nextRejectValue = onRejected(self.rejectReason);
+                    rej(nextRejectValue);
+                }
+                if(self.status === 'pending') {
+                    self.ResolveCallbackList.push(function() {
+                        var nextResolveValue = onFulfilled(self.resolveValue);
+                        res(nextResolveValue);
+                    });
+                    self.RejectCallbackList.push(function() {
+                        var nextRejectValue = onRejected(self.rejectReason);
+                        res(nextRejectValue);
+                    });
+                }
+            })
+
+            return nextPromise;
+        }
+
+        let oP = new MyPromise((res, rej) => {
+            setTimeout(() => {
+                // res(0);
+                rej(0);
+            }, 2000);
         });
+        oP.then((val) => {
+            console.log(val + 'ok');
+            return 1;
+        }, (reason) => {
+            console.log(reason + 'no');
+            return 2;
+        }).then((val) => {
+            console.log(val + 'ok2');
+        }, (reason) => {
+            console.log(reason + 'no2');
+        })
+        //4节 then异步执行/上一个then抛出错误下一个then能接受到/空then被忽视
+        function MyPromise(executor) {
+            var self = this;
+            self.status = pending;
+            self.resolveValue = null;
+            self.rejectReason = null;
+            self.ResolveCallbackList = [];
+            self.RejectCallbackList = [];
+            function resolve(value) {
+                if(self.status === 'pending') {
+                    self.status = 'Fulfilled';
+                    self.resolveValue = value;
+                    self.ResolveCallbackList.forEach(function(ele) {
+                        ele();
+                    });
+                }
+            }
+            function reject(reason) {
+                if(self.status === 'pending') {
+                    self.status = 'Rejected';
+                    self.rejectReason = reason;
+                    self.RejectCallbackList.forEach(function(ele) {
+                        ele();
+                    });
+                }
+            }
+            try{
+                executor(resolve, reject);
+            }catch(e) {
+                reject(e);
+            }
+        }
+        MyPromise.prototype.then = function(onFulfilled, onRejected) {
+            var self = this;
+            if(!onFulfilled) {
+                onFulfilled = function(val) {
+                    return val;
+                }
+            }
+            if(!onRejected) {
+                onRejected = function(reason) {
+                    throw new Error(reason);
+                }
+            }
+            var nextPromise = new MyPromise(function(res, rej) {
+                if(self.status === 'Fulfilled') {
+                    setTimeout(function() {
+                        try{
+                            var nextResolveValue = onFulfilled(self.resolveValue);
+                            res(nextResolveValue);
+                        }catch(e) {
+                            rej(e);
+                        }
+                    }, 0);
+                }
+                if(self.status === 'Rejected') {
+                    setTimeout(function() {
+                        try{
+                            var nextRejectValue = onRejected(self.rejectReason);
+                            res(nextRejectValue);
+                        }catch(e) {
+                            rej(e);
+                        }
+                    }, 0);
+                }
+                if(self.status === 'pending') {
+                    self.ResolveCallbackList.push(function() {
+                        setTimeout(function() {
+                            try{
+                                var nextResolveValue = onFulfilled(self.resolveValue);
+                                res(nextResolveValue);
+                            }catch(e) {
+                                rej(e);
+                            }
+                        }, 0);
+                    });
+                    self.RejectCallbackList.push(function() {
+                        setTimeout(function() {
+                            try{
+                                var nextRejectValue = onRejected(self.rejectReason);
+                                res(nextRejectValue);
+                            }catch(e) {
+                                rej(e);
+                            }
+                        }, 0);
+                    });
+                }
+            })
+
+            return nextPromise;
+        }
+
+        let oP = new MyPromise((res, rej) => {
+            console.log(0);
+            res(1);
+        });
+        oP.then((val) => {
+            console.log(val + 'ok');
+            throw new Error('error');
+        }, (reason) => {
+            console.log(reason + 'no');
+        }).then().then((val) => {
+            return val;
+        }, (reason) => {
+            throw new Error(reason);
+        }).then((val) => {
+            console.log(val + '空then after');
+        }, (reason) => {
+            console.log(reason + '空then after');
+        })
+        console.log(2);
+
+        //5节 then返回值为Promise的处理
+        function MyPromise(executor) {
+            var self = this;
+            self.status = pending;
+            self.resolveValue = null;
+            self.rejectReason = null;
+            self.ResolveCallbackList = [];
+            self.RejectCallbackList = [];
+            function resolve(value) {
+                if(self.status === 'pending') {
+                    self.status = 'Fulfilled';
+                    self.resolveValue = value;
+                    self.ResolveCallbackList.forEach(function(ele) {
+                        ele();
+                    });
+                }
+            }
+            function reject(reason) {
+                if(self.status === 'pending') {
+                    self.status = 'Rejected';
+                    self.rejectReason = reason;
+                    self.RejectCallbackList.forEach(function(ele) {
+                        ele();
+                    });
+                }
+            }
+            try{
+                executor(resolve, reject);
+            }catch(e) {
+                reject(e);
+            }
+        }
+        function ResolutionReturnPromise(nextPromise, returnValue, res, rej) {
+            if(returnValue instanceof MyPromise) {
+                returnValue.then((val) => {
+                    res(val);
+                }, (reason) => {
+                    rej(reason);
+                });
+            }else{
+                res(returnValue);
+            }
+        }
+        MyPromise.prototype.then = function(onFulfilled, onRejected) {
+            var self = this;
+            if(!onFulfilled) {
+                onFulfilled = function(val) {
+                    return val;
+                }
+            }
+            if(!onRejected) {
+                onRejected = function(reason) {
+                    throw new Error(reason);
+                }
+            }
+            var nextPromise = new MyPromise(function(res, rej) {
+                if(self.status === 'Fulfilled') {
+                    setTimeout(function() {
+                        try{
+                            // var nextResolveValue = onFulfilled(self.resolveValue);
+                            // res(nextResolveValue);
+                            var nextResolveValue = onFulfilled(self.resolveValue);
+                            ResolutionReturnPromise(nextPromise, nextResolveValue, res, rej);
+                        }catch(e) {
+                            rej(e);
+                        }
+                    }, 0);
+                }
+                if(self.status === 'Rejected') {
+                    setTimeout(function() {
+                        try{
+                            // var nextRejectValue = onRejected(self.rejectReason);
+                            // res(nextRejectValue);
+                            var nextRejectValue = onRejected(self.rejectReason);
+                            ResolutionReturnPromise(nextPromise, nextRejectValue, res, rej);
+                        }catch(e) {
+                            rej(e);
+                        }
+                    }, 0);
+                }
+                if(self.status === 'pending') {
+                    self.ResolveCallbackList.push(function() {
+                        setTimeout(function() {
+                            try{
+                                // var nextResolveValue = onFulfilled(self.resolveValue);
+                                // res(nextResolveValue);
+                                var nextResolveValue = onFulfilled(self.resolveValue);
+                                ResolutionReturnPromise(nextPromise, nextResolveValue, res, rej);
+                            }catch(e) {
+                                rej(e);
+                            }
+                        }, 0);
+                    });
+                    self.RejectCallbackList.push(function() {
+                        setTimeout(function() {
+                            try{
+                                // var nextRejectValue = onRejected(self.rejectReason);
+                                // res(nextRejectValue);
+                                var nextRejectValue = onRejected(self.rejectReason);
+                                ResolutionReturnPromise(nextPromise, nextRejectValue, res, rej);
+                            }catch(e) {
+                                rej(e);
+                            }
+                        }, 0);
+                    });
+                }
+            })
+
+            return nextPromise;
+        }
+
+        let oP = new MyPromise((res, rej) => {
+            res(1);
+        });
+        oP.then((val) => {
+            console.log(val + 'ok');
+            return new MyPromise((res, rej) => {
+                rej(0);
+            })
+        }, (reason) => {
+            console.log(reason + 'no');
+        }).then((val) => {
+            console.log(val + 'then after');
+        }, (reason) => {
+            console.log(reason + 'then after');
+        })
+
+
