@@ -1435,6 +1435,153 @@ npx babel xxx.js -o xxx.js --watch //监控执行babel编译
             console.log(val + 'then after');
         }, (reason) => {
             console.log(reason + 'then after');
-        })
+        });
+        MyPromise.race = function(promiseArr) {
+            return new MyPromise(function(resolve, reject) {
+                promiseArr.forEach(function(promise, index) {
+                    promise.then(resolve, reject);
+                })
+            })
+        }
+        MyPromise.all = function(promiseArr) {
+            return new MyPromise(function(resolve, reject) {
+                var successNum = 0;
+                promiseArr.forEach(function(promise, index) {
+                    promise.then(function() {
+                        ++successNum == promiseArr.length ? promise.then(resolve, reject) : "";
+                    }, function() {
+                        promise.then(resolve, reject);
+                    });
+                })
+            })
+        }
+
+十一、es6 Iterator
+
+    迭代模式：
+        提供一种方法可以顺序获得聚合对象中的各个元素，是一种最简单且最常见的设计模式。它可以让用户通过特定的接口巡防集合中每一个元素而不用了解底层的实现。
+    迭代器：
+        依照迭代模式的思想而实现，分为内部迭代器和外部迭代器
+    内部迭代器：
+        本身是函数，该函数内部定义好迭代规则，完全接手整个迭代过程，
+        外部只需要一次初始调用
+        Array.prototype.forEach、jQuery.each
+    外部迭代器:
+        本身是函数，执行返回迭代对象，迭代下一个元素必须显示调用，调用复杂度增加，但灵活性增强。
+        function OuterInterator(o) {
+            let curIndex = 0;
+            let next = () => {
+                return {
+                    value: o[curIndex],
+                    done: ++curIndex == o.length
+                };
+            };
+            return {
+                next
+            }
+        }
+        let arr = [1,2,3];
+        let oIt = OuterInterator(arr);
+        oIt.next();
+    迭代器目的：
+        标准化迭代操作
+    eg:
+        服务端提供数组数据给前端，前端for循环遍历，但由于业务变化，使得数据结构发生变化，返回对象或是Set Map,导致前端代码大量重写。
+    解决：
+        es6引入Iterator,部署在NodeList、arguments、Array、Set、Map、字符串
+        等数据Symbol.iterator属性，使得这些数据是Iterator可迭代的，
+        能进行for of 、... 、Array.from等操作
+
+    Symbol数据结构：
+        第7种数据结构
+        特点：
+            唯一，可作为对象的属性，有静态属性Symbol.iterator
+        let os = Symbol('abc');
+        console.log(os);//Symbol(abc)
+        let os1 = Symbol('abc');
+        os == os1;//false
+        let os2 = Symbol({
+            name: 'lmj'
+        });
+        console.log(os2);//Symbol([object Object])
+        let os3 = Symbol({
+            name: 'lmj',
+            toString(){
+                return 'duyi';
+            }
+        });
+        console.log(os3);//Symbol(duyi)
+
+        let obj = {
+            [os2]: 'hello'
+        }
+
+        console.log(Symbol.iterator, Symbol('Symbol.iterator'));
+        //Symbol(Symbol.iterator) Symbol(Symbol.iterator)
+
+        let obj = {
+            0:'a',
+            1: 'b',
+            2: 'c'
+        };
+        console.log(...obj);//报错 obj不能被迭代
+        let obj = {
+            0:'a',
+            1: 'b',
+            2: 'c',
+            length: 3,
+            [Symbol.iterator]: function() {
+                let curIndex = 0;
+                let next = () => {
+                    return {
+                        value: this[curIndex],
+                        done: ++curIndex == this.length
+                    };
+                };
+                return {
+                    next
+                }
+            }
+        };
+        console.log([...obj]);//['a','b']
+        for(let p of obj) {
+            console.log(p);// a b
+        }
+
+十二、es6 Generator
+    生成器，本身是函数，执行后返回迭代对象，函数内部要配合yield（产出）使用，
+    Generator函数会分段执行，遇到yield即暂停
+    特点：
+        function 和函数名之间要带*
+        函数体内部yield表达式，产出不同的内部状态（值）
+
+    function *test() {
+        yield 'a';
+        console.log(1);
+        yield 'b';
+        console.log(2);
+        yield 'c';
+        console.log(3);
+        return 'd';
+    }
+    let oG = test();
+    oG.next();//{value: 'a', done: false}
+    //============================================
+    function *test() {
+        let a = yield 'a';
+        console.log(a);
+        let b = yield 'b';
+        console.log(b);
+        let c = yield 'c';
+        console.log(c);
+        return 'd';
+    }
+    let oG = test();
+    oG.next();//{value: 'a', done: false}
+    oG.next('lmj');//a为lmj {value: 'b', done: false}
+    oG.next('lmj2');//b为lmj2 {value: 'c', done: false}
+    oG.next('lmj3');//c为lmj3 {value: 'd', done: true}
+
+
 
 
