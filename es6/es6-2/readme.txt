@@ -1459,7 +1459,8 @@ npx babel xxx.js -o xxx.js --watch //监控执行babel编译
 十一、es6 Iterator
 
     迭代模式：
-        提供一种方法可以顺序获得聚合对象中的各个元素，是一种最简单且最常见的设计模式。它可以让用户通过特定的接口巡防集合中每一个元素而不用了解底层的实现。
+        提供一种方法可以顺序获得聚合对象中的各个元素，是一种最简单且最常见的设计模式。
+        它可以让用户通过特定的接口巡访集合中每一个元素而不用了解底层的实现。
     迭代器：
         依照迭代模式的思想而实现，分为内部迭代器和外部迭代器
     内部迭代器：
@@ -1468,7 +1469,7 @@ npx babel xxx.js -o xxx.js --watch //监控执行babel编译
         Array.prototype.forEach、jQuery.each
     外部迭代器:
         本身是函数，执行返回迭代对象，迭代下一个元素必须显示调用，调用复杂度增加，但灵活性增强。
-        function OuterInterator(o) {
+        function OuterIterator(o) {
             let curIndex = 0;
             let next = () => {
                 return {
@@ -1481,7 +1482,7 @@ npx babel xxx.js -o xxx.js --watch //监控执行babel编译
             }
         }
         let arr = [1,2,3];
-        let oIt = OuterInterator(arr);
+        let oIt = OuterIterator(arr);
         oIt.next();
     迭代器目的：
         标准化迭代操作
@@ -1581,7 +1582,204 @@ npx babel xxx.js -o xxx.js --watch //监控执行babel编译
     oG.next('lmj');//a为lmj {value: 'b', done: false}
     oG.next('lmj2');//b为lmj2 {value: 'c', done: false}
     oG.next('lmj3');//c为lmj3 {value: 'd', done: true}
+    //==================================================
+    let obj = {
+        0:'a',
+        1: 'b',
+        2: 'c',
+        length: 3,
+        [Symbol.iterator]: function *() {
+            let curIndex = 0;
+            while(curIndex != this.length) {
+                yield this[curIndex];
+                curIndex ++;
+            }
+        }
+    };
+    console.log([...obj]);//['a','b', 'c']
+    //===================================================
+    let fs = require("fs");
+    function readFile(path) {
+        return new Promise((res, rej) => {
+            fs.readFile(path, 'utf-8', (err, data) => {
+                if(data) {
+                    res(data);
+                }
+            });
+        })
+    }
+    // readFile('./data/number.txt').then((data) => {
+    //     return readFile(data);
+    // }).then((data) => {
+    //     return readFile(data);
+    // }).then((data) => {
+    //     console.log(data);
+    // });
 
+    // Generator改写
+    function *read(url) {
+        let val1 = yield readFile(url);
+        let val2 = yield readFile(val1);
+        let val3 = yield readFile(val2);
+        return val3;
+    }
+    // let oG = read('./data/number.txt');
+    // let {value, done} = oG.next();
+    // value.then((val) => {
+    //     let {value, done} = oG.next(val);
+    //     value.then((val) => {
+    //         let {value, done} = oG.next(val);
+    //         value.then((val) => {
+    //             console.log(val);
+    //         })
+    //     })
+    // });
+    //用递归优化 优雅的解决回调地狱问题
+    // function Co(oIt) {
+    //     return new Promise((res, rej) => {
+    //         let next = (data) => {
+    //             let {value, done} = oIt.next(data);
+    //             if(done) {
+    //                 res(value);
+    //             }else{
+    //                 value.then((val) => {
+    //                     next(val);
+    //                 }, rej);
+    //             }
+    //         }
+    //         next();
+    //     });
+    // }
+    // Co(read()).then((val) => {
+    //     console.log(val);
+    // }, () => {
+    //
+    // });
+    //Co 库
+    //npm install co --save
+    let co = require('co');
+     co(read()).then((val) => {
+         console.log(val);
+     });
+     //=====promise优化=================================================
+     let fs = require('fs');
+     //error first
+     //fs.readDir fs.writeFile 异步方法
+     //node单线程
+     fs.readFile('./data/number.txt', 'utf-8', (err, data) => {
+         fs.readFile(data, 'utf-8', (err, data) => {
+             fs.readFile()
+         })
+     })
+     //Promise优化 高阶函数
+     function promisify(func) {
+         return function(...arg) {
+             return new Promise((res, rej) => {
+                 func(...arg, (err, data) => {
+                     if(err) {
+                         rej(err);
+                     }else{
+                         res(data);
+                     }
+                 })
+             })
+         }
+     }
+     //promise化异步操作
+     let readFile = promisify(fs.readFile);
+     let writeFile = promisify(fs.writeFile);
+     let readDir = promisify(fs.readDir);
+     readFile('./data/number.txt', 'utf-8').then((val) => {
+         console.log(val);
+     });
+     //===============================================
+     function promisifyAll(obj) {
+         for(let key in obj) {
+             let fn = obj[key];
+             if(typeof fn === 'function') {
+                 obj[key + 'Async'] = promisify(fn);
+             }
+         }
+     }
+     promisifyAll(fs);
+     // fs.readFile => fs.readFileAsync
+     //fs.writeFile => fs.writeFileAsync
+     //fs.readDir => fs.readDirAsync
+     fs.readFileSync('./data/number.txt', 'utf-8').then((val) => {
+        console.log(val);
+     });
 
+     //bluebird p 库
+     //npm install bluebird --save
+     let bluebird = require('bluebird');
+     bluebird.promisify(fs.readFile());
+
+十三、es7 async & await
+
+    async 函数是Generator语法糖，通过babel编译后可以看出它就是
+    Generator + Promise + Co思想实现的，配合await使用
+    优雅的解决异步操作问题
+
+    let fs = require("fs");
+    function readFile(path) {
+        return new Promise((res, rej) => {
+            fs.readFile(path, 'utf-8', (err, data) => {
+                if(err) {
+                    rej(err);
+                }else{
+                    res(data);
+                }
+            });
+        });
+    }
+    async function read(url) {
+        try{
+            let val1 = await readFile(url);
+            let val2 = await readFile(val1);
+            let val3 = await readFile(val2);
+            return val3;
+        }catch(e) {
+            console.log(e);
+        }
+    }
+    read('./data/number.txt').then((val) => {
+        console.log(val);
+    });
+    //同步并发异步结果
+    //Promise.all
+    // 有一个错误时不影响其他异步的操作
+    async function read1() {
+        let val1 = null;
+        try{
+            val1 = await readFile('./data/number1.txt');
+            console.log(val1);
+        }catch(e) {
+            console.log(e);
+        }
+    }
+    async function read2() {
+        let val2 = null;
+        try{
+            val2 = await readFile('./data/number2.txt');
+            console.log(val2);
+        }catch(e) {
+            console.log(e);
+        }
+    }
+    async function read3() {
+        let val3 = null;
+        try{
+            val3 = await readFile('./data/number3.txt');
+            console.log(val3);
+        }catch(e) {
+            console.log(e);
+        }
+    }
+    function readAll(...arg) {
+        arg.forEach((ele) => {
+            ele();
+        });
+    }
+    readAll(read1, read2, read3);
 
 
