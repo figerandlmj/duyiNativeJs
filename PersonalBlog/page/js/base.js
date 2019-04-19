@@ -1,7 +1,7 @@
 var randomTags = new Vue({
 	el: "#random_tags",
 	data: {
-		tags: ["蛋疼", "游戏", "selenium数据结构分区", "macwin7独立博客", "摄像头模拟", "css+div", "五笔", "蛋疼", "游戏", "selenium数据结构分区", "macwin7独立博客", "摄像头模拟", "css+div", "五笔"]
+		tags: ["蛋疼", "游戏", "selenium数据结构分区", "macwin7独立博客", "摄像头模拟", "styles+div", "五笔", "蛋疼", "游戏", "selenium数据结构分区", "macwin7独立博客", "摄像头模拟", "styles+div", "五笔"]
 	},
 	computed: {
 		randomColor() {

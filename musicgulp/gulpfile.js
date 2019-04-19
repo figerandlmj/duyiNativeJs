@@ -50,7 +50,7 @@ gulp.task('js', function() {
 })
 
 gulp.task('css', function() {
-	var css = gulp.src(folder.src + 'css/*')
+	var css = gulp.src(folder.src + 'styles/*')
 					.pipe(connect.reload())
 					.pipe(less());
 	var options = [autoprefixer()];
@@ -65,7 +65,7 @@ gulp.task('watch', function() {
 	gulp.watch(folder.src + '*.html', ['html']);
 	gulp.watch(folder.src + 'img/*', ['img']);
 	gulp.watch(folder.src + 'js/*', ['js']);
-	gulp.watch(folder.src + 'css/*', ['css']);
+	gulp.watch(folder.src + 'styles/*', ['css']);
 });
 
 gulp.task('server', function() {

@@ -11,7 +11,7 @@ var providePlugin = new webpack.ProvidePlugin({
 module.exports = {
 	entry: {
 		index: './src/js/login.js',
-		goodsInfo: './src/js/goodsInfo.js'
+		goodsInfo: './src/js/goodsInfo.json'
 	},
 	output: {
 		filename: '[name].js',
@@ -25,20 +25,20 @@ module.exports = {
 				use: ['babel-loader']
 			},
 			// {
-			// 	test: /.css$/,
-			// 	use: ['style-loader', 'css-loader']
+			// 	test: /.styles$/,
+			// 	use: ['style-loader', 'styles-loader']
 			// },
 			//独立出css样式
 			// {
-			// 	test: /.css$/,
+			// 	test: /.styles$/,
 			// 	use: ExtractTextPlugin.extract({
 			// 		fallback: 'style-loader',
-			// 		use: 'css-loader'
+			// 		use: 'styles-loader'
 			// 	})
 			// },
 			{
 				test: /.less$/,
-				use: ['style-loader', 'css-loader', 'less-loader']
+				use: ['style-loader', 'styles-loader', 'less-loader']
 			},
 			{
 				test: /.jpg|png|gif|svg$/,
@@ -53,7 +53,7 @@ module.exports = {
 			filename: 'commons.js',//文件名
 			minChunks: 2//引用>=2次被提取
 		}),
-		new ExtractTextPlugin('css/[name].css'),
+		new ExtractTextPlugin('styles/[name].css'),
 		providePlugin
 	]
 }

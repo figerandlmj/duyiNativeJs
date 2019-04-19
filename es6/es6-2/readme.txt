@@ -314,7 +314,7 @@ npx babel xxx.js -o xxx.js --watch //监控执行babel编译
     var obj = {
         name: "lmj"  //可读可写可配置可枚举
     }
-    //==value,writable 和get,set不能同时使用=======================================
+    //=========value,writable 和get,set不能同时使用=======================================
     var obj = {};
     var tempValue = "";
     Object.defineProperty(obj, "name", {
@@ -364,7 +364,7 @@ npx babel xxx.js -o xxx.js --watch //监控执行babel编译
     let oProxyData = new Proxy(oData, {
         set(target, key, value, receiver) {
             console.log(target, key, value, receiver);
-            Reflect.get(target, key, value);
+            Reflect.set(target, key, value);
             upDate();
         },
         get(target, key, receiver) {
@@ -387,14 +387,14 @@ npx babel xxx.js -o xxx.js --watch //监控执行babel编译
     oProxyData.val = 10;
     oProxyData.name = "lmj";//新增属性也能被检测到
 
-    console.log("_val" in oProxyData);//false
+    console.log("_val" in oProxyData);//调用has false
     console.log(delete oProxyData.val);
 
 八、class 构造函数
 
     面向对象：
         面向过程在于把功能拆分成步骤，一环扣一环的完成，但是需求复杂到一定程度后，
-        对开发者能力的挑战也是也来越强。
+        对开发者能力的挑战也是越来越强。
         面向对象在于前期把功能拆分并抽象成不同的对象，聚焦于每个对象的能力和他们之间的配合，
         项目复杂后相对于面向过程较为轻松一些。
         面向对象： 继承、封装、多态
@@ -451,6 +451,7 @@ npx babel xxx.js -o xxx.js --watch //监控执行babel编译
         class Plane {
             //es7
             // static alive = true;
+            //es6
             static alive() {//静态属性（函数）
                 return true;
             }

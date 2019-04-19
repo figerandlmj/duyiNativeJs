@@ -19,7 +19,7 @@ module.exports = function(grunt){
         expand: true,
         cwd: 'tmp/fontawesome/fonts/',
         src: ['**'],
-        dest: 'source/css/fonts/'
+        dest: 'source/styles/fonts/'
       },
       fancybox: {
         expand: true,
@@ -30,7 +30,7 @@ module.exports = function(grunt){
     },
     _clean: {
       tmp: ['tmp'],
-      fontawesome: ['source/css/fonts'],
+      fontawesome: ['source/styles/fonts'],
       fancybox: ['source/fancybox']
     }
   });

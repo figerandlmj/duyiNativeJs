@@ -15,6 +15,8 @@
 	"appid": "wx9d8be0faad0c163f",
 	"projectname": "ofo",
 	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,
