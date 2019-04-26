@@ -1,23 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a24b76ce-d825-4d85-80a1-9811a3b6d2b5" name="默认" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_config.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue2/interview-vue/vue-app.rar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue2/interview-vue/vue-app/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue2/interview-vue/vue-app/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue2/interview-vue/vue-app/babel.config.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue2/interview-vue/vue-app/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue2/interview-vue/vue-app/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue2/interview-vue/vue-app/public/data/goodsInfo.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue2/interview-vue/vue-app/public/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue2/interview-vue/vue-app/public/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue2/interview-vue/vue-app/src/App.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue2/interview-vue/vue-app/src/assets/styles/reset.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue2/interview-vue/vue-app/src/main.js" beforeDir="false" />
-    </list>
+    <list default="true" id="a24b76ce-d825-4d85-80a1-9811a3b6d2b5" name="默认" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -30,10 +14,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
+        <entry file="file://$PROJECT_DIR$/.git-credentials">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+            <state>
+              <caret column="40" lean-forward="true" selection-start-column="40" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -88,7 +72,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/PersonalBlog/web/CommentController.js" />
         <option value="$PROJECT_DIR$/PersonalBlog/page/js/base.js" />
         <option value="$PROJECT_DIR$/PersonalBlog/page/index.html" />
         <option value="$PROJECT_DIR$/PersonalBlog/dao/BlogDao.js" />
@@ -139,6 +122,7 @@
         <option value="$PROJECT_DIR$/vue2/interview-vue/public/index.html" />
         <option value="$PROJECT_DIR$/vue2/interview-vue/src/App.vue" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/.git-credentials" />
       </list>
     </option>
   </component>
@@ -153,6 +137,9 @@
     <option name="y" value="171" />
     <option name="width" value="1896" />
     <option name="height" value="867" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -322,12 +309,12 @@
       <workItem from="1555983762136" duration="2580000" />
       <workItem from="1556245973288" duration="320000" />
       <workItem from="1556246347163" duration="136000" />
-      <workItem from="1556246493070" duration="224000" />
+      <workItem from="1556246493070" duration="893000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="637409000" />
+    <option name="totallyTimeSpent" value="638078000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
@@ -405,14 +392,6 @@
     </option>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/vue2/vue-app2/src/components/Error.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="2" column="18" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vue2/vue-app2/src/components/community/Download.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -742,6 +721,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.git-credentials">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="40" lean-forward="true" selection-start-column="40" selection-end-column="40" />
         </state>
       </provider>
     </entry>
